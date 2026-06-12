@@ -660,9 +660,11 @@ async function openAnkiPanel() {
       const d = document.createElement('div');
       d.className = 'history-entry';
       d.dataset.deck = card.deckName;
+      const wordHtml = card.reading
+        ? `<ruby class="h-word">${card.word}<rt>${card.reading}</rt></ruby>`
+        : `<span class="h-word">${card.word}</span>`;
       d.innerHTML = `
-        <span class="h-word">${card.word}</span>
-        <span class="h-reading">${card.reading}</span>
+        ${wordHtml}
         <span style="font-size:0.75rem;font-weight:700;color:${lapseBadgeColor(card.lapses)};margin-left:auto;white-space:nowrap">✕${card.lapses}</span>
         <span class="h-time">${card.deckName}</span>`;
       d.onclick = () => {

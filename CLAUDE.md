@@ -134,6 +134,10 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — furigana toggle in 苦手 panel
+
+- Cards with available readings now render as `<ruby>` elements so the global ふりがな toggle applies to the panel automatically
+
 ### 2026-06-12 — UI polish: 苦手 button, deck filter, font scaler
 
 - 苦手 button now pink-bordered (#anki-btn rule) to distinguish it from passive toggle buttons
