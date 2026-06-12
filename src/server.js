@@ -5,7 +5,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const { lookup, toAnkiTSV } = require('./lookup');
+const { lookup, lookupStream, toAnkiTSV } = require('./lookup');
 const { getStrugglingCards } = require('./anki');
 
 const app = express();
@@ -45,6 +45,31 @@ app.get('/api/export', async (req, res) => {
   } catch (err) {
     res.status(500).send(err.message);
   }
+});
+
+/* POST /api/lookup/stream  { input: "見る" }  → SSE text/event-stream */
+app.post('/api/lookup/stream', async (req, res) => {
+  const { input } = req.body;
+  if (!input || typeof input !== 'string' || !input.trim()) {
+    return res.status(400).json({ error: 'input is required' });
+  }
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+  try {
+    for await (const event of lookupStream(input.trim())) {
+      if (event.type === 'chunk') {
+        res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
+      } else if (event.type === 'done') {
+        res.write(`data: ${JSON.stringify({ done: true, result: event.result })}\n\n`);
+      }
+    }
+  } catch (err) {
+    console.error('Stream error:', err.message);
+    res.write(`data: ${JSON.stringify({ error: err.message })}\n\n`);
+  }
+  res.end();
 });
 
 /* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */

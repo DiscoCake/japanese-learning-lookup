@@ -122,7 +122,8 @@ async function lookup(input) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 2000,
+      max_tokens: 1400,
+      output_config: { effort: 'medium' },
       system,
       messages: [{ role: 'user', content: userMsg }]
     })
@@ -165,4 +166,73 @@ function toAnkiTSV(result) {
   return rows.join('\n');
 }
 
-module.exports = { lookup, detectMode, toAnkiTSV };
+/* ── STREAMING LOOKUP ── */
+async function* lookupStream(input) {
+  if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY not set — check your .env file');
+  const mode = detectMode(input.trim());
+  const system = mode === 'grammar' ? GRAMMAR_SYSTEM : VOCAB_SYSTEM;
+  const userMsg = mode === 'grammar'
+    ? `Grammar point to analyze: ${input.trim()}`
+    : `Word to analyze: ${input.trim()}`;
+
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: 1400,
+      output_config: { effort: 'medium' },
+      stream: true,
+      system,
+      messages: [{ role: 'user', content: userMsg }]
+    })
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(`API error ${res.status}: ${err.error?.message || 'unknown'}`);
+  }
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let accumulated = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const raw = line.slice(6).trim();
+        if (raw === '[DONE]') continue;
+        let event;
+        try { event = JSON.parse(raw); } catch { continue; }
+        if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
+          accumulated += event.delta.text;
+          yield { type: 'chunk', text: event.delta.text };
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const cleaned = accumulated.replace(/```json|```/g, '').trim();
+  let result;
+  try { result = JSON.parse(cleaned); }
+  catch (e) { throw new Error('Failed to parse streamed JSON: ' + cleaned.slice(0, 200)); }
+  result.mode = mode;
+  result.input = input.trim();
+  result.timestamp = new Date().toISOString();
+  yield { type: 'done', result };
+}
+
+module.exports = { lookup, lookupStream, detectMode, toAnkiTSV };

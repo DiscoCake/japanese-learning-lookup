@@ -134,6 +134,18 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — streaming API response
+
+- Added `lookupStream(input)` async generator in `src/lookup.js` — makes the same Anthropic call with `stream: true`, yields `{type:'chunk', text}` deltas then a final `{type:'done', result}` with the parsed result
+- Added `POST /api/lookup/stream` SSE route in `server.js` — proxies text deltas and the final result to the browser as `text/event-stream`
+- Frontend `doLookup()` now consumes the stream: shows accumulating JSON in a `.stream-preview` pane as tokens arrive, then snaps to the full structured render when done
+- Existing `POST /api/lookup` and `lookup()` untouched — CLI and history re-render unchanged
+
+### 2026-06-12 — API latency optimization
+
+- `output_config: { effort: 'medium' }` added to API call in `src/lookup.js` — drops from the default `"high"` effort (slowest) to `"medium"` (balanced), meaningfully reducing response time for structured JSON generation
+- `max_tokens` lowered from 2000 → 1400 — caps worst-case generation time; typical responses are 800–1300 tokens so this leaves comfortable headroom
+
 ### 2026-06-12 — furigana toggle in 苦手 panel
 
 - Cards with available readings now render as `<ruby>` elements so the global ふりがな toggle applies to the panel automatically

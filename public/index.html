@@ -123,6 +123,12 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
 
 /* ── RESULT ── */
 #result { display: none; }
+.stream-preview {
+  font-family: 'Noto Sans JP', monospace; font-size: 0.78rem; color: var(--text3);
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 1rem 1.2rem; white-space: pre-wrap;
+  word-break: break-word; max-height: 380px; overflow-y: auto; opacity: 0.75; line-height: 1.6;
+}
 @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
 .fadein { animation: fadein 0.35s ease forwards; }
 
@@ -320,6 +326,10 @@ searchInput.addEventListener('input', () => {
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) doLookup(); });
 document.getElementById('search-btn').onclick = doLookup;
 
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function detectMode(input) {
   const t = input.trim();
   if (/^[～〜]/.test(t) || t.includes('〜') || t.includes('～')) return 'grammar';
@@ -337,16 +347,42 @@ async function doLookup() {
   document.getElementById('loading-text').innerHTML = `「${input}」を<ruby>調<rt>しら</rt></ruby>べています…`;
 
   try {
-    const res = await fetch('/api/lookup', {
+    const streamRes = await fetch('/api/lookup/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ input })
     });
-    if (!res.ok) throw new Error((await res.json()).error || `HTTP ${res.status}`);
-    const data = await res.json();
-    currentResult = data;
-    addToHistory(data);
-    renderResult(data);
+    if (!streamRes.ok) throw new Error((await streamRes.json()).error || `HTTP ${streamRes.status}`);
+
+    const reader = streamRes.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+    let preview = '';
+    const resultEl = document.getElementById('result');
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop() || '';
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        let evt;
+        try { evt = JSON.parse(line.slice(6)); } catch { continue; }
+        if (evt.text) {
+          preview += evt.text;
+          resultEl.style.display = 'block';
+          resultEl.innerHTML = `<pre class="stream-preview">${escHtml(preview)}</pre>`;
+        } else if (evt.done && evt.result) {
+          currentResult = evt.result;
+          addToHistory(evt.result);
+          renderResult(evt.result);
+        } else if (evt.error) {
+          throw new Error(evt.error);
+        }
+      }
+    }
   } catch (e) {
     renderError(e.message);
   }
