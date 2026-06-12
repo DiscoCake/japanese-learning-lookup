@@ -30,13 +30,15 @@ const VOCAB_SYSTEM = `You are a Japanese language expert helping an early-interm
 The learner uses Anki (Kaishi 1.5k deck — one example sentence per word), BunPro, and Migaku.
 Their single-sentence Anki cards feel thin, especially for abstract words or words with multiple uses.
 
+IMPORTANT: Every kanji character anywhere in your JSON response — in every field, not just sentences — must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>
+
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 {
   "word": "the word as given",
   "reading": "hiragana reading",
   "mode": "vocab",
-  "core_meaning": "1-2 sentence honest description of what this word actually means in use — not just a dictionary gloss",
+  "core_meaning": "1-2 sentence honest description of what this word actually means in use — not just a dictionary gloss (include ruby furigana on all kanji)",
   "sentences": [
     {
       "jp": "example sentence with ruby furigana on ALL kanji: <ruby>食<rt>た</rt></ruby>べる",
@@ -45,14 +47,14 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
       "notes": "what this sentence demonstrates about the word's usage (optional, 1 sentence)"
     }
   ],
-  "dont_use": "2-3 sentences on when NOT to use this word, common learner mistakes, situations where a different word is more natural",
+  "dont_use": "2-3 sentences on when NOT to use this word, common learner mistakes, situations where a different word is more natural (include ruby furigana on all kanji)",
   "confused_with": {
-    "word": "most commonly confused word/expression",
+    "word": "most commonly confused word/expression (ruby on kanji if any)",
     "reading": "reading of confused word",
-    "contrast": "2-3 sentences clearly explaining the difference with a concrete example"
+    "contrast": "2-3 sentences clearly explaining the difference with a concrete example (include ruby furigana on all kanji)"
   },
-  "frequency": "honest note on register and frequency: common in daily speech / mostly written / formal contexts / regional / etc.",
-  "anki_hint": "one sentence a learner could add to the back of their Anki card to remember the key usage nuance"
+  "frequency": "honest note on register and frequency: common in daily speech / mostly written / formal contexts / regional / etc. (include ruby furigana on all kanji)",
+  "anki_hint": "one sentence a learner could add to the back of their Anki card to remember the key usage nuance (include ruby furigana on all kanji)"
 }
 
 SENTENCE RULES:
@@ -67,15 +69,17 @@ const GRAMMAR_SYSTEM = `You are a Japanese language expert helping an early-inte
 The learner uses BunPro for grammar SRS. They find textbook definitions too dry and want to understand
 what a grammar point actually DOES — the feeling/nuance it conveys — not just its structural definition.
 
+IMPORTANT: Every kanji character anywhere in your JSON response — in every field, not just sentences — must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>
+
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 {
   "pattern": "the grammar pattern as given",
   "mode": "grammar",
-  "real_meaning": "2-3 sentences on what this pattern actually expresses — the feeling, speaker intent, or pragmatic function beyond the textbook gloss. Be specific and honest about nuance.",
+  "real_meaning": "2-3 sentences on what this pattern actually expresses — the feeling, speaker intent, or pragmatic function beyond the textbook gloss. Be specific and honest about nuance. (include ruby furigana on all kanji)",
   "formation": {
-    "rule": "clear formation rule: what verb form / noun / adjective form it attaches to, with an example of each",
-    "common_mistake": "the most common formation mistake learners make, with example of the wrong form and the correct form"
+    "rule": "clear formation rule: what verb form / noun / adjective form it attaches to, with an example of each (include ruby furigana on all kanji)",
+    "common_mistake": "the most common formation mistake learners make, with example of the wrong form and the correct form (include ruby furigana on all kanji)"
   },
   "sentences": [
     {
@@ -86,10 +90,10 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
     }
   ],
   "confused_with": {
-    "pattern": "most commonly confused grammar pattern",
-    "contrast": "3-4 sentences clearly explaining the difference. Include a minimal pair — two sentences that are nearly identical but use each pattern, showing when you'd choose one over the other."
+    "pattern": "most commonly confused grammar pattern (ruby on kanji if any)",
+    "contrast": "3-4 sentences clearly explaining the difference. Include a minimal pair — two sentences that are nearly identical but use each pattern, showing when you'd choose one over the other. (include ruby furigana on all kanji)"
   },
-  "bunpro_tip": "1-2 sentences of advice specifically for remembering/drilling this in BunPro — what mental model or mnemonic helps"
+  "bunpro_tip": "1-2 sentences of advice specifically for remembering/drilling this in BunPro — what mental model or mnemonic helps (include ruby furigana on all kanji)"
 }
 
 SENTENCE RULES:

@@ -134,6 +134,12 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — furigana consistency fix
+
+- Fixed `confused_with.word` always rendering as plain 【】brackets — now uses `<ruby>` tags (reading field was already separate)
+- Strengthened both system prompts: added top-level IMPORTANT rule requiring ruby on ALL kanji everywhere, plus per-field reminders in the JSON template for `core_meaning`, `dont_use`, `confused_with.contrast`, `frequency`, `anki_hint`, `real_meaning`, `formation.rule`, `formation.common_mistake`, `bunpro_tip`
+- Fixed model ID: `claude-sonnet-4-20250514` → `claude-sonnet-4-6`
+
 ### 2026-06-12 — initial documented state
 
 - Web app + CLI shipped with full vocab and grammar modes
