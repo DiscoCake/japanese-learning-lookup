@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { lookup, toAnkiTSV } = require('./lookup');
+const { getStrugglingCards } = require('./anki');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -43,6 +44,19 @@ app.get('/api/export', async (req, res) => {
     res.send(toAnkiTSV(result));
   } catch (err) {
     res.status(500).send(err.message);
+  }
+});
+
+/* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */
+app.get('/api/anki/struggling', async (req, res) => {
+  const minLapses = Math.max(1, parseInt(req.query.minLapses) || 2);
+  const limit = Math.min(100, parseInt(req.query.limit) || 50);
+  try {
+    const result = await getStrugglingCards({ minLapses, limit });
+    res.json(result);
+  } catch (err) {
+    console.error('AnkiConnect error:', err.message);
+    res.status(503).json({ error: err.message, hint: 'Is Anki open with AnkiConnect installed?' });
   }
 });
 

@@ -198,6 +198,7 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
       <button class="ctrl-btn active" id="furigana-btn">ふりがな</button>
       <button class="ctrl-btn active" id="ime-btn">ローマ字</button>
       <button class="ctrl-btn" id="history-btn"><ruby>履歴<rt>りれき</rt></ruby><span class="badge" id="history-count" style="display:none">0</span></button>
+      <button class="ctrl-btn" id="anki-btn">苦手</button>
     </div>
   </div>
 
@@ -217,6 +218,20 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
 
   <div id="result"></div>
 
+</div>
+
+<!-- ANKI STRUGGLING CARDS PANEL -->
+<div class="panel" id="anki-panel">
+  <div class="panel-inner">
+    <h2>苦手カード</h2>
+    <div id="anki-status"></div>
+    <div id="anki-list"></div>
+    <div class="panel-empty" id="anki-empty" style="display:none">苦手なカードが見つかりません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn" id="anki-refresh-btn">更新</button>
+      <button class="panel-btn" id="anki-close-btn">閉じる</button>
+    </div>
+  </div>
 </div>
 
 <!-- HISTORY PANEL -->
@@ -523,6 +538,71 @@ document.getElementById('history-export-btn').onclick = function() {
     setTimeout(() => this.textContent = 'Ankiエクスポート（全履歴）', 2000);
   });
 };
+
+/* ── ANKI STRUGGLING CARDS ── */
+function lapseBadgeColor(lapses) {
+  if (lapses >= 5) return 'var(--pink)';
+  if (lapses >= 3) return '#ff9944';
+  return 'var(--yellow)';
+}
+
+async function openAnkiPanel() {
+  const panel = document.getElementById('anki-panel');
+  const list = document.getElementById('anki-list');
+  const empty = document.getElementById('anki-empty');
+  const status = document.getElementById('anki-status');
+
+  list.innerHTML = '';
+  empty.style.display = 'none';
+  status.innerHTML = '<div style="color:var(--text2);padding:1rem 0">読み込み中…</div>';
+  panel.style.display = 'block';
+
+  try {
+    const res = await fetch('/api/anki/struggling');
+    const data = await res.json();
+
+    if (!res.ok) {
+      status.innerHTML = `<div style="color:var(--pink);padding:1rem 0;line-height:1.6">
+        AnkiConnectが見つかりません。<br>
+        <span style="color:var(--text2);font-size:0.85rem">AnkiConnectプラグインをインストールしてAnkiを開いてください。<br>（Add-on code: 2055492159）</span>
+      </div>`;
+      return;
+    }
+
+    status.innerHTML = data.total > 0
+      ? `<div style="color:var(--text2);font-size:0.8rem;padding-bottom:0.5rem">${data.total}枚中、上位${data.cards.length}枚を表示（ミス回数順）</div>`
+      : '';
+
+    if (!data.cards.length) {
+      empty.style.display = 'block';
+      return;
+    }
+
+    data.cards.forEach(card => {
+      const d = document.createElement('div');
+      d.className = 'history-entry';
+      d.innerHTML = `
+        <span class="h-word">${card.word}</span>
+        <span class="h-reading">${card.reading}</span>
+        <span style="font-size:0.75rem;font-weight:700;color:${lapseBadgeColor(card.lapses)};margin-left:auto;white-space:nowrap">✕${card.lapses}</span>
+        <span class="h-time">${card.deckName}</span>`;
+      d.onclick = () => {
+        searchInput.value = card.word;
+        panel.style.display = 'none';
+        doLookup();
+      };
+      list.appendChild(d);
+    });
+  } catch (err) {
+    status.innerHTML = `<div style="color:var(--pink);padding:1rem 0">エラー: ${err.message}</div>`;
+  }
+}
+
+document.getElementById('anki-btn').onclick = openAnkiPanel;
+document.getElementById('anki-close-btn').onclick = () => {
+  document.getElementById('anki-panel').style.display = 'none';
+};
+document.getElementById('anki-refresh-btn').onclick = openAnkiPanel;
 </script>
 </body>
 </html>

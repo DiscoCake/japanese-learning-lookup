@@ -134,6 +134,13 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — AnkiConnect struggling cards panel
+
+- Added `src/anki.js` — queries AnkiConnect at `http://localhost:8765` for cards with `lapses >= 2`, extracts word/reading from deck fields, returns sorted by lapse count
+- Added `GET /api/anki/struggling?minLapses=2&limit=50` route in `server.js`
+- Added 苦手 button in header and sliding panel in frontend; clicking any card sets the search input and fires a lookup automatically
+- Field extraction handles multiple deck schemas (Word/Vocabulary/Front/Expression, Reading/Furigana/Kana)
+
 ### 2026-06-12 — furigana consistency fix
 
 - Fixed `confused_with.word` always rendering as plain 【】brackets — now uses `<ruby>` tags (reading field was already separate)
