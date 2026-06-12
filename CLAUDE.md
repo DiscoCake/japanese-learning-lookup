@@ -4,6 +4,11 @@ Vocab and grammar deep-diver for an N4→N3 Japanese learner.
 One word or grammar pattern in → rich contextual breakdown out.
 Sibling project to 東京奇譚 (same visual palette, same stack).
 
+## Repository
+
+https://github.com/DiscoCake/japanese-learning-lookup
+`git remote`: `git@github.com:DiscoCake/japanese-learning-lookup.git`
+
 ## Architecture
 
 ```

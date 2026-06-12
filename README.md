@@ -60,3 +60,5 @@ See `CLAUDE.md` for architecture and design decisions.
 ---
 
 Sibling project: [東京奇譚](../tokyo-kitan/) — same visual palette and stack.
+
+**Repo:** https://github.com/DiscoCake/japanese-learning-lookup
