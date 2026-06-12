@@ -134,6 +134,12 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — UI polish: 苦手 button, deck filter, font scaler
+
+- 苦手 button now pink-bordered (#anki-btn rule) to distinguish it from passive toggle buttons
+- Anki panel now shows deck filter pills above card list; client-side show/hide by deck, all selected by default, minimum one always active
+- Font size scaler (−/100%/+) added to header-right; uses `--s` CSS variable + `calc(17px * var(--s))`; Ctrl+scroll also works; range 50%–200%
+
 ### 2026-06-12 — AnkiConnect struggling cards panel
 
 - Added `src/anki.js` — queries AnkiConnect at `http://localhost:8765` for cards with `lapses >= 2`, extracts word/reading from deck fields, returns sorted by lapse count

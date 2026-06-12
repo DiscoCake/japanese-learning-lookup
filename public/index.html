@@ -18,8 +18,9 @@
   --cyan: #4fd8e8; --cyan2: #279aaa;
   --yellow: #ffe066; --purple: #b97fff; --purple2: #7a4fbf;
   --green: #6feaa0; --green2: #2a7a50;
+  --s: 1;
 }
-html { font-size: 17px; }
+html { font-size: calc(17px * var(--s)); }
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: var(--bg); color: var(--text);
@@ -51,6 +52,30 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
 }
 .ctrl-btn:hover { border-color: var(--border2); color: var(--text); }
 .ctrl-btn.active { border-color: var(--cyan2); color: var(--cyan); }
+#anki-btn { border-color: var(--pink2); color: var(--pink); }
+#anki-btn:hover { border-color: var(--pink); box-shadow: 0 0 8px rgba(255,111,168,0.25); }
+#scale-bar {
+  display: flex; align-items: center; gap: 0.3rem;
+  border-left: 1px solid var(--border); padding-left: 0.5rem; margin-left: 0.25rem;
+}
+.scale-btn {
+  width: 1.4rem; height: 1.4rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 50%;
+  color: var(--text2); cursor: pointer; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.12s, color 0.12s; padding: 0; font-family: inherit;
+}
+.scale-btn:hover { border-color: var(--cyan2); color: var(--cyan); }
+#scale-label { font-size: 0.58rem; color: var(--text3); min-width: 2rem; text-align: center; }
+.deck-pill {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.6rem;
+  padding: 0.2rem 0.6rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 99px;
+  color: var(--text2); cursor: pointer; white-space: nowrap;
+  transition: border-color 0.12s, color 0.12s;
+}
+.deck-pill.active { border-color: var(--cyan2); color: var(--cyan); }
+#deck-filter { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem 0 0.75rem; }
 .ctrl-btn .badge {
   display: inline-block; background: var(--pink2); color: #fff;
   font-size: 0.48rem; border-radius: 99px; padding: 0 0.3rem; margin-left: 0.25rem;
@@ -199,6 +224,11 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
       <button class="ctrl-btn active" id="ime-btn">ローマ字</button>
       <button class="ctrl-btn" id="history-btn"><ruby>履歴<rt>りれき</rt></ruby><span class="badge" id="history-count" style="display:none">0</span></button>
       <button class="ctrl-btn" id="anki-btn">苦手</button>
+      <div id="scale-bar">
+        <button class="scale-btn" id="scale-down">−</button>
+        <span id="scale-label">100%</span>
+        <button class="scale-btn" id="scale-up">＋</button>
+      </div>
     </div>
   </div>
 
@@ -539,11 +569,30 @@ document.getElementById('history-export-btn').onclick = function() {
   });
 };
 
+/* ── FONT SIZE SCALER ── */
+let scale = 1;
+function setScale(v) {
+  scale = Math.min(2.0, Math.max(0.5, Math.round(v * 10) / 10));
+  document.documentElement.style.setProperty('--s', scale);
+  document.getElementById('scale-label').textContent = Math.round(scale * 100) + '%';
+}
+document.getElementById('scale-up').onclick   = () => setScale(scale + 0.1);
+document.getElementById('scale-down').onclick = () => setScale(scale - 0.1);
+window.addEventListener('wheel', e => {
+  if (e.ctrlKey || e.metaKey) { e.preventDefault(); setScale(scale + (e.deltaY < 0 ? 0.1 : -0.1)); }
+}, { passive: false });
+
 /* ── ANKI STRUGGLING CARDS ── */
 function lapseBadgeColor(lapses) {
   if (lapses >= 5) return 'var(--pink)';
   if (lapses >= 3) return '#ff9944';
   return 'var(--yellow)';
+}
+
+function applyDeckFilter(activeDecks) {
+  document.querySelectorAll('#anki-list .history-entry').forEach(el => {
+    el.style.display = activeDecks.has(el.dataset.deck) ? '' : 'none';
+  });
 }
 
 async function openAnkiPanel() {
@@ -569,18 +618,48 @@ async function openAnkiPanel() {
       return;
     }
 
-    status.innerHTML = data.total > 0
-      ? `<div style="color:var(--text2);font-size:0.8rem;padding-bottom:0.5rem">${data.total}枚中、上位${data.cards.length}枚を表示（ミス回数順）</div>`
-      : '';
-
     if (!data.cards.length) {
+      status.innerHTML = '';
       empty.style.display = 'block';
       return;
     }
 
+    // Build deck filter pills
+    const decks = [...new Set(data.cards.map(c => c.deckName))].sort();
+    const activeDecks = new Set(decks);
+    const filterRow = document.createElement('div');
+    filterRow.id = 'deck-filter';
+    decks.forEach(deck => {
+      const pill = document.createElement('button');
+      pill.className = 'deck-pill active';
+      pill.textContent = deck;
+      pill.dataset.deck = deck;
+      pill.onclick = () => {
+        if (activeDecks.has(deck)) {
+          if (activeDecks.size === 1) return; // keep at least one
+          activeDecks.delete(deck);
+          pill.classList.remove('active');
+        } else {
+          activeDecks.add(deck);
+          pill.classList.add('active');
+        }
+        applyDeckFilter(activeDecks);
+      };
+      filterRow.appendChild(pill);
+    });
+
+    const summary = document.createElement('div');
+    summary.style.cssText = 'color:var(--text2);font-size:0.8rem;padding-bottom:0.25rem';
+    summary.textContent = `${data.total}枚中、上位${data.cards.length}枚を表示（ミス回数順）`;
+    status.innerHTML = '';
+    status.appendChild(summary);
+    status.appendChild(filterRow);
+
+    // Render card entries
     data.cards.forEach(card => {
       const d = document.createElement('div');
       d.className = 'history-entry';
+      d.dataset.deck = card.deckName;
       d.innerHTML = `
         <span class="h-word">${card.word}</span>
         <span class="h-reading">${card.reading}</span>
