@@ -359,7 +359,11 @@ async function doLookup() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ input })
     });
-    if (!streamRes.ok) throw new Error((await streamRes.json()).error || `HTTP ${streamRes.status}`);
+    if (!streamRes.ok) {
+      const text = await streamRes.text();
+      let msg; try { msg = JSON.parse(text).error; } catch {}
+      throw new Error(msg || `HTTP ${streamRes.status}`);
+    }
 
     const reader = streamRes.body.getReader();
     const dec = new TextDecoder();
