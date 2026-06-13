@@ -156,6 +156,11 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-12 — furigana scope fix
+
+- Tightened IMPORTANT rule in both system prompts: "kanji character (CJK ideograph)" replaces "kanji character anywhere" — explicitly prohibits ruby tags on English words, Roman letters, and Latin-alphabet proper nouns
+- SENTENCE RULES footer updated to match in both VOCAB_SYSTEM and GRAMMAR_SYSTEM
+
 ### 2026-06-12 — coloring system, streaming fixes, token limit
 
 - `max_tokens` raised 1800 → 3000 in both `lookup()` and `lookupStream()` — furigana-annotated

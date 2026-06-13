@@ -30,7 +30,7 @@ const VOCAB_SYSTEM = `You are a Japanese language expert helping an early-interm
 The learner uses Anki (Kaishi 1.5k deck — one example sentence per word), BunPro, and Migaku.
 Their single-sentence Anki cards feel thin, especially for abstract words or words with multiple uses.
 
-IMPORTANT: Every kanji character anywhere in your JSON response — in every field, not just sentences — must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>
+IMPORTANT: Every Japanese kanji character (CJK ideograph) in your JSON response must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>. English words, Roman letters, and proper nouns written in the Latin alphabet must NEVER have ruby tags — furigana is only for actual kanji characters.
 
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
@@ -63,13 +63,13 @@ SENTENCE RULES:
 - Show the word's RANGE — different collocations, different contexts, not just the same idea repeated
 - For words with multiple senses (e.g. 上がる), cover the main senses across the sentences
 - If the word is commonly used as a grammatical construction (e.g. ところ、もの、わけ), at least 2 sentences must show the grammatical use
-- ALL kanji in Japanese output must have ruby furigana tags`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
 
 const GRAMMAR_SYSTEM = `You are a Japanese language expert helping an early-intermediate learner (solid N4, approaching N3).
 The learner uses BunPro for grammar SRS. They find textbook definitions too dry and want to understand
 what a grammar point actually DOES — the feeling/nuance it conveys — not just its structural definition.
 
-IMPORTANT: Every kanji character anywhere in your JSON response — in every field, not just sentences — must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>
+IMPORTANT: Every Japanese kanji character (CJK ideograph) in your JSON response must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>. English words, Roman letters, and proper nouns written in the Latin alphabet must NEVER have ruby tags — furigana is only for actual kanji characters.
 
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
@@ -100,7 +100,7 @@ SENTENCE RULES:
 - Generate exactly 4 sentences
 - MUST cover: one clearly casual, one standard/polite, one formal or written
 - Fourth sentence: a tricky or nuanced use that surprises learners
-- ALL kanji in Japanese output must have ruby furigana tags`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
 
 /* ── MAIN LOOKUP FUNCTION ── */
 async function lookup(input) {
