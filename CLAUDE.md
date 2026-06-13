@@ -170,6 +170,12 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-13 — TTS furigana fix + pause/resume
+
+- `speak()` now takes `(text, btn)` — tracks `activeSpeakBtn` module-level; same button toggles pause/resume, different button cancels current and starts new
+- Furigana double-read fixed: clone `.sentence-jp`, `querySelectorAll('rt').forEach(rt => rt.remove())`, then `.textContent` — same pattern as 東京奇譚 `sceneSpokenText()`
+- ▶ button now shows ⏸ while playing; `utt.onend` resets it to ▶
+
 ### 2026-06-13 — archive conventions expanded + snapshots
 
 - CLAUDE.md: "Archive conventions" split into Source files + Plans subsections; source file archiving now applies before significant edits, not just on full replacement

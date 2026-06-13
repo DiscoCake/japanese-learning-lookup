@@ -616,12 +616,32 @@ function renderError(msg) {
 }
 
 /* ── TTS ── */
-function speak(text) {
+let activeSpeakBtn = null;
+
+function speak(text, btn) {
   if (!window.speechSynthesis) return;
+
+  if (activeSpeakBtn === btn) {
+    if (speechSynthesis.paused) {
+      speechSynthesis.resume();
+      btn.textContent = '⏸';
+    } else {
+      speechSynthesis.pause();
+      btn.textContent = '▶';
+    }
+    return;
+  }
+
+  if (activeSpeakBtn) activeSpeakBtn.textContent = '▶';
   speechSynthesis.cancel();
+  activeSpeakBtn = btn;
+  btn.textContent = '⏸';
+
   const utt = new SpeechSynthesisUtterance(text);
   utt.lang = 'ja-JP';
   utt.rate = 0.9;
+  utt.onend = () => { btn.textContent = '▶'; activeSpeakBtn = null; };
+
   const trySpeak = () => {
     const jaVoice = speechSynthesis.getVoices().find(v => v.lang.startsWith('ja'));
     if (jaVoice) utt.voice = jaVoice;
@@ -636,7 +656,9 @@ document.getElementById('result').addEventListener('click', e => {
   const speakBtn = e.target.closest('.speak-btn');
   if (speakBtn) {
     const jpEl = speakBtn.closest('.sentence-item').querySelector('.sentence-jp');
-    speak(jpEl.textContent);
+    const clone = jpEl.cloneNode(true);
+    clone.querySelectorAll('rt').forEach(rt => rt.remove());
+    speak(clone.textContent, speakBtn);
     return;
   }
   if (e.target.id === 'copy-tsv-btn' && currentResult) {
