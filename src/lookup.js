@@ -218,6 +218,11 @@ async function* lookupStream(input) {
         if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
           accumulated += event.delta.text;
           yield { type: 'chunk', text: event.delta.text };
+        } else if (event.type === 'error') {
+          throw new Error(`API stream error: ${event.error?.message || 'unknown'}`);
+        } else if (event.type === 'message_delta' && event.delta?.stop_reason &&
+                   event.delta.stop_reason !== 'end_turn') {
+          throw new Error(`Stream stopped early: ${event.delta.stop_reason}`);
         }
       }
     }

@@ -66,8 +66,14 @@ app.post('/api/lookup/stream', async (req, res) => {
       }
     }
   } catch (err) {
-    console.error('Stream error:', err.message);
-    res.write(`data: ${JSON.stringify({ error: err.message })}\n\n`);
+    console.error('Stream error, falling back to lookup():', err.message);
+    try {
+      const result = await lookup(input.trim());
+      res.write(`data: ${JSON.stringify({ done: true, result })}\n\n`);
+    } catch (fallbackErr) {
+      console.error('Fallback also failed:', fallbackErr.message);
+      res.write(`data: ${JSON.stringify({ error: fallbackErr.message })}\n\n`);
+    }
   }
   res.end();
 });
