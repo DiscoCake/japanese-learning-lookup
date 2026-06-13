@@ -24,8 +24,10 @@ import it directly — they don't touch the other files.
 
 ## Design decisions — don't change without asking
 
-1. **Single API call per lookup.** No follow-up calls, no streaming.
-   Token-conscious by design (same principle as 東京奇譚).
+1. **Streaming API call per lookup** via `lookupStream()` in `src/lookup.js`. Server
+   (`POST /api/lookup/stream`) streams SSE chunks to the browser for progressive card rendering.
+   Falls back to non-streaming `lookup()` if the stream fails mid-response. CLI and
+   history re-render use the non-streaming path unchanged.
 
 2. **Auto mode detection in lookup.js and frontend.**
    - Starts with ～ or 〜, or contains those characters → grammar mode
@@ -35,7 +37,9 @@ import it directly — they don't touch the other files.
 
 3. **All Japanese output has ruby furigana on every kanji.**
    `<ruby>漢字<rt>かんじ</rt></ruby>` — same rule as 東京奇譚.
-   Furigana color: pink (#ff6fa8). Main JP text color: teal (#4fd8e8).
+   Furigana color: pink (#ff6fa8). Kanji color: teal (#4fd8e8) via `#result ruby { color: var(--cyan) }`.
+   In example sentences kana is near-white (`--text`); in prose cards all text is muted (`--text2`).
+   When furigana is toggled off, kanji reverts to surrounding text color (`color: inherit`).
 
 4. **WanaKana IME bound by default** (IMEMode: true). Toggle button to disable.
    Same pattern as 東京奇譚 typed input — user types romaji, gets kana.
@@ -107,6 +111,24 @@ node src/cli.js --tsv 見る   # output Anki TSV
 node src/cli.js --raw 見る   # output raw JSON
 ```
 
+## Server restart policy
+
+After editing `src/server.js` or `src/lookup.js`, always restart the server autonomously —
+never ask the user to do it. Kill any running instance and start fresh with `npm run dev`.
+The `--watch` flag auto-restarts on subsequent file saves during that session.
+
+```bash
+pkill -f "node src/server.js" 2>/dev/null; pkill -f "node --watch src/server.js" 2>/dev/null; sleep 0.5
+cd "/Users/jasonalmerini/Library/Mobile Documents/com~apple~CloudDocs/VS Code Projects/companion" && npm run dev >> /tmp/companion-server.log 2>&1 &
+```
+
+Editing `public/index.html` does NOT require a restart — it's a static file served directly.
+
+## Changelog discipline
+
+After any significant change to `src/` or `public/index.html`, add a changelog entry to
+`CLAUDE.md` before considering the task complete. Don't batch this to a docs sweep at the end.
+
 ## Roadmap (discussed, not built)
 
 - VS Code extension that calls lookup.js on selected text (highest-friction reduction)
@@ -133,6 +155,22 @@ This keeps reference material available without cluttering the active source tre
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-12 — coloring system, streaming fixes, token limit
+
+- `max_tokens` raised 1800 → 3000 in both `lookup()` and `lookupStream()` — furigana-annotated
+  responses were regularly truncating; 3000 gives safe headroom for complex vocab entries
+- Stream error handling: `lookupStream()` now throws on `error` and non-`end_turn` stop events;
+  `/api/lookup/stream` catch block falls back to non-streaming `lookup()` so users always get a result
+- Progressive streaming render: chunks parsed with brace-tracker as they arrive; result cards appear
+  incrementally instead of waiting for full response or showing raw JSON
+- History array doubles as lookup cache: `doLookup()` checks history before hitting the API —
+  repeated lookups re-render from cache with no API call
+- Sentence coloring: kanji cyan (`#result ruby`), kana near-white (`.sentence-jp` color `--text`);
+  furigana toggle reverts kanji to inherit making sentences uniformly near-white when off
+- 苦手 panel: ふりがな toggle button added to panel header (ctrl-btn style, synced with global toggle) — **later removed** (see below)
+- Double furigana in 混同しやすい表現 card fixed: `confused_with.word` now rendered directly without outer `<ruby>` wrapper (Claude already annotates individual kanji)
+- 苦手 panel: removed all furigana — cards show raw word only (no ruby, no toggle button); point is recognition practice without reading hints
 
 ### 2026-06-12 — streaming API response
 

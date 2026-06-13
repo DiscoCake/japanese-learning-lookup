@@ -154,14 +154,16 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
   text-transform: uppercase; margin-bottom: 0.7rem;
 }
 .card-body { font-size: 0.88rem; color: var(--text2); line-height: 1.9; }
-.card-body ruby { color: var(--cyan); }
-
 /* sentences */
 .sentence-list { display: flex; flex-direction: column; gap: 1rem; }
 .sentence-item { border-left: 2px solid var(--border2); padding-left: 0.9rem; }
 .sentence-jp {
-  font-family: "Noto Serif JP", serif; font-size: 1rem; line-height: 2.4; color: var(--cyan);
+  font-family: "Noto Serif JP", serif; font-size: 1rem; line-height: 2.4; color: var(--text);
 }
+/* Kanji in results = cyan when furigana is on */
+#result ruby { color: var(--cyan); }
+/* When furigana is off, revert kanji to surrounding text color */
+body.hide-furigana #result ruby { color: inherit; }
 .sentence-en { font-size: 0.8rem; color: var(--text2); margin-top: 0.1rem; line-height: 1.6; }
 .sentence-notes { font-size: 0.72rem; color: var(--text3); margin-top: 0.2rem; font-style: italic; }
 .register-tag {
@@ -519,7 +521,7 @@ function renderVocab(r) {
     ${r.confused_with ? `
     <div class="card">
       <div class="card-label">混同しやすい表現</div>
-      <div class="contrast-word"><ruby>${r.confused_with.word}<rt>${r.confused_with.reading}</rt></ruby></div>
+      <div class="contrast-word">${r.confused_with.word}</div>
       <div class="card-body">${r.confused_with.contrast}</div>
     </div>` : ''}
 
@@ -791,9 +793,7 @@ async function openAnkiPanel() {
       const d = document.createElement('div');
       d.className = 'history-entry';
       d.dataset.deck = card.deckName;
-      const wordHtml = card.reading
-        ? `<ruby class="h-word">${card.word}<rt>${card.reading}</rt></ruby>`
-        : `<span class="h-word">${card.word}</span>`;
+      const wordHtml = `<span class="h-word">${card.word}</span>`;
       d.innerHTML = `
         ${wordHtml}
         <span style="font-size:0.75rem;font-weight:700;color:${lapseBadgeColor(card.lapses)};margin-left:auto;white-space:nowrap">✕${card.lapses}</span>
