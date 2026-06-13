@@ -8,7 +8,7 @@ traps, and one-click Anki TSV export.
 
 - **Backend**: Node.js + Express (proxy to Anthropic Claude API)
 - **Frontend**: Vanilla JS, no build step — open `public/index.html` via the server
-- **AI**: Anthropic Claude API (`claude-sonnet-4-20250514`), single call per lookup
+- **AI**: Anthropic Claude API (`claude-sonnet-4-6`), streaming SSE with non-streaming fallback
 - **IME**: [WanaKana](https://wanakana.com/) for romaji→kana conversion
 
 ## Setup
@@ -50,8 +50,10 @@ node src/cli.js --raw 見える      # raw JSON output
 
 - Romaji→kana auto-conversion (WanaKana) — toggle off for OS IME
 - Furigana on all kanji with global show/hide toggle
+- Kanji highlighted cyan when furigana is on; reverts to surrounding text color when off
 - Live mode-pill — shows vocab vs grammar as you type before submitting
-- History (last 50 lookups, persisted in localStorage) — click any entry to re-render from cache, no API re-call
+- Streaming responses — result cards appear progressively as tokens arrive; automatic fallback to non-streaming if stream is interrupted
+- History (last 50 lookups, persisted in localStorage) — click any entry to re-render from cache, no API re-call; history doubles as a lookup cache so repeated searches skip the API entirely
 - Copy buttons per result: Anki TSV (HTML stripped) or raw JSON
 - Anki TSV export: per-result copy or full history bulk export
 

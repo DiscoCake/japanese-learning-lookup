@@ -5,7 +5,8 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const { lookup, toAnkiTSV } = require('./lookup');
+const { lookup, lookupStream, toAnkiTSV } = require('./lookup');
+const { getStrugglingCards } = require('./anki');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -43,6 +44,50 @@ app.get('/api/export', async (req, res) => {
     res.send(toAnkiTSV(result));
   } catch (err) {
     res.status(500).send(err.message);
+  }
+});
+
+/* POST /api/lookup/stream  { input: "見る" }  → SSE text/event-stream */
+app.post('/api/lookup/stream', async (req, res) => {
+  const { input } = req.body;
+  if (!input || typeof input !== 'string' || !input.trim()) {
+    return res.status(400).json({ error: 'input is required' });
+  }
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+  try {
+    for await (const event of lookupStream(input.trim())) {
+      if (event.type === 'chunk') {
+        res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
+      } else if (event.type === 'done') {
+        res.write(`data: ${JSON.stringify({ done: true, result: event.result })}\n\n`);
+      }
+    }
+  } catch (err) {
+    console.error('Stream error, falling back to lookup():', err.message);
+    try {
+      const result = await lookup(input.trim());
+      res.write(`data: ${JSON.stringify({ done: true, result })}\n\n`);
+    } catch (fallbackErr) {
+      console.error('Fallback also failed:', fallbackErr.message);
+      res.write(`data: ${JSON.stringify({ error: fallbackErr.message })}\n\n`);
+    }
+  }
+  res.end();
+});
+
+/* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */
+app.get('/api/anki/struggling', async (req, res) => {
+  const minLapses = Math.max(1, parseInt(req.query.minLapses) || 2);
+  const limit = Math.min(100, parseInt(req.query.limit) || 50);
+  try {
+    const result = await getStrugglingCards({ minLapses, limit });
+    res.json(result);
+  } catch (err) {
+    console.error('AnkiConnect error:', err.message);
+    res.status(503).json({ error: err.message, hint: 'Is Anki open with AnkiConnect installed?' });
   }
 });
 
