@@ -330,6 +330,73 @@ function escHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+/* ── PARTIAL JSON PARSING (progressive render while streaming) ── */
+function unescJson(s) {
+  return s.replace(/\\"/g, '"').replace(/\\\\/g, '\\').replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\r/g, '');
+}
+function extractStr(text, field) {
+  const m = text.match(new RegExp(`"${field}"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  return m ? unescJson(m[1]) : undefined;
+}
+function parseObjAt(text, start) {
+  let depth = 0, inStr = false, esc = false, i = start;
+  while (i < text.length) {
+    const c = text[i];
+    if (esc) { esc = false; }
+    else if (c === '\\' && inStr) { esc = true; }
+    else if (c === '"') { inStr = !inStr; }
+    else if (!inStr) {
+      if (c === '{') depth++;
+      else if (c === '}') { if (--depth === 0) { try { return JSON.parse(text.slice(start, i + 1)); } catch { return undefined; } } }
+    }
+    i++;
+  }
+  return undefined;
+}
+function advPast(text, start) {
+  let depth = 0, inStr = false, esc = false, i = start;
+  while (i < text.length) {
+    const c = text[i];
+    if (esc) { esc = false; } else if (c === '\\' && inStr) { esc = true; }
+    else if (c === '"') { inStr = !inStr; }
+    else if (!inStr) { if (c === '{') depth++; else if (c === '}') { if (--depth === 0) return i + 1; } }
+    i++;
+  }
+  return i;
+}
+function extractObj(text, field) {
+  const idx = text.indexOf(`"${field}"`); if (idx === -1) return undefined;
+  const brace = text.indexOf('{', idx); if (brace === -1) return undefined;
+  return parseObjAt(text, brace);
+}
+function extractArr(text, field) {
+  const idx = text.indexOf(`"${field}"`); if (idx === -1) return [];
+  const bracket = text.indexOf('[', idx); if (bracket === -1) return [];
+  const items = []; let i = bracket + 1;
+  while (i < text.length) {
+    while (i < text.length && /[\s,]/.test(text[i])) i++;
+    if (text[i] === ']' || i >= text.length) break;
+    if (text[i] !== '{') { i++; continue; }
+    const obj = parseObjAt(text, i); if (obj === undefined) break;
+    items.push(obj); i = advPast(text, i);
+  }
+  return items;
+}
+function parsePartial(text) {
+  const r = {};
+  const mode = extractStr(text, 'mode'); if (mode) r.mode = mode;
+  for (const f of ['word','reading','core_meaning','dont_use','frequency','anki_hint','pattern','real_meaning','bunpro_tip'])  {
+    const v = extractStr(text, f); if (v !== undefined) r[f] = v;
+  }
+  r.sentences = extractArr(text, 'sentences');
+  r.confused_with = extractObj(text, 'confused_with');
+  r.formation = extractObj(text, 'formation');
+  return r;
+}
+function partialFieldCount(p) {
+  return Object.keys(p).filter(k => { const v = p[k]; return v !== undefined && v !== null && !(Array.isArray(v) && v.length === 0); }).length + (p.sentences?.length || 0);
+}
+
 function detectMode(input) {
   const t = input.trim();
   if (/^[～〜]/.test(t) || t.includes('〜') || t.includes('～')) return 'grammar';
@@ -368,7 +435,8 @@ async function doLookup() {
     const reader = streamRes.body.getReader();
     const dec = new TextDecoder();
     let buf = '';
-    let preview = '';
+    let accumulated = '';
+    let lastCount = 0;
     const resultEl = document.getElementById('result');
 
     while (true) {
@@ -382,9 +450,14 @@ async function doLookup() {
         let evt;
         try { evt = JSON.parse(line.slice(6)); } catch { continue; }
         if (evt.text) {
-          preview += evt.text;
-          resultEl.style.display = 'block';
-          resultEl.innerHTML = `<pre class="stream-preview">${escHtml(preview)}</pre>`;
+          accumulated += evt.text;
+          const partial = parsePartial(accumulated);
+          const count = partialFieldCount(partial);
+          if (count > lastCount && (partial.mode || partial.word || partial.pattern)) {
+            lastCount = count;
+            resultEl.style.display = 'block';
+            resultEl.innerHTML = partial.mode === 'grammar' ? renderGrammar(partial) : renderVocab(partial);
+          }
         } else if (evt.done && evt.result) {
           currentResult = evt.result;
           addToHistory(evt.result);
@@ -412,16 +485,18 @@ function renderResult(r) {
 function renderVocab(r) {
   return `
     <div class="result-header">
-      <span class="result-word">${r.word}</span>
-      <span class="result-reading">【${r.reading}】</span>
+      <span class="result-word">${r.word || '…'}</span>
+      ${r.reading ? `<span class="result-reading">【${r.reading}】</span>` : ''}
       <span class="mode-pill vocab">単語</span>
     </div>
 
+    ${r.core_meaning ? `
     <div class="card">
       <div class="card-label">意味・ニュアンス</div>
       <div class="card-body">${r.core_meaning}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.sentences && r.sentences.length ? `
     <div class="card">
       <div class="card-label">例文 (${r.sentences.length})</div>
       <div class="sentence-list">
@@ -433,28 +508,32 @@ function renderVocab(r) {
             ${s.notes ? `<div class="sentence-notes">↳ ${s.notes}</div>` : ''}
           </div>`).join('')}
       </div>
-    </div>
+    </div>` : ''}
 
+    ${r.dont_use ? `
     <div class="card">
       <div class="card-label">使わないほうがいい場合</div>
       <div class="card-body">${r.dont_use}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.confused_with ? `
     <div class="card">
       <div class="card-label">混同しやすい表現</div>
       <div class="contrast-word"><ruby>${r.confused_with.word}<rt>${r.confused_with.reading}</rt></ruby></div>
       <div class="card-body">${r.confused_with.contrast}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.frequency ? `
     <div class="card">
       <div class="card-label">使用頻度・レジスター</div>
       <div class="card-body">${r.frequency}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.anki_hint ? `
     <div class="card">
       <div class="card-label">Ankiヒント</div>
       <div class="card-body">${r.anki_hint}</div>
-    </div>
+    </div>` : ''}
 
     ${exportBar()}`;
 }
@@ -462,21 +541,24 @@ function renderVocab(r) {
 function renderGrammar(r) {
   return `
     <div class="result-header">
-      <span class="result-word" style="font-size:1.5rem">${r.pattern}</span>
+      <span class="result-word" style="font-size:1.5rem">${r.pattern || '…'}</span>
       <span class="mode-pill grammar">文法</span>
     </div>
 
+    ${r.real_meaning ? `
     <div class="card">
       <div class="card-label">本当の意味・ニュアンス</div>
       <div class="card-body">${r.real_meaning}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.formation ? `
     <div class="card">
       <div class="card-label">接続形</div>
       <div class="card-body formation-rule">${r.formation.rule}</div>
       <div class="formation-mistake">${r.formation.common_mistake}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.sentences && r.sentences.length ? `
     <div class="card">
       <div class="card-label">例文 (${r.sentences.length})</div>
       <div class="sentence-list">
@@ -488,18 +570,20 @@ function renderGrammar(r) {
             ${s.notes ? `<div class="sentence-notes">↳ ${s.notes}</div>` : ''}
           </div>`).join('')}
       </div>
-    </div>
+    </div>` : ''}
 
+    ${r.confused_with ? `
     <div class="card">
       <div class="card-label">混同しやすい文法</div>
       <div class="contrast-word">${r.confused_with.pattern}</div>
       <div class="card-body">${r.confused_with.contrast}</div>
-    </div>
+    </div>` : ''}
 
+    ${r.bunpro_tip ? `
     <div class="card">
       <div class="card-label">BunProのヒント</div>
       <div class="card-body">${r.bunpro_tip}</div>
-    </div>
+    </div>` : ''}
 
     ${exportBar()}`;
 }
