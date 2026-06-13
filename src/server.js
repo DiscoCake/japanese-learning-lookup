@@ -6,7 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { lookup, lookupStream, toAnkiTSV } = require('./lookup');
-const { getStrugglingCards } = require('./anki');
+const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames } = require('./anki');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -88,6 +88,56 @@ app.get('/api/anki/struggling', async (req, res) => {
   } catch (err) {
     console.error('AnkiConnect error:', err.message);
     res.status(503).json({ error: err.message, hint: 'Is Anki open with AnkiConnect installed?' });
+  }
+});
+
+/* GET /api/anki/card?word=見る  → { found, noteId, sentence, ... } */
+app.get('/api/anki/card', async (req, res) => {
+  const { word } = req.query;
+  if (!word) return res.status(400).json({ error: 'word required' });
+  try {
+    const note = await findNoteForWord(word.trim());
+    if (!note) return res.json({ found: false });
+    res.json({ found: true, ...note });
+  } catch (err) {
+    console.error('AnkiConnect card lookup error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* POST /api/anki/card/sentence  — replace sentence on existing note */
+app.post('/api/anki/card/sentence', async (req, res) => {
+  const { noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey } = req.body;
+  if (!noteId || !sentenceFieldKey || !sentence) return res.status(400).json({ error: 'missing fields' });
+  try {
+    await updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('AnkiConnect update error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* POST /api/anki/card/create  — create new note { result, sentence } */
+app.post('/api/anki/card/create', async (req, res) => {
+  const { result, sentence } = req.body;
+  if (!result || !sentence) return res.status(400).json({ error: 'missing fields' });
+  try {
+    const noteId = await addNoteForWord(result, sentence);
+    res.json({ ok: true, noteId });
+  } catch (err) {
+    console.error('AnkiConnect create error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* GET /api/anki/decks  → { decks: string[] } */
+app.get('/api/anki/decks', async (req, res) => {
+  try {
+    const decks = await getDeckNames();
+    res.json({ decks });
+  } catch (err) {
+    res.status(503).json({ error: err.message });
   }
 });
 

@@ -170,6 +170,15 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-13 — Anki card sentence viewer + replacer + card creator
+
+- `src/anki.js`: added `findNoteForWord`, `updateCardSentence`, `addNoteForWord`, `getDeckNames`, `generateSentenceAudio`, `storeAudioAndGetTag`, `rubyToAnkiFurigana`
+- `src/server.js`: 4 new routes — `GET /api/anki/card`, `POST /api/anki/card/sentence`, `POST /api/anki/card/create`, `GET /api/anki/decks`
+- `public/index.html`: `checkAnkiCard()` fires after every vocab result; "Ankiカード" section shows current sentence or "no card" state; `→ Anki` button on every example sentence (vocab only) replaces existing sentence or creates new card
+- New cards go to `"Companion"` deck (`ANKI_COMPANION_DECK` env var) using Kaishi 1.5k note type — all fields populated (Word, Reading, Furigana, Meaning, Sentence, Sentence Meaning, Sentence Furigana, Frequency, Notes)
+- VoiceVox integration: sentence audio generated via local API (`VOICEVOX_URL`, `VOICEVOX_SPEAKER`) and stored via AnkiConnect `storeMediaFile`; graceful no-op if VoiceVox not running
+- `.env.example` updated with new env vars
+
 ### 2026-06-13 — TTS furigana fix + pause/resume
 
 - `speak()` now takes `(text, btn)` — tracks `activeSpeakBtn` module-level; same button toggles pause/resume, different button cancels current and starts new
