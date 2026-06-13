@@ -6,7 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { lookup, lookupStream, toAnkiTSV } = require('./lookup');
-const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames } = require('./anki');
+const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames, enrichAndUpdateCard } = require('./anki');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -107,10 +107,10 @@ app.get('/api/anki/card', async (req, res) => {
 
 /* POST /api/anki/card/sentence  — replace sentence on existing note */
 app.post('/api/anki/card/sentence', async (req, res) => {
-  const { noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey } = req.body;
+  const { noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName } = req.body;
   if (!noteId || !sentenceFieldKey || !sentence) return res.status(400).json({ error: 'missing fields' });
   try {
-    await updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey);
+    await updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName);
     res.json({ ok: true });
   } catch (err) {
     console.error('AnkiConnect update error:', err.message);
@@ -127,6 +127,19 @@ app.post('/api/anki/card/create', async (req, res) => {
     res.json({ ok: true, noteId });
   } catch (err) {
     console.error('AnkiConnect create error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* POST /api/anki/card/enrich  — expand non-standard note type with companion fields + write all values */
+app.post('/api/anki/card/enrich', async (req, res) => {
+  const { noteId, modelName, result, sentence } = req.body;
+  if (!noteId || !modelName || !result || !sentence) return res.status(400).json({ error: 'missing fields' });
+  try {
+    await enrichAndUpdateCard(noteId, modelName, result, sentence.jp, sentence.translation);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('AnkiConnect enrich error:', err.message);
     res.status(503).json({ error: err.message });
   }
 });
