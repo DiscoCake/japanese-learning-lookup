@@ -150,11 +150,28 @@ archive/YYYY-MM-DD_original-filename.ext
 Then add a one-line note in the Changelog entry below: what was archived and why.
 This keeps reference material available without cluttering the active source tree.
 
+## Plan archive
+
+Plans live as a single active file in `.claude/plans/`. Before overwriting it for a new task,
+copy it to `plans/YYYY-MM-DD_description.md` in the repo root so past plans are versioned
+and referenceable:
+
+```bash
+cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
+```
+
 ## Changelog
 
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-13 — TTS audio + history search/filter + plan archive
+
+- TTS: `speak(text)` added using Web Speech API; `▶` button on every example sentence in both vocab and grammar modes; delegated listener on `#result`; `lang: 'ja-JP'`, rate 0.9, handles async `voiceschanged` for first-load
+- History panel: `filterHistory(query, mode)` added; search input + 全て/単語/文法 mode pills injected on each open (resets state); `data-word` and `data-mode` attributes on each `.history-entry` for filtering
+- CLAUDE.md: "Plan archive" convention added — copy active plan to `plans/YYYY-MM-DD_description.md` before overwriting
+- `plans/` directory created at repo root; `plans/2026-06-13_tts-audio-history-search.md` is the first archived plan
 
 ### 2026-06-12 — furigana scope fix
 
