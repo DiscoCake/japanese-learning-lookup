@@ -140,21 +140,25 @@ After any significant change to `src/` or `public/index.html`, add a changelog e
 
 ## Archive conventions
 
-When a file is superseded (prompt rewrite, component replaced, config swapped out),
-don't delete it — move it to `archive/` at the repo root with a dated prefix:
+### Source files
 
+Before making significant edits to any file in `src/` or `public/`, copy the current version
+to `archive/` with a dated prefix so there's always a recoverable snapshot:
+
+```bash
+cp src/lookup.js archive/2026-06-13_lookup.js
+cp public/index.html archive/2026-06-13_index.html
 ```
-archive/YYYY-MM-DD_original-filename.ext
-```
 
-Then add a one-line note in the Changelog entry below: what was archived and why.
-This keeps reference material available without cluttering the active source tree.
+Also archive when a file is superseded entirely (prompt rewrite, component replaced, etc.) —
+in that case the archived copy replaces the original rather than sitting alongside it.
 
-## Plan archive
+Add a one-line note in the Changelog entry for every archive: what was archived and why.
+
+### Plans
 
 Plans live as a single active file in `.claude/plans/`. Before overwriting it for a new task,
-copy it to `plans/YYYY-MM-DD_description.md` in the repo root so past plans are versioned
-and referenceable:
+copy it to `plans/` at the repo root so past plans are versioned and referenceable:
 
 ```bash
 cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
@@ -165,6 +169,11 @@ cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-13 — archive conventions expanded + snapshots
+
+- CLAUDE.md: "Archive conventions" split into Source files + Plans subsections; source file archiving now applies before significant edits, not just on full replacement
+- `archive/2026-06-13_lookup.js`, `archive/2026-06-13_index.html` — first source snapshots under the new convention
 
 ### 2026-06-13 — TTS audio + history search/filter + plan archive
 
