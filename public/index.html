@@ -342,6 +342,13 @@ async function doLookup() {
   const input = searchInput.value.trim();
   if (!input) return;
 
+  const cached = history.find(h => h.input === input);
+  if (cached) {
+    currentResult = cached;
+    renderResult(cached);
+    return;
+  }
+
   document.getElementById('result').style.display = 'none';
   document.getElementById('loading').style.display = 'flex';
   document.getElementById('loading-text').innerHTML = `「${input}」を<ruby>調<rt>しら</rt></ruby>べています…`;

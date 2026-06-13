@@ -122,7 +122,7 @@ async function lookup(input) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 1400,
+      max_tokens: 1800,
       output_config: { effort: 'medium' },
       system,
       messages: [{ role: 'user', content: userMsg }]
@@ -184,7 +184,7 @@ async function* lookupStream(input) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 1400,
+      max_tokens: 1800,
       output_config: { effort: 'medium' },
       stream: true,
       system,
