@@ -14,6 +14,8 @@ https://github.com/DiscoCake/japanese-learning-lookup
 ```
 src/lookup.js     ← ALL prompt logic. No framework code. Returns a plain JS object.
 src/server.js     ← Express proxy. POST /api/lookup → lookup() → JSON response.
+src/anki.js       ← AnkiConnect client. Sentence management, card enrichment, struggling-card queries.
+                     Zero dependencies on lookup.js or the frontend.
 src/cli.js        ← CLI. `node src/cli.js 見る` or `node src/cli.js ～てしまう`
 public/index.html ← Frontend. Vanilla JS, no build step.
 ```
@@ -54,6 +56,27 @@ import it directly — they don't touch the other files.
 7. **Visual identity matches 東京奇譚.** Deep indigo bg (#0d0d1a), pink for accents/furigana,
    cyan for main Japanese text, yellow for warnings/mistakes, purple for grammar/contrast.
    Noto Serif JP for Japanese display text, Noto Sans JP for UI.
+
+8. **Anki integration via AnkiConnect** (`src/anki.js`). Requires Anki open with
+   AnkiConnect add-on (ankiweb.net/shared/info/2055492159).
+
+   - `findNoteForWord` searches by Word field then falls back to full-text search;
+     detects sentence field by name (SENTENCE_KEYS list) or by back-template analysis
+     (`detectBackField`). Returns `deckName` via `cardsInfo`.
+   - Non-standard note types (any deck) are enriched in-place via `modelFieldAdd` —
+     Companion fields (Reading, Meaning, Sentence, etc.) added without touching review history.
+   - TTS in Anki card templates via `{{tts ja_JP voices=...:Field}}`. Premium macOS
+     voices configured via `ANKI_TTS_VOICES` env var. Enriched cards play the Reading
+     field first (word pronunciation) then the Sentence field — mirrors Kaishi 1.5k audio order.
+   - `→ Anki` buttons require two clicks (確定? confirm state, 3s auto-cancel) to prevent
+     accidental overwrites. Outside-click also cancels.
+   - New cards go to the Companion deck using a Companion note type auto-created on
+     first use (`ANKI_COMPANION_DECK` / `ANKI_COMPANION_MODEL` env vars).
+   - `buildTtsTag(fieldKey)` is the single source of truth for TTS tag construction;
+     `upgradeModelTTSTag` upgrades bare `{{tts ja_JP:Field}}` tags to the voices version
+     when `ANKI_TTS_VOICES` is set.
+   - Struggling cards panel (苦手): `getStrugglingCards` queries cards with `lapses >= 2`,
+     displayed in a sliding panel with deck filter pills; click any word to look it up.
 
 ## Output contracts
 
@@ -115,7 +138,9 @@ node src/cli.js --raw 見る   # output raw JSON
 
 After editing `src/server.js` or `src/lookup.js`, always restart the server autonomously —
 never ask the user to do it. Kill any running instance and start fresh with `npm run dev`.
-The `--watch` flag auto-restarts on subsequent file saves during that session.
+The `--watch` flag auto-restarts on subsequent file saves during that session, including
+changes to `src/anki.js` (imported by `server.js`). Manual restart is only needed when
+`.env` changes, since `dotenv` loads at process start.
 
 ```bash
 pkill -f "node src/server.js" 2>/dev/null; pkill -f "node --watch src/server.js" 2>/dev/null; sleep 0.5
@@ -135,26 +160,148 @@ After any significant change to `src/` or `public/index.html`, add a changelog e
 - Pitch-accent data (lookup from pitch accent dictionary alongside AI output)
 - JRPG dialogue paste mode: paste a paragraph of DQ11/Yakuza script, get all unknown
   words flagged and explained in bulk (one call, returns array of vocab entries)
-- Example sentence audio via TTS (same Web Speech API pattern as 東京奇譚)
 - BunPro API integration to mark grammar points as reviewed directly from the companion
 
 ## Archive conventions
 
-When a file is superseded (prompt rewrite, component replaced, config swapped out),
-don't delete it — move it to `archive/` at the repo root with a dated prefix:
+### Source files
 
-```
-archive/YYYY-MM-DD_original-filename.ext
+Before making significant edits to any file in `src/` or `public/`, copy the current version
+to `archive/` with a dated prefix so there's always a recoverable snapshot:
+
+```bash
+cp src/lookup.js archive/2026-06-13_lookup.js
+cp public/index.html archive/2026-06-13_index.html
 ```
 
-Then add a one-line note in the Changelog entry below: what was archived and why.
-This keeps reference material available without cluttering the active source tree.
+Also archive when a file is superseded entirely (prompt rewrite, component replaced, etc.) —
+in that case the archived copy replaces the original rather than sitting alongside it.
+
+Add a one-line note in the Changelog entry for every archive: what was archived and why.
+
+### Plans
+
+Plans live as a single active file in `.claude/plans/`. Before overwriting it for a new task,
+copy it to `plans/` at the repo root so past plans are versioned and referenceable:
+
+```bash
+cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
+```
 
 ## Changelog
 
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-13 — Documentation catch-up + push skill
+
+- `CLAUDE.md` Architecture: added `src/anki.js` to file map
+- `CLAUDE.md` Design decisions: added #8 covering the full Anki integration (AnkiConnect, enrichment, TTS, two-click confirm, 苦手 panel)
+- `CLAUDE.md` Server restart policy: clarified that `--watch` covers `src/anki.js`; manual restart only needed for `.env` changes
+- `CLAUDE.md` Roadmap: removed "Example sentence audio via TTS" — built (Web Speech API in app, Anki TTS on cards)
+- `README.md`: added Anki to Stack, added Dependencies section (AnkiConnect add-on ID), added Anki env vars to Setup, expanded Features with Ankiカード panel, → Anki buttons, card enrichment, Anki TTS, 苦手 panel, TTS ▶ buttons, history search
+- `.claude/skills/push/SKILL.md`: new GitHub push skill — stages safe files, commits, pushes; safety rules prevent `.env` staging and force-push
+
+### 2026-06-13 — Show deck name in Ankiカード section
+
+- `src/anki.js`: `findNoteForWord` now calls `cardsInfo` on the first card of the note to retrieve `deckName`; included in the return object (and thus in `GET /api/anki/card` response automatically)
+- `public/index.html`: Ankiカード body "現在の例文" label now sits in a flex row with a `register-tag` badge showing the deck name on the right; badge hidden when no card found
+- Archived: `archive/2026-06-13_anki.js`, `archive/2026-06-13_index.html`
+
+### 2026-06-13 — Word TTS before sentence TTS on enriched cards
+
+- `src/anki.js`: `patchModelWithSentenceSection` now injects `{{#Reading}}{{tts...:Reading}}{{/Reading}}` before the `{{#Sentence}}` block — enriched cards play the word (hiragana) then the sentence, matching Kaishi 1.5k's word-audio → sentence-audio order
+- Upgrade path handles both missing block (insert) and stale voices (regex replace inside block)
+
+### 2026-06-13 — Fix duplicate TTS on enriched cards
+
+- `src/anki.js`: `patchModelForTTS` now detects `{{#Sentence}}` sections and delegates to `patchModelWithSentenceSection` instead of appending a conflicting standalone tag — eliminates double sentence reading on enriched (Pokemon-style) cards
+- `src/anki.js`: `patchModelWithSentenceSection` now uses a regex to upgrade ANY `{{tts...:Sentence}}` tag inside the section (not just bare→voices), and strips standalone sentence TTS tags that accumulated outside the section
+- Directly patched "Basic-2 Field" back template via AnkiConnect to remove stale `{{tts ja_JP:Front}}` and duplicate sentence TTS tags left by prior conflicting patches
+
+### 2026-06-13 — TTS premium voices + confirm before Anki send
+
+- `src/anki.js`: added `buildTtsTag(fieldKey)` — returns `{{tts ja_JP voices=...:field}}` when `ANKI_TTS_VOICES` env var is set, otherwise bare `{{tts ja_JP:field}}`
+- `src/anki.js`: added `upgradeModelTTSTag(modelName, fieldKey)` — replaces bare TTS tag in an existing back template with the voices version; no-op if voices not configured or already upgraded
+- `src/anki.js`: `patchModelForTTS` updated to use `buildTtsTag`; upgrades existing bare tags before appending new ones (idempotent upgrade path)
+- `src/anki.js`: `patchModelWithSentenceSection` updated to use `buildTtsTag`; upgrades bare TTS tag inside existing `{{#Sentence}}` sections
+- `src/anki.js`: `ensureCompanionModel` Back template now uses `buildTtsTag('Sentence')`; calls `upgradeModelTTSTag` on the already-exists path so old Companion templates auto-upgrade
+- `.env.example`: added `ANKI_TTS_VOICES` with comment explaining how to find macOS voice IDs
+- `public/index.html`: `→ Anki` buttons now require two clicks — first click enters "確定?" state (yellow, 3s auto-cancel); second click executes; clicking elsewhere cancels
+- `public/index.html`: added `cancelPendingAnki()`, `pendingAnkiBtn`/`pendingTimer` state, document-level capture listener for outside-click cancel, `.anki-send-btn.pending` CSS
+- Archived: `archive/2026-06-13_anki.js`, `archive/2026-06-13_index.html` (pre-TTS-voices/confirm snapshots)
+
+### 2026-06-13 — Enrich non-standard cards in place (preserve review history)
+
+- `src/anki.js`: `findNoteForWord` now returns `needsMigration: bool` (true when sentence field was found via template analysis, not SENTENCE_KEYS name match)
+- `src/anki.js`: added `enrichNoteType(modelName, requiredFields)` — uses AnkiConnect `modelFieldNames` + `modelFieldAdd` to expand a note type's schema with Companion fields (Reading, Meaning, Sentence, Sentence Meaning, Frequency, Notes) without touching existing fields or cards
+- `src/anki.js`: added `patchModelWithSentenceSection(modelName)` — appends conditional `{{#Sentence}}...{{/Sentence}}` block (with TTS) to the note type's back template; idempotent
+- `src/anki.js`: added `enrichAndUpdateCard(noteId, modelName, result, jpPlain, translation)` — orchestrates enrichNoteType → updateNoteFields → patchModelWithSentenceSection; review history fully preserved
+- `src/server.js`: added `POST /api/anki/card/enrich` route
+- `public/index.html` `checkAnkiCard`: when `data.needsMigration`, status explains that Companion fields will be added to the card
+- `public/index.html` send handler: when `currentAnkiNote.needsMigration`, calls `/api/anki/card/enrich` (full enrichment path) instead of `/api/anki/card/sentence`
+
+### 2026-06-13 — Auto-detect sentence field from card template; remove field picker
+
+- `src/anki.js`: added `extractTemplateFields(template)` — regex extracts field references from an Anki template string, skipping FrontSide/tts/conditional tags
+- `src/anki.js`: added `detectBackField(modelName, fieldNames)` — fetches the note type's card templates via AnkiConnect, finds the first field that appears on the back but not the front (excluding WORD_KEYS); called as fallback in `findNoteForWord` when SENTENCE_KEYS name-matching fails
+- `src/anki.js`: `findNoteForWord()` now calls `detectBackField` when no sentence field is matched by name — Pokémon Back/English fields auto-detected without user input
+- `public/index.html` `checkAnkiCard`: removed field picker (`<select>` dropdown, all picker logic, picker change handler); replaced with simple fallback message if field still undetected (rare)
+- `public/index.html`: removed `ANKI_FIELDS_KEY`, `loadAnkiFields()`, `saveAnkiField()` — no longer needed
+
+### 2026-06-13 — Field picker: persist choice per note type + remove stale VoiceVox text
+
+- `public/index.html`: added `ANKI_FIELDS_KEY`, `loadAnkiFields()`, `saveAnkiField()` using `companion_ankifields_v1` localStorage key (maps `modelName → sentenceFieldKey`)
+- `public/index.html` `checkAnkiCard`: when `sentenceFieldKey` is empty, checks localStorage for a saved field for this note type before showing the picker; if found, auto-applies it and shows `（前回の選択）` status; picker only shown on first encounter; picker `change` handler saves the choice so future lookups skip it
+- `public/index.html` `checkAnkiCard`: removed "(VoiceVox起動中なら…)" from both the update and create status strings
+
+### 2026-06-13 — Replace VoiceVox with Anki built-in TTS
+
+- `src/anki.js`: added `ensureCompanionModel()` — creates "Companion" note type via AnkiConnect on first card create; back template includes `{{tts ja_JP:Sentence}}` so system TTS plays at review time with no extra software
+- `src/anki.js`: added `patchModelForTTS()` — appends conditional `{{tts}}` to any existing note type's back template when we update its sentence; idempotent (skips if already present); wraps in `{{^SentenceAudio}}...{{/SentenceAudio}}` so pre-recorded audio still takes priority on un-updated cards
+- `src/anki.js`: `updateCardSentence()` now clears the sentence audio field (sets to `''`) so stale audio doesn't override TTS on updated cards; passes `modelName` to `patchModelForTTS`; word audio field untouched
+- `src/anki.js`: `addNoteForWord()` rewritten — calls `ensureCompanionModel()`, uses Companion note type (not Kaishi 1.5k); no audio generation
+- `src/anki.js`: `findNoteForWord()` now returns `modelName` from note info
+- `src/anki.js`: removed `generateSentenceAudio()` and `storeAudioAndGetTag()` (VoiceVox dependency gone)
+- `src/server.js`: `/api/anki/card/sentence` now accepts and forwards `modelName`
+- `public/index.html`: anki-send-btn handler sends `modelName` from `currentAnkiNote`
+- `.env.example`: removed `VOICEVOX_URL`, `VOICEVOX_SPEAKER`; added `ANKI_COMPANION_MODEL`
+- `archive/2026-06-13_anki.js` — snapshot before rewrite
+
+### 2026-06-13 — Non-Kaishi deck support: field picker + response error handling
+
+- `src/anki.js` `findNoteForWord`: now returns `allFields: Object.keys(fields)` so the frontend knows every field on the note
+- `src/anki.js` `updateCardSentence`: added guard — throws early if `sentenceFieldKey` is empty instead of silently sending `fields: {'': text}` to AnkiConnect
+- `public/index.html` `checkAnkiCard`: when `data.found && !data.sentenceFieldKey` (unknown deck schema), shows a `<select>` dropdown of all note fields; `→ Anki` buttons stay hidden until user picks a field; `currentAnkiNote.sentenceFieldKey` is updated on change
+- `public/index.html` send handler: now checks `res.ok` after both update and create fetches; only updates displayed sentence text on confirmed success; throws on failure so the catch block shows ✗
+
+### 2026-06-13 — Anki card sentence viewer + replacer + card creator
+
+- `src/anki.js`: added `findNoteForWord`, `updateCardSentence`, `addNoteForWord`, `getDeckNames`, `generateSentenceAudio`, `storeAudioAndGetTag`, `rubyToAnkiFurigana`
+- `src/server.js`: 4 new routes — `GET /api/anki/card`, `POST /api/anki/card/sentence`, `POST /api/anki/card/create`, `GET /api/anki/decks`
+- `public/index.html`: `checkAnkiCard()` fires after every vocab result; "Ankiカード" section shows current sentence or "no card" state; `→ Anki` button on every example sentence (vocab only) replaces existing sentence or creates new card
+- New cards go to `"Companion"` deck (`ANKI_COMPANION_DECK` env var) using Kaishi 1.5k note type — all fields populated (Word, Reading, Furigana, Meaning, Sentence, Sentence Meaning, Sentence Furigana, Frequency, Notes)
+- VoiceVox integration: sentence audio generated via local API (`VOICEVOX_URL`, `VOICEVOX_SPEAKER`) and stored via AnkiConnect `storeMediaFile`; graceful no-op if VoiceVox not running
+- `.env.example` updated with new env vars
+
+### 2026-06-13 — TTS furigana fix + pause/resume
+
+- `speak()` now takes `(text, btn)` — tracks `activeSpeakBtn` module-level; same button toggles pause/resume, different button cancels current and starts new
+- Furigana double-read fixed: clone `.sentence-jp`, `querySelectorAll('rt').forEach(rt => rt.remove())`, then `.textContent` — same pattern as 東京奇譚 `sceneSpokenText()`
+- ▶ button now shows ⏸ while playing; `utt.onend` resets it to ▶
+
+### 2026-06-13 — archive conventions expanded + snapshots
+
+- CLAUDE.md: "Archive conventions" split into Source files + Plans subsections; source file archiving now applies before significant edits, not just on full replacement
+- `archive/2026-06-13_lookup.js`, `archive/2026-06-13_index.html` — first source snapshots under the new convention
+
+### 2026-06-13 — TTS audio + history search/filter + plan archive
+
+- TTS: `speak(text)` added using Web Speech API; `▶` button on every example sentence in both vocab and grammar modes; delegated listener on `#result`; `lang: 'ja-JP'`, rate 0.9, handles async `voiceschanged` for first-load
+- History panel: `filterHistory(query, mode)` added; search input + 全て/単語/文法 mode pills injected on each open (resets state); `data-word` and `data-mode` attributes on each `.history-entry` for filtering
+- CLAUDE.md: "Plan archive" convention added — copy active plan to `plans/YYYY-MM-DD_description.md` before overwriting
+- `plans/` directory created at repo root; `plans/2026-06-13_tts-audio-history-search.md` is the first archived plan
 
 ### 2026-06-12 — furigana scope fix
 

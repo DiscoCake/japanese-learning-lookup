@@ -510,11 +510,8 @@ async function checkAnkiCard(result) {
   const sentenceEl = document.getElementById('anki-current-sentence');
   const meaningEl = document.getElementById('anki-current-meaning');
   const statusEl = document.getElementById('anki-card-status');
-  const deckEl = document.getElementById('anki-deck-name');
 
   if (data.found) {
-    deckEl.textContent = data.deckName || '';
-    deckEl.style.display = data.deckName ? '' : 'none';
     currentAnkiNote = data;
     sentenceEl.textContent = data.sentence || '(例文なし)';
     meaningEl.textContent = data.sentenceMeaning || '';
@@ -535,8 +532,6 @@ async function checkAnkiCard(result) {
       });
     }
   } else {
-    deckEl.textContent = '';
-    deckEl.style.display = 'none';
     sentenceEl.textContent = 'このデッキにカードがありません';
     meaningEl.textContent = '';
     statusEl.textContent = '↓ 例文ボタンで「Companion」デッキにカードを新規作成';
@@ -591,10 +586,7 @@ function renderVocab(r) {
     <div class="card" id="anki-card-section" style="display:none">
       <div class="card-label">Ankiカード</div>
       <div class="card-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem">
-          <span style="font-size:0.78rem;color:var(--text3)">現在の例文</span>
-          <span id="anki-deck-name" class="register-tag" style="display:none"></span>
-        </div>
+        <div style="font-size:0.78rem;color:var(--text3);margin-bottom:0.4rem">現在の例文</div>
         <div id="anki-current-sentence" style="font-family:'Noto Serif JP',serif;font-size:0.95rem;color:var(--text);margin-bottom:0.3rem;line-height:1.8"></div>
         <div id="anki-current-meaning" style="font-size:0.8rem;color:var(--text2);margin-bottom:0.5rem"></div>
         <div id="anki-card-status" style="font-size:0.72rem;color:var(--text3)"></div>

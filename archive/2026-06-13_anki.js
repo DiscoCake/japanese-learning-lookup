@@ -93,14 +93,6 @@ async function findNoteForWord(word) {
   const note = notes?.[0];
   if (!note) return null;
 
-  let deckName = '';
-  if (note.cards?.length) {
-    try {
-      const cardInfos = await ankiRequest('cardsInfo', { cards: [note.cards[0]] });
-      deckName = cardInfos?.[0]?.deckName || '';
-    } catch { /* best-effort */ }
-  }
-
   const fields = note.fields || {};
   let sentence = '', sentenceMeaning = '';
   let sentenceFieldKey = '', sentenceMeaningKey = '', sentenceAudioKey = '';
@@ -129,7 +121,6 @@ async function findNoteForWord(word) {
   return {
     noteId: note.noteId,
     modelName: note.modelName,
-    deckName,
     sentence,
     sentenceMeaning,
     sentenceFieldKey,
