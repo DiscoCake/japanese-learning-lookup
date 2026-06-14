@@ -32,19 +32,12 @@ Their single-sentence Anki cards feel thin, especially for abstract words or wor
 
 IMPORTANT: Every Japanese kanji character (CJK ideograph) in your JSON response must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>. English words, Roman letters, and proper nouns written in the Latin alphabet must NEVER have ruby tags — furigana is only for actual kanji characters.
 
-If the user message includes a "Context sentence" line, bias your core_meaning explanation and first 1–2 example sentences to reflect how the word is used in that specific context.
-
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 {
   "word": "the word as given",
   "reading": "hiragana reading",
   "mode": "vocab",
-  "pitch_accent": {
-    "number": 0,
-    "label": "平板 | 頭高 | 中高 | 尾高",
-    "pattern": "LHH — H/L per mora of the reading (e.g. LHL for 3-mora 中高 word)"
-  },
   "core_meaning": "1-2 sentence honest description of what this word actually means in use — not just a dictionary gloss (include ruby furigana on all kanji)",
   "sentences": [
     {
@@ -78,8 +71,6 @@ what a grammar point actually DOES — the feeling/nuance it conveys — not jus
 
 IMPORTANT: Every Japanese kanji character (CJK ideograph) in your JSON response must be wrapped in ruby furigana tags: <ruby>漢字<rt>かんじ</rt></ruby>. English words, Roman letters, and proper nouns written in the Latin alphabet must NEVER have ruby tags — furigana is only for actual kanji characters.
 
-If the user message includes a "Context sentence" line, bias your real_meaning explanation and first example sentence to reflect how the pattern is used in that specific context.
-
 OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 {
@@ -112,16 +103,15 @@ SENTENCE RULES:
 - ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
 
 /* ── MAIN LOOKUP FUNCTION ── */
-async function lookup(input, opts = {}) {
+async function lookup(input) {
   if (!process.env.ANTHROPIC_API_KEY) {
     throw new Error('ANTHROPIC_API_KEY not set — check your .env file');
   }
   const mode = detectMode(input.trim());
   const system = mode === 'grammar' ? GRAMMAR_SYSTEM : VOCAB_SYSTEM;
-  const contextLine = opts.context ? `\n\nContext sentence: ${opts.context}` : '';
   const userMsg = mode === 'grammar'
-    ? `Grammar point to analyze: ${input.trim()}${contextLine}`
-    : `Word to analyze: ${input.trim()}${contextLine}`;
+    ? `Grammar point to analyze: ${input.trim()}`
+    : `Word to analyze: ${input.trim()}`;
 
   const res = await fetch(API_URL, {
     method: 'POST',
@@ -181,9 +171,8 @@ Given Japanese text, identify 5–12 words or short expressions worth explaining
 Prioritise: N3-range vocabulary, words with multiple senses or nuance, verbs in unusual forms, grammar constructions acting as nouns.
 Exclude: particles (は、が、を、に、で、と、も、か、な、の), ultra-common N5/N4 words (です、ます、ある、する、いる、言う、行く、来る、見る、聞く、食べる、人、時、日、年), names of people/places.
 For grammar patterns output the dictionary pattern form starting with ～ (e.g. ～てしまう, ～ている).
-Also include the complete sentence (from the input text) where the word or pattern appears, as a "sentence" field.
 Return ONLY a JSON array — no markdown, no explanation:
-[{"word":"単語","reading":"たんご","reason":"one brief English phrase explaining why this is worth knowing","sentence":"the complete source sentence containing this word"}]`,
+[{"word":"単語","reading":"たんご","reason":"one brief English phrase explaining why this is worth knowing"}]`,
       messages: [{ role: 'user', content: text }]
     })
   });

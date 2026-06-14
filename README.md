@@ -80,6 +80,19 @@ node src/cli.js --raw 見える      # raw JSON output
 
 See `CLAUDE.md` for architecture and design decisions.
 
+## Troubleshooting
+
+**Anki features not working** (Ankiカード section and 苦手 panel show nothing):
+- Make sure Anki is open before using the companion
+- Confirm AnkiConnect add-on ([2055492159](https://ankiweb.net/shared/info/2055492159)) is installed and enabled (Anki → Tools → Add-ons)
+- The server log will show `AnkiConnect error` if it can't reach `localhost:8765`
+
+**BunPro features not showing** (文法苦手 button and grammar status cards are hidden):
+- The `BUNPRO_TOKEN` in `.env` is a short-lived browser JWT — not the account API key (which is defunct)
+- To refresh: open `bunpro.jp` while logged in → DevTools → Application → Local Storage → copy `frontend_api_token`
+- Paste it as `BUNPRO_TOKEN=eyJ...` in `.env` and restart the server (`npm run dev`)
+- Verify with `curl http://localhost:3001/api/bunpro/status` — should return `{"enabled":true}`
+
 ---
 
 Sibling project: [東京奇譚](../tokyo-kitan/) — same visual palette and stack.

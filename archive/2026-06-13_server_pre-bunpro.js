@@ -7,7 +7,6 @@ const express = require('express');
 const path = require('path');
 const { lookup, lookupStream, toAnkiTSV, identifyWords } = require('./lookup');
 const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames, enrichAndUpdateCard } = require('./anki');
-const { getGrammarStatus, getTroubledGrammar } = require('./bunpro');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -100,9 +99,9 @@ app.post('/api/paste/stream', async (req, res) => {
     }
     send({ type: 'identified', words });
 
-    await Promise.all(words.map(async ({ word, sentence }) => {
+    await Promise.all(words.map(async ({ word }) => {
       try {
-        const result = await lookup(word, { context: sentence });
+        const result = await lookup(word);
         send({ type: 'result', word, result });
       } catch (err) {
         send({ type: 'word_error', word, message: err.message });
@@ -115,39 +114,6 @@ app.post('/api/paste/stream', async (req, res) => {
     send({ type: 'error', message: err.message });
   }
   res.end();
-});
-
-/* GET /api/bunpro/status  → { enabled: bool } */
-app.get('/api/bunpro/status', (req, res) => {
-  res.json({ enabled: !!process.env.BUNPRO_TOKEN });
-});
-
-/* GET /api/bunpro/grammar?pattern=～てしまう  → { found, ...status } | { found:false } */
-app.get('/api/bunpro/grammar', async (req, res) => {
-  if (!process.env.BUNPRO_TOKEN) return res.status(503).json({ error: 'BUNPRO_TOKEN not set' });
-  const { pattern } = req.query;
-  if (!pattern) return res.status(400).json({ error: 'pattern required' });
-  try {
-    const status = await getGrammarStatus(pattern.trim());
-    if (!status) return res.json({ found: false });
-    res.json({ found: true, ...status });
-  } catch (err) {
-    console.error('BunPro grammar error:', err.message);
-    res.status(503).json({ error: err.message });
-  }
-});
-
-/* GET /api/bunpro/troubled?limit=50  → { items: [...] } */
-app.get('/api/bunpro/troubled', async (req, res) => {
-  if (!process.env.BUNPRO_TOKEN) return res.status(503).json({ error: 'BUNPRO_TOKEN not set' });
-  const limit = Math.min(100, parseInt(req.query.limit) || 50);
-  try {
-    const items = await getTroubledGrammar({ limit });
-    res.json({ items });
-  } catch (err) {
-    console.error('BunPro troubled error:', err.message);
-    res.status(503).json({ error: err.message, hint: 'Is BUNPRO_API_KEY correct?' });
-  }
 });
 
 /* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */

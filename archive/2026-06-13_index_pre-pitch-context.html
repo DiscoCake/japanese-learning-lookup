@@ -111,13 +111,6 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
 }
 .mode-pill.vocab { border-color: var(--cyan2); color: var(--cyan); }
 .mode-pill.grammar { border-color: var(--purple); color: var(--purple); }
-.pitch-display {
-  display: inline-flex; align-items: flex-end; vertical-align: middle;
-  font-size: inherit; font-family: inherit; color: inherit;
-}
-.ph { border-top: 2px solid var(--yellow); padding: 0 1px; }
-.pl { border-top: 2px solid transparent; padding: 0 1px; }
-.pd { border-top: 2px solid var(--yellow); border-right: 2px solid var(--yellow); padding: 0 3px 0 1px; }
 
 /* ── BUNPRO SRS LEVEL PILLS ── */
 .srs-pill {
@@ -501,7 +494,6 @@ function parsePartial(text) {
   r.sentences = extractArr(text, 'sentences');
   r.confused_with = extractObj(text, 'confused_with');
   r.formation = extractObj(text, 'formation');
-  r.pitch_accent = extractObj(text, 'pitch_accent');
   return r;
 }
 function partialFieldCount(p) {
@@ -585,31 +577,6 @@ async function doLookup() {
 }
 
 /* ── RENDER ── */
-function formatPitchDisplay(reading, pitchAccent) {
-  if (!pitchAccent || !reading) return '';
-  const n = pitchAccent.number;
-  const smalls = new Set('ゃゅょぁぃぅぇぉャュョァィゥェォ');
-  const morae = [];
-  for (let i = 0; i < reading.length; i++) {
-    if (i + 1 < reading.length && smalls.has(reading[i + 1])) {
-      morae.push(reading[i] + reading[i + 1]); i++;
-    } else {
-      morae.push(reading[i]);
-    }
-  }
-  const isHigh = (i) => {
-    if (n === 0) return i > 0;
-    if (n === 1) return i === 0;
-    return i > 0 && i < n;
-  };
-  const dropIdx = n === 0 ? -1 : n - 1;
-  const spans = morae.map((m, i) => {
-    if (i === dropIdx) return `<span class="pd">${m}</span>`;
-    return isHigh(i) ? `<span class="ph">${m}</span>` : `<span class="pl">${m}</span>`;
-  }).join('');
-  return `<span class="pitch-display">${spans}</span>`;
-}
-
 /* ── ANKI CARD CHECK ── */
 async function checkAnkiCard(result) {
   currentAnkiNote = null;
@@ -679,7 +646,7 @@ function renderVocab(r, opts = {}) {
   return `
     <div class="result-header">
       <span class="result-word">${r.word || '…'}</span>
-      ${r.reading ? `<span class="result-reading">【${r.pitch_accent ? formatPitchDisplay(r.reading, r.pitch_accent) : r.reading}】</span>` : ''}
+      ${r.reading ? `<span class="result-reading">【${r.reading}】</span>` : ''}
       <span class="mode-pill vocab">単語</span>
     </div>
 
