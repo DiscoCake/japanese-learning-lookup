@@ -8,6 +8,7 @@ let jjMode = localStorage.getItem('companion_jj_v1') === '1';
 let currentResult = null;
 let lookupAbortController = null;
 let currentPasteResults = {};
+let modeOverride = null; // 'vocab' | 'grammar' | null
 
 export function getJJMode() { return jjMode; }
 export function setJJModeState(on) {
@@ -15,6 +16,9 @@ export function setJJModeState(on) {
   localStorage.setItem('companion_jj_v1', on ? '1' : '0');
 }
 export function getCurrentResult() { return currentResult; }
+export function getModeOverride() { return modeOverride; }
+export function setModeOverride(mode) { modeOverride = mode; }
+export function clearModeOverride() { modeOverride = null; }
 
 export function renderResult(r) {
   currentResult = r;
@@ -49,7 +53,7 @@ export async function doLookup() {
     const streamRes = await fetch('/api/lookup/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ input, jj: jjSnapshot }),
+      body: JSON.stringify({ input, jj: jjSnapshot, forceMode: modeOverride || undefined }),
       signal: controller.signal
     });
     if (!streamRes.ok) {

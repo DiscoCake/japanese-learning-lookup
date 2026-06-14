@@ -138,6 +138,8 @@ node src/cli.js --raw 見る   # output raw JSON
 npm run eval:check      # validate lookup output vs saved snapshots (no API — the gate)
 npm run eval:update     # refresh snapshots from the live API (serial; ~18 calls)
 npm run eval            # live lookups checked against fresh output (no snapshot write)
+
+npm run test:smoke      # 10-check golden-path Playwright smoke test (requires server running)
 ```
 
 ## Eval harness (`eval/`)
@@ -176,23 +178,22 @@ Phased structural plan (full version archived in `plans/`). Direction: guard the
 fix the frontend monolith, build discipline tooling, then extract a shared package.
 
 - **Phase 1 — Prompt-output eval harness.** ✅ Done (see `eval/` and the changelog).
-- **Phase 2 — Frontend modularization.** Split `public/index.html`'s inline JS into native
-  ES modules under `public/js/` (state, render, lookup-client, anki, bunpro, history, tts,
-  furigana, main). No build step. Extract one module at a time, re-driving the app after each.
-  Keep `tts.js`/`furigana.js`/palette CSS app-agnostic — they become Phase 4 shared code.
-- **Phase 3 — Dev tooling & discipline hooks.** Partly done: `/lookup-eval` skill + the
-  lookup.js eval nudge hook. Remaining: changelog-nag Stop hook (git-independent, mtime-based),
-  optional `.env` staging guard.
+- **Phase 2 — Frontend modularization.** ✅ Done. `public/index.html` is now pure HTML + CSS
+  (411 lines, zero JS). Seven ES modules under `public/js/`: `tts.js`, `furigana.js`,
+  `render.js`, `history.js`, `anki.js`, `bunpro.js`, `lookup-client.js`, `main.js`. No cycles.
+- **Phase 3 — Dev tooling & discipline hooks.** ✅ Done. `/lookup-eval` skill, PostToolUse
+  eval nudge, Stop changelog-nag hook (mtime-based), PreToolUse `.env` staging guard.
 - **Phase 4 — Extract shared `jp-ui` package → monorepo with 東京奇譚.** Lift the app-agnostic
   modules + visual palette + `anki.js` client into `packages/jp-ui`; both apps import it.
   `lookup.js` stays companion-only and pure. Do after Phase 2. Own plan when 1–3 land.
 
-### Deferred features (parked until structural work lands)
+### Deferred features
 
-- VS Code extension that calls lookup.js on selected text (highest-friction reduction)
-- Pitch-accent data from a dictionary (current pitch_accent field is AI-generated; a bundled dictionary like Kanjium would be more reliable)
-- Grammar → Anki cards (infrastructure exists in anki.js; needs ensureGrammarModel() + frontend section in renderGrammar)
-- BunPro API integration to mark grammar points as reviewed directly from the companion
+- VS Code extension that calls lookup.js on selected text — user has Yomitan + Migaku for
+  on-page lookups; deferred until a clear gap vs those tools emerges
+- Pitch-accent data from Kanjium dictionary ✅ Done (`src/pitch.js`, `data/kanjium_accents.txt`)
+- BunPro API integration to mark grammar points as reviewed directly from the companion —
+  blocked on stable BunPro auth token (see BunPro integration section)
 
 ## BunPro integration — infrastructure built, blocked on stable auth
 
@@ -255,6 +256,91 @@ cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-14 — Kanjium pitch accent dictionary
+
+- `data/kanjium_accents.txt`: Kanjium dictionary data (~124k entries, 3.1 MB); format:
+  `word\treading\tpitch_number(s)` — authoritative Tokyo-standard accent; multi-pitch entries
+  comma-separated (first listed is canonical)
+- `src/pitch.js`: new module — lazy-loads and indexes the data on first call into three maps:
+  exact `word\treading`, word-only (first reading), reading-only (last resort); `lookupPitch(word,
+  reading)` returns `{ number, label, pattern }` or `null`; mora-grouping logic matches
+  render.js exactly (small-kana pairs, っ counts as own mora); silent no-op if file missing
+- `src/lookup.js`: `require('./pitch')` added; both `lookup()` and `lookupStream()` call
+  `lookupPitch(result.word, result.reading)` after parsing and override `result.pitch_accent`
+  when the dictionary has a match — AI-generated pitch kept only for words not in Kanjium
+- Verified: unit tests confirm `見る→1`, `食べる→2`, `話す→2`, `日本語→0`, `所(ところ)→0`,
+  kana-only `ところ→0`, miss returns null; Playwright confirms `見る` renders `pd(み)pl(る)`
+  (atamadaka) and `話す` renders `pl(は)pd(な)pl(す)` (nakadaka) with zero console errors
+
+### 2026-06-14 — Pre-PR smoke test gate + /pre-pr skill
+
+- `test/smoke.js`: 10-check golden-path Playwright suite — zero console errors on load, mode
+  pill auto-detects grammar/vocab, 見る lookup returns ≥3 cards and speak buttons, furigana
+  toggle (checks `rt` display, not `ruby`), history badge increments, mode override shows ✎ +
+  manual class, typing resets override; exits 0 on pass, 1 on fail; falls back to npx cache
+  path if `playwright` devDep not installed
+- `package.json`: added `"test:smoke": "node test/smoke.js"` script
+- `.claude/settings.local.json`: added second Bash PreToolUse hook — fires on any `gh pr create`
+  command; checks if server is running (curl localhost:3001); if up, runs smoke tests and blocks
+  (exit 2) on failure; if server is down, warns and allows (non-blocking)
+- `.claude/skills/pre-pr/SKILL.md`: new `/pre-pr` skill — read the diff, run smoke tests first,
+  derive targeted Playwright checks for changed surfaces, stamp PR test plan with ✅/⚠️
+  (⚠️ only for genuinely untestable headlessly: Anki desktop, live BunPro token)
+
+### 2026-06-14 — Grammar/vocab mode override pill
+
+- `src/lookup.js`: both `lookup(input, opts)` and `lookupStream(input, opts)` now respect
+  `opts.forceMode` (`'vocab'` | `'grammar'` | falsy); when set, skips `detectMode()` and
+  uses the forced mode directly
+- `src/server.js`: `/api/lookup` and `/api/lookup/stream` routes now destructure and forward
+  `forceMode` from the request body to `lookup()` / `lookupStream()`
+- `public/js/lookup-client.js`: added module-private `modeOverride = null` state;
+  `getModeOverride()` / `setModeOverride(mode)` / `clearModeOverride()` exports;
+  `doLookup()` sends `forceMode: modeOverride || undefined` in the fetch body
+- `public/js/main.js`: `updateModePill(mode, manual)` helper — renders `文法`/`単語` +
+  optional ` ✎` suffix, sets `mode-pill grammar|vocab` class + `manual` class when overridden;
+  `input` event calls `clearModeOverride()` then `updateModePill(detectMode(v), false)`;
+  `#mode-indicator` click handler toggles override between `'vocab'` and `'grammar'` via
+  `setModeOverride` then re-calls `updateModePill(next, true)`; programmatic lookups from
+  苦手 panel and 文法苦手 panel both call `clearModeOverride()` first (`.value =` doesn't fire
+  `input`, so auto-clear wouldn't trigger)
+- `public/index.html`: CSS for `#mode-indicator { cursor: pointer; user-select: none; }`,
+  `#mode-indicator:hover { opacity: 0.75; }`, `.mode-pill.manual { border-style: dashed; }`
+- Verified (Playwright): ところ auto-detects 文法; click flips to 単語 ✎ + dashed border;
+  click again flips to 文法 ✎; typing a new char resets to 単語 (no ✎, solid border);
+  見る auto-detects 単語; click flips to 文法 ✎; zero console errors
+
+### 2026-06-14 — Grammar → Anki cards
+
+- `src/anki.js`: added `ensureGrammarModel()` — creates a "Companion Grammar" note type on
+  first use (env var `ANKI_GRAMMAR_MODEL`; defaults to `'Companion Grammar'`); fields:
+  Pattern, Meaning, Formation, Common Mistake, Sentence, Sentence Furigana, Sentence Meaning,
+  Notes; front shows Pattern + Sentence; back shows Pattern → Meaning → Formation →
+  ⚠️ Common Mistake → Sentence Furigana → Translation → TTS → Notes (bunpro_tip);
+  CSS: purple (#b97fff) for the pattern, matching the app's grammar color
+- `src/anki.js`: added `addNoteForGrammar(result, sentence)` — populates all fields from
+  the lookup result (real_meaning, formation.rule, formation.common_mistake, bunpro_tip);
+  tags: `['companion', 'grammar']`; duplicate check scoped to deck
+- `src/anki.js`: exported `addNoteForGrammar`
+- `src/server.js`: added `POST /api/anki/grammar/create { result, sentence }` route
+- `public/js/render.js`: added `→ Anki` button to grammar sentences (when not compact);
+  unlike vocab buttons these start visible — no `checkAnkiCard` gating for grammar
+- `public/js/anki.js`: `initAnkiResultHandlers` send handler now checks
+  `currentResult.mode === 'grammar'` first and calls `/api/anki/grammar/create`; vocab
+  paths (enrich / update / create) unchanged
+
+### 2026-06-14 — Phase 3 dev tooling: changelog nag + .env staging guard
+
+- `.claude/settings.local.json`: two new hooks added:
+  - **Stop / changelog nag**: at end of each turn, checks if any `src/*.js` or
+    `public/js/*.js` has an mtime more than 5s newer than `CLAUDE.md`; if so, prints a
+    reminder and exits 2 so Claude must acknowledge before the turn closes. Git-independent
+    (mtime-based so it fires before a commit is ever made).
+  - **PreToolUse / Bash / .env staging guard**: intercepts any `git add` command that
+    includes `.env` as a standalone argument; exits 2 with a clear refusal message.
+    Regex excludes `.env.example` and other prefixed variants — only the bare `.env` file
+    is blocked.
 
 ### 2026-06-14 — Phase 2 frontend modularisation: main.js (step 7 — final)
 

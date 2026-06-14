@@ -193,7 +193,13 @@ export function initAnkiResultHandlers(resultEl, getCurrentResult) {
       sendBtn.disabled = true;
       const currentResult = getCurrentResult();
       try {
-        if (currentAnkiNote && currentAnkiNote.needsMigration) {
+        if (currentResult.mode === 'grammar') {
+          const res = await fetch('/api/anki/grammar/create', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ result: currentResult, sentence: { jp: jpHtml, translation: enText } })
+          });
+          if (!res.ok) throw new Error(`Create failed: ${res.status}`);
+        } else if (currentAnkiNote && currentAnkiNote.needsMigration) {
           const res = await fetch('/api/anki/card/enrich', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

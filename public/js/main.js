@@ -9,6 +9,7 @@ import { openBunproPanel } from './bunpro.js';
 import {
   getJJMode, setJJModeState, getCurrentResult,
   renderResult, doLookup, setAppMode, doPaste, initPasteResultHandlers,
+  getModeOverride, setModeOverride, clearModeOverride,
 } from './lookup-client.js';
 
 /* ── FURIGANA ── */
@@ -34,16 +35,31 @@ document.getElementById('jj-btn').onclick = () => setJJ(!getJJMode());
 document.querySelectorAll('#jj-btn .lang-opt').forEach(opt =>
   opt.classList.toggle('active', getJJMode() ? opt.dataset.val === 'ja' : opt.dataset.val === 'en'));
 
-/* ── LIVE MODE DETECTION ── */
+/* ── LIVE MODE DETECTION + OVERRIDE PILL ── */
+function updateModePill(mode, manual = false) {
+  const ind = document.getElementById('mode-indicator');
+  ind.textContent = (mode === 'grammar' ? '文法' : '単語') + (manual ? ' ✎' : '');
+  ind.className = 'mode-pill ' + mode + (manual ? ' manual' : '');
+  ind.style.display = 'inline-block';
+}
+
 searchInput.addEventListener('input', () => {
+  clearModeOverride();
   const v = searchInput.value.trim();
   const ind = document.getElementById('mode-indicator');
   if (!v) { ind.style.display = 'none'; return; }
-  const mode = detectMode(v);
-  ind.textContent = mode === 'grammar' ? '文法' : '単語';
-  ind.className = 'mode-pill ' + mode;
-  ind.style.display = 'inline-block';
+  updateModePill(detectMode(v), false);
 });
+
+document.getElementById('mode-indicator').addEventListener('click', () => {
+  const ind = document.getElementById('mode-indicator');
+  if (ind.style.display === 'none') return;
+  const current = getModeOverride() || (ind.classList.contains('grammar') ? 'grammar' : 'vocab');
+  const next = current === 'grammar' ? 'vocab' : 'grammar';
+  setModeOverride(next);
+  updateModePill(next, true);
+});
+
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) doLookup(); });
 document.getElementById('search-btn').onclick = doLookup;
 
@@ -86,6 +102,7 @@ window.addEventListener('wheel', e => {
 
 /* ── ANKI STRUGGLING CARDS ── */
 function onAnkiWordClick(word) {
+  clearModeOverride();
   searchInput.value = word;
   doLookup();
 }
@@ -97,6 +114,7 @@ document.getElementById('anki-refresh-btn').onclick = () => openAnkiPanel(onAnki
 
 /* ── BUNPRO ── */
 function onBunproPatternClick(pattern) {
+  clearModeOverride();
   searchInput.value = pattern;
   setAppMode('lookup');
   doLookup();
