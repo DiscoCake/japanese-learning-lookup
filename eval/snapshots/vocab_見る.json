@@ -1,0 +1,53 @@
+{
+  "word": "見る",
+  "reading": "みる",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 1,
+    "label": "頭高",
+    "pattern": "HL"
+  },
+  "core_meaning": "To look at or watch something — directing your eyes and attention toward it. Unlike just perceiving something passively (見える), <ruby>見<rt>み</rt></ruby>る implies an active, intentional act of looking or watching.",
+  "sentences": [
+    {
+      "jp": "<ruby>昨日<rt>きのう</rt></ruby>、<ruby>友達<rt>ともだち</rt></ruby>と<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>たよ。",
+      "translation": "I watched a movie with a friend yesterday.",
+      "register": "casual",
+      "notes": "The most common everyday use — watching a film, TV show, or video content."
+    },
+    {
+      "jp": "ちょっとこれ、<ruby>見<rt>み</rt></ruby>てもらえる？",
+      "translation": "Could you take a look at this for me?",
+      "register": "casual",
+      "notes": "〜てもらえる softens a request; <ruby>見<rt>み</rt></ruby>る here means 'to check over' or 'to have a look at' — a very common practical use."
+    },
+    {
+      "jp": "<ruby>地図<rt>ちず</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら、<ruby>目的地<rt>もくてきち</rt></ruby>まで<ruby>歩<rt>ある</rt></ruby>いた。",
+      "translation": "I walked to the destination while looking at a map.",
+      "register": "standard",
+      "notes": "Shows 〜ながら construction; <ruby>見<rt>み</rt></ruby>る used as a concurrent action."
+    },
+    {
+      "jp": "<ruby>子供<rt>こども</rt></ruby>の<ruby>面倒<rt>めんどう</rt></ruby>を<ruby>見<rt>み</rt></ruby>る<ruby>仕事<rt>しごと</rt></ruby>は、とても<ruby>大変<rt>たいへん</rt></ruby>だ。",
+      "translation": "The work of taking care of children is very demanding.",
+      "register": "standard",
+      "notes": "<ruby>面倒<rt>めんどう</rt></ruby>を<ruby>見<rt>み</rt></ruby>る is a fixed phrase meaning 'to look after / take care of someone' — an important extended meaning."
+    },
+    {
+      "jp": "<ruby>患者<rt>かんじゃ</rt></ruby>の<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>見<rt>み</rt></ruby>たところ、<ruby>大事<rt>だいじ</rt></ruby>には<ruby>至<rt>いた</rt></ruby>らないと<ruby>判断<rt>はんだん</rt></ruby>しました。",
+      "translation": "Upon examining the patient's condition, we determined that it was not serious.",
+      "register": "formal",
+      "notes": "In professional or medical contexts, <ruby>見<rt>み</rt></ruby>る can mean 'to examine' or 'to assess'; ところ here shows the result of that examination."
+    }
+  ],
+  "dont_use": "Don't use <ruby>見<rt>み</rt></ruby>る when you mean something came into your field of vision without effort — that's <ruby>見<rt>み</rt></ruby>える (e.g. <ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>える, not <ruby>見<rt>み</rt></ruby>る). Also avoid using <ruby>見<rt>み</rt></ruby>る for reading text when <ruby>読<rt>よ</rt></ruby>む is clearly more natural — you <ruby>読<rt>よ</rt></ruby>む a book, though you can <ruby>見<rt>み</rt></ruby>る a page to check something quickly. Don't confuse it with <ruby>見<rt>み</rt></ruby>せる (to show), which is the causative-like counterpart.",
+  "confused_with": {
+    "word": "<ruby>見<rt>み</rt></ruby>える",
+    "reading": "みえる",
+    "contrast": "<ruby>見<rt>み</rt></ruby>る is active and intentional — you choose to look. <ruby>見<rt>み</rt></ruby>える is passive — something is visible to you whether you try or not. For example, <ruby>空<rt>そら</rt></ruby>に<ruby>星<rt>ほし</rt></ruby>が<ruby>見<rt>み</rt></ruby>える means 'Stars can be seen in the sky' (they're just visible), while <ruby>星<rt>ほし</rt></ruby>を<ruby>見<rt>み</rt></ruby>る means 'to intentionally look at the stars.'"
+  },
+  "frequency": "<ruby>見<rt>み</rt></ruby>る is one of the most common verbs in Japanese — it appears constantly in daily speech, writing, and media. It also forms key compound verbs like <ruby>見<rt>み</rt></ruby>つける, <ruby>見<rt>み</rt></ruby>せる, <ruby>見<rt>み</rt></ruby>直<rt>なお</rt>す, making it a high-priority word to internalize deeply.",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>る = you actively chose to look; if it just appeared in your vision without effort, that's <ruby>見<rt>み</rt></ruby>える instead.",
+  "input": "見る",
+  "timestamp": "2026-06-14T20:33:40.453Z"
+}

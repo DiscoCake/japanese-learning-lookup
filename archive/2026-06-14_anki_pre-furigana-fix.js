@@ -30,6 +30,13 @@ function stripHtml(str) {
   return (str || '').replace(/<[^>]+>/g, '').trim();
 }
 
+// Convert Claude's ruby HTML to Anki's 漢字[かんじ] furigana notation
+function rubyToAnkiFurigana(html) {
+  return html
+    .replace(/<ruby>([^<]+)<rt>([^<]+)<\/rt><\/ruby>/g, '$1[$2]')
+    .replace(/<[^>]+>/g, '');
+}
+
 function extractFields(fields) {
   let word = '';
   let reading = '';
@@ -267,7 +274,7 @@ async function updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMe
       if (word && existing.has('Sentence Highlighted'))
         fields['Sentence Highlighted'] = highlightWordInSentence(sentence, word);
       if (sentenceHtml && existing.has('Sentence Furigana'))
-        fields['Sentence Furigana'] = sentenceHtml;
+        fields['Sentence Furigana'] = rubyToAnkiFurigana(sentenceHtml);
     } catch { /* best-effort — don't fail the sentence update */ }
   }
 
@@ -289,13 +296,12 @@ const COMPANION_CSS = `.card {
   background: #0d0d1a;
 }
 b { color: #4fd8e8 }
-ruby rt { font-size: 0.38em; color: #ff6fa8; }
 .pitch-display { display: inline-flex; align-items: flex-end; }
 .ph { display: inline-block; border-top: 2px solid #4fd8e8; padding: 0 1px; }
 .pl { display: inline-block; border-top: 2px solid transparent; padding: 0 1px; }
 .pd { display: inline-block; border-top: 2px solid #4fd8e8; border-right: 2px solid #4fd8e8; padding: 0 3px 0 1px; }`;
 
-const COMPANION_FRONT = `<!-- companion-v3 -->
+const COMPANION_FRONT = `<!-- companion-v2 -->
 <div lang="ja">
 {{Word}}
 {{#Sentence Highlighted}}<div style='font-size: 20px;'>{{Sentence Highlighted}}</div>{{/Sentence Highlighted}}
@@ -304,12 +310,12 @@ const COMPANION_FRONT = `<!-- companion-v3 -->
 
 function buildCompanionBack() {
   return `<div lang="ja">
-{{Word Furigana}}
+{{furigana:Word Furigana}}
 
 {{#Pitch}}<br><div style='font-size: 24px'>{{Pitch}}</div>{{/Pitch}}
 
 <div style='font-size: 25px; padding-bottom:20px'>{{Meaning}}</div>
-{{#Sentence Furigana}}<div style='font-size: 25px;'>{{Sentence Furigana}}</div>{{/Sentence Furigana}}
+{{#Sentence Furigana}}<div style='font-size: 25px;'>{{furigana:Sentence Furigana}}</div>{{/Sentence Furigana}}
 {{^Sentence Furigana}}{{#Sentence}}<div style='font-size: 25px;'>{{Sentence}}</div>{{/Sentence}}{{/Sentence Furigana}}
 {{#Sentence Meaning}}<div style='font-size: 25px; padding-bottom:10px'>{{Sentence Meaning}}</div>{{/Sentence Meaning}}
 
@@ -334,11 +340,11 @@ async function ensureCompanionModel() {
     for (const f of ['Word Furigana', 'Pitch', 'Sentence Highlighted', 'Sentence Furigana']) {
       if (!existing.has(f)) await ankiRequest('modelFieldAdd', { modelName, fieldName: f });
     }
-    // Upgrade template if it's missing the v3 sentinel (raw HTML furigana fields)
+    // Upgrade template if it's missing the v2 sentinel
     try {
       const templates = await ankiRequest('modelTemplates', { modelName });
       const cardName = Object.keys(templates)[0];
-      if (!templates[cardName].Front.includes('companion-v3')) {
+      if (!templates[cardName].Front.includes('companion-v2')) {
         await ankiRequest('updateModelTemplates', {
           model: { name: modelName, templates: { [cardName]: { Front: COMPANION_FRONT, Back: buildCompanionBack() } } }
         });
@@ -375,12 +381,12 @@ async function addNoteForWord(result, sentence) {
       fields: {
         'Word': word,
         'Reading': reading,
-        'Word Furigana': word && reading ? `<ruby>${word}<rt>${reading}</rt></ruby>` : word,
+        'Word Furigana': word && reading ? `${word}[${reading}]` : word,
         'Pitch': formatPitchHtml(reading, result.pitch_accent),
         'Meaning': stripHtml(result.core_meaning || ''),
         'Sentence': jpPlain,
         'Sentence Highlighted': highlightWordInSentence(jpPlain, word),
-        'Sentence Furigana': sentence.jp || '',
+        'Sentence Furigana': rubyToAnkiFurigana(sentence.jp || ''),
         'Sentence Meaning': sentence.translation || '',
         'Frequency': stripHtml(result.frequency || ''),
         'Notes': stripHtml(result.anki_hint || ''),
@@ -469,7 +475,7 @@ async function enrichAndUpdateCard(noteId, modelName, result, jpPlain, translati
     'Meaning': stripHtml(result.core_meaning || ''),
     'Sentence': jpPlain,
     'Sentence Highlighted': word ? highlightWordInSentence(jpPlain, word) : jpPlain,
-    'Sentence Furigana': sentenceHtml || '',
+    'Sentence Furigana': sentenceHtml ? rubyToAnkiFurigana(sentenceHtml) : jpPlain,
     'Sentence Meaning': translation || '',
     'Frequency': stripHtml(result.frequency || ''),
     'Notes': stripHtml(result.anki_hint || ''),

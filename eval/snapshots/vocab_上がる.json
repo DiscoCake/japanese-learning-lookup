@@ -1,0 +1,53 @@
+{
+  "word": "上がる",
+  "reading": "あがる",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 0,
+    "label": "平板",
+    "pattern": "LHHH"
+  },
+  "core_meaning": "<ruby>上<rt>あ</rt></ruby>がる covers a wide range of 'going up' — physical movement upward, prices or levels rising, something finishing or completing, and even nervousness in social situations. The key idea is that something moves from a lower state to a higher one, whether literally or figuratively.",
+  "sentences": [
+    {
+      "jp": "<ruby>階段<rt>かいだん</rt></ruby>を<ruby>上<rt>あ</rt></ruby>がって、<ruby>二階<rt>にかい</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>に<ruby>行<rt>い</rt></ruby>こう。",
+      "translation": "Let's go up the stairs to the room on the second floor.",
+      "register": "casual",
+      "notes": "Shows the core literal sense of physical upward movement."
+    },
+    {
+      "jp": "さいきん、<ruby>野菜<rt>やさい</rt></ruby>の<ruby>値段<rt>ねだん</rt></ruby>がどんどん<ruby>上<rt>あ</rt></ruby>がっているね。",
+      "translation": "The prices of vegetables have been going up and up lately, haven't they.",
+      "register": "casual",
+      "notes": "Very common usage — prices, temperature, scores, and other measurable values 'rise' with 上がる."
+    },
+    {
+      "jp": "<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>はいつも<ruby>緊張<rt>きんちょう</rt></ruby>して<ruby>上<rt>あ</rt></ruby>がってしまう。",
+      "translation": "I always get nervous and freeze up before a presentation.",
+      "register": "standard",
+      "notes": "上がる colloquially means to become so nervous you can't perform well — a very natural, idiomatic use."
+    },
+    {
+      "jp": "<ruby>雨<rt>あめ</rt></ruby>がやっと<ruby>上<rt>あ</rt></ruby>がったので、<ruby>子供<rt>こども</rt></ruby>たちは<ruby>外<rt>そと</rt></ruby>で<ruby>遊<rt>あそ</rt></ruby>び<ruby>始<rt>はじ</rt></ruby>めた。",
+      "translation": "The rain finally stopped, so the children started playing outside.",
+      "register": "standard",
+      "notes": "When rain or wind 上がる, it means the weather 'clears up' or stops — a distinct sense learners often miss."
+    },
+    {
+      "jp": "<ruby>成果<rt>せいか</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がるよう、<ruby>社員<rt>しゃいん</rt></ruby>一<ruby>同<rt>どう</rt></ruby>で<ruby>取<rt>と</rt></ruby>り<ruby>組<rt>く</rt></ruby>んでまいります。",
+      "translation": "We, as a company, will work together so that results improve.",
+      "register": "formal",
+      "notes": "成果が上がる (results go up / improve) is a fixed, formal expression common in business and written Japanese."
+    }
+  ],
+  "dont_use": "<ruby>上<rt>あ</rt></ruby>がる is for movement upward from a lower surface or state, so don't use it when something is simply 'high' or 'tall' — use <ruby>高<rt>たか</rt></ruby>い for that. Also avoid using <ruby>上<rt>あ</rt></ruby>がる when you mean to physically raise or lift an object — that requires the transitive verb <ruby>上<rt>あ</rt></ruby>げる. Finally, don't confuse <ruby>上<rt>あ</rt></ruby>がる with <ruby>登<rt>のぼ</rt></ruby>る when climbing something like a mountain — <ruby>登<rt>のぼ</rt></ruby>る implies a longer, effortful ascent, while <ruby>上<rt>あ</rt></ruby>がる is more immediate.",
+  "confused_with": {
+    "word": "<ruby>登<rt>のぼ</rt></ruby>る",
+    "reading": "のぼる",
+    "contrast": "<ruby>登<rt>のぼ</rt></ruby>る emphasizes the process of climbing something tall or challenging, like a mountain or a steep path: <ruby>富士山<rt>ふじさん</rt></ruby>に<ruby>登<rt>のぼ</rt></ruby>る is natural, but <ruby>富士山<rt>ふじさん</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がる would sound odd. <ruby>上<rt>あ</rt></ruby>がる, by contrast, is used for short, immediate upward movement — going up stairs, getting onto a stage, or prices rising. Think of <ruby>登<rt>のぼ</rt></ruby>る as 'to climb' and <ruby>上<rt>あ</rt></ruby>がる as 'to go up / rise.'"
+  },
+  "frequency": "<ruby>上<rt>あ</rt></ruby>がる is extremely common in everyday spoken and written Japanese. The literal movement sense and the 'price rises' sense appear constantly in daily conversation and news. The 'nervousness' sense is casual and colloquial. The 'rain stops' sense is standard but slightly more set-phrase-like.",
+  "anki_hint": "<ruby>上<rt>あ</rt></ruby>がる covers four key ideas: go up physically, rise in level, stop (rain), and freeze up with nerves — if the subject moves from low to high (literally or figuratively), <ruby>上<rt>あ</rt></ruby>がる is probably right.",
+  "input": "上がる",
+  "timestamp": "2026-06-14T20:33:43.173Z"
+}

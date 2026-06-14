@@ -1,0 +1,42 @@
+{
+  "pattern": "～てしまう",
+  "mode": "grammar",
+  "real_meaning": "～てしまう expresses two closely related feelings: (1) that an action was completed fully and irreversibly — often with a sense of 'and now there's no going back,' and (2) that the speaker regrets it, didn't intend it, or is troubled by it. The key feeling is finality with an emotional charge — either 'I went and did it (unfortunately)' or 'I got it done (with relief).' Context determines whether the emotion is negative (regret/accident) or positive (relief at finishing something burdensome).",
+  "formation": {
+    "rule": "Attach しまう to the て-form of a verb: [verb て-form] + しまう. In casual speech this contracts to 〜ちゃう (for て-form verbs) or 〜じゃう (for で-form verbs). Examples: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べてしまう／<ruby>食<rt>た</rt></ruby>べちゃう; <ruby>飲<rt>の</rt></ruby>む → <ruby>飲<rt>の</rt></ruby>んでしまう／<ruby>飲<rt>の</rt></ruby>んじゃう; <ruby>来<rt>く</rt></ruby>る → <ruby>来<rt>き</rt></ruby>てしまう／<ruby>来<rt>き</rt></ruby>ちゃう",
+    "common_mistake": "Learners often attach しまう directly to the dictionary form instead of the て-form. Wrong: <ruby>食<rt>た</rt></ruby>べるしまう ✗ — Correct: <ruby>食<rt>た</rt></ruby>べてしまう ✓"
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>昨日<rt>きのう</rt></ruby>、チョコレートを<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>食<rt>た</rt></ruby>べちゃった。",
+      "translation": "I went and ate all the chocolate yesterday.",
+      "register": "casual",
+      "notes": "The contracted ちゃった form signals casual register, and the nuance here is mild self-reproach — the speaker probably didn't mean to eat it all."
+    },
+    {
+      "jp": "レポートをやっと<ruby>書<rt>か</rt></ruby>いてしまいました。これで<ruby>安心<rt>あんしん</rt></ruby>です。",
+      "translation": "I finally finished writing the report. Now I can relax.",
+      "register": "standard",
+      "notes": "This shows the 'relief at completion' nuance — てしまう isn't always regret; finishing a dreaded task feels like a weight lifted."
+    },
+    {
+      "jp": "<ruby>重要<rt>じゅうよう</rt></ruby>な<ruby>書類<rt>しょるい</rt></ruby>を<ruby>誤<rt>あやま</rt></ruby>って<ruby>削除<rt>さくじょ</rt></ruby>してしまいました。<ruby>大変<rt>たいへん</rt></ruby>申し<ruby>訳<rt>わけ</rt></ruby>ございません。",
+      "translation": "I accidentally deleted an important document. I am truly very sorry.",
+      "register": "formal",
+      "notes": "In formal/written contexts, してしまいました carries strong nuance of accidental action and sincere regret, making it ideal for apologies."
+    },
+    {
+      "jp": "あの<ruby>映画<rt>えいが</rt></ruby>、<ruby>怖<rt>こわ</rt></ruby>いとわかっていても<ruby>見<rt>み</rt></ruby>てしまう。",
+      "translation": "Even knowing that movie is scary, I just can't help but watch it.",
+      "register": "standard",
+      "notes": "This tricky use expresses an involuntary, almost compulsive action — 'I end up doing it despite myself' — showing てしまう can describe habits or impulses, not just one-time completed events."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～きる",
+    "contrast": "Both can express completing an action fully, but they feel very different. ～きる means to do something completely or to the very end, often with a positive nuance of thoroughness or determination — it has no emotional weight of regret or accident. ～てしまう adds the speaker's emotional reaction (regret, relief, or compulsion) to the completion. Minimal pair: <ruby>宿題<rt>しゅくだい</rt></ruby>をやりきった means 'I pushed through and completed all the homework (I did it fully/with effort),' while <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった means 'I've gone and finished the homework (and now it's done — with relief, or maybe I did it when I shouldn't have been).' Choose きる for emphasis on thoroughness; choose てしまう when your feelings about the action matter."
+  },
+  "bunpro_tip": "Mentally tag every てしまう sentence with an emoji: 😅 for regret/accident, 😤 for 'can't help it,' or 😮‍💨 for relief at finishing. If you can naturally add one of those feelings to the sentence, you've understood the pattern. When BunPro gives you a hint about 'accidentally' or 'finishing completely,' ask yourself which emotion fits — that'll guide you to the right form (contracted ちゃう for casual, full てしまう for formal).",
+  "input": "～てしまう",
+  "timestamp": "2026-06-14T20:34:37.993Z"
+}

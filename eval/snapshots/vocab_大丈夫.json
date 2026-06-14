@@ -1,0 +1,53 @@
+{
+  "word": "大丈夫",
+  "reading": "だいじょうぶ",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 2,
+    "label": "頭高",
+    "pattern": "LHLL"
+  },
+  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> covers a wide range of reassurance: 'it's okay,' 'I'm fine,' 'no problem,' or 'it'll be alright.' It expresses that something is safe, acceptable, or not a concern — and in modern casual speech it's also used to decline offers politely, meaning 'I'm good, thanks.'",
+  "sentences": [
+    {
+      "jp": "<ruby>転<rt>こ</rt></ruby>んだけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。かすり<ruby>傷<rt>きず</rt></ruby>だけだから。",
+      "translation": "I fell, but I'm fine. It's just a scrape.",
+      "register": "casual",
+      "notes": "The classic use: reassuring someone that you're not seriously hurt."
+    },
+    {
+      "jp": "この<ruby>橋<rt>はし</rt></ruby>、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>かな？ちょっと<ruby>古<rt>ふる</rt></ruby>そうだけど。",
+      "translation": "Is this bridge safe, I wonder? It looks kind of old.",
+      "register": "casual",
+      "notes": "Used as a question to express uncertainty about safety or reliability."
+    },
+    {
+      "jp": "ご<ruby>注文<rt>ちゅうもん</rt></ruby>はいかがですか？— <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です、もう<ruby>十分<rt>じゅうぶん</rt></ruby>いただきました。",
+      "translation": "'Would you like to order anything else?' — 'I'm good, thank you, I've had plenty.'",
+      "register": "standard",
+      "notes": "A very common modern usage: politely declining an offer by saying you're fine without needing it."
+    },
+    {
+      "jp": "レポートの<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りは<ruby>明日<rt>あした</rt></ruby>だけど、もう<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。<ruby>昨夜<rt>さくや</rt></ruby>のうちに<ruby>仕上<rt>しあ</rt></ruby>げました。",
+      "translation": "The report deadline is tomorrow, but I'm all set — I finished it last night.",
+      "register": "standard",
+      "notes": "Expresses that a situation is under control and there's nothing to worry about."
+    },
+    {
+      "jp": "<ruby>非常用<rt>ひじょうよう</rt></ruby><ruby>設備<rt>せつび</rt></ruby>はすべて<ruby>点検済<rt>てんけんず</rt></ruby>みで、<ruby>安全<rt>あんぜん</rt></ruby>に<ruby>使用<rt>しよう</rt></ruby>できることが<ruby>確認<rt>かくにん</rt></ruby>され、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>な<ruby>状態<rt>じょうたい</rt></ruby>です。",
+      "translation": "All emergency equipment has been inspected and confirmed to be in safe, working condition.",
+      "register": "formal",
+      "notes": "Shows that 大丈夫 can appear in more formal written contexts, though 安全 or 問題ない may feel more natural in very stiff official writing."
+    }
+  ],
+  "dont_use": "Avoid <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in very formal or legal/technical writing where precision matters — prefer <ruby>安全<rt>あんぜん</rt></ruby> (safe) or <ruby>問題<rt>もんだい</rt></ruby>ない (no problem). Also be careful using it as a refusal with older speakers or in strict business settings, as the declining-an-offer usage (「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です」= 'No thanks') is a newer colloquial pattern that some older Japanese speakers find slightly vague or even rude — in those situations, 「<ruby>結構<rt>けっこう</rt></ruby>です」is clearer. Don't confuse it with <ruby>平気<rt>へいき</rt></ruby>, which is closer to 'I don't mind / I'm unbothered' and sounds more nonchalant.",
+  "confused_with": {
+    "word": "<ruby>平気<rt>へいき</rt></ruby>",
+    "reading": "へいき",
+    "contrast": "<ruby>平気<rt>へいき</rt></ruby> means you are calm, unbothered, or unaffected — it emphasizes your inner emotional state. <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> emphasizes that the situation or condition is safe and acceptable. For example, 「<ruby>虫<rt>むし</rt></ruby>は<ruby>平気<rt>へいき</rt></ruby>だよ」means 'Bugs don't bother me,' while 「<ruby>虫<rt>むし</rt></ruby>は<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？」asks whether something is okay or safe regarding bugs. <ruby>平気<rt>へいき</rt></ruby> can also sound a little more carefree or even slightly dismissive in tone."
+  },
+  "frequency": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is extremely common in everyday spoken Japanese — you'll hear it dozens of times a day in casual and standard situations. The declining-an-offer usage is especially prevalent among younger speakers. It appears in written Japanese too, though in formal documents <ruby>問題<rt>もんだい</rt></ruby>ない or <ruby>安全<rt>あんぜん</rt></ruby> tend to replace it.",
+  "anki_hint": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> has two core jobs: reassuring someone that things are okay, AND politely declining an offer — remember both, because native speakers use the declining sense constantly.",
+  "input": "大丈夫",
+  "timestamp": "2026-06-14T20:34:37.094Z"
+}

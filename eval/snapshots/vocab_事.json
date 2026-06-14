@@ -1,0 +1,53 @@
+{
+  "word": "事",
+  "reading": "こと",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 2,
+    "label": "頭高",
+    "pattern": "HL"
+  },
+  "core_meaning": "<ruby>事<rt>こと</rt></ruby> refers to an intangible \"thing\" — an event, fact, matter, or situation, as opposed to a physical object (which would be もの). It frequently nominalizes verbs and adjectives, turning them into abstract noun phrases, and appears in dozens of set grammatical patterns.",
+  "sentences": [
+    {
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きだよ。",
+      "translation": "I like him (as a person / everything about him).",
+      "register": "casual",
+      "notes": "〜のこと is a very natural way to refer to a person or topic as a whole concept, implying depth beyond just 'liking' a surface trait."
+    },
+    {
+      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>運動<rt>うんどう</rt></ruby>することが<ruby>大切<rt>たいせつ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う。",
+      "translation": "I think exercising every day is important.",
+      "register": "standard",
+      "notes": "〜することが… nominalizes the verb phrase, making it the grammatical subject; this is one of こと's most common roles."
+    },
+    {
+      "jp": "この<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>たことがありますか？",
+      "translation": "Have you ever seen this movie?",
+      "register": "standard",
+      "notes": "〜たことがある is a set pattern using こと to express past experience."
+    },
+    {
+      "jp": "<ruby>緊急<rt>きんきゅう</rt></ruby>の<ruby>事<rt>こと</rt></ruby>があれば、すぐにご<ruby>連絡<rt>れんらく</rt></ruby>ください。",
+      "translation": "If something urgent comes up, please contact us immediately.",
+      "register": "formal",
+      "notes": "Here こと functions as a standalone noun meaning 'matter' or 'situation', common in formal written or business Japanese."
+    },
+    {
+      "jp": "<ruby>日本語<rt>にほんご</rt></ruby>が<ruby>話<rt>はな</rt></ruby>せることを<ruby>証明<rt>しょうめい</rt></ruby>しなければならないこともある。",
+      "translation": "There are also times when you have to prove that you can speak Japanese.",
+      "register": "written",
+      "notes": "〜こともある ('there are times when…') is a useful pattern showing that こと can frame situations as recurring or possible."
+    }
+  ],
+  "dont_use": "Don't use <ruby>事<rt>こと</rt></ruby> when you mean a physical, tangible object — use もの instead (e.g. 「<ruby>食<rt>た</rt></ruby>べるものがない」not 「<ruby>食<rt>た</rt></ruby>べることがない」, which means 'there are no times I eat'). Learners sometimes swap こと and の when nominalizing verbs; while they often overlap, の is warmer and more perceptual, whereas こと is more abstract and formal — 「<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>くのが<ruby>好<rt>す</rt></ruby>き」sounds more natural than 「<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>くことが<ruby>好<rt>す</rt></ruby>き」in casual speech. Also avoid overusing こと as a filler noun in casual conversation; native speakers often drop it entirely or use こと only in established grammar patterns.",
+  "confused_with": {
+    "word": "もの",
+    "reading": "もの",
+    "contrast": "もの refers to tangible things or objects, while <ruby>事<rt>こと</rt></ruby> refers to intangible matters, events, or abstract concepts. Compare 「<ruby>大切<rt>たいせつ</rt></ruby>なもの」('something important [that I can hold/own]') vs 「<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>事<rt>こと</rt></ruby>」('an important matter/issue'). As nominalizers, の and こと are closer rivals: の sounds more immediate and sensory, while こと sounds more objective and formal."
+  },
+  "frequency": "<ruby>事<rt>こと</rt></ruby> is extremely common across all registers — it appears constantly in daily speech, grammar patterns, writing, and formal Japanese. It is one of the highest-frequency nouns in the language and mastering its grammatical uses (〜たことがある、〜することができる、〜ということ、etc.) is essential for reaching N3 and beyond.",
+  "anki_hint": "<ruby>事<rt>こと</rt></ruby> = intangible 'thing/matter' — if you can touch it, use もの; if it's an abstract situation, fact, or nominalized verb, use <ruby>事<rt>こと</rt></ruby>.",
+  "input": "事",
+  "timestamp": "2026-06-14T20:34:08.093Z"
+}

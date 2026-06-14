@@ -1,0 +1,42 @@
+{
+  "pattern": "～ながら",
+  "mode": "grammar",
+  "real_meaning": "ながら expresses that two actions happen simultaneously, with the main focus on the second (main clause) action. The subject is always the same person doing both things at once. Crucially, it carries a subtle implication that the first action is the 'background' or 'incidental' activity — like walking while checking your phone — rather than two equally weighted actions.",
+  "formation": {
+    "rule": "Attach ながら to the verb stem (ます-stem) of the background action. The main action comes in the second clause. For example: <ruby>食</ruby><rt>た</rt></ruby>べる → <ruby>食</ruby><rt>た</rt></ruby>べながら／<ruby>聞</ruby><rt>き</rt></ruby>く → <ruby>聞</ruby><rt>き</rt></ruby>きながら／<ruby>走</ruby><rt>はし</rt></ruby>る → <ruby>走</ruby><rt>はし</rt></ruby>りながら",
+    "common_mistake": "Learners often mistakenly use the dictionary form or て-form: ✗ <ruby>食</ruby><rt>た</rt></ruby>べてながら or ✗ <ruby>食</ruby><rt>た</rt></ruby>べるながら. The correct form uses only the verb stem: ✓ <ruby>食</ruby><rt>た</rt></ruby>べながら"
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>音</ruby><rt>おん</rt></ruby><ruby>楽</ruby><rt>がく</rt></ruby>を<ruby>聞</ruby><rt>き</rt></ruby>きながら、<ruby>宿</ruby><rt>しゅく</rt></ruby><ruby>題</ruby><rt>だい</rt></ruby>をやってる。",
+      "translation": "I'm doing my homework while listening to music.",
+      "register": "casual",
+      "notes": "Classic simultaneous-action usage — music is the background activity, homework is the main focus."
+    },
+    {
+      "jp": "<ruby>コーヒーを</ruby><rt>コーヒーを</rt></ruby><ruby>飲</ruby><rt>の</rt></ruby>みながら、レポートを<ruby>書</ruby><rt>か</rt></ruby>いています。",
+      "translation": "I'm writing my report while drinking coffee.",
+      "register": "standard",
+      "notes": "The polite ています ending makes this appropriate for casual office conversation; coffee-drinking is clearly incidental."
+    },
+    {
+      "jp": "<ruby>資</ruby><rt>し</rt></ruby><ruby>料</ruby><rt>りょう</rt></ruby>をご<ruby>覧</ruby><rt>らん</rt></ruby>になりながら、ご<ruby>説</ruby><rt>せつ</rt></ruby><ruby>明</ruby><rt>めい</rt></ruby>いたします。",
+      "translation": "I will explain while you look at the materials.",
+      "register": "formal",
+      "notes": "Formal/keigo usage shows ながら works even when the subject of each clause is implied to be different people in context — though strictly, ながら usually requires the same subject, this presenter-audience framing is a common real-world exception."
+    },
+    {
+      "jp": "<ruby>悪</ruby><rt>わる</rt></ruby>いと<ruby>知</ruby><rt>し</rt></ruby>りながら、やめられなかった。",
+      "translation": "Even knowing it was wrong, I couldn't stop.",
+      "register": "standard",
+      "notes": "Surprising nuance: ながら can attach to adjective or verb stems to mean 'even while knowing / despite' — expressing a contradiction or concession, not just simultaneous physical actions."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～<ruby>間</ruby><rt>あいだ</rt></ruby>に／～<ruby>間</ruby><rt>あいだ</rt></ruby>",
+    "contrast": "<ruby>間</ruby><rt>あいだ</rt></ruby>(に) expresses that something happens within a time window while something else is ongoing, and the two actions don't have to be done by the same subject. ながら strictly requires the same person doing both actions continuously and simultaneously. Compare: <ruby>母</ruby><rt>はは</rt></ruby>が<ruby>料</ruby><rt>りょう</rt></ruby><ruby>理</ruby><rt>り</rt></ruby>をしている<ruby>間</ruby><rt>あいだ</rt></ruby>に、<ruby>私</ruby><rt>わたし</rt></ruby>はテレビを<ruby>見</ruby><rt>み</rt></ruby>た (While my mother was cooking, I watched TV — different subjects, one action completes inside the window) vs. <ruby>料</ruby><rt>りょう</rt></ruby><ruby>理</ruby><rt>り</rt></ruby>をしながらテレビを<ruby>見</ruby><rt>み</rt></ruby>た (I watched TV while cooking — same person doing both at once, continuously)."
+  },
+  "bunpro_tip": "Think of ながら as a 'background music' marker — the verb before it is what's playing quietly in the background while the main clause is the real show. When drilling on BunPro, always ask yourself: same subject? continuous overlap? If yes, ながら is your pick over <ruby>間</ruby><rt>あいだ</rt></ruby>に.",
+  "input": "～ながら",
+  "timestamp": "2026-06-14T20:39:20.724Z"
+}

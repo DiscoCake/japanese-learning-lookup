@@ -1,0 +1,53 @@
+{
+  "word": "適当",
+  "reading": "てきとう",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 0,
+    "label": "平板",
+    "pattern": "LHHH"
+  },
+  "core_meaning": "<ruby>適当<rt>てきとう</rt></ruby> has two almost opposite meanings depending on context: (1) 'appropriate, suitable, just right' (the original meaning), and (2) 'half-hearted, sloppy, careless, done without much thought' (the modern colloquial meaning). In everyday speech among younger speakers, sense (2) dominates, so context is critical.",
+  "sentences": [
+    {
+      "jp": "この<ruby>仕事<rt>しごと</rt></ruby>には<ruby>彼女<rt>かのじょ</rt></ruby>が<ruby>最<rt>もっと</rt></ruby>も<ruby>適当<rt>てきとう</rt></ruby>な<ruby>人材<rt>じんざい</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "I think she is the most suitable candidate for this job.",
+      "register": "standard",
+      "notes": "This is the 'appropriate/suitable' meaning — common in formal or written contexts when evaluating fit."
+    },
+    {
+      "jp": "<ruby>適当<rt>てきとう</rt></ruby>な<ruby>値段<rt>ねだん</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>を<ruby>探<rt>さが</rt></ruby>してるんだけど、どこかいい？",
+      "translation": "I'm looking for a place with reasonable prices — know anywhere good?",
+      "register": "casual",
+      "notes": "Here <ruby>適当<rt>てきとう</rt></ruby>な means 'reasonable/moderate,' still under the 'suitably fitting' sense."
+    },
+    {
+      "jp": "あの<ruby>人<rt>ひと</rt></ruby>、<ruby>適当<rt>てきとう</rt></ruby>なことばかり<ruby>言<rt>い</rt></ruby>うから<ruby>信用<rt>しんよう</rt></ruby>できない。",
+      "translation": "That person always says whatever comes to mind, so I can't trust them.",
+      "register": "casual",
+      "notes": "This is the colloquial 'careless/irresponsible' sense — <ruby>適当<rt>てきとう</rt></ruby>なことを<ruby>言<rt>い</rt></ruby>う is a very common set phrase meaning to say things carelessly or without basis."
+    },
+    {
+      "jp": "レポートを<ruby>適当<rt>てきとう</rt></ruby>に<ruby>済<rt>す</rt></ruby>ませたら、<ruby>先生<rt>せんせい</rt></ruby>にすぐバレた。",
+      "translation": "I dashed off my report without much effort, and the teacher saw right through it.",
+      "register": "casual",
+      "notes": "<ruby>適当<rt>てきとう</rt></ruby>に<ruby>済<rt>す</rt></ruby>ませる is a natural collocation meaning 'to do something sloppily just to get it done.'"
+    },
+    {
+      "jp": "<ruby>適当<rt>てきとう</rt></ruby>な<ruby>時間<rt>じかん</rt></ruby>に<ruby>開始<rt>かいし</rt></ruby>できるよう、<ruby>会場<rt>かいじょう</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。",
+      "translation": "Please prepare the venue so that we can start at an appropriate time.",
+      "register": "formal",
+      "notes": "In formal/written Japanese, <ruby>適当<rt>てきとう</rt></ruby> reliably carries the 'appropriate' meaning without the sloppy nuance."
+    }
+  ],
+  "dont_use": "Avoid using <ruby>適当<rt>てきとう</rt></ruby> to mean 'appropriate' in casual speech — your listener may think you mean 'half-hearted.' For example, saying <ruby>適当<rt>てきとう</rt></ruby>にやっておいて to a friend almost always means 'just do it however' rather than 'do it properly.' If you want to clearly say 'appropriate' in casual speech, use <ruby>ちょうどいい</ruby> or <ruby>ふさわしい</ruby> instead.",
+  "confused_with": {
+    "word": "<ruby>いい加減<rt>いいかげん</rt></ruby>",
+    "reading": "いいかげん",
+    "contrast": "<ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby> also means sloppy or irresponsible, but it skews more negative and often implies moral criticism — calling someone <ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby>な<ruby>人<rt>ひと</rt></ruby> is a stronger insult than calling them <ruby>適当<rt>てきとう</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>. <ruby>適当<rt>てきとう</rt></ruby> can still sound neutral or even positive depending on context, while <ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby> is almost always negative in the 'sloppy' sense."
+  },
+  "frequency": "<ruby>適当<rt>てきとう</rt></ruby> is very common in daily speech, especially the colloquial 'sloppy' sense among younger and middle-aged speakers. The 'appropriate' sense appears frequently in formal writing, business documents, and official language. Both senses are worth knowing as you will encounter them regularly.",
+  "anki_hint": "Remember: in <ruby>話<rt>はな</rt></ruby>し<ruby>言葉<rt>ことば</rt></ruby> (casual speech), <ruby>適当<rt>てきとう</rt></ruby> usually means sloppy or careless; in <ruby>書<rt>か</rt></ruby>き<ruby>言葉<rt>ことば</rt></ruby> (formal/written), it usually means appropriate or suitable.",
+  "input": "適当",
+  "timestamp": "2026-06-14T20:34:31.544Z"
+}

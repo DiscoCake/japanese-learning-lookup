@@ -1,0 +1,53 @@
+{
+  "word": "結構",
+  "reading": "けっこう",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 0,
+    "label": "平板",
+    "pattern": "LHHH"
+  },
+  "core_meaning": "<ruby>結構<rt>けっこう</rt></ruby> is a remarkably versatile word with three main uses: (1) as an adverb meaning 'quite / fairly / surprisingly' (often implying 'more than expected'), (2) as a な-adjective meaning 'fine / acceptable / sufficient,' and (3) as a polite refusal meaning 'No thank you / I'm good' — this last use trips up many learners because the same word can mean both 'yes, that's fine' and 'no, I don't need it' depending on context.",
+  "sentences": [
+    {
+      "jp": "この<ruby>映画<rt>えいが</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>面白<rt>おもしろ</rt></ruby>かったじゃん！",
+      "translation": "That movie was actually pretty interesting, wasn't it!",
+      "register": "casual",
+      "notes": "Shows the 'quite / surprisingly so' adverb use — the nuance is mild surprise that it exceeded expectations."
+    },
+    {
+      "jp": "この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>結構<rt>けっこう</rt></ruby><ruby>難<rt>むずか</rt></ruby>しいから、<ruby>気<rt>き</rt></ruby>をつけてね。",
+      "translation": "This job is fairly difficult, so be careful.",
+      "register": "standard",
+      "notes": "The adverb <ruby>結構<rt>けっこう</rt></ruby> softens the statement while still conveying that the difficulty level is notable."
+    },
+    {
+      "jp": "「もう少しいかがですか？」「いいえ、<ruby>結構<rt>けっこう</rt></ruby>です。」",
+      "translation": "'Would you like a little more?' 'No, I'm fine, thank you.'",
+      "register": "formal",
+      "notes": "The polite refusal use — this is extremely common in formal or service-industry interactions."
+    },
+    {
+      "jp": "<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りまで<ruby>三日<rt>みっか</rt></ruby>あれば<ruby>結構<rt>けっこう</rt></ruby>です。",
+      "translation": "Three days until the deadline will be sufficient.",
+      "register": "formal",
+      "notes": "The な-adjective use meaning 'enough / acceptable' — common in business or polite requests."
+    },
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>歌<rt>うた</rt></ruby>うまいよ。<ruby>知<rt>し</rt></ruby>らなかった。",
+      "translation": "She's actually a pretty good singer. I had no idea.",
+      "register": "casual",
+      "notes": "Again the 'more than expected' nuance — <ruby>結構<rt>けっこう</rt></ruby> here implies pleasant surprise."
+    }
+  ],
+  "dont_use": "<ruby>結構<rt>けっこう</rt></ruby>です as a refusal can sound abrupt or even rude if the tone isn't warm and polite — in casual settings, <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> or いいです is more natural for declining. Also avoid using <ruby>結構<rt>けっこう</rt></ruby> as a strong intensifier like 'very' or 'extremely' — it implies 'quite' or 'more than I expected,' not an extreme degree; use とても or すごく for that. Finally, don't use <ruby>結構<rt>けっこう</rt></ruby>です to agree enthusiastically — a listener may misread it as a refusal.",
+  "confused_with": {
+    "word": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>",
+    "reading": "だいじょうぶ",
+    "contrast": "Both <ruby>結構<rt>けっこう</rt></ruby>です and <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です can refuse an offer, but <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is softer and far more common in everyday casual speech — saying 「いや、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>」 when declining a friend's offer feels natural, while 「<ruby>結構<rt>けっこう</rt></ruby>です」 in the same situation might sound stiff or even cold. As an adverb, <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> cannot replace <ruby>結構<rt>けっこう</rt></ruby> in sentences like <ruby>結構<rt>けっこう</rt></ruby><ruby>難<rt>むずか</rt></ruby>しい ('quite difficult')."
+  },
+  "frequency": "<ruby>結構<rt>けっこう</rt></ruby> is extremely common across all registers — the adverb 'quite' use appears constantly in daily conversation, and the polite refusal use is standard in formal and service contexts. It appears often in both spoken and written Japanese.",
+  "anki_hint": "<ruby>結構<rt>けっこう</rt></ruby> has three faces: 'quite' (adverb of degree), 'sufficient/fine' (な-adjective), and 'No thank you' (polite refusal) — the context, especially whether it's accepting or declining something, tells you which meaning applies.",
+  "input": "結構",
+  "timestamp": "2026-06-14T20:34:10.005Z"
+}
