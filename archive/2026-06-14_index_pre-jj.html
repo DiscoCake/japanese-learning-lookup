@@ -227,9 +227,9 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
   font-family: "Noto Serif JP", serif; font-size: 1rem; line-height: 2.4; color: var(--text);
 }
 /* Kanji in results = cyan when furigana is on */
-#result ruby, #paste-results ruby { color: var(--cyan); }
+#result ruby { color: var(--cyan); }
 /* When furigana is off, revert kanji to surrounding text color */
-body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color: inherit; }
+body.hide-furigana #result ruby { color: inherit; }
 .sentence-en { font-size: 0.8rem; color: var(--text2); margin-top: 0.1rem; line-height: 1.6; }
 .sentence-notes { font-size: 0.72rem; color: var(--text3); margin-top: 0.2rem; font-style: italic; }
 .register-tag {
@@ -309,10 +309,9 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
     <div id="header-right">
       <button class="ctrl-btn active" id="furigana-btn">ふりがな</button>
       <button class="ctrl-btn active" id="ime-btn">ローマ字</button>
-      <button class="ctrl-btn" id="jj-btn" title="日本語で説明する（日日モード）">日日</button>
       <button class="ctrl-btn" id="history-btn"><ruby>履歴<rt>りれき</rt></ruby><span class="badge" id="history-count" style="display:none">0</span></button>
-      <button class="ctrl-btn" id="anki-btn"><ruby>苦手<rt>にがて</rt></ruby></button>
-      <button class="ctrl-btn" id="bunpro-btn"><ruby>文法<rt>ぶんぽう</rt></ruby><ruby>苦手<rt>にがて</rt></ruby></button>
+      <button class="ctrl-btn" id="anki-btn">苦手</button>
+      <button class="ctrl-btn" id="bunpro-btn">文法苦手</button>
       <div id="scale-bar">
         <button class="scale-btn" id="scale-down">−</button>
         <span id="scale-label">100%</span>
@@ -322,8 +321,8 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
   </div>
 
   <div id="mode-tabs">
-    <button class="mode-tab active" id="tab-lookup"><ruby>調<rt>しら</rt></ruby>べる</button>
-    <button class="mode-tab" id="tab-paste"><ruby>読<rt>よ</rt></ruby>む</button>
+    <button class="mode-tab active" id="tab-lookup">調べる</button>
+    <button class="mode-tab" id="tab-paste">読む</button>
   </div>
 
   <div id="search-row">
@@ -353,47 +352,41 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
 <!-- ANKI STRUGGLING CARDS PANEL -->
 <div class="panel" id="anki-panel">
   <div class="panel-inner">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-      <h2 style="margin:0">苦手カード</h2>
-      <div style="display:flex;gap:0.4rem">
-        <button class="panel-btn" id="anki-refresh-btn">更新</button>
-        <button class="panel-btn" id="anki-close-btn">閉じる</button>
-      </div>
-    </div>
+    <h2>苦手カード</h2>
     <div id="anki-status"></div>
     <div id="anki-list"></div>
     <div class="panel-empty" id="anki-empty" style="display:none">苦手なカードが見つかりません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn" id="anki-refresh-btn">更新</button>
+      <button class="panel-btn" id="anki-close-btn">閉じる</button>
+    </div>
   </div>
 </div>
 
 <!-- BUNPRO TROUBLED GRAMMAR PANEL -->
 <div class="panel" id="bunpro-panel">
   <div class="panel-inner">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-      <h2 style="margin:0">文法苦手 <span style="font-size:0.7rem;color:var(--text3);font-family:'Noto Sans JP',sans-serif;letter-spacing:0.05em">BunPro</span></h2>
-      <div style="display:flex;gap:0.4rem">
-        <button class="panel-btn" id="bunpro-refresh-btn">更新</button>
-        <button class="panel-btn" id="bunpro-close-btn">閉じる</button>
-      </div>
-    </div>
+    <h2>文法苦手 <span style="font-size:0.7rem;color:var(--text3);font-family:'Noto Sans JP',sans-serif;letter-spacing:0.05em">BunPro</span></h2>
     <div id="bunpro-status"></div>
     <div id="bunpro-list"></div>
     <div class="panel-empty" id="bunpro-empty" style="display:none">苦手な文法が見つかりません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn" id="bunpro-refresh-btn">更新</button>
+      <button class="panel-btn" id="bunpro-close-btn">閉じる</button>
+    </div>
   </div>
 </div>
 
 <!-- HISTORY PANEL -->
 <div class="panel" id="history-panel">
   <div class="panel-inner">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
-      <h2 style="margin:0"><ruby>履歴<rt>りれき</rt></ruby></h2>
-      <button class="panel-btn" id="history-close-btn">閉じる</button>
-    </div>
+    <h2><ruby>履歴<rt>りれき</rt></ruby></h2>
     <div id="history-list"></div>
     <div class="panel-empty" id="history-empty" style="display:none"><ruby>履歴<rt>りれき</rt></ruby>がありません。</div>
     <div class="panel-actions">
       <button class="panel-btn" id="history-export-btn">Ankiエクスポート（全履歴）</button>
       <button class="panel-btn" id="history-clear-btn"><ruby>履歴<rt>りれき</rt></ruby>を<ruby>削除<rt>さくじょ</rt></ruby></button>
+      <button class="panel-btn" id="history-close-btn">閉じる</button>
     </div>
   </div>
 </div>
@@ -404,7 +397,6 @@ const MAX_HISTORY = 50;
 
 /* ── STATE ── */
 let furigana = true;
-let jjMode = localStorage.getItem('companion_jj_v1') === '1';
 let currentResult = null;
 let currentAnkiNote = null;
 let pendingAnkiBtn = null;
@@ -431,19 +423,6 @@ document.getElementById('ime-btn').onclick = function() {
   searchInput.focus();
 };
 
-/* ── J-J MODE ── */
-function setJJ(on) {
-  jjMode = on;
-  localStorage.setItem('companion_jj_v1', on ? '1' : '0');
-  document.getElementById('jj-btn').classList.toggle('active', on);
-  if (currentResult) {
-    searchInput.value = currentResult.input || currentResult.word || currentResult.pattern || '';
-    doLookup();
-  }
-}
-document.getElementById('jj-btn').onclick = () => setJJ(!jjMode);
-if (jjMode) document.getElementById('jj-btn').classList.add('active');
-
 /* live mode detection */
 searchInput.addEventListener('input', () => {
   const v = searchInput.value.trim();
@@ -456,6 +435,10 @@ searchInput.addEventListener('input', () => {
 });
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) doLookup(); });
 document.getElementById('search-btn').onclick = doLookup;
+
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 /* ── PARTIAL JSON PARSING (progressive render while streaming) ── */
 function unescJson(s) {
@@ -537,7 +520,7 @@ async function doLookup() {
   const input = searchInput.value.trim();
   if (!input) return;
 
-  const cached = history.find(h => h.input === input && !!h.jj === jjMode);
+  const cached = history.find(h => h.input === input);
   if (cached) {
     currentResult = cached;
     renderResult(cached);
@@ -552,7 +535,7 @@ async function doLookup() {
     const streamRes = await fetch('/api/lookup/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ input, jj: jjMode })
+      body: JSON.stringify({ input })
     });
     if (!streamRes.ok) {
       const text = await streamRes.text();
@@ -587,7 +570,6 @@ async function doLookup() {
             resultEl.innerHTML = partial.mode === 'grammar' ? renderGrammar(partial) : renderVocab(partial);
           }
         } else if (evt.done && evt.result) {
-          evt.result.jj = jjMode;
           currentResult = evt.result;
           addToHistory(evt.result);
           renderResult(evt.result);
@@ -878,18 +860,12 @@ function speak(text, btn) {
   utt.onend = () => { btn.textContent = '▶'; activeSpeakBtn = null; };
 
   const trySpeak = () => {
-    const jaVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('ja'));
-    const enhanced = jaVoices.filter(v => v.name.includes('Enhanced') || v.name.includes('Premium'));
-    const pool = enhanced.length ? enhanced : jaVoices;
-    if (pool.length) utt.voice = pool[Math.floor(Math.random() * pool.length)];
+    const jaVoice = speechSynthesis.getVoices().find(v => v.lang.startsWith('ja'));
+    if (jaVoice) utt.voice = jaVoice;
     speechSynthesis.speak(utt);
   };
-  // Chrome/macOS bug: speak() right after cancel() silently fails; 50ms delay flushes it
-  const doSpeak = () => {
-    if (speechSynthesis.getVoices().length) trySpeak();
-    else speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
-  };
-  setTimeout(doSpeak, 50);
+  if (speechSynthesis.getVoices().length) trySpeak();
+  else speechSynthesis.addEventListener('voiceschanged', trySpeak, { once: true });
 }
 
 /* Cancel pending Anki confirm when clicking anywhere outside an anki-send-btn */
@@ -1010,7 +986,7 @@ function saveHistory() {
   try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, MAX_HISTORY))); } catch {}
 }
 function addToHistory(r) {
-  history = history.filter(h => !(h.input === r.input && !!h.jj === !!r.jj));
+  history = history.filter(h => h.input !== r.input);
   history.unshift(r);
   saveHistory();
   updateHistoryBadge();
@@ -1072,7 +1048,6 @@ function openHistoryPanel() {
         <span class="h-time">${time}</span>`;
       d.onclick = () => {
         currentResult = r;
-        addToHistory(r);
         renderResult(r);
         document.getElementById('history-panel').style.display = 'none';
         searchInput.value = r.input || '';
@@ -1395,7 +1370,7 @@ async function doPaste() {
     const res = await fetch('/api/paste/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, jj: jjMode })
+      body: JSON.stringify({ text })
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 

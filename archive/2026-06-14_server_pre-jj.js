@@ -20,14 +20,14 @@ if (!process.env.ANTHROPIC_API_KEY) {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-/* POST /api/lookup  { input: "見る", jj: false }  → result JSON */
+/* POST /api/lookup  { input: "見る" }  → result JSON */
 app.post('/api/lookup', async (req, res) => {
-  const { input, jj } = req.body;
+  const { input } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
   try {
-    const result = await lookup(input.trim(), { jj: !!jj });
+    const result = await lookup(input.trim());
     res.json(result);
   } catch (err) {
     console.error('Lookup error:', err.message);
@@ -48,9 +48,9 @@ app.get('/api/export', async (req, res) => {
   }
 });
 
-/* POST /api/lookup/stream  { input: "見る", jj: false }  → SSE text/event-stream */
+/* POST /api/lookup/stream  { input: "見る" }  → SSE text/event-stream */
 app.post('/api/lookup/stream', async (req, res) => {
-  const { input, jj } = req.body;
+  const { input } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
@@ -59,7 +59,7 @@ app.post('/api/lookup/stream', async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
   try {
-    for await (const event of lookupStream(input.trim(), { jj: !!jj })) {
+    for await (const event of lookupStream(input.trim())) {
       if (event.type === 'chunk') {
         res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
       } else if (event.type === 'done') {
@@ -69,7 +69,7 @@ app.post('/api/lookup/stream', async (req, res) => {
   } catch (err) {
     console.error('Stream error, falling back to lookup():', err.message);
     try {
-      const result = await lookup(input.trim(), { jj: !!jj });
+      const result = await lookup(input.trim());
       res.write(`data: ${JSON.stringify({ done: true, result })}\n\n`);
     } catch (fallbackErr) {
       console.error('Fallback also failed:', fallbackErr.message);
@@ -79,9 +79,9 @@ app.post('/api/lookup/stream', async (req, res) => {
   res.end();
 });
 
-/* POST /api/paste/stream  { text, jj: false }  → SSE: identified → result* → done */
+/* POST /api/paste/stream  { text }  → SSE: identified → result* → done */
 app.post('/api/paste/stream', async (req, res) => {
-  const { text, jj } = req.body;
+  const { text } = req.body;
   if (!text || typeof text !== 'string' || !text.trim()) {
     return res.status(400).json({ error: 'text is required' });
   }
@@ -102,7 +102,7 @@ app.post('/api/paste/stream', async (req, res) => {
 
     await Promise.all(words.map(async ({ word, sentence }) => {
       try {
-        const result = await lookup(word, { context: sentence, jj: !!jj });
+        const result = await lookup(word, { context: sentence });
         send({ type: 'result', word, result });
       } catch (err) {
         send({ type: 'word_error', word, message: err.message });

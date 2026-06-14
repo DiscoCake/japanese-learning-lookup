@@ -184,6 +184,11 @@ fragile for a persistent `.env` variable.
 4. Add `BUNPRO_TOKEN=eyJ...` to `.env` and restart the server
 5. The 文法苦手 button and grammar status cards will appear automatically
 
+**API paths (current):**
+- `getGrammarStatus`: paginates `GET /reviews?page=N&per_page=500`, pattern-matches results
+- `getTroubledGrammar`: tries `GET /user_stats/srs_ghost_level_details?reviewable_type=Grammar` first;
+  falls back to filtering the paginated `/reviews` endpoint for `miss_count >= 2`
+
 **What to watch for**: if BunPro ever documents a long-lived API token in account settings,
 update `src/bunpro.js` — change `bunproHeaders()` to use that token and update `.env.example`.
 The rest of the integration needs no changes.
@@ -219,6 +224,37 @@ cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-14 — UX polish + furigana consistency + 日日 live-switch
+
+- `public/index.html`: TTS bug fix — Chrome/macOS: `speak()` silently fails right after `cancel()`; fixed by wrapping the speak call in `setTimeout(doSpeak, 50)` to flush the cancellation
+- `public/index.html`: TTS voice randomization — `speak()` now picks randomly from Enhanced/Premium Japanese voices (`name.includes('Enhanced') || name.includes('Premium')`) on each new utterance; pause/resume holds the same voice; falls back to any Japanese voice if none are enhanced
+- `public/index.html`: panel UX — 閉じる moved to top of 苦手 and 文法苦手 panels (was at the bottom, required scrolling); 更新 also moved to top of 苦手 panel; both panels now open with controls immediately visible
+- `public/index.html`: history re-sort on click — history entry click calls `addToHistory(r)` before rendering so the selected item moves to the top of the list on next panel open
+- `public/index.html`: furigana CSS scope fix — `#result ruby { color: var(--cyan) }` and its `hide-furigana` revert rule both extended to include `#paste-results ruby`; paste-mode kanji now color correctly
+- `public/index.html`: ruby on header buttons — 苦手, 文法苦手, 調べる, 読む kanji now wrapped in `<ruby>` tags (履歴 already had them; others were plain text)
+- `public/index.html`: 日日 live-switch — `setJJ(on)` now calls `doLookup()` when `currentResult` is set, immediately re-fetching/re-rendering in the new mode; toggling back to a cached mode is instant (history cache keyed on `{input, jj}`)
+- `public/index.html`: removed dead `escHtml()` function (defined but never called)
+- `src/lookup.js`: removed `detectMode` from `module.exports` (internal helper, no external callers)
+
+### 2026-06-14 — Kaishi 1.5k card layout for Companion note type
+
+- `src/anki.js`: added `formatPitchHtml(reading, pitchAccent)` — port of the frontend pitch contour renderer; stores visual H/L overline spans directly in the Anki `Pitch` field so cards display pitch without JS
+- `src/anki.js`: added `highlightWordInSentence(sentence, word)` — wraps the target word in `<b>` tags (CSS rule `b{color:#4fd8e8}` makes it cyan, matching Kaishi's `b{color:#5586cd}` approach)
+- `src/anki.js`: `COMPANION_CSS` / `COMPANION_FRONT` / `buildCompanionBack()` constants replace the old inline template strings; CSS now matches Kaishi sizes exactly (44px base, Hiragino/Noto Sans, font sizes 44/24/25/20px per element matching Kaishi's inline styles)
+- `src/anki.js`: new Companion fields — `Word Furigana` (`word[reading]` notation, rendered with `{{furigana:Word Furigana}}` on back like Kaishi), `Pitch` (HTML contour), `Sentence Highlighted` (`<b>word</b>` in plain sentence for front), `Sentence Furigana` (Anki `漢字[かんじ]` notation for back)
+- `src/anki.js`: front template now shows Word (44px) + Sentence Highlighted (20px) matching Kaishi's front; back shows Word Furigana → Pitch → Meaning → Sentence Furigana → TTS → Sentence Meaning
+- `src/anki.js`: `ensureCompanionModel()` auto-upgrades existing Companion models — adds missing fields via `modelFieldAdd`, detects old template via `<!-- companion-v2 -->` sentinel, updates template + CSS on first call after upgrade
+- `src/anki.js`: `addNoteForWord()` now populates all new fields from `result.pitch_accent`, `sentence.jp` (ruby HTML), and `result.word`
+- Archived: `archive/2026-06-14_anki_pre-kaishi-template.js`
+
+### 2026-06-14 — J-J mode (日日モード)
+
+- `src/lookup.js`: added `VOCAB_SYSTEM_JJ` and `GRAMMAR_SYSTEM_JJ` — same JSON schema as the standard prompts but all explanatory prose in JLPT N4–N5 Japanese; `sentences[].translation` stays in English as a safety net; furigana rules unchanged
+- `src/lookup.js`: `lookup(input, opts)` selects the JJ system prompt when `opts.jj` is true; `lookupStream(input, opts={})` gains the same opts parameter and selection logic
+- `src/server.js`: all three stream/lookup routes now destructure `jj` from the request body and forward it to `lookup()`/`lookupStream()`
+- `public/index.html`: `jjMode` state variable persisted to `localStorage` (`companion_jj_v1`); 日日 toggle button added to header (same `ctrl-btn` style as ふりがな/ローマ字); `setJJ()` function; fetch bodies for lookup stream and paste stream include `jj: jjMode`; history cache now matches on `{input, jj}` so J-J and J-E results for the same word coexist; results tagged with `r.jj` before caching; `addToHistory()` deduplicates on `{input, jj}` pair
+- Archived: `archive/2026-06-14_lookup_pre-jj.js`, `archive/2026-06-14_server_pre-jj.js`, `archive/2026-06-14_index_pre-jj.html`
 
 ### 2026-06-13 — Pitch accent display + context-aware 読む mode
 
