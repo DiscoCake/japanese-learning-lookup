@@ -479,4 +479,82 @@ async function enrichAndUpdateCard(noteId, modelName, result, jpPlain, translati
   try { await patchModelWithSentenceSection(modelName); } catch { /* best-effort */ }
 }
 
-module.exports = { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames, enrichAndUpdateCard };
+// ── GRAMMAR COMPANION MODEL ──────────────────────────────────────────────────
+
+const GRAMMAR_CSS = `.card {
+  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+  font-size: 44px;
+  text-align: center;
+  color: #e8e8f0;
+  background: #0d0d1a;
+}
+.pattern { color: #b97fff; }
+b { color: #4fd8e8; }
+ruby rt { font-size: 0.38em; color: #ff6fa8; }
+.mistake { color: #ffe066; font-size: 0.65em; margin-top: 0.4em; }`;
+
+const GRAMMAR_FRONT = `<!-- companion-grammar-v1 -->
+<div lang="ja" class="pattern">{{Pattern}}</div>
+{{#Sentence}}<div lang="ja" style="font-size: 20px; color: #e8e8f0; margin-top: 0.7em">{{Sentence}}</div>{{/Sentence}}`;
+
+function buildGrammarBack() {
+  return `<div lang="ja" class="pattern">{{Pattern}}</div>
+
+<div style="font-size: 25px; padding: 12px 0">{{Meaning}}</div>
+
+{{#Formation}}<div lang="ja" style="font-size: 20px; color: #9b94c0; padding-bottom: 8px">{{Formation}}</div>{{/Formation}}
+{{#Common Mistake}}<div class="mistake">⚠️ {{Common Mistake}}</div>{{/Common Mistake}}
+
+<hr>
+
+{{#Sentence Furigana}}<div lang="ja" style="font-size: 25px; padding: 12px 0">{{Sentence Furigana}}</div>{{/Sentence Furigana}}
+{{^Sentence Furigana}}{{#Sentence}}<div lang="ja" style="font-size: 25px; padding: 12px 0">{{Sentence}}</div>{{/Sentence}}{{/Sentence Furigana}}
+{{#Sentence Meaning}}<div style="font-size: 20px; color: #9b94c0; padding-bottom: 12px">{{Sentence Meaning}}</div>{{/Sentence Meaning}}
+
+{{#Sentence}}${buildTtsTag('Sentence')}{{/Sentence}}
+
+{{#Notes}}<hr><div style="font-size: 18px; color: #9b94c0; padding-top: 8px">{{Notes}}</div>{{/Notes}}`;
+}
+
+async function ensureGrammarModel() {
+  const modelName = process.env.ANKI_GRAMMAR_MODEL || 'Companion Grammar';
+  const names = await ankiRequest('modelNames');
+  if (names.includes(modelName)) return modelName;
+
+  await ankiRequest('createModel', {
+    modelName,
+    inOrderFields: ['Pattern', 'Meaning', 'Formation', 'Common Mistake',
+      'Sentence', 'Sentence Furigana', 'Sentence Meaning', 'Notes'],
+    css: GRAMMAR_CSS,
+    cardTemplates: [{ Name: 'Card 1', Front: GRAMMAR_FRONT, Back: buildGrammarBack() }]
+  });
+  return modelName;
+}
+
+async function addNoteForGrammar(result, sentence) {
+  const deckName = process.env.ANKI_COMPANION_DECK || 'Companion';
+  const modelName = await ensureGrammarModel();
+  await ankiRequest('createDeck', { deck: deckName });
+  const jpPlain = stripHtml(sentence.jp || '');
+
+  return ankiRequest('addNote', {
+    note: {
+      deckName,
+      modelName,
+      fields: {
+        'Pattern': result.pattern || '',
+        'Meaning': stripHtml(result.real_meaning || ''),
+        'Formation': stripHtml(result.formation?.rule || ''),
+        'Common Mistake': stripHtml(result.formation?.common_mistake || ''),
+        'Sentence': jpPlain,
+        'Sentence Furigana': sentence.jp || '',
+        'Sentence Meaning': sentence.translation || '',
+        'Notes': stripHtml(result.bunpro_tip || ''),
+      },
+      options: { allowDuplicate: false, duplicateScope: 'deck' },
+      tags: ['companion', 'grammar']
+    }
+  });
+}
+
+module.exports = { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, addNoteForGrammar, getDeckNames, enrichAndUpdateCard };

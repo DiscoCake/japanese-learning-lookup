@@ -215,6 +215,7 @@ export function renderGrammar(r, opts = {}) {
             <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.2rem">
               <span class="register-tag">${s.register}</span>
               <button class="speak-btn" title="読む">▶</button>
+              ${!opts.compact ? `<button class="anki-send-btn" title="Ankiに追加">→ Anki</button>` : ''}
             </div>
             <div class="sentence-jp">${s.jp}</div>
             <div class="sentence-en">${s.translation}</div>

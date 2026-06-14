@@ -6,7 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { lookup, lookupStream, toAnkiTSV, identifyWords } = require('./lookup');
-const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames, enrichAndUpdateCard } = require('./anki');
+const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, addNoteForGrammar, getDeckNames, enrichAndUpdateCard } = require('./anki');
 const { getGrammarStatus, getTroubledGrammar } = require('./bunpro');
 
 const app = express();
@@ -22,12 +22,12 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 /* POST /api/lookup  { input: "見る", jj: false }  → result JSON */
 app.post('/api/lookup', async (req, res) => {
-  const { input, jj } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
   try {
-    const result = await lookup(input.trim(), { jj: !!jj });
+    const result = await lookup(input.trim(), { jj: !!jj, forceMode: forceMode || null });
     res.json(result);
   } catch (err) {
     console.error('Lookup error:', err.message);
@@ -50,7 +50,7 @@ app.get('/api/export', async (req, res) => {
 
 /* POST /api/lookup/stream  { input: "見る", jj: false }  → SSE text/event-stream */
 app.post('/api/lookup/stream', async (req, res) => {
-  const { input, jj } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
@@ -59,7 +59,7 @@ app.post('/api/lookup/stream', async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
   try {
-    for await (const event of lookupStream(input.trim(), { jj: !!jj })) {
+    for await (const event of lookupStream(input.trim(), { jj: !!jj, forceMode: forceMode || null })) {
       if (event.type === 'chunk') {
         res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
       } else if (event.type === 'done') {
@@ -212,6 +212,19 @@ app.post('/api/anki/card/enrich', async (req, res) => {
     res.json({ ok: true });
   } catch (err) {
     console.error('AnkiConnect enrich error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* POST /api/anki/grammar/create  — create new grammar note { result, sentence } */
+app.post('/api/anki/grammar/create', async (req, res) => {
+  const { result, sentence } = req.body;
+  if (!result || !sentence) return res.status(400).json({ error: 'missing fields' });
+  try {
+    const noteId = await addNoteForGrammar(result, sentence);
+    res.json({ ok: true, noteId });
+  } catch (err) {
+    console.error('AnkiConnect grammar create error:', err.message);
     res.status(503).json({ error: err.message });
   }
 });
