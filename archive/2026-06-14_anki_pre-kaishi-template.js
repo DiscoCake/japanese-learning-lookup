@@ -163,35 +163,6 @@ async function detectBackField(modelName, fieldNames) {
   }
 }
 
-// Port of the frontend formatPitchDisplay(). Generates H/L/drop overline spans for Anki.
-function formatPitchHtml(reading, pitchAccent) {
-  if (!pitchAccent || !reading) return '';
-  const n = pitchAccent.number;
-  const smalls = new Set('ゃゅょぁぃぅぇぉャュョァィゥェォ');
-  const morae = [];
-  for (let i = 0; i < reading.length; i++) {
-    if (i + 1 < reading.length && smalls.has(reading[i + 1])) {
-      morae.push(reading[i] + reading[i + 1]); i++;
-    } else morae.push(reading[i]);
-  }
-  const isHigh = i => n === 0 ? i > 0 : n === 1 ? i === 0 : (i > 0 && i < n);
-  const dropIdx = n === 0 ? -1 : n - 1;
-  const spans = morae.map((m, i) =>
-    i === dropIdx ? `<span class="pd">${m}</span>`
-    : isHigh(i) ? `<span class="ph">${m}</span>`
-    : `<span class="pl">${m}</span>`
-  ).join('');
-  return `<span class="pitch-display">${spans}</span>`;
-}
-
-// Wraps the target word in <b> tags in the plain sentence.
-// CSS rule b{color:#4fd8e8} in the Companion card template makes it cyan (matching Kaishi's b{color:...} approach).
-function highlightWordInSentence(sentence, word) {
-  if (!word || !sentence) return sentence;
-  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return sentence.replace(new RegExp(escaped, 'g'), `<b>${word}</b>`);
-}
-
 // Returns a {{tts}} tag using ANKI_TTS_VOICES env var if set, otherwise bare tag.
 function buildTtsTag(fieldKey) {
   const voices = process.env.ANKI_TTS_VOICES;
@@ -276,81 +247,37 @@ async function updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMe
   }
 }
 
-// Companion card templates (built at call time so buildTtsTag() sees the current env).
-const COMPANION_CSS = `.card {
-  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
-  font-size: 44px;
-  text-align: center;
-  color: #e8e8f0;
-  background: #0d0d1a;
-}
-b { color: #4fd8e8 }
-.pitch-display { display: inline-flex; align-items: flex-end; }
-.ph { display: inline-block; border-top: 2px solid #4fd8e8; padding: 0 1px; }
-.pl { display: inline-block; border-top: 2px solid transparent; padding: 0 1px; }
-.pd { display: inline-block; border-top: 2px solid #4fd8e8; border-right: 2px solid #4fd8e8; padding: 0 3px 0 1px; }`;
-
-const COMPANION_FRONT = `<!-- companion-v2 -->
-<div lang="ja">
-{{Word}}
-{{#Sentence Highlighted}}<div style='font-size: 20px;'>{{Sentence Highlighted}}</div>{{/Sentence Highlighted}}
-{{^Sentence Highlighted}}{{#Sentence}}<div style='font-size: 20px;'>{{Sentence}}</div>{{/Sentence}}{{/Sentence Highlighted}}
-</div>`;
-
-function buildCompanionBack() {
-  return `<div lang="ja">
-{{furigana:Word Furigana}}
-
-{{#Pitch}}<br><div style='font-size: 24px'>{{Pitch}}</div>{{/Pitch}}
-
-<div style='font-size: 25px; padding-bottom:20px'>{{Meaning}}</div>
-{{#Sentence Furigana}}<div style='font-size: 25px;'>{{furigana:Sentence Furigana}}</div>{{/Sentence Furigana}}
-{{^Sentence Furigana}}{{#Sentence}}<div style='font-size: 25px;'>{{Sentence}}</div>{{/Sentence}}{{/Sentence Furigana}}
-{{#Sentence Meaning}}<div style='font-size: 25px; padding-bottom:10px'>{{Sentence Meaning}}</div>{{/Sentence Meaning}}
-
-{{#Reading}}${buildTtsTag('Reading')}{{/Reading}}
-{{#Sentence}}${buildTtsTag('Sentence')}{{/Sentence}}
-
-{{#Frequency}}<br><div style="font-size: 20px; padding-top:12px">{{Frequency}}</div>{{/Frequency}}
-{{#Notes}}<br><div style="font-size: 20px; padding-top:12px">{{Notes}}</div>{{/Notes}}
-</div>`;
-}
-
 // Creates the "Companion" note type via AnkiConnect if it doesn't already exist.
 // The back template uses buildTtsTag so premium voices are used when ANKI_TTS_VOICES is set.
 // If the model already exists with a bare TTS tag, upgrades it to the voices version.
 async function ensureCompanionModel() {
   const modelName = process.env.ANKI_COMPANION_MODEL || 'Companion';
   const names = await ankiRequest('modelNames');
-
   if (names.includes(modelName)) {
-    // Add any new fields that didn't exist in earlier versions
-    const existing = new Set(await ankiRequest('modelFieldNames', { modelName }));
-    for (const f of ['Word Furigana', 'Pitch', 'Sentence Highlighted', 'Sentence Furigana']) {
-      if (!existing.has(f)) await ankiRequest('modelFieldAdd', { modelName, fieldName: f });
-    }
-    // Upgrade template if it's missing the v2 sentinel
-    try {
-      const templates = await ankiRequest('modelTemplates', { modelName });
-      const cardName = Object.keys(templates)[0];
-      if (!templates[cardName].Front.includes('companion-v2')) {
-        await ankiRequest('updateModelTemplates', {
-          model: { name: modelName, templates: { [cardName]: { Front: COMPANION_FRONT, Back: buildCompanionBack() } } }
-        });
-        await ankiRequest('updateModelStyling', { model: { name: modelName, css: COMPANION_CSS } });
-      }
-    } catch { /* best-effort — don't fail if template update fails */ }
     try { await upgradeModelTTSTag(modelName, 'Sentence'); } catch { /* best-effort */ }
     return modelName;
   }
 
   await ankiRequest('createModel', {
     modelName,
-    inOrderFields: ['Word', 'Reading', 'Word Furigana', 'Pitch', 'Meaning',
-      'Sentence', 'Sentence Highlighted', 'Sentence Furigana', 'Sentence Meaning',
-      'Frequency', 'Notes'],
-    css: COMPANION_CSS,
-    cardTemplates: [{ Name: 'Card 1', Front: COMPANION_FRONT, Back: buildCompanionBack() }]
+    inOrderFields: ['Word', 'Reading', 'Meaning', 'Sentence', 'Sentence Meaning', 'Frequency', 'Notes'],
+    css: `.card { font-family: Arial, sans-serif; font-size: 20px; text-align: center; }
+.word { font-size: 2em; margin-bottom: 0.3em; }
+.reading { color: #888; margin-bottom: 0.8em; }
+.sentence { font-size: 1.1em; margin: 0.8em 0; text-align: left; }
+.sentence-meaning { color: #666; font-size: 0.9em; text-align: left; }
+.meta { color: #999; font-size: 0.8em; }`,
+    cardTemplates: [{
+      Name: 'Card 1',
+      Front: `<div class="word">{{Word}}</div><div class="reading">{{Reading}}</div>`,
+      Back: `{{FrontSide}}<hr id=answer>
+<div class="meaning">{{Meaning}}</div>
+<div class="sentence">{{Sentence}}</div>
+${buildTtsTag('Sentence')}
+<div class="sentence-meaning">{{Sentence Meaning}}</div>
+{{#Frequency}}<div class="meta">{{Frequency}}</div>{{/Frequency}}
+{{#Notes}}<div class="meta">{{Notes}}</div>{{/Notes}}`
+    }]
   });
   return modelName;
 }
@@ -358,23 +285,17 @@ async function ensureCompanionModel() {
 async function addNoteForWord(result, sentence) {
   const deckName = process.env.ANKI_COMPANION_DECK || 'Companion';
   const modelName = await ensureCompanionModel();
-  const word = stripHtml(result.word || '');
-  const reading = result.reading || '';
-  const jpPlain = stripHtml(sentence.jp || '');
+  const jpPlain = stripHtml(sentence.jp);
 
   return ankiRequest('addNote', {
     note: {
       deckName,
       modelName,
       fields: {
-        'Word': word,
-        'Reading': reading,
-        'Word Furigana': word && reading ? `${word}[${reading}]` : word,
-        'Pitch': formatPitchHtml(reading, result.pitch_accent),
+        'Word': stripHtml(result.word || ''),
+        'Reading': result.reading || '',
         'Meaning': stripHtml(result.core_meaning || ''),
         'Sentence': jpPlain,
-        'Sentence Highlighted': highlightWordInSentence(jpPlain, word),
-        'Sentence Furigana': rubyToAnkiFurigana(sentence.jp || ''),
         'Sentence Meaning': sentence.translation || '',
         'Frequency': stripHtml(result.frequency || ''),
         'Notes': stripHtml(result.anki_hint || ''),

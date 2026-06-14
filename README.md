@@ -66,17 +66,23 @@ node src/cli.js --raw 見える      # raw JSON output
 - Furigana on all kanji with global show/hide toggle
 - Kanji highlighted cyan when furigana is on; reverts to surrounding text color when off
 - Live mode-pill — shows vocab vs grammar as you type before submitting
+- **Pitch accent display** — H/L overline contour badge next to reading in vocab results (AI-generated Tokyo-standard; approximate)
+- **日日モード (J-J mode)** — toggle in the header; all explanatory prose in JLPT N4–N5 Japanese; sentence translations stay in English as a safety net; J-J and J-E results cached separately
 - Streaming responses — result cards appear progressively as tokens arrive; automatic fallback to non-streaming if stream is interrupted
-- History (last 50 lookups, persisted in localStorage) — click any entry to re-render from cache, no API re-call; history doubles as a lookup cache so repeated searches skip the API entirely
+- History (last 50 lookups, persisted in localStorage) — click any entry to re-render from cache, no API re-call; clicking moves it to the top; history doubles as a lookup cache so repeated searches skip the API entirely
 - History search + filter by mode (単語/文法)
 - Copy buttons per result: Anki TSV (HTML stripped) or raw JSON
 - Anki TSV export: per-result copy or full history bulk export
-- TTS playback (▶) on every example sentence via Web Speech API — pause/resume supported
+- TTS playback (▶) on every example sentence via Web Speech API — pause/resume supported; picks randomly from Enhanced/Premium Japanese voices for a balance of male and female voices
+- **読む mode** (paste mode) — paste any Japanese text; the app identifies 5–12 N3-range words, explains each in context, and offers a bulk TSV export for the whole passage
 - **Ankiカード panel** (vocab mode) — shows the current sentence on your existing card and which deck it's in, or "no card" state with one-click creation into the Companion deck
 - **→ Anki buttons** on every example sentence — two-click confirm (確定?, 3s auto-cancel) to replace the card's sentence or create a new card; auto-detects the sentence field across any note type
 - **Card enrichment** — non-standard note types (any deck, not just Kaishi) get Companion fields added in-place (Reading, Meaning, Sentence, Sentence Meaning, Frequency, Notes) without touching review history
+- **Kaishi 1.5k-style card layout** — new Companion cards mirror Kaishi: word + sentence (target word highlighted cyan) on front; reading + pitch + meaning + furigana sentence + translation on back; font sizes matched exactly to Kaishi (44/24/25/20px)
 - **Built-in Anki TTS** — updated cards play word then sentence using system TTS at review time; premium macOS voices used when `ANKI_TTS_VOICES` is set
 - **苦手 panel** — pulls cards with ≥2 lapses from AnkiConnect; filter by deck; click any word to look it up instantly
+- **文法苦手 panel** (BunPro) — troubled grammar from BunPro SRS; click any pattern to look it up; button hidden automatically when `BUNPRO_TOKEN` is not set
+- **BunPro SRS status card** — shown after every grammar lookup when token is configured; displays SRS level, next review time, streak, and lapse count
 
 See `CLAUDE.md` for architecture and design decisions.
 
