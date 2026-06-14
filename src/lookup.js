@@ -11,6 +11,7 @@ require('dotenv').config();
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
 const API_URL = 'https://api.anthropic.com/v1/messages';
+const { lookupPitch } = require('./pitch');
 
 /* ── MODE DETECTION ── */
 function detectMode(input) {
@@ -204,7 +205,7 @@ async function lookup(input, opts = {}) {
   if (!process.env.ANTHROPIC_API_KEY) {
     throw new Error('ANTHROPIC_API_KEY not set — check your .env file');
   }
-  const mode = detectMode(input.trim());
+  const mode = opts.forceMode || detectMode(input.trim());
   const system = opts.jj
     ? (mode === 'grammar' ? GRAMMAR_SYSTEM_JJ : VOCAB_SYSTEM_JJ)
     : (mode === 'grammar' ? GRAMMAR_SYSTEM : VOCAB_SYSTEM);
@@ -248,6 +249,10 @@ async function lookup(input, opts = {}) {
   result.mode = mode;
   result.input = input.trim();
   result.timestamp = new Date().toISOString();
+  if (result.mode === 'vocab' && result.word) {
+    const dictPitch = lookupPitch(result.word, result.reading);
+    if (dictPitch) result.pitch_accent = dictPitch;
+  }
   return result;
 }
 
@@ -305,7 +310,7 @@ function toAnkiTSV(result) {
 /* ── STREAMING LOOKUP ── */
 async function* lookupStream(input, opts = {}) {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY not set — check your .env file');
-  const mode = detectMode(input.trim());
+  const mode = opts.forceMode || detectMode(input.trim());
   const system = opts.jj
     ? (mode === 'grammar' ? GRAMMAR_SYSTEM_JJ : VOCAB_SYSTEM_JJ)
     : (mode === 'grammar' ? GRAMMAR_SYSTEM : VOCAB_SYSTEM);
@@ -375,6 +380,10 @@ async function* lookupStream(input, opts = {}) {
   result.mode = mode;
   result.input = input.trim();
   result.timestamp = new Date().toISOString();
+  if (result.mode === 'vocab' && result.word) {
+    const dictPitch = lookupPitch(result.word, result.reading);
+    if (dictPitch) result.pitch_accent = dictPitch;
+  }
   yield { type: 'done', result };
 }
 
