@@ -256,6 +256,111 @@ Reverse-chronological. Add an entry here whenever a feature is added, changed, o
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
 
+### 2026-06-14 — Phase 2 frontend modularisation: main.js (step 7 — final)
+
+- `public/js/main.js`: extracted the last 122 inline lines — all event wiring and app init;
+  imports use sibling-relative paths (`./furigana.js`, `./render.js`, etc.) since the file
+  lives alongside the other modules in `public/js/`
+- `public/index.html`: inline `<script type="module">…</script>` replaced with
+  `<script type="module" src="./js/main.js"></script>`; file is now 411 lines — pure HTML +
+  CSS, zero JS. **Phase 2 complete.**
+- Module graph (`main.js` → all others): main → lookup-client → render/anki/bunpro/history/tts;
+  main → history/anki/bunpro/furigana/render (direct); no cycles
+- Verified: page load zero errors, 7 cards on 見る lookup, 5 speak buttons, history badge,
+  J-J toggle, paste mode switch, history panel open/close — all intact
+
+### 2026-06-14 — Phase 2 frontend modularisation: lookup-client.js (step 6)
+
+- `public/js/lookup-client.js`: new ES module extracting the last major inline block —
+  ~240 lines moved out of `<script>`:
+  - Module-private state: `jjMode` (init from localStorage), `currentResult`,
+    `lookupAbortController`, `currentPasteResults`
+  - `getJJMode()` / `setJJModeState(on)` — getters/setters for the inline `setJJ` wrapper
+  - `getCurrentResult()` — getter for `initAnkiResultHandlers` and `setJJ`
+  - `renderResult(r)` — sets `currentResult = r` then renders + fires `checkAnkiCard` /
+    `checkBunproStatus`; consolidates what was two separate assignments in the old inline code
+  - `doLookup()` — SSE stream consumer with AbortController; reads `#search-input` from
+    DOM directly (no searchInput ref needs passing in)
+  - `setAppMode(mode)` — 調べる/読む tab switching; resets `currentPasteResults` on exit
+  - `doPaste()` — paste mode SSE stream consumer
+  - `initPasteResultHandlers()` — registers `#paste-results` delegated click handler
+    (speak + bulk TSV); kept in module because it closes over `currentPasteResults`
+  - Imports: `tts.js`, `render.js`, `anki.js`, `bunpro.js`, `history.js` — DAG; no cycles
+- `public/index.html`: inline `<script>` 357 → 122 lines; total file 768 → 531 lines:
+  - Removed: all state vars + `doLookup`, `renderResult`, `setAppMode`, `doPaste`,
+    paste-results click handler; stale `findInHistory`/`parsePartial`/`renderVocab`/
+    `renderGrammar`/`renderError` imports
+  - Updated: `setJJ(on)` calls `setJJModeState(on)` + `getCurrentResult()` from module;
+    `jj-btn.onclick` uses `!getJJMode()`; JJ active-pill init uses `getJJMode()`
+  - Added: `initPasteResultHandlers()` call; `paste-submit-btn.onclick = doPaste`
+
+### 2026-06-14 — Phase 2 frontend modularisation: bunpro.js (step 5)
+
+- `public/js/bunpro.js`: extracted `checkBunproStatus`, `openBunproPanel(onPatternClick)`,
+  and private helpers `srsClass`, `srsLabel`, `formatNextReview`; zero imports
+- `openBunproPanel` hides the panel internally before calling `onPatternClick(pat)` —
+  same callback pattern as history and anki panels
+- `public/index.html`: removed ~90 lines; `onBunproPatternClick` callback sets
+  `searchInput.value`, calls `setAppMode('lookup')` and `doLookup()`; BunPro status
+  fetch and btn visibility logic stays in the inline script (3 lines, no reason to move)
+- Verified: grammar lookup (6 cards, BunPro section in DOM), 文法苦手 hidden without token,
+  vocab (7 cards), history + Anki panels unaffected — zero JS errors
+
+### 2026-06-14 — Phase 2 frontend modularisation: anki.js (step 4)
+
+- `public/js/anki.js`: extracted all frontend Anki logic — module-private `currentAnkiNote`,
+  `pendingAnkiBtn`, `pendingTimer`; imports `speak` from `tts.js` and `toAnkiTSV` from
+  `render.js` directly (no circular deps)
+- Exports: `checkAnkiCard(result)` (card lookup + DOM update), `openAnkiPanel(onWordClick)`
+  (苦手 panel; deck filter pills inlined), `initAnkiResultHandlers(resultEl, getCurrentResult)`
+  (sets up document-level pending-cancel listener + delegated handlers for `.speak-btn`,
+  `.anki-send-btn` two-click confirm/send/enrich/create, `#copy-tsv-btn`, `#copy-json-btn`)
+- `public/index.html`: STATE loses `currentAnkiNote`/`pendingAnkiBtn`/`pendingTimer`; removed
+  ~170 lines; `speak`/`toAnkiTSV` imports dropped (now in anki.js); `onAnkiWordClick`
+  callback wires panel word-clicks to `searchInput` + `doLookup`
+- Verified: 7 cards/5 speak/5 Anki buttons, TSV+JSON copy buttons, 苦手 panel loads 435 live
+  cards, closes correctly — zero JS errors
+
+### 2026-06-14 — Phase 2 frontend modularisation: history.js (step 3)
+
+- `public/js/history.js`: extracted history state (`history` array, `HISTORY_KEY`,
+  `MAX_HISTORY`), `loadHistory`, `saveHistory` (private); exports `addToHistory`,
+  `findInHistory`, `clearHistory`, `updateHistoryBadge`, `openHistoryPanel(onSelect)`
+- `openHistoryPanel` takes an `onSelect(r)` callback — keeps `renderResult` and
+  `currentResult` out of the history module (no circular dep)
+- `public/index.html`: `onHistorySelect` callback defined inline (sets `currentResult`,
+  calls `addToHistory`, `renderResult`, hides panel); `history-clear-btn` calls
+  `clearHistory()`; cache lookup in `doLookup` uses `findInHistory(input, jjSnapshot)`
+- Verified: badge updates after lookup, panel opens/closes, entry click re-renders and
+  closes panel, search filter shows empty state — zero console errors
+
+### 2026-06-14 — Phase 2 frontend modularisation: render.js (step 2)
+
+- `public/js/render.js`: extracted all pure HTML-string generators and data utilities —
+  `parsePartial`, `partialFieldCount`, `detectMode`, `formatPitchDisplay`, `renderVocab`,
+  `renderGrammar`, `exportBar`, `renderError`, `toAnkiTSV` (~250 lines); zero imports,
+  zero module-level state, no DOM mutation except `renderError`
+- `public/index.html`: `renderResult` (6 lines) stays inline — it calls `checkAnkiCard` /
+  `checkBunproStatus` which live in the inline script until their own modules are extracted
+- Verified: vocab (7 cards, 5 speak, 5 Anki), grammar (6 cards), TSV button, furigana
+  toggle — all intact; zero console errors
+
+### 2026-06-14 — Phase 2 frontend modularisation: tts.js + furigana.js (step 1)
+
+- `public/js/` directory created; Express serves it statically at `/js/`
+- `public/js/tts.js`: extracted `speak(text, btn)` + module-private `activeSpeakBtn` /
+  `ttsVoiceIndex`; exports only `speak`. Zero DOM coupling — caller passes the button.
+- `public/js/furigana.js`: extracted furigana toggle (`setFurigana`, `toggleFurigana`) and
+  WanaKana IME helpers (`bindIME`, `unbindIME`, `toggleIME`); module-private `furiganaOn` /
+  `imeBound` state. `toggleFurigana` is a Phase 4 shared-package candidate.
+- `public/index.html`: `<script>` → `<script type="module">`; imports `speak` from `tts.js`
+  and `toggleFurigana`, `bindIME`, `toggleIME` from `furigana.js`; removed ~45 lines of
+  extracted code; event wiring stays in the inline script (moves to `main.js` in Phase 2 final)
+- Archived: `archive/2026-06-14_index.html` (auto, via PreToolUse hook before first edit)
+- Verified: zero console errors, furigana toggle, 見る lookup (7 cards, 5 speak btns, 5 Anki
+  btns), full streaming result. WanaKana CDN not available in headless Playwright — IME
+  toggle verified structurally; no regression in logic vs original.
+
 ### 2026-06-14 — Prompt-output eval harness (roadmap Phase 1) + truncation fix
 
 - `eval/` directory added — regression harness for `lookup.js` output, the app's core value:
