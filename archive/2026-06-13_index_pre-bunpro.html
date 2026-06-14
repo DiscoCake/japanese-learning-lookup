@@ -111,26 +111,6 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pi
 }
 .mode-pill.vocab { border-color: var(--cyan2); color: var(--cyan); }
 .mode-pill.grammar { border-color: var(--purple); color: var(--purple); }
-.pitch-display {
-  display: inline-flex; align-items: flex-end; vertical-align: middle;
-  font-size: inherit; font-family: inherit; color: inherit;
-}
-.ph { border-top: 2px solid var(--yellow); padding: 0 1px; }
-.pl { border-top: 2px solid transparent; padding: 0 1px; }
-.pd { border-top: 2px solid var(--yellow); border-right: 2px solid var(--yellow); padding: 0 3px 0 1px; }
-
-/* ── BUNPRO SRS LEVEL PILLS ── */
-.srs-pill {
-  display: inline-block; font-size: 0.52rem; padding: 0.1rem 0.55rem;
-  border-radius: 99px; border: 1px solid; letter-spacing: 0.07em; font-weight: 500;
-}
-.srs-ghost   { border-color: var(--pink);   color: var(--pink);   }
-.srs-master  { border-color: var(--cyan);   color: var(--cyan);   }
-.srs-expert  { border-color: var(--cyan2);  color: var(--cyan2);  }
-.srs-seasoned{ border-color: var(--purple); color: var(--purple); }
-.srs-adept   { border-color: var(--yellow); color: var(--yellow); }
-.srs-beginner{ border-color: var(--text3);  color: var(--text3);  }
-.srs-new     { border-color: var(--border2);color: var(--text3);  }
 
 /* ── MODE TABS ── */
 #mode-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.2rem; }
@@ -311,7 +291,6 @@ body.hide-furigana #result ruby { color: inherit; }
       <button class="ctrl-btn active" id="ime-btn">ローマ字</button>
       <button class="ctrl-btn" id="history-btn"><ruby>履歴<rt>りれき</rt></ruby><span class="badge" id="history-count" style="display:none">0</span></button>
       <button class="ctrl-btn" id="anki-btn">苦手</button>
-      <button class="ctrl-btn" id="bunpro-btn">文法苦手</button>
       <div id="scale-bar">
         <button class="scale-btn" id="scale-down">−</button>
         <span id="scale-label">100%</span>
@@ -359,20 +338,6 @@ body.hide-furigana #result ruby { color: inherit; }
     <div class="panel-actions">
       <button class="panel-btn" id="anki-refresh-btn">更新</button>
       <button class="panel-btn" id="anki-close-btn">閉じる</button>
-    </div>
-  </div>
-</div>
-
-<!-- BUNPRO TROUBLED GRAMMAR PANEL -->
-<div class="panel" id="bunpro-panel">
-  <div class="panel-inner">
-    <h2>文法苦手 <span style="font-size:0.7rem;color:var(--text3);font-family:'Noto Sans JP',sans-serif;letter-spacing:0.05em">BunPro</span></h2>
-    <div id="bunpro-status"></div>
-    <div id="bunpro-list"></div>
-    <div class="panel-empty" id="bunpro-empty" style="display:none">苦手な文法が見つかりません。</div>
-    <div class="panel-actions">
-      <button class="panel-btn" id="bunpro-refresh-btn">更新</button>
-      <button class="panel-btn" id="bunpro-close-btn">閉じる</button>
     </div>
   </div>
 </div>
@@ -501,7 +466,6 @@ function parsePartial(text) {
   r.sentences = extractArr(text, 'sentences');
   r.confused_with = extractObj(text, 'confused_with');
   r.formation = extractObj(text, 'formation');
-  r.pitch_accent = extractObj(text, 'pitch_accent');
   return r;
 }
 function partialFieldCount(p) {
@@ -585,31 +549,6 @@ async function doLookup() {
 }
 
 /* ── RENDER ── */
-function formatPitchDisplay(reading, pitchAccent) {
-  if (!pitchAccent || !reading) return '';
-  const n = pitchAccent.number;
-  const smalls = new Set('ゃゅょぁぃぅぇぉャュョァィゥェォ');
-  const morae = [];
-  for (let i = 0; i < reading.length; i++) {
-    if (i + 1 < reading.length && smalls.has(reading[i + 1])) {
-      morae.push(reading[i] + reading[i + 1]); i++;
-    } else {
-      morae.push(reading[i]);
-    }
-  }
-  const isHigh = (i) => {
-    if (n === 0) return i > 0;
-    if (n === 1) return i === 0;
-    return i > 0 && i < n;
-  };
-  const dropIdx = n === 0 ? -1 : n - 1;
-  const spans = morae.map((m, i) => {
-    if (i === dropIdx) return `<span class="pd">${m}</span>`;
-    return isHigh(i) ? `<span class="ph">${m}</span>` : `<span class="pl">${m}</span>`;
-  }).join('');
-  return `<span class="pitch-display">${spans}</span>`;
-}
-
 /* ── ANKI CARD CHECK ── */
 async function checkAnkiCard(result) {
   currentAnkiNote = null;
@@ -672,14 +611,13 @@ function renderResult(r) {
   el.classList.add('fadein');
   setTimeout(() => el.classList.remove('fadein'), 400);
   if (r.mode === 'vocab') checkAnkiCard(r);
-  if (r.mode === 'grammar') checkBunproStatus(r);
 }
 
 function renderVocab(r, opts = {}) {
   return `
     <div class="result-header">
       <span class="result-word">${r.word || '…'}</span>
-      ${r.reading ? `<span class="result-reading">【${r.pitch_accent ? formatPitchDisplay(r.reading, r.pitch_accent) : r.reading}】</span>` : ''}
+      ${r.reading ? `<span class="result-reading">【${r.reading}】</span>` : ''}
       <span class="mode-pill vocab">単語</span>
     </div>
 
@@ -760,12 +698,6 @@ function renderGrammar(r, opts = {}) {
     <div class="card">
       <div class="card-label">本当の意味・ニュアンス</div>
       <div class="card-body">${r.real_meaning}</div>
-    </div>` : ''}
-
-    ${!opts.compact ? `
-    <div class="card" id="bunpro-status-section" style="display:none">
-      <div class="card-label">BunProステータス</div>
-      <div class="card-body" id="bunpro-status-body"></div>
     </div>` : ''}
 
     ${r.formation ? `
@@ -1201,134 +1133,6 @@ document.getElementById('anki-close-btn').onclick = () => {
   document.getElementById('anki-panel').style.display = 'none';
 };
 document.getElementById('anki-refresh-btn').onclick = openAnkiPanel;
-
-/* ── BUNPRO ── */
-function srsClass(level) {
-  const l = (level || '').toLowerCase();
-  if (l === 'ghost')    return 'srs-ghost';
-  if (l === 'master')   return 'srs-master';
-  if (l === 'expert')   return 'srs-expert';
-  if (l === 'seasoned') return 'srs-seasoned';
-  if (l === 'adept')    return 'srs-adept';
-  if (l === 'beginner') return 'srs-beginner';
-  return 'srs-new';
-}
-
-function srsLabel(level) {
-  const map = { ghost:'ゴースト', master:'マスター', expert:'エキスパート',
-                seasoned:'シーズン', adept:'上達', beginner:'初心者', new:'新規' };
-  return map[(level || '').toLowerCase()] || level || '不明';
-}
-
-function formatNextReview(dateStr) {
-  if (!dateStr) return '—';
-  const d = new Date(dateStr);
-  if (isNaN(d)) return dateStr;
-  const now = new Date();
-  const diffH = Math.round((d - now) / 3600000);
-  if (diffH < 0) return '今すぐ';
-  if (diffH < 1) return 'まもなく';
-  if (diffH < 24) return `${diffH}時間後`;
-  return `${Math.round(diffH / 24)}日後`;
-}
-
-async function checkBunproStatus(result) {
-  const section = document.getElementById('bunpro-status-section');
-  const body = document.getElementById('bunpro-status-body');
-  if (!section || !body) return;
-  section.style.display = 'none';
-
-  let data;
-  try {
-    const res = await fetch(`/api/bunpro/grammar?pattern=${encodeURIComponent(result.pattern || result.input)}`);
-    data = await res.json();
-  } catch { return; }
-  if (data.error) return; // key not set — silent
-
-  section.style.display = '';
-
-  if (!data.found) {
-    body.innerHTML = `<span style="color:var(--text3);font-size:0.82rem">BunProに未登録</span>`;
-    return;
-  }
-
-  const nextStr = formatNextReview(data.nextReview);
-  const jlpt = data.jlpt ? `<span class="register-tag" style="margin-left:0.4rem">${data.jlpt}</span>` : '';
-  body.innerHTML = `
-    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.4rem">
-      <span class="srs-pill ${srsClass(data.srsLevel)}">${srsLabel(data.srsLevel)}</span>
-      ${jlpt}
-    </div>
-    <div style="font-size:0.8rem;color:var(--text2);display:flex;gap:1.2rem;flex-wrap:wrap">
-      <span>次回 <strong style="color:var(--text)">${nextStr}</strong></span>
-      <span>連続 <strong style="color:var(--green)">${data.correctStreak ?? 0}</strong></span>
-      <span>失敗 <strong style="color:${(data.lapses || 0) >= 3 ? 'var(--pink)' : 'var(--text)'}">${data.lapses ?? 0}</strong></span>
-    </div>`;
-}
-
-async function openBunproPanel() {
-  const panel = document.getElementById('bunpro-panel');
-  const list  = document.getElementById('bunpro-list');
-  const empty = document.getElementById('bunpro-empty');
-  const status = document.getElementById('bunpro-status');
-
-  list.innerHTML = '';
-  empty.style.display = 'none';
-  status.innerHTML = '<div style="color:var(--text2);padding:1rem 0">読み込み中…</div>';
-  panel.style.display = 'block';
-
-  try {
-    const res = await fetch('/api/bunpro/troubled');
-    const data = await res.json();
-
-    if (!res.ok) {
-      const msg = data.error?.includes('BUNPRO_TOKEN')
-        ? 'BUNPRO_TOKEN が設定されていません。<br><span style="font-size:0.82rem;color:var(--text2)">.env に BUNPRO_TOKEN を追加してサーバーを再起動してください。</span>'
-        : `BunPro APIエラー: ${data.error || res.status}`;
-      status.innerHTML = `<div style="color:var(--pink);padding:1rem 0;line-height:1.8">${msg}</div>`;
-      return;
-    }
-
-    status.innerHTML = '';
-    if (!data.items?.length) { empty.style.display = 'block'; return; }
-
-    data.items.forEach(item => {
-      const d = document.createElement('div');
-      d.className = 'history-entry';
-      const jlpt = item.jlpt ? `<span class="h-mode">${item.jlpt}</span>` : '';
-      d.innerHTML = `
-        <span class="h-word" style="color:var(--purple)">${item.pattern}</span>
-        <span class="h-reading" style="color:var(--text3)">${item.reading || ''}</span>
-        ${jlpt}
-        <span class="srs-pill ${srsClass(item.srsLevel)}" style="margin-left:auto">${srsLabel(item.srsLevel)}</span>
-        <span style="font-size:0.65rem;color:var(--pink);font-weight:700;white-space:nowrap">✕${item.lapses}</span>`;
-      d.onclick = () => {
-        // Ensure pattern starts with ～ so grammar mode is detected
-        const pat = item.pattern.startsWith('～') || item.pattern.startsWith('〜')
-          ? item.pattern : `～${item.pattern}`;
-        searchInput.value = pat;
-        panel.style.display = 'none';
-        setAppMode('lookup');
-        doLookup();
-      };
-      list.appendChild(d);
-    });
-  } catch (err) {
-    status.innerHTML = `<div style="color:var(--pink);padding:1rem 0">エラー: ${err.message}</div>`;
-  }
-}
-
-// Hide 文法苦手 button until we confirm BUNPRO_TOKEN is configured
-document.getElementById('bunpro-btn').style.display = 'none';
-fetch('/api/bunpro/status').then(r => r.json()).then(d => {
-  if (d.enabled) document.getElementById('bunpro-btn').style.display = '';
-}).catch(() => {});
-
-document.getElementById('bunpro-btn').onclick = openBunproPanel;
-document.getElementById('bunpro-close-btn').onclick = () => {
-  document.getElementById('bunpro-panel').style.display = 'none';
-};
-document.getElementById('bunpro-refresh-btn').onclick = openBunproPanel;
 
 /* ── 読む MODE (PASTE) ── */
 let currentPasteResults = {}; // word → result

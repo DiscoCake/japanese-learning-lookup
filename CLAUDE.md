@@ -16,6 +16,8 @@ src/lookup.js     ← ALL prompt logic. No framework code. Returns a plain JS ob
 src/server.js     ← Express proxy. POST /api/lookup → lookup() → JSON response.
 src/anki.js       ← AnkiConnect client. Sentence management, card enrichment, struggling-card queries.
                      Zero dependencies on lookup.js or the frontend.
+src/bunpro.js     ← BunPro API client. Grammar SRS status lookup and troubled-grammar queries.
+                     Zero dependencies on lookup.js or the frontend.
 src/cli.js        ← CLI. `node src/cli.js 見る` or `node src/cli.js ～てしまう`
 public/index.html ← Frontend. Vanilla JS, no build step.
 ```
@@ -157,10 +159,34 @@ After any significant change to `src/` or `public/index.html`, add a changelog e
 ## Roadmap (discussed, not built)
 
 - VS Code extension that calls lookup.js on selected text (highest-friction reduction)
-- Pitch-accent data (lookup from pitch accent dictionary alongside AI output)
-- JRPG dialogue paste mode: paste a paragraph of DQ11/Yakuza script, get all unknown
-  words flagged and explained in bulk (one call, returns array of vocab entries)
+- Pitch-accent data from a dictionary (current pitch_accent field is AI-generated; a bundled dictionary like Kanjium would be more reliable)
+- Grammar → Anki cards (infrastructure exists in anki.js; needs ensureGrammarModel() + frontend section in renderGrammar)
 - BunPro API integration to mark grammar points as reviewed directly from the companion
+
+## BunPro integration — infrastructure built, blocked on stable auth
+
+**What's already built** (`src/bunpro.js`, routes in `src/server.js`, frontend in `public/index.html`):
+- `GET /api/bunpro/grammar?pattern=` — returns SRS level, next review, streak, lapses for a
+  grammar pattern; shown as a status card after every grammar lookup (hidden when not enabled)
+- `GET /api/bunpro/troubled` — returns ghost reviews / troubled grammar list; 文法苦手 sliding
+  panel in the header (button hidden via `/api/bunpro/status` check when not enabled)
+
+**Why it's not active**: BunPro's public account API key (`bunpro.jp → Account → API`) is for
+a defunct v1 API that returns HTML instead of JSON. The working API is the internal frontend API
+at `https://api.bunpro.jp/api/frontend/` which requires a short-lived JWT from browser
+`localStorage` (`frontend_api_token`). That JWT expires with the browser session, making it too
+fragile for a persistent `.env` variable.
+
+**How to turn it on** (when BunPro ships a stable API token or you're comfortable refreshing):
+1. Open `bunpro.jp` while logged in
+2. DevTools → Application → Local Storage → `https://bunpro.jp`
+3. Copy the value of `frontend_api_token`
+4. Add `BUNPRO_TOKEN=eyJ...` to `.env` and restart the server
+5. The 文法苦手 button and grammar status cards will appear automatically
+
+**What to watch for**: if BunPro ever documents a long-lived API token in account settings,
+update `src/bunpro.js` — change `bunproHeaders()` to use that token and update `.env.example`.
+The rest of the integration needs no changes.
 
 ## Archive conventions
 
@@ -193,6 +219,32 @@ cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-13 — Pitch accent display + context-aware 読む mode
+
+- `src/lookup.js`: `lookup(input, opts={})` now accepts `opts.context`; when set, appends `Context sentence: …` to the user message so Claude tailors core_meaning and example sentences to the specific usage shown in the source text
+- `src/lookup.js`: `identifyWords()` updated to return `sentence` field per word — the complete source sentence the word appeared in
+- `src/lookup.js`: `VOCAB_SYSTEM` gains `pitch_accent` in the JSON schema (`number`, `label`, `pattern`) — AI-generated Tokyo standard accent; note this is approximate (a dictionary-backed source is on the roadmap)
+- `src/lookup.js`: both `VOCAB_SYSTEM` and `GRAMMAR_SYSTEM` gain a "Context sentence" instruction so the model uses it when present
+- `src/server.js`: `/api/paste/stream` now destructures `sentence` from each identified word and passes `{ context: sentence }` to `lookup()` — each word is explained in the context of its source sentence
+- `public/index.html`: `.pitch-badge` CSS added (yellow, bordered); `renderVocab()` header now shows `[N] ラベル` badge with H/L pattern in tooltip when `pitch_accent` is present
+- `README.md`: Troubleshooting section added — AnkiConnect not responding, BunPro token refresh instructions
+- Archived: `archive/2026-06-13_lookup_pre-pitch-context.js`, `archive/2026-06-13_index_pre-pitch-context.html`, `archive/2026-06-13_server_pre-paste-context.js`
+
+### 2026-06-13 — BunPro integration: grammar SRS status + 文法苦手 panel
+
+- `src/bunpro.js`: new AnkiConnect-style client module; `getGrammarStatus(pattern)` fetches `/reviews/all` and pattern-matches (normalising ～/〜) to return SRS level, next review, streak, lapses, JLPT; `getTroubledGrammar()` tries `/ghost_reviews` first, falls back to filtering `/reviews/all` for lapses ≥ 2; both silent when `BUNPRO_API_KEY` is absent; `mapReviewItem()` handles v1 API field variants
+- `src/server.js`: added `GET /api/bunpro/grammar?pattern=` and `GET /api/bunpro/troubled` routes; both return 503 with clear message when key is not set
+- `public/index.html`: BunPro status card injected into `renderGrammar()` (gated on `!opts.compact`); `checkBunproStatus(result)` fires after every grammar lookup; colour-coded SRS level pills (ghost=pink, master=cyan, seasoned=purple, adept=yellow); 文法苦手 button opens sliding panel with troubled grammar list; click-to-lookup sets pattern with ～ prefix so grammar mode fires correctly
+- `.env.example`: added `BUNPRO_API_KEY` comment
+- Archived: `archive/2026-06-13_index_pre-bunpro.html`, `archive/2026-06-13_server_pre-bunpro.js`
+
+### 2026-06-13 — 読む mode (JRPG paste mode)
+
+- `src/lookup.js`: added `identifyWords(text)` — one Claude call (effort: low) that reads a paragraph and returns `[{word, reading, reason}]` for 5–12 N3-range words worth explaining; excludes particles and ultra-common N5/N4 vocabulary; grammar patterns output with ～ prefix so `detectMode()` routes them correctly; exported alongside existing functions
+- `src/server.js`: added `POST /api/paste/stream` SSE route — calls `identifyWords()`, sends `{type:'identified', words}` immediately so the UI can render placeholders, then fires `Promise.all(words.map(lookup))` and streams each `{type:'result', word, result}` as its promise resolves; ends with `{type:'done'}`
+- `public/index.html`: added 読む/調べる mode tab toggle above the search row; paste panel with textarea + 解析する button; SSE consumer that renders placeholder cards on `identified` event and fills them in-place on `result` events; bulk TSV export button appears after all results load; `renderVocab()` and `renderGrammar()` now accept `opts.compact` to suppress the Anki card section and export bar (prevents duplicate IDs when multiple words render on one page)
+- Archived: `archive/2026-06-13_lookup_pre-paste.js`, `archive/2026-06-13_index_pre-paste.html`
 
 ### 2026-06-13 — Documentation catch-up + push skill
 

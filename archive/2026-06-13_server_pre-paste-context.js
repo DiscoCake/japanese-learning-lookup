@@ -100,9 +100,9 @@ app.post('/api/paste/stream', async (req, res) => {
     }
     send({ type: 'identified', words });
 
-    await Promise.all(words.map(async ({ word, sentence }) => {
+    await Promise.all(words.map(async ({ word }) => {
       try {
-        const result = await lookup(word, { context: sentence });
+        const result = await lookup(word);
         send({ type: 'result', word, result });
       } catch (err) {
         send({ type: 'word_error', word, message: err.message });
