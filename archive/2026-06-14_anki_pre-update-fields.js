@@ -30,6 +30,13 @@ function stripHtml(str) {
   return (str || '').replace(/<[^>]+>/g, '').trim();
 }
 
+// Convert Claude's ruby HTML to Anki's 漢字[かんじ] furigana notation
+function rubyToAnkiFurigana(html) {
+  return html
+    .replace(/<ruby>([^<]+)<rt>([^<]+)<\/rt><\/ruby>/g, '$1[$2]')
+    .replace(/<[^>]+>/g, '');
+}
+
 function extractFields(fields) {
   let word = '';
   let reading = '';
@@ -252,24 +259,13 @@ async function patchModelForTTS(modelName, sentenceFieldKey, sentenceAudioKey) {
   });
 }
 
-async function updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName, word, sentenceHtml) {
+async function updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName) {
   if (!sentenceFieldKey) throw new Error('sentenceFieldKey is required');
 
   const fields = {};
   fields[sentenceFieldKey] = sentence;
   if (sentenceMeaningKey && sentenceMeaning) fields[sentenceMeaningKey] = sentenceMeaning;
   if (sentenceAudioKey) fields[sentenceAudioKey] = '';  // clear stale audio so TTS takes over
-
-  // Also update Companion layout fields if they exist on this note type
-  if (modelName && (word || sentenceHtml)) {
-    try {
-      const existing = new Set(await ankiRequest('modelFieldNames', { modelName }));
-      if (word && existing.has('Sentence Highlighted'))
-        fields['Sentence Highlighted'] = highlightWordInSentence(sentence, word);
-      if (sentenceHtml && existing.has('Sentence Furigana'))
-        fields['Sentence Furigana'] = sentenceHtml;
-    } catch { /* best-effort — don't fail the sentence update */ }
-  }
 
   await ankiRequest('updateNoteFields', { note: { id: noteId, fields } });
 
@@ -289,13 +285,12 @@ const COMPANION_CSS = `.card {
   background: #0d0d1a;
 }
 b { color: #4fd8e8 }
-ruby rt { font-size: 0.38em; color: #ff6fa8; }
 .pitch-display { display: inline-flex; align-items: flex-end; }
 .ph { display: inline-block; border-top: 2px solid #4fd8e8; padding: 0 1px; }
 .pl { display: inline-block; border-top: 2px solid transparent; padding: 0 1px; }
 .pd { display: inline-block; border-top: 2px solid #4fd8e8; border-right: 2px solid #4fd8e8; padding: 0 3px 0 1px; }`;
 
-const COMPANION_FRONT = `<!-- companion-v3 -->
+const COMPANION_FRONT = `<!-- companion-v2 -->
 <div lang="ja">
 {{Word}}
 {{#Sentence Highlighted}}<div style='font-size: 20px;'>{{Sentence Highlighted}}</div>{{/Sentence Highlighted}}
@@ -304,12 +299,12 @@ const COMPANION_FRONT = `<!-- companion-v3 -->
 
 function buildCompanionBack() {
   return `<div lang="ja">
-{{Word Furigana}}
+{{furigana:Word Furigana}}
 
 {{#Pitch}}<br><div style='font-size: 24px'>{{Pitch}}</div>{{/Pitch}}
 
 <div style='font-size: 25px; padding-bottom:20px'>{{Meaning}}</div>
-{{#Sentence Furigana}}<div style='font-size: 25px;'>{{Sentence Furigana}}</div>{{/Sentence Furigana}}
+{{#Sentence Furigana}}<div style='font-size: 25px;'>{{furigana:Sentence Furigana}}</div>{{/Sentence Furigana}}
 {{^Sentence Furigana}}{{#Sentence}}<div style='font-size: 25px;'>{{Sentence}}</div>{{/Sentence}}{{/Sentence Furigana}}
 {{#Sentence Meaning}}<div style='font-size: 25px; padding-bottom:10px'>{{Sentence Meaning}}</div>{{/Sentence Meaning}}
 
@@ -334,11 +329,11 @@ async function ensureCompanionModel() {
     for (const f of ['Word Furigana', 'Pitch', 'Sentence Highlighted', 'Sentence Furigana']) {
       if (!existing.has(f)) await ankiRequest('modelFieldAdd', { modelName, fieldName: f });
     }
-    // Upgrade template if it's missing the v3 sentinel (raw HTML furigana fields)
+    // Upgrade template if it's missing the v2 sentinel
     try {
       const templates = await ankiRequest('modelTemplates', { modelName });
       const cardName = Object.keys(templates)[0];
-      if (!templates[cardName].Front.includes('companion-v3')) {
+      if (!templates[cardName].Front.includes('companion-v2')) {
         await ankiRequest('updateModelTemplates', {
           model: { name: modelName, templates: { [cardName]: { Front: COMPANION_FRONT, Back: buildCompanionBack() } } }
         });
@@ -363,7 +358,6 @@ async function ensureCompanionModel() {
 async function addNoteForWord(result, sentence) {
   const deckName = process.env.ANKI_COMPANION_DECK || 'Companion';
   const modelName = await ensureCompanionModel();
-  await ankiRequest('createDeck', { deck: deckName });  // idempotent — ensures deck exists before addNote
   const word = stripHtml(result.word || '');
   const reading = result.reading || '';
   const jpPlain = stripHtml(sentence.jp || '');
@@ -375,12 +369,12 @@ async function addNoteForWord(result, sentence) {
       fields: {
         'Word': word,
         'Reading': reading,
-        'Word Furigana': word && reading ? `<ruby>${word}<rt>${reading}</rt></ruby>` : word,
+        'Word Furigana': word && reading ? `${word}[${reading}]` : word,
         'Pitch': formatPitchHtml(reading, result.pitch_accent),
         'Meaning': stripHtml(result.core_meaning || ''),
         'Sentence': jpPlain,
         'Sentence Highlighted': highlightWordInSentence(jpPlain, word),
-        'Sentence Furigana': sentence.jp || '',
+        'Sentence Furigana': rubyToAnkiFurigana(sentence.jp || ''),
         'Sentence Meaning': sentence.translation || '',
         'Frequency': stripHtml(result.frequency || ''),
         'Notes': stripHtml(result.anki_hint || ''),
@@ -395,8 +389,7 @@ async function getDeckNames() {
   return ankiRequest('deckNames');
 }
 
-const COMPANION_FIELDS = ['Reading', 'Meaning', 'Sentence', 'Sentence Highlighted',
-  'Sentence Furigana', 'Sentence Meaning', 'Frequency', 'Notes'];
+const COMPANION_FIELDS = ['Reading', 'Meaning', 'Sentence', 'Sentence Meaning', 'Frequency', 'Notes'];
 
 // Adds any COMPANION_FIELDS that don't already exist on the note type.
 async function enrichNoteType(modelName, requiredFields) {
@@ -460,16 +453,13 @@ async function patchModelWithSentenceSection(modelName) {
 // For non-standard note types (e.g. Pokémon Front/Back):
 // expands the schema with companion fields, writes all values, patches the back template.
 // Review history (scheduling) is fully preserved — only the fields and template change.
-async function enrichAndUpdateCard(noteId, modelName, result, jpPlain, translation, sentenceHtml) {
+async function enrichAndUpdateCard(noteId, modelName, result, jpPlain, translation) {
   await enrichNoteType(modelName, COMPANION_FIELDS);
 
-  const word = stripHtml(result.word || '');
   const fields = {
     'Reading': result.reading || '',
     'Meaning': stripHtml(result.core_meaning || ''),
     'Sentence': jpPlain,
-    'Sentence Highlighted': word ? highlightWordInSentence(jpPlain, word) : jpPlain,
-    'Sentence Furigana': sentenceHtml || '',
     'Sentence Meaning': translation || '',
     'Frequency': stripHtml(result.frequency || ''),
     'Notes': stripHtml(result.anki_hint || ''),

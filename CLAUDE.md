@@ -134,7 +134,21 @@ node src/cli.js 見る    # CLI vocab lookup
 node src/cli.js ～てしまう   # CLI grammar lookup
 node src/cli.js --tsv 見る   # output Anki TSV
 node src/cli.js --raw 見る   # output raw JSON
+
+npm run eval:check      # validate lookup output vs saved snapshots (no API — the gate)
+npm run eval:update     # refresh snapshots from the live API (serial; ~18 calls)
+npm run eval            # live lookups checked against fresh output (no snapshot write)
 ```
+
+## Eval harness (`eval/`)
+
+`lookup.js`'s prompt output is the product — `eval/` guards it. `eval/golden.js` holds ~18
+representative cases; `eval/checks.js` runs deterministic validators (ruby on every kanji,
+JSON contract, sentence count, register variety, confused_with). `eval/run.js` drives three
+modes (`check`/`update`/`run`). Live runs are serial with 429 backoff (the org's
+output-token/min limit forbids parallelism). After editing a prompt in `lookup.js`: run
+`eval:update`, review the snapshot diff, then keep `eval:check` green. Use `/lookup-eval` to
+run and interpret it. Never loosen a check to pass — fix the output instead.
 
 ## Server restart policy
 
@@ -156,7 +170,24 @@ Editing `public/index.html` does NOT require a restart — it's a static file se
 After any significant change to `src/` or `public/index.html`, add a changelog entry to
 `CLAUDE.md` before considering the task complete. Don't batch this to a docs sweep at the end.
 
-## Roadmap (discussed, not built)
+## Development roadmap (2026-06-14 plan)
+
+Phased structural plan (full version archived in `plans/`). Direction: guard the core,
+fix the frontend monolith, build discipline tooling, then extract a shared package.
+
+- **Phase 1 — Prompt-output eval harness.** ✅ Done (see `eval/` and the changelog).
+- **Phase 2 — Frontend modularization.** Split `public/index.html`'s inline JS into native
+  ES modules under `public/js/` (state, render, lookup-client, anki, bunpro, history, tts,
+  furigana, main). No build step. Extract one module at a time, re-driving the app after each.
+  Keep `tts.js`/`furigana.js`/palette CSS app-agnostic — they become Phase 4 shared code.
+- **Phase 3 — Dev tooling & discipline hooks.** Partly done: `/lookup-eval` skill + the
+  lookup.js eval nudge hook. Remaining: changelog-nag Stop hook (git-independent, mtime-based),
+  optional `.env` staging guard.
+- **Phase 4 — Extract shared `jp-ui` package → monorepo with 東京奇譚.** Lift the app-agnostic
+  modules + visual palette + `anki.js` client into `packages/jp-ui`; both apps import it.
+  `lookup.js` stays companion-only and pure. Do after Phase 2. Own plan when 1–3 land.
+
+### Deferred features (parked until structural work lands)
 
 - VS Code extension that calls lookup.js on selected text (highest-friction reduction)
 - Pitch-accent data from a dictionary (current pitch_accent field is AI-generated; a bundled dictionary like Kanjium would be more reliable)
@@ -224,6 +255,76 @@ cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
 Reverse-chronological. Add an entry here whenever a feature is added, changed, or
 removed. Include the date (YYYY-MM-DD) and a tight bullet list. If a file is
 archived, note it here too.
+
+### 2026-06-14 — Prompt-output eval harness (roadmap Phase 1) + truncation fix
+
+- `eval/` directory added — regression harness for `lookup.js` output, the app's core value:
+  - `eval/golden.js`: ~18 representative cases (見る family, multi-sense verbs, abstract
+    nouns, N3 grammar patterns) as `{ input, mode }`
+  - `eval/checks.js`: deterministic validators — `everyKanjiHasRuby` (the #1 invariant),
+    `matchesContract`, `sentenceCount` (vocab 5 / grammar 4), `distinctRegisters` (≥3 valid),
+    `confusedWithPopulated`. Pure functions, no API. `kanji-ruby` strips `<ruby>…</ruby>`
+    blocks then flags any leftover CJK ideograph; excludes `pitch_accent.label` (meta),
+    `reading`, `translation`, and `sentences[].notes` (often English) to avoid false positives
+  - `eval/run.js`: three modes — `check` (validators vs saved snapshots, no API, the gate),
+    `update` (refresh snapshots from live API; serial with 9s pacing + 429 backoff because the
+    org output-token/min limit forbids parallelism; `--missing` fills only absent snapshots),
+    `run` (live check without writing). Exits nonzero on failure
+  - `eval/snapshots/*.json`: 18 committed baseline outputs
+- `package.json`: added `eval`, `eval:check`, `eval:update` scripts
+- `src/lookup.js`: `max_tokens` 3000 → 5000 in both `lookup()` and `lookupStream()` — the harness
+  surfaced that multi-sense entries (～ところ, and especially ～そうだ which covers two grammar
+  points) exceeded 3000 tokens and truncated, causing a hard `JSON.parse` crash on common lookups
+- `.claude/skills/lookup-eval/SKILL.md`: new `/lookup-eval` skill — runs the harness and interprets
+  failures by check group; forbids loosening checks to pass
+- `.claude/settings.local.json`: PostToolUse hook now also nudges to run `npm run eval:check` after
+  editing `src/lookup.js`; static-file reminder widened from `public/index.html` to any
+  `public/**/*.{html,js,css}` (prep for Phase 2 ES modules)
+- Archived: `archive/2026-06-14_lookup.js` (auto, via PreToolUse hook, before the max_tokens edit)
+- **Known baseline finding**: 7/18 snapshots fail `kanji-ruby` — the model intermittently drops ruby
+  on one common kanji (見, 直, 一, 捨, 少, 申, 今, 人) or the linguistic term 形式名詞. Honest red
+  baseline; fixing it is a prompt-tuning follow-up, not a harness defect
+
+### 2026-06-14 — J-J mode abort + race-condition fix
+
+- `public/index.html`: added `let lookupAbortController = null;` module-level state
+- `public/index.html`: `doLookup()` now aborts any in-flight stream at the top via `lookupAbortController.abort()` — toggling 英語/日本語 while generating cleanly cancels the old stream and starts a new one
+- `public/index.html`: `doLookup()` snapshots `jjMode` into `const jjSnapshot` before any `await`; the snapshot is used for the cache lookup, the fetch body (`jj: jjSnapshot`), and the result tag (`evt.result.jj = jjSnapshot`) — ensures the entire call is self-consistent even if `jjMode` changes while the stream is running
+- `public/index.html`: `AbortError` in the catch block silently returns (the new lookup owns the UI); all other errors still call `renderError`
+- `public/index.html`: loading state + controller cleanup guarded by `lookupAbortController === controller` so only the current (winning) lookup hides the spinner and nulls the controller
+- Archived: `archive/2026-06-14_index_pre-abort-fix.html`
+
+### 2026-06-14 — J-J mode cache fix + 英語/日本語 toggle switch
+
+- `public/index.html`: `doLookup()` now stamps `evt.result.input = input` before `addToHistory` — `input` was never set on results, causing: cache never hitting (every lookup hit the API), history dedup collapsing all same-jj entries to 1, history search always returning `''`, history click clearing the search box, and J-J toggle using wrong word when currentResult was out of sync with searchInput
+- `public/index.html`: `日日` button replaced with `<div class="lang-switch">` containing `<span class="lang-opt">英語</span>` and `<span class="lang-opt">日本語</span>`; the active language's pill is highlighted pink; clicking anywhere toggles mode
+- `public/index.html`: `setJJ()` updated to toggle `.active` on the correct `.lang-opt` span instead of the button container; init line updated to match
+- `public/index.html`: CSS added for `.lang-switch`, `.lang-opt`, `.lang-opt.active`
+- Archived: `archive/2026-06-14_index_pre-jj-cache-fix.html`
+
+### 2026-06-14 — Companion card furigana: raw HTML fields, drop {{furigana:}} filter
+
+- **Root cause**: Anki's `{{furigana:Field}}` filter distributes multi-mora readings evenly across kanji *characters* — so `座[すわ]` (1 kanji, 2 morae) placed `す` above `座` and orphaned `わ` as inline text. Affects any single kanji with a 2+ mora reading (`本[ほん]`, `人[ひと]`, etc.)
+- `src/anki.js`: `addNoteForWord` — `Word Furigana` now stores `<ruby>word<rt>reading</rt></ruby>` HTML (was `word[reading]` Anki-notation); `Sentence Furigana` now stores the raw `sentence.jp` ruby HTML directly (was converted via `rubyToAnkiFurigana`)
+- `src/anki.js`: `updateCardSentence` — `Sentence Furigana` written as raw `sentenceHtml` (not converted)
+- `src/anki.js`: `enrichAndUpdateCard` — same
+- `src/anki.js`: `rubyToAnkiFurigana()` removed (no longer used anywhere)
+- `src/anki.js`: `buildCompanionBack()` — `{{furigana:Word Furigana}}` → `{{Word Furigana}}`; `{{furigana:Sentence Furigana}}` → `{{Sentence Furigana}}`; raw HTML fields render directly in the browser without Anki's distribution step
+- `src/anki.js`: `COMPANION_CSS` gains `ruby rt { font-size: 0.38em; color: #ff6fa8; }` — pink furigana at correct size (matches app's existing furigana color)
+- `src/anki.js`: sentinel bumped `companion-v2` → `companion-v3`; `ensureCompanionModel()` upgrade check now detects `companion-v3` so existing Companion cards auto-upgrade their template on next use
+- Archived: `archive/2026-06-14_anki_pre-furigana-fix.js`
+
+### 2026-06-14 — Anki update completeness, new card creation fix, history UX
+
+- `src/anki.js`: `addNoteForWord` now calls `ankiRequest('createDeck', { deck: deckName })` before `addNote` — AnkiConnect does not auto-create the target deck, causing "deck was not found" errors on first-time card creation
+- `src/anki.js`: `updateCardSentence` extended with `word` and `sentenceHtml` params; conditionally writes `Sentence Highlighted` (`highlightWordInSentence`) and `Sentence Furigana` (`rubyToAnkiFurigana`) when those fields exist on the note type — previously only the plain `Sentence` field was updated
+- `src/anki.js`: `enrichAndUpdateCard` extended with `sentenceHtml` param; writes `Sentence Highlighted` and `Sentence Furigana` during enrichment of non-standard note types
+- `src/server.js`: `POST /api/anki/card/sentence` now destructures and forwards `word` + `sentenceHtml` to `updateCardSentence`; `POST /api/anki/card/enrich` passes `sentence.html` to `enrichAndUpdateCard`
+- `public/index.html`: sentence update fetch body now includes `word: currentResult.word || currentResult.input` and `sentenceHtml: jpHtml`; enrich fetch body's sentence object gains `html: jpHtml`
+- `public/index.html`: history panel bulk TSV export button removed (was unused)
+- `public/index.html`: per-item delete button (✕) added to each history entry — hidden until hover, shows confirm dialog, removes only that entry from localStorage and the DOM; `e.stopPropagation()` prevents the entry's click-to-render from also firing
+- `public/index.html`: `.h-del-btn` CSS added (ghost button, pink on hover, opacity transition)
+- Archived: `archive/2026-06-14_server_pre-update-fields.js`
 
 ### 2026-06-14 — UX polish + furigana consistency + 日日 live-switch
 

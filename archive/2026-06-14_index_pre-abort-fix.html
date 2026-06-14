@@ -414,7 +414,6 @@ const MAX_HISTORY = 50;
 let furigana = true;
 let jjMode = localStorage.getItem('companion_jj_v1') === '1';
 let currentResult = null;
-let lookupAbortController = null;
 let currentAnkiNote = null;
 let pendingAnkiBtn = null;
 let pendingTimer = null;
@@ -548,19 +547,12 @@ async function doLookup() {
   const input = searchInput.value.trim();
   if (!input) return;
 
-  // Abort any in-flight stream immediately; snapshot jjMode before any await
-  if (lookupAbortController) lookupAbortController.abort();
-  const jjSnapshot = jjMode;
-
-  const cached = history.find(h => h.input === input && !!h.jj === jjSnapshot);
+  const cached = history.find(h => h.input === input && !!h.jj === jjMode);
   if (cached) {
     currentResult = cached;
     renderResult(cached);
     return;
   }
-
-  const controller = new AbortController();
-  lookupAbortController = controller;
 
   document.getElementById('result').style.display = 'none';
   document.getElementById('loading').style.display = 'flex';
@@ -570,8 +562,7 @@ async function doLookup() {
     const streamRes = await fetch('/api/lookup/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ input, jj: jjSnapshot }),
-      signal: controller.signal
+      body: JSON.stringify({ input, jj: jjMode })
     });
     if (!streamRes.ok) {
       const text = await streamRes.text();
@@ -607,7 +598,7 @@ async function doLookup() {
           }
         } else if (evt.done && evt.result) {
           evt.result.input = input;
-          evt.result.jj = jjSnapshot;
+          evt.result.jj = jjMode;
           currentResult = evt.result;
           addToHistory(evt.result);
           renderResult(evt.result);
@@ -617,14 +608,9 @@ async function doLookup() {
       }
     }
   } catch (e) {
-    if (e.name === 'AbortError') return; // newer lookup took over; let it manage the UI
     renderError(e.message);
   }
-  // Only clean up and hide loading if we're still the current lookup
-  if (lookupAbortController === controller) {
-    lookupAbortController = null;
-    document.getElementById('loading').style.display = 'none';
-  }
+  document.getElementById('loading').style.display = 'none';
 }
 
 /* ── RENDER ── */

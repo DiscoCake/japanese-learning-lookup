@@ -1,0 +1,42 @@
+{
+  "pattern": "～ように",
+  "mode": "grammar",
+  "real_meaning": "～ように expresses a goal, hope, or desired outcome — it frames an action or state as something you are aiming *toward*, like adjusting your trajectory to reach a target. Unlike a direct command or simple purpose clause, it carries a softer, more wishful nuance: 'so that [this comes to be]' or 'in the hope that [this happens].' It is especially at home with verbs of ability, possibility, or gradual change (できる、わかる、なる), and in prayers or requests where the speaker can't directly cause the outcome themselves.",
+  "formation": {
+    "rule": "Attach ように to the **dictionary form** of a verb (or ない-form for negative goals). Works with potential verbs too. Examples: <ruby>泳<rt>およ</rt></ruby>げるように (so that I can swim) ／ <ruby>忘<rt>わす</rt></ruby>れないように (so as not to forget) ／ <ruby>早<rt>はや</rt></ruby>く<ruby>起<rt>お</rt></ruby>きられるように (so that I can wake up early)",
+    "common_mistake": "Using the volitional or て-form instead of the plain/dictionary form before ように. Wrong: ✗ <ruby>話<rt>はな</rt></ruby>そうように<ruby>練習<rt>れんしゅう</rt></ruby>した　／　Correct: ✓ <ruby>話<rt>はな</rt></ruby>せるように<ruby>練習<rt>れんしゅう</rt></ruby>した. Also, learners mistakenly use ために with stative or potential verbs — ように is the correct choice there."
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>して、ギターが<ruby>弾<rt>ひ</rt></ruby>けるようになりたい。",
+      "translation": "I want to reach the point where I can play guitar, so I practice every day.",
+      "register": "casual",
+      "notes": "Shows ように paired with なる (ようになる) to express a gradual change toward a goal — one of its most natural and frequent uses."
+    },
+    {
+      "jp": "<ruby>風邪<rt>かぜ</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>かないように、<ruby>毎日<rt>まいにち</rt></ruby>ビタミンを<ruby>飲<rt>の</rt></ruby>んでいます。",
+      "translation": "I take vitamins every day so that I don't catch a cold.",
+      "register": "standard",
+      "notes": "Negative ないように shows the target is *avoiding* an outcome — the speaker takes precautionary action toward keeping something from happening."
+    },
+    {
+      "jp": "<ruby>全員<rt>ぜんいん</rt></ruby>が<ruby>内容<rt>ないよう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>できるように、<ruby>資料<rt>しりょう</rt></ruby>を<ruby>作成<rt>さくせい</rt></ruby>いたしました。",
+      "translation": "We have prepared the materials so that all participants can understand the content.",
+      "register": "formal",
+      "notes": "Formal written register; ように with a potential verb (できる) is very natural here — you can't directly *make* someone understand, so ように fits better than ために."
+    },
+    {
+      "jp": "<ruby>神様<rt>かみさま</rt></ruby>、<ruby>試験<rt>しけん</rt></ruby>に<ruby>合格<rt>ごうかく</rt></ruby>できますように。",
+      "translation": "Please, God — let me pass the exam.",
+      "register": "standard",
+      "notes": "A standalone ように at the end of a sentence (no main clause) functions as a wish or prayer — the 'action clause' is left unspoken because the speaker is appealing to an outside force, not their own effort."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～ために",
+    "contrast": "Both express purpose ('in order to / so that'), but they differ in what kind of goal they describe. ために attaches to volitional actions with a clear, direct, controllable purpose — the subject *deliberately does X to achieve Y*. ように is used when the goal involves ability, possibility, or a state that can't be directly willed into existence. Minimal pair: ✓ <ruby>医者<rt>いしゃ</rt></ruby>になるために<ruby>勉強<rt>べんきょう</rt></ruby>している (studying *in order to* become a doctor — direct, intentional goal) vs. ✓ <ruby>漢字<rt>かんじ</rt></ruby>が<ruby>読<rt>よ</rt></ruby>めるように<ruby>勉強<rt>べんきょう</rt></ruby>している (studying *so that* I can read kanji — the ability is the hoped-for outcome). You could not swap these: ✗ <ruby>漢字<rt>かんじ</rt></ruby>が<ruby>読<rt>よ</rt></ruby>めるために sounds unnatural because できる/potential-form goals call for ように."
+  },
+  "bunpro_tip": "Picture ように as aiming an arrow at a target you can't guarantee hitting — you adjust your actions *toward* that outcome, but it's not entirely in your control. If you can swap 'in order to' with 'so that [it comes to be],' ように is your pattern. On BunPro, watch for potential verbs (できる、わかる、<ruby>見<rt>み</rt></ruby>える) as a strong signal that ように is expected over ために.",
+  "input": "～ように",
+  "timestamp": "2026-06-14T20:37:01.054Z"
+}

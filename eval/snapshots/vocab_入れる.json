@@ -1,0 +1,53 @@
+{
+  "word": "入れる",
+  "reading": "いれる",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 0,
+    "label": "平板",
+    "pattern": "LHH"
+  },
+  "core_meaning": "<ruby>入<rt>い</rt></ruby>れる means to put something INTO a container, space, or category — the key idea is motion inward. Beyond the physical sense, it extends to abstract uses like including someone in a group, making tea/coffee, or even accepting/considering something.",
+  "sentences": [
+    {
+      "jp": "<ruby>財布<rt>さいふ</rt></ruby>をバッグに<ruby>入<rt>い</rt></ruby>れるのを<ruby>忘<rt>わす</rt></ruby>れた。",
+      "translation": "I forgot to put my wallet in my bag.",
+      "register": "casual",
+      "notes": "The most prototypical use: physically placing an object inside a container."
+    },
+    {
+      "jp": "<ruby>砂糖<rt>さとう</rt></ruby>はコーヒーに<ruby>入<rt>い</rt></ruby>れる？",
+      "translation": "Do you take sugar in your coffee?",
+      "register": "casual",
+      "notes": "A very common collocation — asking whether to add an ingredient to a drink or dish."
+    },
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>はボランティア<ruby>活動<rt>かつどう</rt></ruby>に<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れている。",
+      "translation": "She puts a lot of effort into volunteer activities.",
+      "register": "standard",
+      "notes": "<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる is a set phrase meaning to put effort or emphasis into something."
+    },
+    {
+      "jp": "<ruby>新<rt>あたら</rt></ruby>しいメンバーをチームに<ruby>入<rt>い</rt></ruby>れることにしました。",
+      "translation": "We decided to bring a new member onto the team.",
+      "register": "standard",
+      "notes": "Shows the abstract sense of including or admitting someone into a group."
+    },
+    {
+      "jp": "<ruby>会議<rt>かいぎ</rt></ruby>では、<ruby>現場<rt>げんば</rt></ruby>スタッフの<ruby>意見<rt>いけん</rt></ruby>も<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>れるべきだと<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "I think we should also incorporate the opinions of the on-site staff in the meeting.",
+      "register": "formal",
+      "notes": "<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>れる is a common compound meaning to adopt or incorporate ideas, feedback, or new practices."
+    }
+  ],
+  "dont_use": "<ruby>入<rt>い</rt></ruby>れる is for actively putting something IN — don't confuse it with <ruby>入<rt>はい</rt></ruby>る, which is intransitive (something enters on its own). A common learner error is saying ×「バッグが<ruby>入<rt>い</rt></ruby>れる」when you mean 「バッグに<ruby>入<rt>い</rt></ruby>れる」or 「バッグに<ruby>入<rt>はい</rt></ruby>る」. Also, for turning on devices, Japanese uses <ruby>入<rt>い</rt></ruby>れる casually (「エアコンを<ruby>入<rt>い</rt></ruby>れる」) but <ruby>付<rt>つ</rt></ruby>ける is often more natural for lights and electronics.",
+  "confused_with": {
+    "word": "<ruby>入<rt>はい</rt></ruby>る",
+    "reading": "はいる",
+    "contrast": "<ruby>入<rt>い</rt></ruby>れる is transitive — you need a subject doing it to an object (「コインを<ruby>入<rt>い</rt></ruby>れる」= to insert a coin). <ruby>入<rt>はい</rt></ruby>る is intransitive — the thing moves in by itself or the subject enters a place (「<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る」= to enter a room). Think of it this way: <ruby>入<rt>い</rt></ruby>れる = you put it in; <ruby>入<rt>はい</rt></ruby>る = it goes in."
+  },
+  "frequency": "<ruby>入<rt>い</rt></ruby>れる is extremely common in everyday spoken and written Japanese. It appears in countless set expressions (<ruby>気<rt>き</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる、<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる、<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>れる) and is used across all registers.",
+  "anki_hint": "<ruby>入<rt>い</rt></ruby>れる is the transitive partner of <ruby>入<rt>はい</rt></ruby>る — you <ruby>入<rt>い</rt></ruby>れる something INTO somewhere, while things/people <ruby>入<rt>はい</rt></ruby>る on their own.",
+  "input": "入れる",
+  "timestamp": "2026-06-14T20:34:03.977Z"
+}

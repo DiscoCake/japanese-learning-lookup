@@ -1,0 +1,42 @@
+{
+  "pattern": "～ところ",
+  "mode": "grammar",
+  "real_meaning": "～ところ literally means 'place' but grammatically it pins down a precise point in time relative to an action — specifically whether that action is just about to happen, currently happening, or has just finished. The speaker uses it to say 'I'm catching you at exactly this moment in the process.' It's less about location and more about zooming in on a specific temporal snapshot.",
+  "formation": {
+    "rule": "Attach ところ to different verb forms to express different timing: (1) Dictionary form + ところ（だ） = about to do [e.g., <ruby>食<rt>た</rt></ruby>べるところだ = 'I'm just about to eat']; (2) ～ている + ところ（だ） = in the middle of doing [e.g., <ruby>食<rt>た</rt></ruby>べているところだ = 'I'm in the middle of eating']; (3) た-form + ところ（だ） = just finished doing [e.g., <ruby>食<rt>た</rt></ruby>べたところだ = 'I just ate']",
+    "common_mistake": "Learners often confuse the verb forms and use the wrong tense, changing the meaning entirely. Wrong: <ruby>食<rt>た</rt></ruby>べたところだ when they mean 'about to eat.' Correct for 'about to eat': <ruby>食<rt>た</rt></ruby>べるところだ. The た-form shifts meaning to 'just finished,' so tense accuracy is critical here."
+  },
+  "sentences": [
+    {
+      "jp": "ちょうど<ruby>家<rt>いえ</rt></ruby>を<ruby>出<rt>で</rt></ruby>るところだったのに、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>り<ruby>始<rt>はじ</rt></ruby>めた。",
+      "translation": "I was just about to leave the house when it started raining.",
+      "register": "casual",
+      "notes": "The dictionary form + ところ with だった (past) captures the frustration of being on the very verge of an action when something interrupted — a very natural, expressive casual use."
+    },
+    {
+      "jp": "すみません、今ちょうど<ruby>報告書<rt>ほうこくしょ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いているところです。",
+      "translation": "Sorry, I'm right in the middle of writing the report.",
+      "register": "standard",
+      "notes": "～ているところ emphasizes 'caught mid-action' — more specific than just ～ています, adding the nuance that this is the very thing you're occupied with right now."
+    },
+    {
+      "jp": "<ruby>只今<rt>ただいま</rt></ruby>、<ruby>担当者<rt>たんとうしゃ</rt></ruby>が<ruby>確認<rt>かくにん</rt></ruby>を<ruby>終<rt>お</rt></ruby>えたところでございます。",
+      "translation": "The person in charge has just finished the verification.",
+      "register": "formal",
+      "notes": "た-form + ところ in formal/keigo context signals 'this just happened moments ago' — useful in business or customer service to reassure someone that something was handled very recently."
+    },
+    {
+      "jp": "<ruby>悪<rt>わる</rt></ruby>いところを<ruby>見<rt>み</rt></ruby>られた。",
+      "translation": "They caught me at a bad moment. / I was caught in the act.",
+      "register": "casual",
+      "notes": "This is the surprising side of ところ — here it blends the 'place/scene' and 'moment' meanings, meaning someone witnessed you at exactly the wrong moment; this idiomatic use trips up learners who expect ところ to always signal a neat temporal formula."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～たばかり",
+    "contrast": "Both ～たところ and ～たばかり mean something like 'just did X,' but they differ in freshness and focus. ～たところ is extremely immediate — we're talking seconds or a minute ago at most, right at the edge of completion. ～たばかり is more flexible; it can mean anywhere from moments ago to 'recently' depending on context, and it often carries an emotional nuance of 'and I'm still processing that / it still feels new.' Minimal pair: <ruby>今<rt>いま</rt></ruby><ruby>起<rt>お</rt></ruby>きたところだ (I literally just this second woke up) vs. <ruby>起<rt>お</rt></ruby>きたばかりだ (I just woke up — still groggy, not fully awake yet). Use ところ for objective timing precision; use ばかり when you want to add a feeling of recency or its lingering effect."
+  },
+  "bunpro_tip": "Think of ところ as a camera freeze-frame: dictionary form = camera aimed at something about to happen, ている = frozen mid-action, た = the frame right after the action ends. When you see ところ in BunPro, ask yourself 'which freeze-frame is this?' and match it to the verb form — that alone will prevent most errors.",
+  "input": "～ところ",
+  "timestamp": "2026-06-14T20:41:37.042Z"
+}

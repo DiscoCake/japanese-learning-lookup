@@ -1,0 +1,53 @@
+{
+  "word": "物",
+  "reading": "もの",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 2,
+    "label": "頭高",
+    "pattern": "HL"
+  },
+  "core_meaning": "<ruby>物<rt>もの</rt></ruby> at its core means a 'thing' or 'object' — something physical you can point to or pick up. But it stretches far beyond that: it can refer to abstract things, matters, or circumstances, and as a grammatical word (形式名詞) it adds nuance like 'something that is naturally so' or expresses emotion and expectation.",
+  "sentences": [
+    {
+      "jp": "<ruby>床<rt>ゆか</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちてる<ruby>物<rt>もの</rt></ruby>、捨てていい？",
+      "translation": "Can I throw away the stuff that's fallen on the floor?",
+      "register": "casual",
+      "notes": "Core concrete use — <ruby>物<rt>もの</rt></ruby> meaning a physical thing or stuff."
+    },
+    {
+      "jp": "<ruby>人<rt>ひと</rt></ruby>の<ruby>物<rt>もの</rt></ruby>を<ruby>勝手<rt>かって</rt></ruby>に<ruby>使<rt>つか</rt></ruby>ってはいけない。",
+      "translation": "You must not use other people's things without permission.",
+      "register": "standard",
+      "notes": "Everyday rule about possessions; <ruby>物<rt>もの</rt></ruby> here means someone's belongings."
+    },
+    {
+      "jp": "<ruby>子供<rt>こども</rt></ruby>はよく<ruby>転<rt>こ</rt></ruby>ぶ<ruby>物<rt>もの</rt></ruby>だ。",
+      "translation": "Children tend to fall down a lot — that's just how it is.",
+      "register": "standard",
+      "notes": "Grammatical use: 〜<ruby>物<rt>もの</rt></ruby>だ expressing something as a natural truth or general tendency."
+    },
+    {
+      "jp": "あの<ruby>頃<rt>ころ</rt></ruby>はよく<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>遊<rt>あそ</rt></ruby>んだ<ruby>物<rt>もの</rt></ruby>だ。",
+      "translation": "We used to play together a lot back in those days.",
+      "register": "casual",
+      "notes": "Grammatical use: <ruby>物<rt>もの</rt></ruby>だ after a past-tense verb expresses fond or wistful reminiscence."
+    },
+    {
+      "jp": "<ruby>言葉<rt>ことば</rt></ruby>というのは、<ruby>時代<rt>じだい</rt></ruby>とともに<ruby>変化<rt>へんか</rt></ruby>する<ruby>物<rt>もの</rt></ruby>である。",
+      "translation": "Language is something that changes with the times.",
+      "register": "written",
+      "notes": "Formal/written grammatical use: <ruby>物<rt>もの</rt></ruby>である expressing an inherent nature or definition of something abstract."
+    }
+  ],
+  "dont_use": "<ruby>物<rt>もの</rt></ruby> refers to things in a broad or somewhat abstract sense — when you mean a specific, concrete object right in front of you, <ruby>物<rt>もの</rt></ruby> is fine, but Japanese speakers sometimes prefer more specific words like <ruby>品物<rt>しなもの</rt></ruby> (goods/items) in commercial contexts. Don't confuse the standalone noun use with the grammatical 形式名詞 use — saying <ruby>子供<rt>こども</rt></ruby>は<ruby>元気<rt>げんき</rt></ruby>な<ruby>物<rt>もの</rt></ruby>を<ruby>食<rt>た</rt></ruby>べる when you mean 'children eat energetic things' would sound odd; context matters. Also avoid overusing 〜<ruby>物<rt>もの</rt></ruby>だ for personal opinions — it asserts something as a universal truth, which can sound presumptuous.",
+  "confused_with": {
+    "word": "<ruby>事<rt>こと</rt></ruby>",
+    "reading": "こと",
+    "contrast": "<ruby>物<rt>もの</rt></ruby> refers to tangible things or concrete entities (and by extension, people or situations treated as 'things'), while <ruby>事<rt>こと</rt></ruby> refers to intangible matters, facts, situations, or actions. For example, <ruby>好<rt>す</rt></ruby>きな<ruby>物<rt>もの</rt></ruby> means 'things you like' (objects, food, etc.), but <ruby>好<rt>す</rt></ruby>きな<ruby>事<rt>こと</rt></ruby> means 'things you like doing' (activities, situations). As a rule of thumb: if you can hold it, it's likely <ruby>物<rt>もの</rt></ruby>; if it's an event or action, it's <ruby>事<rt>こと</rt></ruby>."
+  },
+  "frequency": "<ruby>物<rt>もの</rt></ruby> is extremely common across all registers — daily speech, written Japanese, and formal texts alike. The grammatical uses (〜<ruby>物<rt>もの</rt></ruby>だ for natural truths, reminiscence) are especially frequent in spoken and written Japanese and are important patterns to recognize at the N3 level.",
+  "anki_hint": "When <ruby>物<rt>もの</rt></ruby> comes after a verb or adjective rather than standing alone, it's almost always acting as a grammatical word — 〜<ruby>物<rt>もの</rt></ruby>だ means 'that's just how things are' or 'we used to...', not a literal object.",
+  "input": "物",
+  "timestamp": "2026-06-14T20:34:13.491Z"
+}
