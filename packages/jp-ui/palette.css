@@ -1,0 +1,15 @@
+/* jp-ui: shared visual palette for Japanese learning apps */
+
+:root {
+  --bg: #0d0d1a; --bg2: #13132a; --bg3: #1a1a35;
+  --border: rgba(180,140,255,0.10); --border2: rgba(180,140,255,0.24);
+  --text: #eeeaf8; --text2: #9b94c0; --text3: #534e72;
+  --pink: #ff6fa8; --pink2: #c44c7e;
+  --cyan: #4fd8e8; --cyan2: #279aaa;
+  --yellow: #ffe066; --purple: #b97fff; --purple2: #7a4fbf;
+  --s: 1;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: var(--bg); color: var(--text); min-height: 100vh; }

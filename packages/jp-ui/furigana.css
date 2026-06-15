@@ -1,0 +1,5 @@
+/* jp-ui: ruby furigana display and hide toggle */
+
+ruby { display: inline-ruby; }
+rt { color: var(--pink); font-size: 0.5rem; letter-spacing: 0; }
+body.hide-furigana rt { display: none !important; }
