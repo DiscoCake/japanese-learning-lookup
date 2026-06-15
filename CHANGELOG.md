@@ -3,6 +3,102 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-14 — Refresh button for cached results; pitch accent for all modes
+
+- `public/js/lookup-client.js`: `renderResult` accepts `opts` and forwards to render functions;
+  `doLookup` adds `{ force }` param to bypass history cache; cached hits now pass `fromCache: true`
+- `public/js/render.js`: vocab and grammar headers show an `↺` refresh button when `opts.fromCache`
+- `public/js/main.js`: `onHistorySelect` passes `fromCache: true`; delegated click handler on
+  `#result` handles `.refresh-btn` — confirm dialog, then `doLookup({ force: true })`
+- `public/index.html`: `.refresh-btn` CSS — muted, borderless, opacity-fade on hover
+- Pitch accent note: standard mode results in history from before pitch enrichment was added
+  will not show pitch display; use `↺` to regenerate and get pitch_accent from Kanjium
+
+### 2026-06-14 — Phase 6: JJ mode quality, word speak button, mobile TTS
+
+**JJ mode prompt rewrite** (`src/lookup.js` — archived `2026-06-14_lookup.js`):
+- Removed "like a 国語辞典" framing from both `VOCAB_SYSTEM_JJ` and `GRAMMAR_SYSTEM_JJ`;
+  replaced with "friendly Japanese teacher speaking naturally to a beginner"
+- Added concrete constraint block in Japanese: 40-char sentence length target, forbidden
+  N2+ vocabulary list (概念・抽象的・体系…), forbidden N2+ grammar patterns, and
+  an explicit per-kanji ruby reminder naming common offenders (使・場面・残念…)
+- Added `if (opts.jj) result._jj = true` in `lookup()` for eval harness use
+
+**Eval harness expanded** (`eval/golden.js`, `eval/run.js`, `eval/checks.js`):
+- 3 new JJ golden cases: `見る (JJ)`, `大丈夫 (JJ)`, `～てしまう (JJ)` — 26 total
+- `eval/run.js`: `snapPath` adds `_jj` suffix for JJ cases; `lookupWithRetry` now accepts
+  full case object and passes `jj` option; report label shows `(JJ)` suffix
+- `eval/checks.js`: new `jjSentenceLength` check (>80 chars per sentence flags as too dense);
+  `prosePairs` now skips prose fields and sentence notes for JJ results (ruby required only
+  on `sentences[i].jp` — model reliably omits ruby on common kanji in natural JP prose)
+- `eval:check` green at 26/26
+
+**Word-level speak button** (`public/js/render.js`, `public/js/anki.js`):
+- Vocab card header now has a `▶` speak button next to the reading; speaks the word reading
+  via `data-speak` attribute — no parent `.sentence-item` lookup needed
+- `anki.js` speak handler checks `speakBtn.dataset.speak` first, falls back to
+  `.sentence-item → .sentence-jp` path for sentence buttons
+
+**Mobile TTS voice fix** (`public/js/tts.js`):
+- Voice selection now falls back to `v.localService === true` when no Enhanced/Premium
+  voices are found; catches downloaded iOS voices (Kyoko, Otoya) that lack macOS-style
+  labels — enables voice cycling on mobile
+
+### 2026-06-14 — 苦手 panel on mobile via JSON cache
+
+- `src/server.js`: `GET /api/anki/struggling` now writes a cache to `data/struggling_cache.json`
+  on every successful AnkiConnect response; on failure (Anki closed / away from desk) falls
+  back to the cache with `{ ...data, fromCache: true, cachedAt: timestamp }` — returns 503
+  only if no cache exists yet
+- `public/js/anki.js`: added `formatAgo(ts)` helper; panel now shows "キャッシュ（X前に同期）"
+  banner when serving cached data; error message updated to explain that opening Anki syncs it
+- `public/index.html`: removed `#anki-btn` from the mobile hide list — 苦手 button now
+  visible on phone; BunPro / scale bar / IME / TSV copy still hidden
+
+### 2026-06-14 — Shared history across devices
+
+- `src/history.js`: new module — reads/writes `data/history.json` (max 50 entries, same
+  cap as before); `getHistory()`, `addEntry(r)`, `deleteEntry(input, jj)`, `clearEntries()`
+- `src/server.js`: three new routes — `GET /api/history`, `POST /api/history { entry }`,
+  `DELETE /api/history { input, jj } | { all: true }`; no rate limiting (not Claude-calling)
+- `public/js/history.js`: replaced localStorage with server API + in-memory array;
+  `initHistory()` exported — fetches from server on load, populates in-memory array and
+  updates badge; `addToHistory` does optimistic local update then fire-and-forget POST;
+  per-entry delete and `clearHistory` call DELETE; `findInHistory` unchanged (in-memory,
+  sync — still fast for lookup cache hits); old `HISTORY_KEY` / `saveHistory` removed
+- `public/js/main.js`: `initHistory` imported and called at startup instead of
+  `updateHistoryBadge` (initHistory calls updateHistoryBadge once data loads)
+- History is now shared between desktop and phone — any lookup on either device appears
+  in the history panel on both; `data/history.json` is the source of truth
+- Existing localStorage history is abandoned (not migrated) — fresh start on server
+
+### 2026-06-14 — Phase 5: mobile usage (read-on-the-go lookups)
+
+- `src/server.js`: `app.listen` now binds to `'0.0.0.0'` — server reachable on all
+  interfaces (LAN and Tailscale), not just localhost; startup log updated to note this
+- `src/server.js`: in-memory sliding-window rate limiter added (`rateLimit` middleware);
+  applied to the four Claude-calling routes only (`POST /api/lookup`, `POST /api/lookup/stream`,
+  `GET /api/export`, `POST /api/paste/stream`); default cap 30 req/min/IP; configurable via
+  `RATE_LIMIT_PER_MIN` env var; zero dependencies, pure JS `Map<ip, timestamps[]>` approach
+- `.env.example`: added `RATE_LIMIT_PER_MIN` entry with description
+- `public/index.html`: added `@media (hover: hover)` block to gate the history ✕ hover-reveal
+  to pointer devices; removed hardcoded `opacity: 0` from `.h-del-btn` base rule so touch
+  always sees the button; added `@media (max-width: 480px)` responsive block — header flex
+  wraps, panel padding cut to `1.25rem 1rem`, `.ctrl-btn` / `.mode-tab` / `.lang-opt` min
+  heights ~44px for touch, `#anki-btn` / `#bunpro-btn` / `#scale-bar` hidden on mobile
+  (require desktop AnkiConnect), card padding tightened, `#search-btn` min-height 44px
+- `public/index.html`: `#ime-btn` — removed hardcoded `active` class from HTML; JS now adds
+  it at runtime only for non-touch devices
+- `public/js/main.js`: IME defaults off on touch devices — `isTouchDevice` detected via
+  `window.matchMedia('(hover: none) and (pointer: coarse)')`, WanaKana `bindIME` and
+  `#ime-btn active` class skipped on touch; desktop behavior (IME on by default) unchanged;
+  toggle (`ローマ字` button) still works in both directions on all devices
+- `README.md`: added "Mobile / remote access (Tailscale)" section — Tailscale setup steps,
+  `caffeinate` tip, what's hidden on mobile, rate-limit note
+- `CLAUDE.md`: marked Phase 5 complete in roadmap; added deferred items note
+- Archived: `archive/2026-06-14_server_pre-phase5.js`, `archive/2026-06-14_index_pre-phase5.html`,
+  `archive/2026-06-14_main_pre-phase5.js` (via PreToolUse hook)
+
 ### 2026-06-14 — Retrospective fixes: eval hardening, paste serialization, archive hook, README
 
 - `src/lookup.js`: added ruby reminder to `sentences[N].notes` field in all four system prompts

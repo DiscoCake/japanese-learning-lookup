@@ -237,6 +237,12 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
   line-height: 1.6; transition: color 0.15s, border-color 0.15s;
 }
 .speak-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+.refresh-btn {
+  background: none; border: none; color: var(--text3); font-size: 0.85rem;
+  cursor: pointer; padding: 0 0.2rem; line-height: 1; opacity: 0.6;
+  transition: color 0.15s, opacity 0.15s;
+}
+.refresh-btn:hover { color: var(--text); opacity: 1; }
 .anki-send-btn {
   background: none; border: 1px solid var(--border2); color: var(--text2);
   border-radius: 4px; padding: 0 0.5rem; font-size: 0.65rem; cursor: pointer;
@@ -281,8 +287,7 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
 .h-mode.vocab { border-color: var(--cyan2); color: var(--cyan); }
 .h-mode.grammar { border-color: var(--purple); color: var(--purple); }
 .h-time { font-size: 0.6rem; color: var(--text3); margin-left: auto; }
-.h-del-btn { background: none; border: none; color: var(--text3); cursor: pointer; font-size: 0.75rem; padding: 0.2rem 0.4rem; border-radius: 4px; opacity: 0; transition: opacity 0.12s, color 0.12s; flex-shrink: 0; }
-.history-entry:hover .h-del-btn { opacity: 1; }
+.h-del-btn { background: none; border: none; color: var(--text3); cursor: pointer; font-size: 0.75rem; padding: 0.2rem 0.4rem; border-radius: 4px; transition: opacity 0.12s, color 0.12s; flex-shrink: 0; }
 .h-del-btn:hover { color: var(--pink); }
 .lang-switch { display: inline-flex; align-items: center; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2px; cursor: pointer; user-select: none; }
 .lang-opt { padding: 0.15rem 0.55rem; border-radius: 14px; font-size: 0.78rem; color: var(--text3); transition: background 0.18s, color 0.18s; }
@@ -296,6 +301,56 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
 }
 .panel-btn:hover { border-color: var(--cyan2); }
 .panel-empty { color: var(--text3); font-size: 0.8rem; padding: 1.5rem 0; }
+
+/* Delete button: hidden until hover on pointer devices, always visible on touch */
+@media (hover: hover) {
+  .h-del-btn { opacity: 0; }
+  .history-entry:hover .h-del-btn { opacity: 1; }
+}
+
+/* ── MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+  body { padding: 1.25rem 0.75rem 4rem; }
+
+  /* Header: stack title + controls vertically, let controls wrap */
+  #header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  #header-right { flex-wrap: wrap; gap: 0.5rem; }
+
+  /* Hide desktop-only controls */
+  #bunpro-btn, #scale-bar, #ime-btn, #copy-tsv-btn { display: none; }
+
+  /* Larger touch targets for remaining controls */
+  .ctrl-btn {
+    font-size: 0.75rem;
+    padding: 0.55rem 1rem;
+    min-height: 44px;
+    display: inline-flex; align-items: center;
+  }
+  .mode-tab {
+    padding: 0.6rem 1.4rem;
+    min-height: 44px;
+  }
+  .lang-opt { padding: 0.4rem 0.75rem; min-height: 40px; display: inline-flex; align-items: center; }
+  .scale-btn { width: 2.2rem; height: 2.2rem; min-height: 44px; }
+
+  /* Panels: much less padding on small screens */
+  .panel { padding: 1.25rem 1rem; }
+  .panel-inner { max-width: 100%; }
+
+  /* History delete button: always visible on touch (no hover) */
+  .h-del-btn { opacity: 1; }
+
+  /* Card padding slightly tighter */
+  .card { padding: 1rem 1rem; }
+  .result-word { font-size: 1.6rem; }
+
+  /* Search button: full-width row on very narrow screens */
+  #search-row { flex-wrap: wrap; }
+  #search-btn { min-height: 44px; padding: 0 1.2rem; }
+
+  /* Export bar buttons wrap gracefully */
+  #export-bar { gap: 0.5rem; }
+}
 </style>
 </head>
 <body>
@@ -308,7 +363,7 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
     </div>
     <div id="header-right">
       <button class="ctrl-btn active" id="furigana-btn">ふりがな</button>
-      <button class="ctrl-btn active" id="ime-btn">ローマ字</button>
+      <button class="ctrl-btn" id="ime-btn">ローマ字</button>
       <div class="lang-switch" id="jj-btn" title="説明言語を切り替える">
         <span class="lang-opt" data-val="en">英語</span>
         <span class="lang-opt" data-val="ja">日本語</span>

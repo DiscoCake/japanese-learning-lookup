@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run eval:check)",
+      "Bash(npm run eval:check *)",
+      "Bash(npm run test:smoke)",
+      "Bash(curl -s http://localhost:3001*)",
+      "Bash(curl -s http://localhost:8765*)",
+      "Bash(curl -s -o /dev/null -w * http://localhost:*)",
+      "Bash(/Applications/Tailscale.app/*/Tailscale status*)",
+      "Bash(/Applications/Tailscale.app/*/Tailscale ip*)",
+      "Bash(/Applications/Tailscale.app/*/Tailscale debug prefs*)",
+      "Bash(ipconfig getifaddr *)",
+      "Bash(open http://localhost*)",
+      "Bash(ping -c * *)"
+    ]
+  }
+}

@@ -110,6 +110,8 @@ export function renderVocab(r, opts = {}) {
     <div class="result-header">
       <span class="result-word">${r.word || '…'}</span>
       ${r.reading ? `<span class="result-reading">【${r.pitch_accent ? formatPitchDisplay(r.reading, r.pitch_accent) : r.reading}】</span>` : ''}
+      <button class="speak-btn" data-speak="${(r.reading || r.word || '').replace(/"/g, '&quot;')}" title="語を読む">▶</button>
+      ${opts.fromCache ? `<button class="refresh-btn" title="再生成">↺</button>` : ''}
       <span class="mode-pill vocab">単語</span>
     </div>
 
@@ -184,6 +186,7 @@ export function renderGrammar(r, opts = {}) {
   return `
     <div class="result-header">
       <span class="result-word" style="font-size:1.5rem">${r.pattern || '…'}</span>
+      ${opts.fromCache ? `<button class="refresh-btn" title="再生成">↺</button>` : ''}
       <span class="mode-pill grammar">文法</span>
     </div>
 

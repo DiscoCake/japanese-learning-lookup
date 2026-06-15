@@ -41,4 +41,9 @@ module.exports = [
   { input: '～はず', mode: 'grammar' },
   { input: '～ながら', mode: 'grammar' },
   { input: '～そうだ', mode: 'grammar' },
+
+  // ── JJ mode: representative cases to guard conversational register ──
+  { input: '見る', mode: 'vocab', jj: true },
+  { input: '大丈夫', mode: 'vocab', jj: true },
+  { input: '～てしまう', mode: 'grammar', jj: true },
 ];
