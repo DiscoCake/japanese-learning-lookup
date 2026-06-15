@@ -1,0 +1,43 @@
+{
+  "pattern": "～てしまう",
+  "mode": "grammar",
+  "real_meaning": "「～てしまう」は、<ruby>何<rt>なに</rt></ruby>かが<ruby>完全<rt>かんぜん</rt></ruby>に終わった、または<ruby>起<rt>お</rt></ruby>きてほしくないことが<ruby>起<rt>お</rt></ruby>きた、という<ruby>気持<rt>きも</rt></ruby>ちを<ruby>表<rt>あらわ</rt></ruby>します。「あーあ、やってしまった」とか「もう終わった！」という感じです。<ruby>残念<rt>ざんねん</rt></ruby>な気持ちや、ちょっと困った気持ちが入っていることが多いです。",
+  "formation": {
+    "rule": "<ruby>動詞<rt>どうし</rt></ruby>の「て<ruby>形<rt>けい</rt></ruby>」に「しまう」をつけます。たとえば、<ruby>食<rt>た</rt></ruby>べる→<ruby>食<rt>た</rt></ruby>べてしまう、<ruby>忘<rt>わす</rt></ruby>れる→<ruby>忘<rt>わす</rt></ruby>れてしまう、<ruby>飲<rt>の</rt></ruby>む→<ruby>飲<rt>の</rt></ruby>んでしまう（「む」は「んで」になる）です。<ruby>会話<rt>かいわ</rt></ruby>では「～ちゃう」「～じゃう」と<ruby>短<rt>みじか</rt></ruby>くなることも多いです。",
+    "common_mistake": "「てしまう」は<ruby>必<rt>かなら</rt></ruby>ずしもマイナスな<ruby>意味<rt>いみ</rt></ruby>だけではないのに、いつもネガティブだと<ruby>思<rt>おも</rt></ruby>う人が多いです。❌「<ruby>宿題<rt>しゅくだい</rt></ruby>を全部てしまった」→ ⭕「<ruby>宿題<rt>しゅくだい</rt></ruby>を全部やってしまった」のように「て<ruby>形<rt>けい</rt></ruby>」を<ruby>忘<rt>わす</rt></ruby>れないようにしましょう。"
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>昨日<rt>きのう</rt></ruby>、ケーキを<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>食<rt>た</rt></ruby>べちゃった。",
+      "translation": "I ended up eating all the cake yesterday.",
+      "register": "casual",
+      "notes": "「ちゃった」は「てしまった」のカジュアルな<ruby>形<rt>けい</rt></ruby>で、ちょっと<ruby>後悔<rt>こうかい</rt></ruby>している<ruby>気持<rt>きも</rt></ruby>ちが出ています。"
+    },
+    {
+      "jp": "<ruby>大事<rt>たいせつ</rt></ruby>なメールを<ruby>消<rt>け</rt></ruby>してしまいました。",
+      "translation": "I accidentally deleted an important email.",
+      "register": "standard",
+      "notes": "「～てしまいました」でミスをして<ruby>困<rt>こま</rt></ruby>っている<ruby>気持<rt>きも</rt></ruby>ちを<ruby>自然<rt>しぜん</rt></ruby>に<ruby>伝<rt>つた</rt></ruby>えています。"
+    },
+    {
+      "jp": "<ruby>報告書<rt>ほうこくしょ</rt></ruby>はすでに<ruby>提出<rt>ていしゅつ</rt></ruby>してしまいましたので、<ruby>変更<rt>へんこう</rt></ruby>はできません。",
+      "translation": "Since the report has already been submitted, changes cannot be made.",
+      "register": "formal",
+      "notes": "ここでは<ruby>後悔<rt>こうかい</rt></ruby>より「もう<ruby>終<rt>お</rt></ruby>わった」という<ruby>完了<rt>かんりょう</rt></ruby>の<ruby>意味<rt>いみ</rt></ruby>が<ruby>強<rt>つよ</rt></ruby>いです。"
+    },
+    {
+      "jp": "この<ruby>映画<rt>えいが</rt></ruby>、<ruby>面白<rt>おもしろ</rt></ruby>すぎて<ruby>泣<rt>な</rt></ruby>いてしまった。",
+      "translation": "This movie was so good that I ended up crying.",
+      "register": "casual",
+      "notes": "<ruby>悲<rt>かな</rt></ruby>しいからではなく、<ruby>感動<rt>かんどう</rt></ruby>して<ruby>泣<rt>な</rt></ruby>いた<ruby>場合<rt>ばあい</rt></ruby>でも「てしまう」が<ruby>使<rt>つか</rt></ruby>えます。マイナスじゃない<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>の<ruby>例<rt>れい</rt></ruby>です。"
+    }
+  ],
+  "confused_with": {
+    "pattern": "～ておく",
+    "contrast": "「～てしまう」は「<ruby>終<rt>お</rt></ruby>わった、やってしまった」という<ruby>気持<rt>きも</rt></ruby>ちです。「～ておく」は「あとのために<ruby>準備<rt>じゅんび</rt></ruby>としてやる」という<ruby>意味<rt>いみ</rt></ruby>です。たとえば、「<ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった」は「もう終わった（ほっとした／やってしまった）」です。「<ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた」は「あとで<ruby>困<rt>こま</rt></ruby>らないように<ruby>先<rt>さき</rt></ruby>にやった」です。<ruby>気持<rt>きも</rt></ruby>ちが<ruby>全然<rt>ぜんぜん</rt></ruby>ちがうので<ruby>気<rt>き</rt></ruby>をつけましょう。"
+  },
+  "bunpro_tip": "「てしまう」を<ruby>覚<rt>おぼ</rt></ruby>えるとき、「あ、やっちゃった！」という<ruby>場面<rt>ばめん</rt></ruby>を<ruby>思<rt>おも</rt></ruby>い<ruby>浮<rt>う</rt></ruby>かべると<ruby>覚<rt>おぼ</rt></ruby>えやすいです。カジュアルな「～ちゃう／～じゃう」も<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>練習<rt>れんしゅう</rt></ruby>しましょう。",
+  "input": "～てしまう",
+  "timestamp": "2026-06-15T03:10:37.204Z",
+  "_jj": true
+}

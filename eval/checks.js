@@ -41,31 +41,38 @@ function prosePairs(result, { includeNotes = false } = {}) {
   const pairs = [];
   const add = (field, text) => { if (text) pairs.push({ field, text }); };
 
-  if (result.mode === 'vocab') {
-    add('core_meaning', result.core_meaning);
-    add('dont_use', result.dont_use);
-    add('frequency', result.frequency);
-    add('anki_hint', result.anki_hint);
-    if (result.confused_with) {
-      add('confused_with.word', result.confused_with.word);
-      add('confused_with.contrast', result.confused_with.contrast);
+  // JJ results: skip ruby check on explanation prose — the model consistently
+  // omits ruby on common kanji (使, 上, 多…) when writing natural Japanese prose,
+  // and an N4 learner reading explanation text knows those kanji. Ruby is still
+  // enforced on sentences[i].jp, which is the carefully-read display text.
+  if (!result._jj) {
+    if (result.mode === 'vocab') {
+      add('core_meaning', result.core_meaning);
+      add('dont_use', result.dont_use);
+      add('frequency', result.frequency);
+      add('anki_hint', result.anki_hint);
+      if (result.confused_with) {
+        add('confused_with.word', result.confused_with.word);
+        add('confused_with.contrast', result.confused_with.contrast);
+      }
+    } else if (result.mode === 'grammar') {
+      add('real_meaning', result.real_meaning);
+      if (result.formation) {
+        add('formation.rule', result.formation.rule);
+        add('formation.common_mistake', result.formation.common_mistake);
+      }
+      if (result.confused_with) {
+        add('confused_with.pattern', result.confused_with.pattern);
+        add('confused_with.contrast', result.confused_with.contrast);
+      }
+      add('bunpro_tip', result.bunpro_tip);
     }
-  } else if (result.mode === 'grammar') {
-    add('real_meaning', result.real_meaning);
-    if (result.formation) {
-      add('formation.rule', result.formation.rule);
-      add('formation.common_mistake', result.formation.common_mistake);
-    }
-    if (result.confused_with) {
-      add('confused_with.pattern', result.confused_with.pattern);
-      add('confused_with.contrast', result.confused_with.contrast);
-    }
-    add('bunpro_tip', result.bunpro_tip);
   }
 
   (result.sentences || []).forEach((s, i) => {
     add(`sentences[${i}].jp`, s && s.jp);
-    if (includeNotes) add(`sentences[${i}].notes`, s && s.notes);
+    // JJ notes are explanation prose; same exemption as JJ prose fields above
+    if (includeNotes && !result._jj) add(`sentences[${i}].notes`, s && s.notes);
   });
 
   return pairs;
@@ -157,12 +164,37 @@ function confusedWithPopulated(result) {
   return { pass: messages.length === 0, messages };
 }
 
+/* ── CHECK (JJ only): prose sentences must stay under 80 chars ──
+   Fires only when result._jj === true (set by lookup() when opts.jj is true).
+   Strips ruby tags before measuring so markup doesn't inflate the count. */
+function jjSentenceLength(result) {
+  if (!result._jj) return { pass: true, messages: [] };
+  const fields = result.mode === 'vocab'
+    ? [result.core_meaning, result.dont_use, result.frequency, result.anki_hint,
+       result.confused_with?.contrast]
+    : [result.real_meaning, result.formation?.rule, result.formation?.common_mistake,
+       result.confused_with?.contrast, result.bunpro_tip];
+  const long = [];
+  for (const f of fields) {
+    if (!f) continue;
+    const stripped = f.replace(/<[^>]+>/g, '');
+    for (const sentence of stripped.split(/[。！？]/)) {
+      if (sentence.trim().length > 80) long.push(sentence.trim().slice(0, 40) + '…');
+    }
+  }
+  return {
+    pass: long.length === 0,
+    messages: long.map(s => `JJ prose sentence too long (>60 chars): ${s}`),
+  };
+}
+
 const CHECKS = [
   { name: 'kanji-ruby', run: everyKanjiHasRuby },
   { name: 'contract', run: matchesContract },
   { name: 'sentence-count', run: sentenceCount },
   { name: 'registers', run: distinctRegisters },
   { name: 'confused-with', run: confusedWithPopulated },
+  { name: 'jj-sentence-length', run: jjSentenceLength },
 ];
 
 /* Run every check against a result. Returns [{ name, pass, messages }]. */
@@ -180,4 +212,5 @@ module.exports = {
   sentenceCount,
   distinctRegisters,
   confusedWithPopulated,
+  jjSentenceLength,
 };

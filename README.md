@@ -87,6 +87,30 @@ node src/cli.js --raw 見える      # raw JSON output
 
 See `CLAUDE.md` for architecture and design decisions.
 
+## Mobile / remote access (Tailscale)
+
+The server now binds to all interfaces (`0.0.0.0`), so any device on the same network or
+Tailscale tailnet can reach it. Recommended setup for use on your phone while out:
+
+1. **Install [Tailscale](https://tailscale.com/)** on the Mac and phone — sign both into the
+   same account. Free for personal use.
+2. **Start the server** on the Mac: `npm start` (or `npm run dev`).
+   Keep the Mac awake: `caffeinate -s &` in another terminal during a study session.
+3. **Open** `http://<mac-tailscale-hostname>:3001` in the phone's browser.
+   Find your Mac's Tailscale hostname in the Tailscale app or at
+   `tailscale status` → the `<name>.ts.net` entry. Bookmark it.
+
+No port forwarding or public exposure needed — Tailscale is a private encrypted mesh.
+
+**On mobile:**
+- Touch targets are enlarged (~44px); the header buttons wrap on narrow screens.
+- The `苦手` and `文法苦手` panel buttons are hidden on mobile (AnkiConnect is desktop-only).
+  TSV/JSON copy buttons still work via the system clipboard.
+- The WanaKana romaji→kana IME starts **off** on touch devices — use the native Japanese
+  keyboard. Tap `ローマ字` to enable it if you prefer romaji input.
+- A per-IP rate limiter (default 30 lookups/min) is active on Claude-calling routes;
+  configure via `RATE_LIMIT_PER_MIN` in `.env`.
+
 ## Development
 
 ```bash

@@ -1,21 +1,47 @@
-const HISTORY_KEY = 'companion_history_v1';
 const MAX_HISTORY = 50;
 
-let history = loadHistory();
+let history = [];
 
-function loadHistory() {
-  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch { return []; }
-}
+const LEGACY_KEY = 'companion_history_v1';
 
-function saveHistory() {
-  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, MAX_HISTORY))); } catch {}
+export async function initHistory() {
+  try {
+    // One-time migration: if localStorage has entries, merge them into the server
+    const legacy = (() => {
+      try { return JSON.parse(localStorage.getItem(LEGACY_KEY) || '[]'); } catch { return []; }
+    })();
+    if (legacy.length) {
+      const res = await fetch('/api/history', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entries: legacy }),
+      });
+      if (res.ok) localStorage.removeItem(LEGACY_KEY);
+      const data = await res.json();
+      history = data.entries || [];
+    } else {
+      const res = await fetch('/api/history');
+      if (res.ok) {
+        const data = await res.json();
+        history = data.entries || [];
+      }
+    }
+    updateHistoryBadge();
+  } catch {}
 }
 
 export function addToHistory(r) {
+  // Optimistic local update
   history = history.filter(h => !(h.input === r.input && !!h.jj === !!r.jj));
   history.unshift(r);
-  saveHistory();
+  if (history.length > MAX_HISTORY) history = history.slice(0, MAX_HISTORY);
   updateHistoryBadge();
+  // Persist to server (fire-and-forget)
+  fetch('/api/history', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ entry: r }),
+  }).catch(() => {});
 }
 
 export function findInHistory(input, jj) {
@@ -24,8 +50,12 @@ export function findInHistory(input, jj) {
 
 export function clearHistory() {
   history = [];
-  saveHistory();
   updateHistoryBadge();
+  fetch('/api/history', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ all: true }),
+  }).catch(() => {});
 }
 
 export function updateHistoryBadge() {
@@ -90,8 +120,12 @@ export function openHistoryPanel(onSelect) {
         e.stopPropagation();
         if (!confirm(`「${label}」を履歴から削除しますか？`)) return;
         history = history.filter(h => !(h.input === r.input && !!h.jj === !!r.jj));
-        saveHistory();
         updateHistoryBadge();
+        fetch('/api/history', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ input: r.input, jj: r.jj }),
+        }).catch(() => {});
         d.remove();
         if (!document.querySelectorAll('#history-list .history-entry').length)
           document.getElementById('history-empty').style.display = '';

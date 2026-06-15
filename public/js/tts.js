@@ -27,8 +27,10 @@ export function speak(text, btn) {
 
   const trySpeak = () => {
     const jaVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('ja'));
+    // Prefer macOS 'Enhanced'/'Premium' labels; fall back to locally-installed voices
+    // (localService:true) which catches downloaded iOS voices that lack those labels.
     const enhanced = jaVoices.filter(v => v.name.includes('Enhanced') || v.name.includes('Premium'));
-    const pool = enhanced.length ? enhanced : jaVoices;
+    const pool = enhanced.length ? enhanced : (jaVoices.filter(v => v.localService) || jaVoices);
     if (pool.length) utt.voice = pool[ttsVoiceIndex++ % pool.length];
     speechSynthesis.speak(utt);
   };

@@ -174,9 +174,38 @@ considering the task complete. Don't batch this to a docs sweep at the end.
 
 ## Development roadmap
 
-Phases 1–4 complete as of 2026-06-14 (eval harness, ES module frontend, dev tooling hooks,
-shared jp-ui package). Deferred: BunPro auth (blocked — see BunPro section), VS Code
-extension (Yomitan + Migaku cover this for now). Full history in `CHANGELOG.md`.
+Phases 1–6 complete as of 2026-06-14. Full history in `CHANGELOG.md`.
+
+**Phase 5 (complete): mobile usage (read-on-the-go lookups).** Server binds to `0.0.0.0`
+(all interfaces — reachable via Tailscale or LAN). In-memory rate limiter on Claude-calling
+routes (default 30/min/IP, `RATE_LIMIT_PER_MIN` env var). Single `@media (max-width: 480px)`
+block in `index.html`: larger touch targets, wrapped header, tighter panel padding, always-
+visible history ✕ button, `苦手`/`文法苦手` hidden on mobile (AnkiConnect is desktop-only).
+WanaKana romaji→kana IME defaults off on touch devices (native JP IME handles kana). Live
+Anki enrichment, public hosting, and a mobile-first redesign are intentionally deferred.
+See the "Mobile / remote access (Tailscale)" section of `README.md` for setup instructions.
+
+**Phase 6 (complete): JJ mode quality + mobile polish.** JJ system prompts rewritten —
+removed 国語辞典 framing, added concrete constraint block (40-char sentence target, forbidden
+N2+ vocabulary, per-kanji ruby reminder). Eval harness expanded to 26 cases (3 JJ); new
+`jjSentenceLength` check; JJ prose ruby exempted (model reliably omits ruby on common kanji
+in natural JP prose; sentences[i].jp still enforced). Word-level speak button on vocab card
+header. Mobile TTS voice selection fixed (localService fallback for iOS).
+
+**Short-term roadmap (Phase 7 candidates — mobile UX):**
+
+- **Clipboard paste button** — one-tap to paste from clipboard into the search field
+  (`public/index.html`, tiny JS, no server change)
+- **PWA manifest + home screen icon** — `manifest.json` + `<link rel=manifest>` in
+  `index.html`; gives standalone mode, splash screen, app icon on iPhone home screen
+- **iOS Shortcut for share-sheet lookup** — Shortcut that POSTs to the server and opens
+  the result; zero server code, configured once in the Shortcuts app
+- **Swipe down to clear / return to search** — touch gesture on result panel; more native
+  than tapping the header on mobile
+- **Haptic feedback on Anki send** — `navigator.vibrate(50)` on confirm + success; one line
+
+Deferred: BunPro auth (blocked on stable API token — see BunPro section), VS Code extension
+(Yomitan + Migaku cover this for now), live mobile Anki, public hosting with auth.
 
 ## BunPro integration — infrastructure built, blocked on stable auth
 

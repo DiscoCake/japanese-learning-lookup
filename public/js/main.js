@@ -1,7 +1,7 @@
 import { toggleFurigana, bindIME, toggleIME } from './furigana.js';
 import { detectMode } from './render.js';
 import {
-  addToHistory, clearHistory,
+  initHistory, addToHistory, clearHistory,
   updateHistoryBadge, openHistoryPanel,
 } from './history.js';
 import { openAnkiPanel, initAnkiResultHandlers } from './anki.js';
@@ -17,8 +17,14 @@ document.getElementById('furigana-btn').onclick = toggleFurigana;
 
 /* ── IME (WanaKana) ── */
 const searchInput = document.getElementById('search-input');
-bindIME(searchInput);
-document.getElementById('ime-btn').onclick = function() { toggleIME(searchInput, this); };
+const imeBtn = document.getElementById('ime-btn');
+// Off by default on touch devices — native JP IME handles kana; toggle still works
+const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+if (!isTouchDevice) {
+  bindIME(searchInput);
+  imeBtn.classList.add('active');
+}
+imeBtn.onclick = function() { toggleIME(searchInput, this); };
 
 /* ── J-J MODE ── */
 function setJJ(on) {
@@ -68,14 +74,25 @@ initAnkiResultHandlers(document.getElementById('result'), getCurrentResult);
 initPasteResultHandlers();
 
 /* ── HISTORY ── */
-updateHistoryBadge();
+initHistory(); // loads from server, updates badge when ready
 
 function onHistorySelect(r) {
   addToHistory(r);
-  renderResult(r);
+  renderResult(r, { fromCache: true });
   document.getElementById('history-panel').style.display = 'none';
   searchInput.value = r.input || '';
 }
+
+/* ── RESULT REFRESH (cached results) ── */
+document.getElementById('result').addEventListener('click', e => {
+  const btn = e.target.closest('.refresh-btn');
+  if (!btn) return;
+  const r = getCurrentResult();
+  if (!r) return;
+  const label = r.input || r.word || r.pattern || '?';
+  if (!confirm(`「${label}」を再生成しますか？\n（API を使用します）`)) return;
+  doLookup({ force: true });
+});
 
 document.getElementById('history-btn').onclick = () => openHistoryPanel(onHistorySelect);
 document.getElementById('history-close-btn').onclick = () => {

@@ -1,6 +1,14 @@
 import { speak } from './tts.js';
 import { toAnkiTSV } from './render.js';
 
+function formatAgo(ts) {
+  const mins = Math.round((Date.now() - ts) / 60000);
+  if (mins < 60) return `${mins}分`;
+  const hrs = Math.round(mins / 60);
+  if (hrs < 24) return `${hrs}時間`;
+  return `${Math.round(hrs / 24)}日`;
+}
+
 let currentAnkiNote = null;
 let pendingAnkiBtn = null;
 let pendingTimer = null;
@@ -88,9 +96,18 @@ export async function openAnkiPanel(onWordClick) {
     if (!res.ok) {
       status.innerHTML = `<div style="color:var(--pink);padding:1rem 0;line-height:1.6">
         AnkiConnectが見つかりません。<br>
-        <span style="color:var(--text2);font-size:0.85rem">AnkiConnectプラグインをインストールしてAnkiを開いてください。<br>（Add-on code: 2055492159）</span>
+        <span style="color:var(--text2);font-size:0.85rem">Ankiを開くとデータが同期されます。<br>（Add-on code: 2055492159）</span>
       </div>`;
       return;
+    }
+
+    if (data.fromCache && data.cachedAt) {
+      const ago = formatAgo(data.cachedAt);
+      status.innerHTML = `<div style="color:var(--text3);font-size:0.72rem;padding:0.4rem 0 0.8rem">
+        キャッシュ（${ago}前に同期）— Ankiを開くと最新データに更新されます
+      </div>`;
+    } else {
+      status.innerHTML = '';
     }
 
     if (!data.cards.length) {
@@ -161,13 +178,18 @@ export function initAnkiResultHandlers(resultEl, getCurrentResult) {
   }, true);
 
   resultEl.addEventListener('click', async e => {
-    // Speak buttons
+    // Speak buttons — word-header buttons carry data-speak with the reading directly;
+    // sentence buttons find their text from the parent .sentence-item
     const speakBtn = e.target.closest('.speak-btn');
     if (speakBtn) {
-      const jpEl = speakBtn.closest('.sentence-item').querySelector('.sentence-jp');
-      const clone = jpEl.cloneNode(true);
-      clone.querySelectorAll('rt').forEach(rt => rt.remove());
-      speak(clone.textContent, speakBtn);
+      if (speakBtn.dataset.speak) {
+        speak(speakBtn.dataset.speak, speakBtn);
+      } else {
+        const jpEl = speakBtn.closest('.sentence-item').querySelector('.sentence-jp');
+        const clone = jpEl.cloneNode(true);
+        clone.querySelectorAll('rt').forEach(rt => rt.remove());
+        speak(clone.textContent, speakBtn);
+      }
       return;
     }
 

@@ -1,0 +1,54 @@
+{
+  "word": "大丈夫",
+  "reading": "だいじょうぶ",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 3,
+    "label": "nakadaka",
+    "pattern": "LHHLL"
+  },
+  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>は「<ruby>問題<rt>もんだい</rt></ruby>ない」「<ruby>安全<rt>あんぜん</rt></ruby>だ」という<ruby>意味<rt>いみ</rt></ruby>です。<ruby>心配<rt>しんぱい</rt></ruby>しなくていいよ、というときによく<ruby>使<rt>つか</rt></ruby>います。",
+  "sentences": [
+    {
+      "jp": "「<ruby>転<rt>こ</rt></ruby>んじゃった！」「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？」",
+      "translation": "'I fell!' 'Are you okay?'",
+      "register": "casual",
+      "notes": "<ruby>友達<rt>ともだち</rt></ruby>や<ruby>家族<rt>かぞく</rt></ruby>を<ruby>心配<rt>しんぱい</rt></ruby>するときの<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>です。"
+    },
+    {
+      "jp": "もう<ruby>熱<rt>ねつ</rt></ruby>も<ruby>下<rt>さ</rt></ruby>がったから、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。",
+      "translation": "My fever has gone down, so I'm fine now.",
+      "register": "casual",
+      "notes": "「<ruby>回復<rt>かいふく</rt></ruby>した・<ruby>問題<rt>もんだい</rt></ruby>ない」という<ruby>意味<rt>いみ</rt></ruby>で<ruby>使<rt>つか</rt></ruby>っています。"
+    },
+    {
+      "jp": "このブレーキは<ruby>古<rt>ふる</rt></ruby>いですが、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。",
+      "translation": "These brakes are old, but they're fine.",
+      "register": "standard",
+      "notes": "<ruby>安全<rt>あんぜん</rt></ruby>や<ruby>状態<rt>じょうたい</rt></ruby>に<ruby>問題<rt>もんだい</rt></ruby>がないと<ruby>伝<rt>つた</rt></ruby>えています。"
+    },
+    {
+      "jp": "「コーヒーはいかがですか？」「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です、ありがとうございます。」",
+      "translation": "'Would you like some coffee?' 'No, thank you, I'm fine.'",
+      "register": "standard",
+      "notes": "「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です」はやさしい<ruby>断<rt>ことわ</rt></ruby>り<ruby>方<rt>かた</rt></ruby>としてもよく<ruby>使<rt>つか</rt></ruby>います。"
+    },
+    {
+      "jp": "<ruby>作業<rt>さぎょう</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>必<rt>かなら</rt></ruby>ず<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>し、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だと<ruby>確<rt>たし</rt></ruby>かめてください。",
+      "translation": "Please always check safety before starting work and make sure everything is okay.",
+      "register": "formal",
+      "notes": "<ruby>書<rt>か</rt></ruby>き<ruby>言葉<rt>ことば</rt></ruby>や<ruby>説明<rt>せつめい</rt></ruby>の<ruby>中<rt>なか</rt></ruby>でも「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>」は<ruby>使<rt>つか</rt></ruby>えます。"
+    }
+  ],
+  "dont_use": "とてもかしこまった<ruby>場面<rt>ばめん</rt></ruby>（<ruby>書類<rt>しょるい</rt></ruby>や<ruby>公式<rt>こうしき</rt></ruby>なスピーチなど）では「<ruby>問題<rt>もんだい</rt></ruby>ございません」のほうが<ruby>自然<rt>しぜん</rt></ruby>です。また「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です」で<ruby>断<rt>ことわ</rt></ruby>ると、<ruby>外国人<rt>がいこくじん</rt></ruby>には「OK」に<ruby>聞<rt>き</rt></ruby>こえることがあるので<ruby>注意<rt>ちゅうい</rt></ruby>してください。",
+  "confused_with": {
+    "word": "<ruby>平気<rt>へいき</rt></ruby>",
+    "reading": "へいき",
+    "contrast": "「<ruby>平気<rt>へいき</rt></ruby>」も「<ruby>問題<rt>もんだい</rt></ruby>ない」という<ruby>意味<rt>いみ</rt></ruby>ですが、もっとカジュアルな<ruby>感<rt>かん</rt></ruby>じです。「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？」より「<ruby>平気<rt>へいき</rt></ruby>？」のほうが<ruby>気軽<rt>きがる</rt></ruby>に<ruby>聞<rt>き</rt></ruby>こえます。また「<ruby>平気<rt>へいき</rt></ruby>」は<ruby>丁寧<rt>ていねい</rt></ruby>な<ruby>場面<rt>ばめん</rt></ruby>にはあまり<ruby>使<rt>つか</rt></ruby>いません。"
+  },
+  "frequency": "「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>」は<ruby>日常<rt>にちじょう</rt></ruby><ruby>会話<rt>かいわ</rt></ruby>でとてもよく<ruby>使<rt>つか</rt></ruby>われます。カジュアルから<ruby>標準<rt>ひょうじゅん</rt></ruby>レベルまで<ruby>幅広<rt>はばひろ</rt></ruby>く<ruby>使<rt>つか</rt></ruby>えます。",
+  "anki_hint": "「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>」は「OK・<ruby>問題<rt>もんだい</rt></ruby>ない」という<ruby>意味<rt>いみ</rt></ruby>で<ruby>使<rt>つか</rt></ruby>うほか、やさしく<ruby>断<rt>ことわ</rt></ruby>るときにも<ruby>使<rt>つか</rt></ruby>えます。",
+  "input": "大丈夫",
+  "timestamp": "2026-06-15T03:07:41.340Z",
+  "_jj": true
+}

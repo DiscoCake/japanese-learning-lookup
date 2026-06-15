@@ -20,10 +20,10 @@ export function getModeOverride() { return modeOverride; }
 export function setModeOverride(mode) { modeOverride = mode; }
 export function clearModeOverride() { modeOverride = null; }
 
-export function renderResult(r) {
+export function renderResult(r, opts = {}) {
   currentResult = r;
   const el = document.getElementById('result');
-  el.innerHTML = r.mode === 'vocab' ? renderVocab(r) : renderGrammar(r);
+  el.innerHTML = r.mode === 'vocab' ? renderVocab(r, opts) : renderGrammar(r, opts);
   el.style.display = 'block';
   el.classList.add('fadein');
   setTimeout(() => el.classList.remove('fadein'), 400);
@@ -31,7 +31,7 @@ export function renderResult(r) {
   if (r.mode === 'grammar') checkBunproStatus(r);
 }
 
-export async function doLookup() {
+export async function doLookup({ force = false } = {}) {
   const searchInput = document.getElementById('search-input');
   const input = searchInput.value.trim();
   if (!input) return;
@@ -39,8 +39,8 @@ export async function doLookup() {
   if (lookupAbortController) lookupAbortController.abort();
   const jjSnapshot = jjMode;
 
-  const cached = findInHistory(input, jjSnapshot);
-  if (cached) { renderResult(cached); return; }
+  const cached = !force && findInHistory(input, jjSnapshot);
+  if (cached) { renderResult(cached, { fromCache: true }); return; }
 
   const controller = new AbortController();
   lookupAbortController = controller;

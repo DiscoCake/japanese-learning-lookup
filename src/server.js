@@ -5,9 +5,11 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const { lookup, lookupStream, toAnkiTSV, identifyWords } = require('./lookup');
 const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, addNoteForGrammar, getDeckNames, enrichAndUpdateCard } = require('./anki');
 const { getGrammarStatus, getTroubledGrammar } = require('./bunpro');
+const { getHistory, addEntry, deleteEntry, clearEntries, mergeEntries } = require('./history');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,12 +19,30 @@ if (!process.env.ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
+/* In-memory sliding-window rate limiter for Claude-calling routes.
+   Protects against a misbehaving/retrying tab burning API credits.
+   Only applied to the four cost-bearing routes — not Anki/BunPro/static. */
+const RATE_LIMIT = parseInt(process.env.RATE_LIMIT_PER_MIN) || 30;
+const _rateBuckets = new Map(); // ip → timestamp[]
+function rateLimit(req, res, next) {
+  const ip = req.ip || req.connection.remoteAddress || 'unknown';
+  const now = Date.now();
+  const windowMs = 60_000;
+  const timestamps = (_rateBuckets.get(ip) || []).filter(t => now - t < windowMs);
+  if (timestamps.length >= RATE_LIMIT) {
+    return res.status(429).json({ error: `Rate limit: max ${RATE_LIMIT} lookups/min` });
+  }
+  timestamps.push(now);
+  _rateBuckets.set(ip, timestamps);
+  next();
+}
+
 app.use(express.json());
 app.use('/jp-ui', express.static(path.join(__dirname, '..', 'packages', 'jp-ui')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 /* POST /api/lookup  { input: "見る", jj: false }  → result JSON */
-app.post('/api/lookup', async (req, res) => {
+app.post('/api/lookup', rateLimit, async (req, res) => {
   const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
@@ -37,7 +57,7 @@ app.post('/api/lookup', async (req, res) => {
 });
 
 /* GET /api/export?input=見る  → plain TSV */
-app.get('/api/export', async (req, res) => {
+app.get('/api/export', rateLimit, async (req, res) => {
   const { input } = req.query;
   if (!input) return res.status(400).send('input required');
   try {
@@ -50,7 +70,7 @@ app.get('/api/export', async (req, res) => {
 });
 
 /* POST /api/lookup/stream  { input: "見る", jj: false }  → SSE text/event-stream */
-app.post('/api/lookup/stream', async (req, res) => {
+app.post('/api/lookup/stream', rateLimit, async (req, res) => {
   const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
@@ -81,7 +101,7 @@ app.post('/api/lookup/stream', async (req, res) => {
 });
 
 /* POST /api/paste/stream  { text, jj: false }  → SSE: identified → result* → done */
-app.post('/api/paste/stream', async (req, res) => {
+app.post('/api/paste/stream', rateLimit, async (req, res) => {
   const { text, jj } = req.body;
   if (!text || typeof text !== 'string' || !text.trim()) {
     return res.status(400).json({ error: 'text is required' });
@@ -168,14 +188,54 @@ app.get('/api/bunpro/troubled', async (req, res) => {
   }
 });
 
-/* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */
+/* GET /api/history  → { entries: [...] } */
+app.get('/api/history', (req, res) => {
+  res.json({ entries: getHistory() });
+});
+
+/* POST /api/history  { entry: resultObj }  → { entries: [...] } */
+app.post('/api/history', (req, res) => {
+  const { entry } = req.body;
+  if (!entry || typeof entry !== 'object') return res.status(400).json({ error: 'entry required' });
+  res.json({ entries: addEntry(entry) });
+});
+
+/* DELETE /api/history  { input, jj } → delete one  |  { all: true } → clear all */
+app.delete('/api/history', (req, res) => {
+  const { input, jj, all } = req.body;
+  if (all) return res.json({ entries: clearEntries() });
+  if (!input) return res.status(400).json({ error: 'input required' });
+  res.json({ entries: deleteEntry(input, jj) });
+});
+
+/* PUT /api/history  { entries: [...] }  → merge into server history (dedup, cap 50) */
+app.put('/api/history', (req, res) => {
+  const { entries } = req.body;
+  if (!Array.isArray(entries)) return res.status(400).json({ error: 'entries array required' });
+  res.json({ entries: mergeEntries(entries) });
+});
+
+const STRUGGLING_CACHE = path.join(__dirname, '..', 'data', 'struggling_cache.json');
+
+function readStrugglingCache() {
+  try { return JSON.parse(fs.readFileSync(STRUGGLING_CACHE, 'utf8')); } catch { return null; }
+}
+
+function writeStrugglingCache(data) {
+  try { fs.writeFileSync(STRUGGLING_CACHE, JSON.stringify({ ...data, cachedAt: Date.now() }, null, 2)); } catch {}
+}
+
+/* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } or cached fallback */
 app.get('/api/anki/struggling', async (req, res) => {
   const minLapses = Math.max(1, parseInt(req.query.minLapses) || 2);
   const limit = Math.min(100, parseInt(req.query.limit) || 50);
   try {
     const result = await getStrugglingCards({ minLapses, limit });
+    writeStrugglingCache(result);
     res.json(result);
   } catch (err) {
+    const cached = readStrugglingCache();
+    if (cached) return res.json({ ...cached, fromCache: true });
     console.error('AnkiConnect error:', err.message);
     res.status(503).json({ error: err.message, hint: 'Is Anki open with AnkiConnect installed?' });
   }
@@ -257,6 +317,7 @@ app.get('/api/anki/decks', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Japanese Study Companion running at http://localhost:${PORT}`);
+  console.log(`  (also reachable on all interfaces — LAN / Tailscale at port ${PORT})`);
 });

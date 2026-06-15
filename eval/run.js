@@ -34,7 +34,7 @@ function slug(input) {
   return input.replace(/[～〜\s/\\:*?"<>|]/g, '_').replace(/^_+|_+$/g, '') || 'x';
 }
 function snapPath(c) {
-  return path.join(SNAP_DIR, `${c.mode}_${slug(c.input)}.json`);
+  return path.join(SNAP_DIR, `${c.mode}_${slug(c.input)}${c.jj ? '_jj' : ''}.json`);
 }
 
 /* Run check fns against a result; fold in an expected-mode check. Returns
@@ -51,10 +51,10 @@ function evaluate(c, result) {
 }
 
 /* lookup() with 429 backoff. Other errors propagate immediately. */
-async function lookupWithRetry(input) {
+async function lookupWithRetry(c) {
   for (let attempt = 0; ; attempt++) {
     try {
-      return await lookup(input, {});
+      return await lookup(c.input, { jj: c.jj || false });
     } catch (e) {
       if (/\b429\b/.test(e.message) && attempt < MAX_RETRIES) {
         console.log(`      rate limited — waiting ${BACKOFF_MS / 1000}s (retry ${attempt + 1}/${MAX_RETRIES})…`);
@@ -70,7 +70,7 @@ function report(rows) {
   let failed = 0;
   console.log('');
   for (const r of rows) {
-    const label = `${r.case.mode.padEnd(7)} ${r.case.input}`;
+    const label = `${r.case.mode.padEnd(7)} ${r.case.input}${r.case.jj ? ' (JJ)' : ''}`;
     if (r.error) {
       failed++;
       console.log(`  ✗ ${label}\n      ERROR: ${r.error}`);
@@ -97,7 +97,7 @@ async function runLive({ write, missingOnly }) {
     const c = cases[i];
     if (i > 0) await sleep(SPACING_MS);
     try {
-      const result = await lookupWithRetry(c.input);
+      const result = await lookupWithRetry(c);
       if (write) fs.writeFileSync(snapPath(c), JSON.stringify(result, null, 2) + '\n');
       rows.push({ case: c, ...evaluate(c, result) });
     } catch (e) {
