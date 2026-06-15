@@ -48,9 +48,11 @@ import it directly — they don't touch the other files.
 4. **WanaKana IME bound by default** (IMEMode: true). Toggle button to disable.
    Same pattern as 東京奇譚 typed input — user types romaji, gets kana.
 
-5. **History in localStorage** (`companion_history_v1`), capped at 50 entries.
-   Clicking a history entry re-renders from the cached result — no API re-call.
-   "Export all history" TSV for bulk Anki import.
+5. **History persisted server-side** (`data/history.json`), capped at 50 entries.
+   On first load, any existing `companion_history_v1` localStorage entries are migrated
+   to the server and the key is removed. Clicking a history entry re-renders from the
+   cached result — no API re-call. History also acts as a lookup cache (same input +
+   JJ mode skips the API). Bulk TSV export was removed; per-result copy buttons remain.
 
 6. **Anki TSV format:** `word/pattern \t reading \t plain-text-sentence \t translation`
    HTML tags stripped from Japanese before export. Same pipeline as 東京奇譚 vocab log.
@@ -192,17 +194,22 @@ N2+ vocabulary, per-kanji ruby reminder). Eval harness expanded to 26 cases (3 J
 in natural JP prose; sentences[i].jp still enforced). Word-level speak button on vocab card
 header. Mobile TTS voice selection fixed (localService fallback for iOS).
 
-**Short-term roadmap (Phase 7 candidates — mobile UX):**
+**Phase 7 (complete as of 2026-06-15): mobile UX batch**
 
-- **Clipboard paste button** — one-tap to paste from clipboard into the search field
-  (`public/index.html`, tiny JS, no server change)
-- **PWA manifest + home screen icon** — `manifest.json` + `<link rel=manifest>` in
-  `index.html`; gives standalone mode, splash screen, app icon on iPhone home screen
+- ✅ **Clipboard paste button** — `#paste-btn` in `#search-row`; reads clipboard, fills field,
+  fires `input` event to update mode pill; graceful fallback for HTTP contexts (focuses input)
+- ✅ **PWA manifest + home screen icon** — `public/manifest.json` + `public/icons/icon.svg`
+  (indigo bg, pink 語 kanji); meta tags in `index.html` for both Android/Chrome and iOS;
+  SVG icon works for Android; iOS fidelity improves with a 180×180 PNG apple-touch-icon
+- ✅ **Haptic feedback on Anki send** — `navigator.vibrate?.(20)` on confirm prompt,
+  `navigator.vibrate?.(50)` on success; no-ops on desktop/iOS (no Vibration API there)
+
+**Remaining Phase 7 / future candidates:**
+
 - **iOS Shortcut for share-sheet lookup** — Shortcut that POSTs to the server and opens
   the result; zero server code, configured once in the Shortcuts app
 - **Swipe down to clear / return to search** — touch gesture on result panel; more native
   than tapping the header on mobile
-- **Haptic feedback on Anki send** — `navigator.vibrate(50)` on confirm + success; one line
 
 Deferred: BunPro auth (blocked on stable API token — see BunPro section), VS Code extension
 (Yomitan + Migaku cover this for now), live mobile Anki, public hosting with auth.

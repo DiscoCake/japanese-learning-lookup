@@ -1,0 +1,12 @@
+{
+  "name": "日本語コンパニオン",
+  "short_name": "コンパニオン",
+  "description": "Japanese vocabulary and grammar deep-diver for N4→N3 learners",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d1a",
+  "theme_color": "#ff6fa8",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
