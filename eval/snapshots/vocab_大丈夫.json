@@ -3,51 +3,51 @@
   "reading": "だいじょうぶ",
   "mode": "vocab",
   "pitch_accent": {
-    "number": 2,
-    "label": "頭高",
-    "pattern": "LHLL"
+    "number": 3,
+    "label": "nakadaka",
+    "pattern": "LHHLL"
   },
-  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> covers a wide range of reassurance: 'it's okay,' 'I'm fine,' 'no problem,' or 'it'll be alright.' It expresses that something is safe, acceptable, or not a concern — and in modern casual speech it's also used to decline offers politely, meaning 'I'm good, thanks.'",
+  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> covers a wide range from 'it's okay / I'm fine / no problem' to 'are you alright?' — it reassures that something is safe, acceptable, or not a problem. It can also function as a soft refusal ('I'm good, thanks') or a check-in ('you okay?').",
   "sentences": [
     {
-      "jp": "<ruby>転<rt>こ</rt></ruby>んだけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。かすり<ruby>傷<rt>きず</rt></ruby>だけだから。",
-      "translation": "I fell, but I'm fine. It's just a scrape.",
+      "jp": "<ruby>転<rt>こ</rt></ruby>んだけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。<ruby>全然<rt>ぜんぜん</rt></ruby><ruby>痛<rt>いた</rt></ruby>くない。",
+      "translation": "I fell, but I'm fine. It doesn't hurt at all.",
       "register": "casual",
-      "notes": "The classic use: reassuring someone that you're not seriously hurt."
+      "notes": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> used to self-report that one is unharmed — the most classic use of the word."
     },
     {
-      "jp": "この<ruby>橋<rt>はし</rt></ruby>、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>かな？ちょっと<ruby>古<rt>ふる</rt></ruby>そうだけど。",
-      "translation": "Is this bridge safe, I wonder? It looks kind of old.",
+      "jp": "<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>、<ruby>一人<rt>ひとり</rt></ruby>で<ruby>対応<rt>たいおう</rt></ruby>できる？<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？",
+      "translation": "Can you handle tomorrow's meeting on your own? You okay?",
+      "register": "standard",
+      "notes": "Used as a question to check whether someone is capable or comfortable — not just physically, but situationally."
+    },
+    {
+      "jp": "コーヒーのおかわりはいかがですか？— あ、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。",
+      "translation": "Would you like a refill of coffee? — Oh, I'm good, thanks.",
+      "register": "standard",
+      "notes": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です is a common polite way to decline an offer without saying no directly — a key social function of this word."
+    },
+    {
+      "jp": "このケーブル、<ruby>古<rt>ふる</rt></ruby>いけど<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>かな？",
+      "translation": "This cable is old — I wonder if it's still okay to use.",
       "register": "casual",
-      "notes": "Used as a question to express uncertainty about safety or reliability."
+      "notes": "Shows <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> applied to objects/situations rather than people — meaning 'safe' or 'still usable'."
     },
     {
-      "jp": "ご<ruby>注文<rt>ちゅうもん</rt></ruby>はいかがですか？— <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です、もう<ruby>十分<rt>じゅうぶん</rt></ruby>いただきました。",
-      "translation": "'Would you like to order anything else?' — 'I'm good, thank you, I've had plenty.'",
-      "register": "standard",
-      "notes": "A very common modern usage: politely declining an offer by saying you're fine without needing it."
-    },
-    {
-      "jp": "レポートの<ruby>締<rt>し</rt></ruby>め<ruby>切<rt>き</rt></ruby>りは<ruby>明日<rt>あした</rt></ruby>だけど、もう<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。<ruby>昨夜<rt>さくや</rt></ruby>のうちに<ruby>仕上<rt>しあ</rt></ruby>げました。",
-      "translation": "The report deadline is tomorrow, but I'm all set — I finished it last night.",
-      "register": "standard",
-      "notes": "Expresses that a situation is under control and there's nothing to worry about."
-    },
-    {
-      "jp": "<ruby>非常用<rt>ひじょうよう</rt></ruby><ruby>設備<rt>せつび</rt></ruby>はすべて<ruby>点検済<rt>てんけんず</rt></ruby>みで、<ruby>安全<rt>あんぜん</rt></ruby>に<ruby>使用<rt>しよう</rt></ruby>できることが<ruby>確認<rt>かくにん</rt></ruby>され、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>な<ruby>状態<rt>じょうたい</rt></ruby>です。",
-      "translation": "All emergency equipment has been inspected and confirmed to be in safe, working condition.",
+      "jp": "<ruby>書類<rt>しょるい</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>はご<ruby>確認<rt>かくにん</rt></ruby>いただければ<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>でございます。",
+      "translation": "As long as you have reviewed the contents of the documents, everything should be in order.",
       "register": "formal",
-      "notes": "Shows that 大丈夫 can appear in more formal written contexts, though 安全 or 問題ない may feel more natural in very stiff official writing."
+      "notes": "Even in formal/business language, <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> appears, though it can feel slightly casual — here softened with でございます."
     }
   ],
-  "dont_use": "Avoid <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in very formal or legal/technical writing where precision matters — prefer <ruby>安全<rt>あんぜん</rt></ruby> (safe) or <ruby>問題<rt>もんだい</rt></ruby>ない (no problem). Also be careful using it as a refusal with older speakers or in strict business settings, as the declining-an-offer usage (「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です」= 'No thanks') is a newer colloquial pattern that some older Japanese speakers find slightly vague or even rude — in those situations, 「<ruby>結構<rt>けっこう</rt></ruby>です」is clearer. Don't confuse it with <ruby>平気<rt>へいき</rt></ruby>, which is closer to 'I don't mind / I'm unbothered' and sounds more nonchalant.",
+  "dont_use": "In very formal written Japanese (legal documents, official announcements), <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> can sound too colloquial — prefer <ruby>問題<rt>もんだい</rt></ruby>ありません or <ruby>支障<rt>ししょう</rt></ruby>ございません. Also, using <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> alone as a refusal ('I'm good') can sometimes come across as abrupt or unclear to older speakers who expect a more explicit response. Don't confuse it with <ruby>平気<rt>へいき</rt></ruby> — they overlap but are not always interchangeable.",
   "confused_with": {
     "word": "<ruby>平気<rt>へいき</rt></ruby>",
     "reading": "へいき",
-    "contrast": "<ruby>平気<rt>へいき</rt></ruby> means you are calm, unbothered, or unaffected — it emphasizes your inner emotional state. <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> emphasizes that the situation or condition is safe and acceptable. For example, 「<ruby>虫<rt>むし</rt></ruby>は<ruby>平気<rt>へいき</rt></ruby>だよ」means 'Bugs don't bother me,' while 「<ruby>虫<rt>むし</rt></ruby>は<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？」asks whether something is okay or safe regarding bugs. <ruby>平気<rt>へいき</rt></ruby> can also sound a little more carefree or even slightly dismissive in tone."
+    "contrast": "<ruby>平気<rt>へいき</rt></ruby> means 'unaffected, unbothered, calm' and focuses on one's inner emotional state — it implies you don't mind or are not disturbed by something. <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is broader and more situational, covering safety, acceptability, and capability. For example, <ruby>虫<rt>むし</rt></ruby>が<ruby>平気<rt>へいき</rt></ruby> means 'I don't mind bugs / bugs don't bother me,' while <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in the same context would more naturally mean 'I'll be okay (around bugs).'"
   },
-  "frequency": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is extremely common in everyday spoken Japanese — you'll hear it dozens of times a day in casual and standard situations. The declining-an-offer usage is especially prevalent among younger speakers. It appears in written Japanese too, though in formal documents <ruby>問題<rt>もんだい</rt></ruby>ない or <ruby>安全<rt>あんぜん</rt></ruby> tend to replace it.",
-  "anki_hint": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> has two core jobs: reassuring someone that things are okay, AND politely declining an offer — remember both, because native speakers use the declining sense constantly.",
+  "frequency": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is extremely common in everyday spoken Japanese — arguably one of the highest-frequency adjectives in casual and standard conversation. It appears less in formal written prose, where more precise expressions are preferred.",
+  "anki_hint": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> does triple duty: 'I'm fine' (reassurance), 'Is it okay?' (question), and 'No thanks' (soft refusal) — context and intonation tell you which one.",
   "input": "大丈夫",
-  "timestamp": "2026-06-14T20:34:37.094Z"
+  "timestamp": "2026-06-15T00:35:36.896Z"
 }

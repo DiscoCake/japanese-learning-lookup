@@ -3,6 +3,31 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-14 — Retrospective fixes: eval hardening, paste serialization, archive hook, README
+
+- `src/lookup.js`: added ruby reminder to `sentences[N].notes` field in all four system prompts
+  (VOCAB_SYSTEM, GRAMMAR_SYSTEM, and their JJ variants); added explicit SENTENCE RULES bullet
+  to reinforce ruby on notes — closes the gap that was causing 7/18 eval failures; eval baseline
+  now 23/23 (up from 0/23 with new validators)
+- `src/lookup.js`: `lookupStream()` now forwards `opts.context` to the user message, matching
+  the pattern already in `lookup()` — forward-compat fix for future context-aware streaming
+- `src/server.js`: replaced `Promise.all` in `/api/paste/stream` with a serial loop (3s spacing,
+  3-retry 429 backoff) — parallel calls with 5–12 words were hitting org output-token/min limit
+- `.claude/settings.local.json`: archive hook now covers `public/js/*.js` and `packages/jp-ui/*`
+  in addition to `src/*.js` and `public/index.html`; `gh pr create` allow permission broadened
+  from hardcoded branch/title to `gh pr create *`
+- `eval/checks.js`: `everyKanjiHasRuby` now uses `includeNotes: true` — notes fields were
+  previously excluded from the ruby check despite frequently containing Japanese; `matchesContract`
+  tightened with `pitch_accent.number` integer check, `pitch_accent.label` allowlist (both English
+  Kanjium labels and Japanese AI-generated labels), and `confused_with.reading` presence check
+- `eval/golden.js`: 5 new cases added — `よう` (vocab, abstract noun with grammatical uses),
+  `所` (vocab, kanji form of ところ to avoid grammar-mode heuristic), `～かもしれない`,
+  `～てもいい`, `～たことがある` (N4 grammar gap coverage); total: 18 → 23 cases
+- `eval/snapshots/`: all 23 snapshots regenerated and passing with new validators
+- `README.md`: updated pitch accent description (Kanjium dictionary, not AI-only); added mode
+  override pill feature; added Grammar → Anki feature; added Development section with eval
+  harness commands
+
 ### 2026-06-14 — Phase 4: shared `jp-ui` package (palette CSS + furigana toggle)
 
 - `packages/jp-ui/palette.css`: shared CSS custom properties (`:root` vars), universal box-sizing

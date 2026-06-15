@@ -52,7 +52,7 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
       "jp": "example sentence with ruby furigana on ALL kanji: <ruby>食<rt>た</rt></ruby>べる",
       "translation": "natural English translation",
       "register": "casual | standard | formal | written",
-      "notes": "what this sentence demonstrates about the word's usage (optional, 1 sentence)"
+      "notes": "what this sentence demonstrates about the word's usage — 1 sentence (include ruby furigana on any kanji)"
     }
   ],
   "dont_use": "2-3 sentences on when NOT to use this word, common learner mistakes, situations where a different word is more natural (include ruby furigana on all kanji)",
@@ -71,7 +71,8 @@ SENTENCE RULES:
 - Show the word's RANGE — different collocations, different contexts, not just the same idea repeated
 - For words with multiple senses (e.g. 上がる), cover the main senses across the sentences
 - If the word is commonly used as a grammatical construction (e.g. ところ、もの、わけ), at least 2 sentences must show the grammatical use
-- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
+- This includes sentences[].notes — if a note contains Japanese, every kanji needs <ruby> tags`;
 
 const GRAMMAR_SYSTEM = `You are a Japanese language expert helping an early-intermediate learner (solid N4, approaching N3).
 The learner uses BunPro for grammar SRS. They find textbook definitions too dry and want to understand
@@ -96,7 +97,7 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
       "jp": "example sentence with ruby furigana on ALL kanji: <ruby>食<rt>た</rt></ruby>べる",
       "translation": "natural English translation",
       "register": "casual | standard | formal",
-      "notes": "what this sentence demonstrates about nuance or usage (1 sentence)"
+      "notes": "what this sentence demonstrates about nuance or usage — 1 sentence (include ruby furigana on any kanji)"
     }
   ],
   "confused_with": {
@@ -110,7 +111,8 @@ SENTENCE RULES:
 - Generate exactly 4 sentences
 - MUST cover: one clearly casual, one standard/polite, one formal or written
 - Fourth sentence: a tricky or nuanced use that surprises learners
-- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
+- This includes sentences[].notes — if a note contains Japanese, every kanji needs <ruby> tags`;
 
 /* ── J-J SYSTEM PROMPTS ── */
 const VOCAB_SYSTEM_JJ = `You are a Japanese language expert helping an early-intermediate learner (solid N4, approaching N3).
@@ -158,7 +160,8 @@ SENTENCE RULES:
 - Show the word's RANGE — different collocations, different contexts, not just the same idea repeated
 - For words with multiple senses (e.g. 上がる), cover the main senses across the sentences
 - If the word is commonly used as a grammatical construction (e.g. ところ、もの、わけ), at least 2 sentences must show the grammatical use
-- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
+- This includes sentences[].notes — if a note contains Japanese, every kanji needs <ruby> tags`;
 
 const GRAMMAR_SYSTEM_JJ = `You are a Japanese language expert helping an early-intermediate learner (solid N4, approaching N3).
 The learner wants explanations entirely in simple Japanese, like a 国語辞典 (Japanese-to-Japanese grammar guide).
@@ -198,7 +201,8 @@ SENTENCE RULES:
 - Generate exactly 4 sentences
 - MUST cover: one clearly casual, one standard/polite, one formal or written
 - Fourth sentence: a tricky or nuanced use that surprises learners
-- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text`;
+- ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
+- This includes sentences[].notes — if a note contains Japanese, every kanji needs <ruby> tags`;
 
 /* ── MAIN LOOKUP FUNCTION ── */
 async function lookup(input, opts = {}) {
@@ -314,9 +318,10 @@ async function* lookupStream(input, opts = {}) {
   const system = opts.jj
     ? (mode === 'grammar' ? GRAMMAR_SYSTEM_JJ : VOCAB_SYSTEM_JJ)
     : (mode === 'grammar' ? GRAMMAR_SYSTEM : VOCAB_SYSTEM);
+  const contextLine = opts.context ? `\n\nContext sentence: ${opts.context}` : '';
   const userMsg = mode === 'grammar'
-    ? `Grammar point to analyze: ${input.trim()}`
-    : `Word to analyze: ${input.trim()}`;
+    ? `Grammar point to analyze: ${input.trim()}${contextLine}`
+    : `Word to analyze: ${input.trim()}${contextLine}`;
 
   const res = await fetch(API_URL, {
     method: 'POST',

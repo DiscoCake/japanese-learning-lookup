@@ -4,50 +4,50 @@
   "mode": "vocab",
   "pitch_accent": {
     "number": 2,
-    "label": "頭高",
-    "pattern": "HL"
+    "label": "odaka",
+    "pattern": "LH"
   },
-  "core_meaning": "<ruby>事<rt>こと</rt></ruby> refers to an intangible \"thing\" — an event, fact, matter, or situation, as opposed to a physical object (which would be もの). It frequently nominalizes verbs and adjectives, turning them into abstract noun phrases, and appears in dozens of set grammatical patterns.",
+  "core_meaning": "<ruby>事<rt>こと</rt></ruby> nominalizes verbs and adjectives, turning them into abstract 'things,' 'facts,' or 'matters.' Unlike <ruby>物<rt>もの</rt></ruby>, which refers to physical objects, <ruby>事<rt>こと</rt></ruby> refers to intangible things — situations, actions as concepts, experiences, and facts.",
   "sentences": [
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きだよ。",
-      "translation": "I like him (as a person / everything about him).",
+      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>運動<rt>うんどう</rt></ruby>することが<ruby>大切<rt>たいせつ</rt></ruby>だよ。",
+      "translation": "Exercising every day is important, you know.",
       "register": "casual",
-      "notes": "〜のこと is a very natural way to refer to a person or topic as a whole concept, implying depth beyond just 'liking' a surface trait."
+      "notes": "Here <ruby>事<rt>こと</rt></ruby> nominalizes the verb <ruby>運動<rt>うんどう</rt></ruby>する, making 'exercising' a concept that can sit as the grammatical subject."
     },
     {
-      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>運動<rt>うんどう</rt></ruby>することが<ruby>大切<rt>たいせつ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う。",
-      "translation": "I think exercising every day is important.",
+      "jp": "あの<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>たことがある？",
+      "translation": "Have you ever seen that movie?",
+      "register": "casual",
+      "notes": "〜たことがある is one of the most common grammatical patterns using <ruby>事<rt>こと</rt></ruby>, expressing a past experience as an abstract 'fact.'"
+    },
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きです。",
+      "translation": "I like her (as a person / in general).",
       "register": "standard",
-      "notes": "〜することが… nominalizes the verb phrase, making it the grammatical subject; this is one of こと's most common roles."
+      "notes": "〜のこと refers to someone or something in a holistic, abstract sense — liking 'everything about her,' not just a specific physical thing."
     },
     {
-      "jp": "この<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>たことがありますか？",
-      "translation": "Have you ever seen this movie?",
-      "register": "standard",
-      "notes": "〜たことがある is a set pattern using こと to express past experience."
-    },
-    {
-      "jp": "<ruby>緊急<rt>きんきゅう</rt></ruby>の<ruby>事<rt>こと</rt></ruby>があれば、すぐにご<ruby>連絡<rt>れんらく</rt></ruby>ください。",
-      "translation": "If something urgent comes up, please contact us immediately.",
+      "jp": "<ruby>大事<rt>だいじ</rt></ruby>なことをメモしておいてください。",
+      "translation": "Please make a note of the important things.",
       "register": "formal",
-      "notes": "Here こと functions as a standalone noun meaning 'matter' or 'situation', common in formal written or business Japanese."
+      "notes": "<ruby>事<rt>こと</rt></ruby> here stands alone as a noun meaning 'matters' or 'things (intangible),' a common use in instructions and business contexts."
     },
     {
-      "jp": "<ruby>日本語<rt>にほんご</rt></ruby>が<ruby>話<rt>はな</rt></ruby>せることを<ruby>証明<rt>しょうめい</rt></ruby>しなければならないこともある。",
-      "translation": "There are also times when you have to prove that you can speak Japanese.",
-      "register": "written",
-      "notes": "〜こともある ('there are times when…') is a useful pattern showing that こと can frame situations as recurring or possible."
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>が<ruby>嘘<rt>うそ</rt></ruby>をついていたことが<ruby>後<rt>あと</rt></ruby>でわかった。",
+      "translation": "It turned out later that he had been lying.",
+      "register": "standard",
+      "notes": "〜ことがわかった is a key written/spoken pattern where <ruby>事<rt>こと</rt></ruby> packages an entire clause into a 'fact' that can be discovered or understood."
     }
   ],
-  "dont_use": "Don't use <ruby>事<rt>こと</rt></ruby> when you mean a physical, tangible object — use もの instead (e.g. 「<ruby>食<rt>た</rt></ruby>べるものがない」not 「<ruby>食<rt>た</rt></ruby>べることがない」, which means 'there are no times I eat'). Learners sometimes swap こと and の when nominalizing verbs; while they often overlap, の is warmer and more perceptual, whereas こと is more abstract and formal — 「<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>くのが<ruby>好<rt>す</rt></ruby>き」sounds more natural than 「<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>くことが<ruby>好<rt>す</rt></ruby>き」in casual speech. Also avoid overusing こと as a filler noun in casual conversation; native speakers often drop it entirely or use こと only in established grammar patterns.",
+  "dont_use": "<ruby>事<rt>こと</rt></ruby> should not replace <ruby>物<rt>もの</rt></ruby> when referring to actual physical objects — saying '<ruby>食<rt>た</rt></ruby>べることが<ruby>好<rt>す</rt></ruby>き' (I like eating) is correct, but you cannot say テーブルのことを<ruby>買<rt>か</rt></ruby>った to mean 'I bought the table.' A common learner mistake is also overusing <ruby>事<rt>こと</rt></ruby> where の works better for nominalization in some embedded clauses (e.g. <ruby>彼<rt>かれ</rt></ruby>が<ruby>走<rt>はし</rt></ruby>っているのが<ruby>見<rt>み</rt></ruby>えた, not ことが, because it describes a directly observed scene).",
   "confused_with": {
-    "word": "もの",
+    "word": "<ruby>物<rt>もの</rt></ruby>",
     "reading": "もの",
-    "contrast": "もの refers to tangible things or objects, while <ruby>事<rt>こと</rt></ruby> refers to intangible matters, events, or abstract concepts. Compare 「<ruby>大切<rt>たいせつ</rt></ruby>なもの」('something important [that I can hold/own]') vs 「<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>事<rt>こと</rt></ruby>」('an important matter/issue'). As nominalizers, の and こと are closer rivals: の sounds more immediate and sensory, while こと sounds more objective and formal."
+    "contrast": "<ruby>物<rt>もの</rt></ruby> refers to tangible, physical things you can touch or concrete entities, while <ruby>事<rt>こと</rt></ruby> refers to abstract things, facts, actions, and situations. Compare: <ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby> (food — a physical thing) vs. <ruby>食<rt>た</rt></ruby>べること (the act/concept of eating). When nominalizing a verb to express a general concept or experience, use <ruby>事<rt>こと</rt></ruby>; when pointing to a resulting object or something concrete, use <ruby>物<rt>もの</rt></ruby>."
   },
-  "frequency": "<ruby>事<rt>こと</rt></ruby> is extremely common across all registers — it appears constantly in daily speech, grammar patterns, writing, and formal Japanese. It is one of the highest-frequency nouns in the language and mastering its grammatical uses (〜たことがある、〜することができる、〜ということ、etc.) is essential for reaching N3 and beyond.",
-  "anki_hint": "<ruby>事<rt>こと</rt></ruby> = intangible 'thing/matter' — if you can touch it, use もの; if it's an abstract situation, fact, or nominalized verb, use <ruby>事<rt>こと</rt></ruby>.",
+  "frequency": "<ruby>事<rt>こと</rt></ruby> is extremely common across all registers — casual speech, standard conversation, formal writing, and grammar patterns alike. It appears constantly in set expressions like 〜たことがある, 〜ことができる, 〜ことにする, and 〜ことがわかる, making it one of the most functionally important words at the N4–N3 level.",
+  "anki_hint": "<ruby>事<rt>こと</rt></ruby> = an abstract 'thing' or 'fact' — if you can't hold it in your hand, it's probably <ruby>事<rt>こと</rt></ruby>, not <ruby>物<rt>もの</rt></ruby>.",
   "input": "事",
-  "timestamp": "2026-06-14T20:34:08.093Z"
+  "timestamp": "2026-06-15T00:32:39.322Z"
 }

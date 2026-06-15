@@ -4,50 +4,50 @@
   "mode": "vocab",
   "pitch_accent": {
     "number": 2,
-    "label": "平板",
-    "pattern": "LHH"
+    "label": "nakadaka",
+    "pattern": "LHL"
   },
-  "core_meaning": "<ruby>見<rt>み</rt></ruby>える means something is visible or can be seen — it describes the spontaneous, passive act of something appearing in your field of vision, not the deliberate act of looking. It also means 'to seem' or 'to look like' when describing how something appears to you.",
+  "core_meaning": "<ruby>見<rt>み</rt></ruby>える means 'to be visible' or 'to appear/seem' — it describes something that can be seen or that gives a certain impression. Unlike <ruby>見<rt>み</rt></ruby>る (to look at, an active choice), <ruby>見<rt>み</rt></ruby>える is spontaneous and stative: the thing just comes into view or looks a certain way without effort on your part.",
   "sentences": [
     {
-      "jp": "あ、あそこに<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>えるよ！",
-      "translation": "Oh, you can see Mt. Fuji over there!",
+      "jp": "<ruby>晴<rt>は</rt></ruby>れた<ruby>日<rt>ひ</rt></ruby>には、ここから<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>えるよ。",
+      "translation": "On a clear day, you can see Mt. Fuji from here.",
       "register": "casual",
-      "notes": "Classic use: something comes into view spontaneously — you didn't try to see it, it's just visible."
+      "notes": "Classic use: something is naturally visible from a location. The subject (<ruby>富士山<rt>ふじさん</rt></ruby>) is marked with が, not を."
     },
     {
-      "jp": "<ruby>霧<rt>きり</rt></ruby>が<ruby>濃<rt>こ</rt></ruby>くて、<ruby>前<rt>まえ</rt></ruby>の<ruby>車<rt>くるま</rt></ruby>がほとんど<ruby>見<rt>み</rt></ruby>えなかった。",
-      "translation": "The fog was so thick I could barely see the car in front of me.",
+      "jp": "<ruby>霧<rt>きり</rt></ruby>が<ruby>濃<rt>こ</rt></ruby>くて、ほとんど<ruby>前<rt>まえ</rt></ruby>が<ruby>見<rt>み</rt></ruby>えなかった。",
+      "translation": "The fog was so thick that I could barely see ahead.",
       "register": "standard",
-      "notes": "Shows the negative form — something that should be visible isn't, due to conditions."
+      "notes": "Shows <ruby>見<rt>み</rt></ruby>える in the negative past — something was not visible due to external conditions, not a choice."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>年齢<rt>ねんれい</rt></ruby>より<ruby>若<rt>わか</rt></ruby>く<ruby>見<rt>み</rt></ruby>える。",
-      "translation": "She looks younger than her age.",
+      "jp": "あの<ruby>人<rt>ひと</rt></ruby>は<ruby>年<rt>とし</rt></ruby>より<ruby>若<rt>わか</rt></ruby>く<ruby>見<rt>み</rt></ruby>える。",
+      "translation": "That person looks younger than their age.",
       "register": "standard",
-      "notes": "The 'seem / look like' sense — describes how someone or something appears to the observer."
+      "notes": "The 'appear/seem' sense: something gives a visual impression. Use an adjective in its く-form or a noun + に before <ruby>見<rt>み</rt></ruby>える."
     },
     {
-      "jp": "この<ruby>問題<rt>もんだい</rt></ruby>は<ruby>簡単<rt>かんたん</rt></ruby>に<ruby>見<rt>み</rt></ruby>えるが、<ruby>実<rt>じつ</rt></ruby>は<ruby>非常<rt>ひじょう</rt></ruby>に<ruby>複雑<rt>ふくざつ</rt></ruby>だ。",
-      "translation": "This problem looks simple, but it is actually extremely complex.",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>笑顔<rt>えがお</rt></ruby>はどこか<ruby>寂<rt>さび</rt></ruby>しそうに<ruby>見<rt>み</rt></ruby>えた。",
+      "translation": "Her smile looked somehow lonely.",
+      "register": "written",
+      "notes": "Literary/written use of the 'appear' sense combined with ～そう, layering two appearance-based expressions."
+    },
+    {
+      "jp": "このグラフを<ruby>見<rt>み</rt></ruby>ると、<ruby>売<rt>う</rt></ruby>り<ruby>上<rt>あ</rt></ruby>げの<ruby>回復<rt>かいふく</rt></ruby>が<ruby>見<rt>み</rt></ruby>えてきます。",
+      "translation": "Looking at this graph, a recovery in sales is beginning to emerge.",
       "register": "formal",
-      "notes": "Common written pattern: Xに<ruby>見<rt>み</rt></ruby>えるが、<ruby>実<rt>じつ</rt></ruby>は… — 'appears to be X, but in reality…'"
-    },
-    {
-      "jp": "ここからだと<ruby>星<rt>ほし</rt></ruby>がよく<ruby>見<rt>み</rt></ruby>えるから、<ruby>夜<rt>よる</rt></ruby>また<ruby>来<rt>き</rt></ruby>よう。",
-      "translation": "You can see the stars really well from here, so let's come back tonight.",
-      "register": "casual",
-      "notes": "Shows <ruby>見<rt>み</rt></ruby>える combined with an adverb (よく) to describe quality of visibility."
+      "notes": "<ruby>見<rt>み</rt></ruby>えてくる means something gradually becomes visible or apparent — a common pattern in business or analytical contexts."
     }
   ],
-  "dont_use": "<ruby>見<rt>み</rt></ruby>える should not replace <ruby>見<rt>み</rt></ruby>る when you mean a deliberate act of looking or watching — say テレビを<ruby>見<rt>み</rt></ruby>る (watch TV), not テレビが<ruby>見<rt>み</rt></ruby>える. Also avoid confusing it with <ruby>見<rt>み</rt></ruby>せる (to show something to someone) — learners sometimes mix these up. Finally, don't use <ruby>見<rt>み</rt></ruby>える for abstract 'understanding' the way English uses 'I see' — use なるほど or わかる instead.",
+  "dont_use": "Don't use <ruby>見<rt>み</rt></ruby>える when you mean you actively looked at something — use <ruby>見<rt>み</rt></ruby>る for that. Also don't say テレビを<ruby>見<rt>み</rt></ruby>える; it's always テレビを<ruby>見<rt>み</rt></ruby>る because watching TV is a deliberate action. Be careful not to confuse the 'seem' sense with <ruby>思<rt>おも</rt></ruby>う — <ruby>見<rt>み</rt></ruby>える implies a visual or surface impression, not an internal opinion.",
   "confused_with": {
     "word": "<ruby>見<rt>み</rt></ruby>られる",
     "reading": "みられる",
-    "contrast": "<ruby>見<rt>み</rt></ruby>られる is the potential form of <ruby>見<rt>み</rt></ruby>る — it means 'to be able to see (something) if you make the effort,' while <ruby>見<rt>み</rt></ruby>える means something is simply visible without any effort. For example, <ruby>映画<rt>えいが</rt></ruby>が<ruby>見<rt>み</rt></ruby>られる means 'I can watch the movie (I have the means/permission),' whereas <ruby>映画<rt>えいが</rt></ruby>が<ruby>見<rt>み</rt></ruby>える would mean the screen is physically visible from where you are. Use <ruby>見<rt>み</rt></ruby>える when visibility is the point; use <ruby>見<rt>み</rt></ruby>られる when ability or opportunity is the point."
+    "contrast": "<ruby>見<rt>み</rt></ruby>られる is the potential form of <ruby>見<rt>み</rt></ruby>る, meaning 'to be able to see (something)' — it implies capability or opportunity, and typically takes を. <ruby>見<rt>み</rt></ruby>える, by contrast, means visibility is simply there, with が marking the visible thing. For example, ここから<ruby>海<rt>うみ</rt></ruby>が<ruby>見<rt>み</rt></ruby>える ('the sea is visible from here') emphasizes natural visibility, while ここから<ruby>海<rt>うみ</rt></ruby>が<ruby>見<rt>み</rt></ruby>られる nudges toward 'you can see/view the sea from here' (opportunity). In everyday speech <ruby>見<rt>み</rt></ruby>える is far more natural for describing what is simply visible."
   },
-  "frequency": "<ruby>見<rt>み</rt></ruby>える is very common in daily speech, appearing naturally in conversation, news, and writing. The 'look like / seem' sense (Xに<ruby>見<rt>み</rt></ruby>える、Xく<ruby>見<rt>み</rt></ruby>える) is especially frequent in both spoken and written Japanese at all levels.",
-  "anki_hint": "<ruby>見<rt>み</rt></ruby>える = something is visible TO you without effort; if YOU are making the effort to look, use <ruby>見<rt>み</rt></ruby>る instead — think of it as 'it appears' vs. 'I look.'",
+  "frequency": "<ruby>見<rt>み</rt></ruby>える is very common in daily speech, literature, and formal writing alike. The 'visible' sense appears constantly in everyday conversation; the 'appear/seem' sense is slightly more common in written or reflective speech.",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>える uses が (not を) and no effort — if visibility just happens on its own, or something merely looks a certain way, reach for <ruby>見<rt>み</rt></ruby>える over <ruby>見<rt>み</rt></ruby>る or <ruby>見<rt>み</rt></ruby>られる.",
   "input": "見える",
-  "timestamp": "2026-06-14T20:33:41.503Z"
+  "timestamp": "2026-06-15T00:29:45.583Z"
 }

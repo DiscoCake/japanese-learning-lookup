@@ -74,7 +74,7 @@ function prosePairs(result, { includeNotes = false } = {}) {
 /* ── CHECK: every kanji is wrapped in ruby furigana ── */
 function everyKanjiHasRuby(result) {
   const messages = [];
-  for (const { field, text } of prosePairs(result)) {
+  for (const { field, text } of prosePairs(result, { includeNotes: true })) {
     const stray = strayKanji(text);
     if (stray.length) {
       messages.push(`${field}: ${stray.length} un-ruby'd kanji (${[...new Set(stray)].join('')})`);
@@ -95,7 +95,13 @@ function matchesContract(result) {
     ['word', 'reading', 'core_meaning', 'dont_use', 'frequency', 'anki_hint']
       .forEach(f => need(typeof result[f] === 'string' && result[f].trim(), `missing/empty ${f}`));
     need(result.pitch_accent && typeof result.pitch_accent === 'object', 'missing pitch_accent');
+    need(Number.isInteger(result.pitch_accent?.number) && result.pitch_accent.number >= 0,
+      'pitch_accent.number must be non-negative integer');
+    need(['平板', '頭高', '中高', '尾高', 'heiban', 'atamadaka', 'nakadaka', 'odaka']
+      .includes(result.pitch_accent?.label),
+      `invalid pitch_accent.label: "${result.pitch_accent?.label}"`);
     need(result.confused_with && result.confused_with.word, 'missing confused_with.word');
+    need(result.confused_with?.reading !== undefined, 'missing confused_with.reading');
   } else if (result.mode === 'grammar') {
     ['pattern', 'real_meaning', 'bunpro_tip']
       .forEach(f => need(typeof result[f] === 'string' && result[f].trim(), `missing/empty ${f}`));
