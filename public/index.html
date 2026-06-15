@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>日本語コンパニオン</title>
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#ff6fa8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="コンパニオン" />
+<link rel="apple-touch-icon" href="/icons/icon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
@@ -92,6 +98,13 @@ rt { font-family: "Noto Sans JP", sans-serif; }
   transition: background 0.15s; flex-shrink: 0;
 }
 #search-btn:hover { background: var(--pink); }
+#paste-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.8rem;
+  background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px;
+  color: var(--text2); cursor: pointer; padding: 0 0.9rem;
+  transition: border-color 0.15s, color 0.15s; flex-shrink: 0;
+}
+#paste-btn:hover { border-color: var(--cyan2); color: var(--cyan); }
 #search-hint {
   font-size: 0.62rem; color: var(--text3); margin-bottom: 1.5rem;
   display: flex; align-items: center; gap: 0.8rem;
@@ -347,6 +360,7 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
   /* Search button: full-width row on very narrow screens */
   #search-row { flex-wrap: wrap; }
   #search-btn { min-height: 44px; padding: 0 1.2rem; }
+  #paste-btn { min-height: 44px; padding: 0 1rem; }
 
   /* Export bar buttons wrap gracefully */
   #export-bar { gap: 0.5rem; }
@@ -386,6 +400,7 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
 
   <div id="search-row">
     <input type="text" id="search-input" placeholder="単語または文法パターンを入力…  例: 見る  /  ～てしまう" autocomplete="off" lang="ja" />
+    <button id="paste-btn" title="クリップボードから貼り付け">貼付</button>
     <button id="search-btn"><ruby>調<rt>しら</rt></ruby>べる</button>
   </div>
   <div id="search-hint">

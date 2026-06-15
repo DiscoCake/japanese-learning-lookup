@@ -69,6 +69,20 @@ document.getElementById('mode-indicator').addEventListener('click', () => {
 searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) doLookup(); });
 document.getElementById('search-btn').onclick = doLookup;
 
+/* ── CLIPBOARD PASTE BUTTON ── */
+document.getElementById('paste-btn').onclick = async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+    if (!text.trim()) return;
+    searchInput.value = text.trim();
+    searchInput.dispatchEvent(new Event('input'));
+    searchInput.focus();
+  } catch {
+    // Clipboard API unavailable (HTTP on some mobile browsers) — focus input for native paste
+    searchInput.focus();
+  }
+};
+
 /* ── RESULT HANDLERS ── */
 initAnkiResultHandlers(document.getElementById('result'), getCurrentResult);
 initPasteResultHandlers();

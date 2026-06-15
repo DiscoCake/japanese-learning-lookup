@@ -3,6 +3,29 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-15 — Phase 7: clipboard paste button, haptic feedback, PWA manifest
+
+**Clipboard paste button** (`public/index.html`, `public/js/main.js`):
+- `#paste-btn` added to `#search-row` between the text input and the search button
+- Click reads from `navigator.clipboard.readText()`, fills search field, fires `input` event
+  (updates mode pill), and focuses the field; catches API errors gracefully (HTTP contexts
+  on some mobile browsers will fall back to focusing the field for native paste)
+- Archived `2026-06-15_index.html`
+
+**Haptic feedback on Anki send** (`public/js/anki.js`):
+- `navigator.vibrate?.(20)` on first click (confirm prompt "確定?")
+- `navigator.vibrate?.(50)` on second click success (✓); no-ops on desktop/iOS (no Vibration API)
+- Archived `2026-06-15_anki.js`
+
+**PWA manifest + home screen icon** (`public/manifest.json`, `public/icons/icon.svg`):
+- `manifest.json`: display `standalone`, theme `#ff6fa8` (pink), background `#0d0d1a` (indigo)
+- `public/icons/icon.svg`: deep indigo square with pink 語 kanji — on-brand, no external deps
+- `index.html` head: `<link rel="manifest">`, `<meta name="theme-color">`,
+  `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style`,
+  `apple-mobile-web-app-title`, `<link rel="apple-touch-icon">`
+- SVG icons work for Android/Chrome PWA install; iOS home screen icon degrades gracefully
+  (proper 180×180 PNG at `public/icons/apple-touch-icon.png` would improve iOS fidelity)
+
 ### 2026-06-14 — Refresh button for cached results; pitch accent for all modes
 
 - `public/js/lookup-client.js`: `renderResult` accepts `opts` and forwards to render functions;
