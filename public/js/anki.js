@@ -202,7 +202,6 @@ export function initAnkiResultHandlers(resultEl, getCurrentResult) {
         sendBtn.textContent = '確定?';
         sendBtn.classList.add('pending');
         pendingTimer = setTimeout(cancelPendingAnki, 3000);
-        navigator.vibrate?.(20);
         return;
       }
       cancelPendingAnki();
@@ -261,7 +260,6 @@ export function initAnkiResultHandlers(resultEl, getCurrentResult) {
           await checkAnkiCard(currentResult);
         }
         sendBtn.textContent = '✓';
-        navigator.vibrate?.(50);
         setTimeout(() => { sendBtn.textContent = '→ Anki'; sendBtn.disabled = false; }, 2000);
       } catch {
         sendBtn.textContent = '✗';
