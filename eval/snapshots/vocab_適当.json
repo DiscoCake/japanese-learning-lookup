@@ -4,50 +4,50 @@
   "mode": "vocab",
   "pitch_accent": {
     "number": 0,
-    "label": "平板",
+    "label": "heiban",
     "pattern": "LHHH"
   },
-  "core_meaning": "<ruby>適当<rt>てきとう</rt></ruby> has two almost opposite meanings depending on context: (1) 'appropriate, suitable, just right' (the original meaning), and (2) 'half-hearted, sloppy, careless, done without much thought' (the modern colloquial meaning). In everyday speech among younger speakers, sense (2) dominates, so context is critical.",
+  "core_meaning": "<ruby>適当<rt>てきとう</rt></ruby> has two almost opposite meanings depending on context: (1) 'appropriate, suitable, just right' (the original meaning), and (2) 'sloppy, half-hearted, random, not careful' (the colloquial meaning that now dominates casual speech). In everyday conversation, Japanese people most often use it in the negative sense — doing something carelessly or without real thought.",
   "sentences": [
     {
-      "jp": "この<ruby>仕事<rt>しごと</rt></ruby>には<ruby>彼女<rt>かのじょ</rt></ruby>が<ruby>最<rt>もっと</rt></ruby>も<ruby>適当<rt>てきとう</rt></ruby>な<ruby>人材<rt>じんざい</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>います。",
-      "translation": "I think she is the most suitable candidate for this job.",
+      "jp": "「どこで<ruby>食<rt>た</rt></ruby>べる？」「<ruby>適当<rt>てきとう</rt></ruby>に<ruby>決<rt>き</rt></ruby>めてよ。」",
+      "translation": "'Where should we eat?' 'Just pick somewhere, I don't care.'",
+      "register": "casual",
+      "notes": "This is the most common everyday use — <ruby>適当<rt>てきとう</rt></ruby>に<ruby>決<rt>き</rt></ruby>める means 'decide casually/randomly,' showing the 'without much care' nuance."
+    },
+    {
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>は<ruby>仕事<rt>しごと</rt></ruby>を<ruby>適当<rt>てきとう</rt></ruby>にやっているから、いつもミスが<ruby>多<rt>おお</rt></ruby>い。",
+      "translation": "He always makes a lot of mistakes because he does his work sloppily.",
       "register": "standard",
-      "notes": "This is the 'appropriate/suitable' meaning — common in formal or written contexts when evaluating fit."
+      "notes": "Here <ruby>適当<rt>てきとう</rt></ruby> clearly carries the negative 'half-hearted, careless' meaning that is so common in modern usage."
     },
     {
-      "jp": "<ruby>適当<rt>てきとう</rt></ruby>な<ruby>値段<rt>ねだん</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>を<ruby>探<rt>さが</rt></ruby>してるんだけど、どこかいい？",
-      "translation": "I'm looking for a place with reasonable prices — know anywhere good?",
-      "register": "casual",
-      "notes": "Here <ruby>適当<rt>てきとう</rt></ruby>な means 'reasonable/moderate,' still under the 'suitably fitting' sense."
+      "jp": "この<ruby>部屋<rt>へや</rt></ruby>には<ruby>適当<rt>てきとう</rt></ruby>な<ruby>大<rt>おお</rt></ruby>きさの<ruby>机<rt>つくえ</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>だ。",
+      "translation": "This room needs a desk of an appropriate size.",
+      "register": "standard",
+      "notes": "This is the original 'suitable/appropriate' meaning — context (no action being done carelessly) makes it clear which sense is intended."
     },
     {
-      "jp": "あの<ruby>人<rt>ひと</rt></ruby>、<ruby>適当<rt>てきとう</rt></ruby>なことばかり<ruby>言<rt>い</rt></ruby>うから<ruby>信用<rt>しんよう</rt></ruby>できない。",
-      "translation": "That person always says whatever comes to mind, so I can't trust them.",
-      "register": "casual",
-      "notes": "This is the colloquial 'careless/irresponsible' sense — <ruby>適当<rt>てきとう</rt></ruby>なことを<ruby>言<rt>い</rt></ruby>う is a very common set phrase meaning to say things carelessly or without basis."
-    },
-    {
-      "jp": "レポートを<ruby>適当<rt>てきとう</rt></ruby>に<ruby>済<rt>す</rt></ruby>ませたら、<ruby>先生<rt>せんせい</rt></ruby>にすぐバレた。",
-      "translation": "I dashed off my report without much effort, and the teacher saw right through it.",
-      "register": "casual",
-      "notes": "<ruby>適当<rt>てきとう</rt></ruby>に<ruby>済<rt>す</rt></ruby>ませる is a natural collocation meaning 'to do something sloppily just to get it done.'"
-    },
-    {
-      "jp": "<ruby>適当<rt>てきとう</rt></ruby>な<ruby>時間<rt>じかん</rt></ruby>に<ruby>開始<rt>かいし</rt></ruby>できるよう、<ruby>会場<rt>かいじょう</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いします。",
-      "translation": "Please prepare the venue so that we can start at an appropriate time.",
+      "jp": "<ruby>適当<rt>てきとう</rt></ruby>な<ruby>時期<rt>じき</rt></ruby>に、また<ruby>ご連絡<rt>ごれんらく</rt></ruby>いただければ<ruby>幸<rt>さいわ</rt></ruby>いです。",
+      "translation": "We would appreciate it if you could contact us again at a suitable time.",
       "register": "formal",
-      "notes": "In formal/written Japanese, <ruby>適当<rt>てきとう</rt></ruby> reliably carries the 'appropriate' meaning without the sloppy nuance."
+      "notes": "In formal or written contexts, <ruby>適当<rt>てきとう</rt></ruby> almost always means 'appropriate/suitable' — this is the safer interpretation in business or official writing."
+    },
+    {
+      "jp": "「レポートちゃんと<ruby>書<rt>か</rt></ruby>いた？」「<ruby>適当<rt>てきとう</rt></ruby>に<ruby>書<rt>か</rt></ruby>いといた。」",
+      "translation": "'Did you write the report properly?' 'I threw something together.'",
+      "register": "casual",
+      "notes": "<ruby>適当<rt>てきとう</rt></ruby>に〜しといた is a very natural casual pattern meaning you did something without much effort or care."
     }
   ],
-  "dont_use": "Avoid using <ruby>適当<rt>てきとう</rt></ruby> to mean 'appropriate' in casual speech — your listener may think you mean 'half-hearted.' For example, saying <ruby>適当<rt>てきとう</rt></ruby>にやっておいて to a friend almost always means 'just do it however' rather than 'do it properly.' If you want to clearly say 'appropriate' in casual speech, use <ruby>ちょうどいい</ruby> or <ruby>ふさわしい</ruby> instead.",
+  "dont_use": "Avoid using <ruby>適当<rt>てきとう</rt></ruby> in formal speech or writing to mean 'sloppy' — in those contexts it will be read as 'appropriate,' which can cause serious misunderstandings. Similarly, don't use it to mean 'suitable' in casual conversation, as your listener will likely interpret it as 'half-hearted.' Also, don't confuse <ruby>適当<rt>てきとう</rt></ruby> with praise — telling someone their work is <ruby>適当<rt>てきとう</rt></ruby> in a workplace context is almost always an insult.",
   "confused_with": {
-    "word": "<ruby>いい加減<rt>いいかげん</rt></ruby>",
-    "reading": "いいかげん",
-    "contrast": "<ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby> also means sloppy or irresponsible, but it skews more negative and often implies moral criticism — calling someone <ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby>な<ruby>人<rt>ひと</rt></ruby> is a stronger insult than calling them <ruby>適当<rt>てきとう</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>. <ruby>適当<rt>てきとう</rt></ruby> can still sound neutral or even positive depending on context, while <ruby>いい<ruby>加減<rt>かげん</rt></ruby></ruby> is almost always negative in the 'sloppy' sense."
+    "word": "<ruby>適切<rt>てきせつ</rt></ruby>",
+    "reading": "てきせつ",
+    "contrast": "<ruby>適切<rt>てきせつ</rt></ruby> means 'appropriate, fitting, proper' and only has the positive meaning — it carries none of the 'sloppy' nuance of <ruby>適当<rt>てきとう</rt></ruby>. If you want to say someone gave an appropriate response in a formal or written context, <ruby>適切<rt>てきせつ</rt></ruby>な<ruby>対応<rt>たいおう</rt></ruby> is much safer than <ruby>適当<rt>てきとう</rt></ruby>な<ruby>対応<rt>たいおう</rt></ruby>, which could be read as 'sloppy handling.'"
   },
-  "frequency": "<ruby>適当<rt>てきとう</rt></ruby> is very common in daily speech, especially the colloquial 'sloppy' sense among younger and middle-aged speakers. The 'appropriate' sense appears frequently in formal writing, business documents, and official language. Both senses are worth knowing as you will encounter them regularly.",
-  "anki_hint": "Remember: in <ruby>話<rt>はな</rt></ruby>し<ruby>言葉<rt>ことば</rt></ruby> (casual speech), <ruby>適当<rt>てきとう</rt></ruby> usually means sloppy or careless; in <ruby>書<rt>か</rt></ruby>き<ruby>言葉<rt>ことば</rt></ruby> (formal/written), it usually means appropriate or suitable.",
+  "frequency": "<ruby>適当<rt>てきとう</rt></ruby> is extremely common in daily speech, especially in its 'sloppy/casual' sense. The 'appropriate' sense survives mainly in formal writing and set phrases. It is one of the most frequently misunderstood words by learners who only know the dictionary gloss.",
+  "anki_hint": "Remember: in casual speech, <ruby>適当<rt>てきとう</rt></ruby> almost always means 'sloppy or without much thought' — save the 'appropriate' meaning for formal/written contexts, or better yet use <ruby>適切<rt>てきせつ</rt></ruby> to be safe.",
   "input": "適当",
-  "timestamp": "2026-06-14T20:34:31.544Z"
+  "timestamp": "2026-06-15T00:35:01.874Z"
 }

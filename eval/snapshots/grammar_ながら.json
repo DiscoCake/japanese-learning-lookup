@@ -1,42 +1,42 @@
 {
   "pattern": "～ながら",
   "mode": "grammar",
-  "real_meaning": "ながら expresses that two actions happen simultaneously, with the main focus on the second (main clause) action. The subject is always the same person doing both things at once. Crucially, it carries a subtle implication that the first action is the 'background' or 'incidental' activity — like walking while checking your phone — rather than two equally weighted actions.",
+  "real_meaning": "～ながら expresses that two actions happen simultaneously, with the nuance that the first (ながら) action is the background or secondary activity while the main clause action is the primary focus. It's not just 'at the same time' — it frames one thing as ongoing backdrop to another. The subject of both actions must be the same person.",
   "formation": {
-    "rule": "Attach ながら to the verb stem (ます-stem) of the background action. The main action comes in the second clause. For example: <ruby>食</ruby><rt>た</rt></ruby>べる → <ruby>食</ruby><rt>た</rt></ruby>べながら／<ruby>聞</ruby><rt>き</rt></ruby>く → <ruby>聞</ruby><rt>き</rt></ruby>きながら／<ruby>走</ruby><rt>はし</rt></ruby>る → <ruby>走</ruby><rt>はし</rt></ruby>りながら",
-    "common_mistake": "Learners often mistakenly use the dictionary form or て-form: ✗ <ruby>食</ruby><rt>た</rt></ruby>べてながら or ✗ <ruby>食</ruby><rt>た</rt></ruby>べるながら. The correct form uses only the verb stem: ✓ <ruby>食</ruby><rt>た</rt></ruby>べながら"
+    "rule": "Attach ながら to the verb stem (ます-stem): <ruby>食</ruby><rt>た</rt></ruby>べ → <ruby>食</ruby><rt>た</rt></ruby>べながら, <ruby>聞</ruby><rt>き</rt></ruby>く → <ruby>聞</ruby><rt>き</rt></ruby>きながら, <ruby>歩</ruby><rt>ある</rt></ruby>く → <ruby>歩</ruby><rt>ある</rt></ruby>きながら. The main action follows in the second clause.",
+    "common_mistake": "Using the dictionary form instead of the verb stem — learners sometimes write <ruby>食</ruby><rt>た</rt></ruby>べるながら (wrong) instead of <ruby>食</ruby><rt>た</rt></ruby>べながら (correct)."
   },
   "sentences": [
     {
-      "jp": "<ruby>音</ruby><rt>おん</rt></ruby><ruby>楽</ruby><rt>がく</rt></ruby>を<ruby>聞</ruby><rt>き</rt></ruby>きながら、<ruby>宿</ruby><rt>しゅく</rt></ruby><ruby>題</ruby><rt>だい</rt></ruby>をやってる。",
-      "translation": "I'm doing my homework while listening to music.",
+      "jp": "<ruby>音</ruby><rt>おん</rt></ruby><ruby>楽</ruby><rt>がく</rt></ruby>を<ruby>聴</ruby><rt>き</rt></ruby>きながら、<ruby>勉</ruby><rt>べん</rt></ruby><ruby>強</ruby><rt>きょう</rt></ruby>している。",
+      "translation": "I'm studying while listening to music.",
       "register": "casual",
-      "notes": "Classic simultaneous-action usage — music is the background activity, homework is the main focus."
+      "notes": "A classic use: listening to music is the background activity, and <ruby>勉</ruby><rt>べん</rt></ruby><ruby>強</ruby><rt>きょう</rt></ruby> (studying) is the main focus."
     },
     {
-      "jp": "<ruby>コーヒーを</ruby><rt>コーヒーを</rt></ruby><ruby>飲</ruby><rt>の</rt></ruby>みながら、レポートを<ruby>書</ruby><rt>か</rt></ruby>いています。",
+      "jp": "<ruby>コーヒーを</ruby><ruby>飲</ruby><rt>の</rt></ruby>みながら、レポートを<ruby>書</ruby><rt>か</rt></ruby>いています。",
       "translation": "I'm writing my report while drinking coffee.",
       "register": "standard",
-      "notes": "The polite ています ending makes this appropriate for casual office conversation; coffee-drinking is clearly incidental."
+      "notes": "Drinking coffee is the incidental backdrop; writing the report is clearly the main task."
     },
     {
       "jp": "<ruby>資</ruby><rt>し</rt></ruby><ruby>料</ruby><rt>りょう</rt></ruby>をご<ruby>覧</ruby><rt>らん</rt></ruby>になりながら、ご<ruby>説</ruby><rt>せつ</rt></ruby><ruby>明</ruby><rt>めい</rt></ruby>いたします。",
       "translation": "I will explain while you look at the materials.",
       "register": "formal",
-      "notes": "Formal/keigo usage shows ながら works even when the subject of each clause is implied to be different people in context — though strictly, ながら usually requires the same subject, this presenter-audience framing is a common real-world exception."
+      "notes": "A polite business/presentation phrase — note that here both actions belong to the audience and speaker respectively, which is an exception to the usual same-subject rule in very formal instructional contexts."
     },
     {
-      "jp": "<ruby>悪</ruby><rt>わる</rt></ruby>いと<ruby>知</ruby><rt>し</rt></ruby>りながら、やめられなかった。",
-      "translation": "Even knowing it was wrong, I couldn't stop.",
-      "register": "standard",
-      "notes": "Surprising nuance: ながら can attach to adjective or verb stems to mean 'even while knowing / despite' — expressing a contradiction or concession, not just simultaneous physical actions."
+      "jp": "<ruby>知</ruby><rt>し</rt></ruby>りながら、<ruby>黙</ruby><rt>だま</rt></ruby>っていたの？",
+      "translation": "You knew all along and stayed quiet?",
+      "register": "casual",
+      "notes": "This surprises learners: ながら can also mean 'even while / despite the fact that,' expressing a contradiction — you knew, yet said nothing. This concessive nuance is distinct from simple simultaneity."
     }
   ],
   "confused_with": {
     "pattern": "～<ruby>間</ruby><rt>あいだ</rt></ruby>に／～<ruby>間</ruby><rt>あいだ</rt></ruby>",
-    "contrast": "<ruby>間</ruby><rt>あいだ</rt></ruby>(に) expresses that something happens within a time window while something else is ongoing, and the two actions don't have to be done by the same subject. ながら strictly requires the same person doing both actions continuously and simultaneously. Compare: <ruby>母</ruby><rt>はは</rt></ruby>が<ruby>料</ruby><rt>りょう</rt></ruby><ruby>理</ruby><rt>り</rt></ruby>をしている<ruby>間</ruby><rt>あいだ</rt></ruby>に、<ruby>私</ruby><rt>わたし</rt></ruby>はテレビを<ruby>見</ruby><rt>み</rt></ruby>た (While my mother was cooking, I watched TV — different subjects, one action completes inside the window) vs. <ruby>料</ruby><rt>りょう</rt></ruby><ruby>理</ruby><rt>り</rt></ruby>をしながらテレビを<ruby>見</ruby><rt>み</rt></ruby>た (I watched TV while cooking — same person doing both at once, continuously)."
+    "contrast": "Both can translate as 'while,' but they work differently. ～ながら requires the same subject doing both actions simultaneously and implies they are truly concurrent. ～<ruby>間</ruby><rt>あいだ</rt></ruby>に focuses on a window of time during which another event occurs, often with different subjects and no implication that one action is secondary. Compare: <ruby>音</ruby><rt>おん</rt></ruby><ruby>楽</ruby><rt>がく</rt></ruby>を<ruby>聴</ruby><rt>き</rt></ruby>きながら<ruby>走</ruby><rt>はし</rt></ruby>った (I ran while listening to music — same person, both ongoing) vs. <ruby>私</ruby><rt>わたし</rt></ruby>が<ruby>寝</ruby><rt>ね</rt></ruby>ている<ruby>間</ruby><rt>あいだ</rt></ruby>に、<ruby>荷</ruby><rt>に</rt></ruby><ruby>物</ruby><rt>もつ</rt></ruby>が<ruby>届</ruby><rt>とど</rt></ruby>いた (While I was sleeping, the package arrived — different subjects, event happens within a time window)."
   },
-  "bunpro_tip": "Think of ながら as a 'background music' marker — the verb before it is what's playing quietly in the background while the main clause is the real show. When drilling on BunPro, always ask yourself: same subject? continuous overlap? If yes, ながら is your pick over <ruby>間</ruby><rt>あいだ</rt></ruby>に.",
+  "bunpro_tip": "Think of ながら as 'with [X] as background music' — the ながら action is always the backdrop, never the star. When drilling on BunPro, always ask yourself: are both actions done by the same person? If not, ながら probably isn't your answer.",
   "input": "～ながら",
-  "timestamp": "2026-06-14T20:39:20.724Z"
+  "timestamp": "2026-06-15T00:41:30.509Z"
 }

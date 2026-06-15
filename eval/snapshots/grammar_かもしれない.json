@@ -1,0 +1,42 @@
+{
+  "pattern": "～かもしれない",
+  "mode": "grammar",
+  "real_meaning": "～かもしれない expresses genuine uncertainty — the speaker thinks something is possible but has no strong evidence either way. The feeling is closer to 'for all I know, it might be...' rather than a confident guess; it leaves the door open without committing. Crucially, it signals intellectual humility: the speaker is openly admitting they don't really know.",
+  "formation": {
+    "rule": "Attaches to the plain (dictionary/short) form of verbs, い-adjectives, and な-adjectives/nouns. Verb plain form: <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれない. い-adjective: <ruby>寒<rt>さむ</rt></ruby>いかもしれない. な-adjective/noun: drop だ before かもしれない → <ruby>静<rt>しず</rt></ruby>かかもしれない, <ruby>先生<rt>せんせい</rt></ruby>かもしれない (NOT <ruby>静<rt>しず</rt></ruby>かだかもしれない or <ruby>先生<rt>せんせい</rt></ruby>だかもしれない).",
+    "common_mistake": "Learners often keep だ before かもしれない with な-adjectives and nouns. Wrong: <ruby>病気<rt>びょうき</rt></ruby>だかもしれない. Correct: <ruby>病気<rt>びょうき</rt></ruby>かもしれない."
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>明日<rt>あした</rt></ruby>、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれないから、<ruby>傘<rt>かさ</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていきなよ。",
+      "translation": "It might rain tomorrow, so you should take an umbrella.",
+      "register": "casual",
+      "notes": "The uncertainty of かもしれない is used here as a practical reason for advice — even a small chance of rain is enough to justify bringing an <ruby>傘<rt>かさ</rt></ruby>."
+    },
+    {
+      "jp": "このレストランは<ruby>混<rt>こ</rt></ruby>んでいるかもしれないので、<ruby>予約<rt>よやく</rt></ruby>したほうがいいと<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "This restaurant might be crowded, so I think we'd better make a reservation.",
+      "register": "standard",
+      "notes": "Pairing かもしれない with ～たほうがいい is very natural — the uncertainty itself justifies taking a precautionary action."
+    },
+    {
+      "jp": "この<ruby>資料<rt>しりょう</rt></ruby>には<ruby>誤<rt>あやま</rt></ruby>りが<ruby>含<rt>ふく</rt></ruby>まれているかもしれませんので、ご<ruby>確認<rt>かくにん</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いいたします。",
+      "translation": "There may be errors contained in this document, so we ask that you please verify it.",
+      "register": "formal",
+      "notes": "In formal or written contexts, かもしれません softens a potentially face-threatening statement, making it sound appropriately cautious rather than accusatory."
+    },
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>怒<rt>おこ</rt></ruby>っていないかもしれない。",
+      "translation": "She might not be angry.",
+      "register": "casual",
+      "notes": "かもしれない attaches to the negative plain form, which surprises some learners — this sentence doesn't mean she's definitely fine; it just means the speaker genuinely isn't sure whether she's angry or not."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～でしょう・～だろう",
+    "contrast": "～でしょう／だろう expresses a stronger, more confident guess — the speaker has reasoning or evidence and leans toward one conclusion, like 'I'd say it probably will.' ～かもしれない is genuinely 50/50 or lower, with no lean. Compare: <ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>でしょう (I expect it will rain — I checked the forecast) vs. <ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>かもしれない (It might rain — I really don't know). Using でしょう when you have no basis for your guess can sound overconfident or even presumptuous to Japanese ears."
+  },
+  "bunpro_tip": "Think of かもしれない as the 'I genuinely have no idea' marker — picture shrugging your shoulders. When BunPro gives you a fill-in, ask yourself: is the speaker confident (→ でしょう) or honestly uncertain (→ かもしれない)? Also drill the な-adjective/noun drop-だ rule until it's automatic, as that is the most penalized mistake on BunPro reviews.",
+  "input": "～かもしれない",
+  "timestamp": "2026-06-15T00:36:10.799Z"
+}

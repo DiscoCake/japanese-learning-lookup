@@ -1,42 +1,42 @@
 {
   "pattern": "～ておく",
   "mode": "grammar",
-  "real_meaning": "～ておく expresses doing something <ruby>ahead<rt></rt></ruby> of time as preparation or precaution for a future situation — the feeling is 'I'll take care of this now so it's ready/handled later.' It can also mean leaving something in a certain state intentionally, implying 'I'll let it stay that way for now (for a reason).' The key nuance is deliberate forethought: you're not just doing something, you're setting the stage.",
+  "real_meaning": "～ておく expresses doing something <ruby>前<rt>まえ</rt></ruby>もって — in advance, or as preparation for something that will come later. The core feeling is deliberate foresight: you're not just doing the action, you're doing it <em>now so that things are ready or handled later</em>. It can also mean leaving something in a state on purpose — 'letting it stay that way for a reason.'",
   "formation": {
-    "rule": "Attach ておく (or its contracted spoken form とく) to the て-form of a verb. Example: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べておく (written/standard) / <ruby>食<rt>た</rt></ruby>べとく (casual spoken). <ruby>予約<rt>よやく</rt></ruby>する → <ruby>予約<rt>よやく</rt></ruby>しておく. い-adjectives and nouns do not attach directly — only verbs use this pattern.",
-    "common_mistake": "Learners sometimes attach おく directly to the dictionary form instead of the て-form. Wrong: <ruby>食<rt>た</rt></ruby>べるおく ✗. Correct: <ruby>食<rt>た</rt></ruby>べておく ✓."
+    "rule": "Attach おく to the て-form of a verb. Verb て-form + おく (often contracted to とく in casual speech). Examples: <ruby>準備<rt>じゅんび</rt></ruby>する → <ruby>準備<rt>じゅんび</rt></ruby>しておく, <ruby>買<rt>か</rt></ruby>う → <ruby>買<rt>か</rt></ruby>っておく, <ruby>開<rt>あ</rt></ruby>ける → <ruby>開<rt>あ</rt></ruby>けておく",
+    "common_mistake": "Learners sometimes attach おく directly to the dictionary form instead of the て-form. Wrong: ✗ <ruby>読<rt>よ</rt></ruby>むおく / Correct: ✓ <ruby>読<rt>よ</rt></ruby>んでおく"
   },
   "sentences": [
     {
       "jp": "<ruby>明日<rt>あした</rt></ruby>のパーティーのために、<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>を<ruby>買<rt>か</rt></ruby>っとくね。",
       "translation": "I'll go ahead and buy drinks for tomorrow's party.",
       "register": "casual",
-      "notes": "とく is the contracted casual form of ておく, very natural in everyday spoken Japanese among friends."
+      "notes": "Uses the casual contraction とく (from ておく), and the ね softens it into a casual declaration — this is the natural everyday spoken form."
     },
     {
-      "jp": "<ruby>旅行<rt>りょこう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、ホテルを<ruby>予約<rt>よやく</rt></ruby>しておきました。",
-      "translation": "I made a hotel reservation in advance before the trip.",
+      "jp": "<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、<ruby>資料<rt>しりょう</rt></ruby>を<ruby>印刷<rt>いんさつ</rt></ruby>しておきました。",
+      "translation": "I printed out the documents ahead of the meeting.",
       "register": "standard",
-      "notes": "This is the classic preparatory use — the booking was done deliberately so that things would be sorted later."
+      "notes": "The ておきました ending clearly conveys that the printing was done <ruby>前<rt>まえ</rt></ruby>もって — as deliberate preparation, not just incidentally."
     },
     {
-      "jp": "<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>は、あらかじめ<ruby>全員<rt>ぜんいん</rt></ruby>に<ruby>配布<rt>はいふ</rt></ruby>しておくべきです。",
-      "translation": "The meeting materials should be distributed to all participants in advance.",
+      "jp": "ご<ruby>予約<rt>よやく</rt></ruby>は<ruby>事前<rt>じぜん</rt></ruby>にしておいていただく<ruby>必要<rt>ひつよう</rt></ruby>がございます。",
+      "translation": "Reservations must be made in advance.",
       "register": "formal",
-      "notes": "Combining ておく with べき adds a prescriptive tone — this is what good preparation requires."
+      "notes": "In formal/written contexts, ておく appears in structures like ていただく to emphasize that the action must be completed <ruby>前<rt>まえ</rt></ruby>もって as a required preparation."
     },
     {
-      "jp": "それについては、<ruby>今<rt>いま</rt></ruby>は<ruby>何<rt>なに</rt></ruby>も<ruby>言<rt>い</rt></ruby>わないでおきます。",
-      "translation": "For now, I'll refrain from saying anything about that.",
-      "register": "standard",
-      "notes": "Surprising to learners: ておく can be used with a negative te-form (ないでおく) to mean intentionally leaving something undone or unsaid — a deliberate non-action."
+      "jp": "あの<ruby>問題<rt>もんだい</rt></ruby>は、とりあえずそのままにしておこう。",
+      "translation": "Let's just leave that problem as it is for now.",
+      "register": "casual",
+      "notes": "This reveals ておく's lesser-known nuance: deliberately leaving something in its current state. It's not about advance preparation here, but about an intentional, reasoned 'let it be' decision — a distinct feeling from simply not doing anything."
     }
   ],
   "confused_with": {
     "pattern": "～てしまう",
-    "contrast": "～ておく is about deliberate preparation — you do something intentionally to set things up for the future. ～てしまう, by contrast, expresses completion with an emotional edge — either regret ('I went and did it...') or relief at finishing something fully. Compare: <ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた means 'I did the homework ahead of time (so I'm prepared),' focusing on readiness. <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった means 'I went ahead and finished the homework (it's done/off my plate),' focusing on the fact of completion, sometimes with a sense of relief or even mild regret. If you're thinking about a future situation you're preparing for, use ておく; if you're commenting on the fact that something is now fully done, use てしまう."
+    "contrast": "～ておく is about doing something <em>on purpose, in advance</em> for a future reason, while ～てしまう is about completing an action fully — often with an emotional tinge of regret, relief, or finality. Compare: <ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた means 'I did my homework (in advance, so I'm prepared)' — forward-looking and intentional. <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった means 'I went ahead and finished my homework' — emphasizing completion, sometimes with relief or even mild regret. You'd use ておく when thinking about the future; you'd use てしまう when focused on the fact that the action is now done and dusted."
   },
-  "bunpro_tip": "Picture yourself as a <ruby>準備<rt>じゅんび</rt></ruby>のいい人 (a well-prepared person) setting dominoes in place before they need to fall — that forward-thinking 'I'll handle it now for later' feeling IS ておく. When you see とく in casual speech, train yourself to immediately recognize it as the spoken contraction so it doesn't trip you up on BunPro's listening-style prompts.",
+  "bunpro_tip": "Picture yourself as a scout or planner: ておく is your 'prep move.' When you see it, ask yourself 'prepared FOR what?' — there's always a future situation motivating the action. In casual speech, train yourself to hear とく/どく as the same pattern so you're not caught off guard on BunPro's listening drills.",
   "input": "～ておく",
-  "timestamp": "2026-06-14T20:34:38.727Z"
+  "timestamp": "2026-06-15T00:42:59.145Z"
 }

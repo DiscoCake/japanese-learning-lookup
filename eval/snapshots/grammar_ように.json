@@ -1,42 +1,42 @@
 {
   "pattern": "～ように",
   "mode": "grammar",
-  "real_meaning": "～ように expresses a goal, hope, or desired outcome — it frames an action or state as something you are aiming *toward*, like adjusting your trajectory to reach a target. Unlike a direct command or simple purpose clause, it carries a softer, more wishful nuance: 'so that [this comes to be]' or 'in the hope that [this happens].' It is especially at home with verbs of ability, possibility, or gradual change (できる、わかる、なる), and in prayers or requests where the speaker can't directly cause the outcome themselves.",
+  "real_meaning": "～ように expresses a goal, aim, or desired state that you are working toward or requesting — it frames something as a TARGET rather than a direct action. The key feeling is 'so that [some state comes to be]' or 'in such a way that [X happens],' which makes it softer and more indirect than a plain command or direct purpose statement. Because it describes a desired *state* rather than a willed action, it is used when the outcome isn't entirely under one's own control, or when making a polite, gentle request.",
   "formation": {
-    "rule": "Attach ように to the **dictionary form** of a verb (or ない-form for negative goals). Works with potential verbs too. Examples: <ruby>泳<rt>およ</rt></ruby>げるように (so that I can swim) ／ <ruby>忘<rt>わす</rt></ruby>れないように (so as not to forget) ／ <ruby>早<rt>はや</rt></ruby>く<ruby>起<rt>お</rt></ruby>きられるように (so that I can wake up early)",
-    "common_mistake": "Using the volitional or て-form instead of the plain/dictionary form before ように. Wrong: ✗ <ruby>話<rt>はな</rt></ruby>そうように<ruby>練習<rt>れんしゅう</rt></ruby>した　／　Correct: ✓ <ruby>話<rt>はな</rt></ruby>せるように<ruby>練習<rt>れんしゅう</rt></ruby>した. Also, learners mistakenly use ために with stative or potential verbs — ように is the correct choice there."
+    "rule": "Attach ように to the **plain non-past form of a verb** (or ないform for negative goals): できる → できるように, <ruby>忘<rt>わす</rt></ruby>れない → <ruby>忘<rt>わす</rt></ruby>れないように. For requests/instructions directed at others, ように follows the plain form and is then followed by a verb of requesting or effort: <ruby>来<rt>き</rt></ruby>るように<ruby>言<rt>い</rt></ruby>う ('tell someone to come'), <ruby>頑張<rt>がんば</rt></ruby>るようにする ('try to do one's best').",
+    "common_mistake": "Learners often incorrectly attach ように to the ます-stem or a volitional form: ❌ <ruby>来<rt>き</rt></ruby>ますように / ❌ <ruby>来<rt>こ</rt></ruby>ようように. The correct form always uses the **plain (dictionary or ない) form**: ✅ <ruby>来<rt>こ</rt></ruby>られるように / ✅ <ruby>来<rt>こ</rt></ruby>られないように."
   },
   "sentences": [
     {
-      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>して、ギターが<ruby>弾<rt>ひ</rt></ruby>けるようになりたい。",
-      "translation": "I want to reach the point where I can play guitar, so I practice every day.",
+      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>単語<rt>たんご</rt></ruby>を<ruby>覚<rt>おぼ</rt></ruby>えられるように、アプリを<ruby>使<rt>つか</rt></ruby>ってる。",
+      "translation": "I'm using an app so that I can memorize vocabulary every day.",
       "register": "casual",
-      "notes": "Shows ように paired with なる (ようになる) to express a gradual change toward a goal — one of its most natural and frequent uses."
+      "notes": "The goal (memorizing vocab) isn't guaranteed — it's a *desired state* the speaker is working toward, which is exactly when ように shines over ために."
     },
     {
-      "jp": "<ruby>風邪<rt>かぜ</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>かないように、<ruby>毎日<rt>まいにち</rt></ruby>ビタミンを<ruby>飲<rt>の</rt></ruby>んでいます。",
-      "translation": "I take vitamins every day so that I don't catch a cold.",
+      "jp": "<ruby>遅<rt>おく</rt></ruby>れないように、<ruby>早<rt>はや</rt></ruby>めに<ruby>家<rt>いえ</rt></ruby>を<ruby>出<rt>で</rt></ruby>ました。",
+      "translation": "I left home early so that I wouldn't be late.",
       "register": "standard",
-      "notes": "Negative ないように shows the target is *avoiding* an outcome — the speaker takes precautionary action toward keeping something from happening."
+      "notes": "The negative ないように pattern is very common for expressing 'in order not to let X happen' — framing avoidance as a target state."
     },
     {
-      "jp": "<ruby>全員<rt>ぜんいん</rt></ruby>が<ruby>内容<rt>ないよう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>できるように、<ruby>資料<rt>しりょう</rt></ruby>を<ruby>作成<rt>さくせい</rt></ruby>いたしました。",
-      "translation": "We have prepared the materials so that all participants can understand the content.",
+      "jp": "<ruby>全員<rt>ぜんいん</rt></ruby>が<ruby>内容<rt>ないよう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>できるように、<ruby>資料<rt>しりょう</rt></ruby>をわかりやすく<ruby>作成<rt>さくせい</rt></ruby>いたしました。",
+      "translation": "I have prepared the materials in an easy-to-understand manner so that everyone can understand the content.",
       "register": "formal",
-      "notes": "Formal written register; ように with a potential verb (できる) is very natural here — you can't directly *make* someone understand, so ように fits better than ために."
+      "notes": "In formal/written contexts ように is used to justify effort or decisions by stating the intended outcome — common in business emails and presentations."
     },
     {
-      "jp": "<ruby>神様<rt>かみさま</rt></ruby>、<ruby>試験<rt>しけん</rt></ruby>に<ruby>合格<rt>ごうかく</rt></ruby>できますように。",
-      "translation": "Please, God — let me pass the exam.",
+      "jp": "どうか<ruby>合格<rt>ごうかく</rt></ruby>できますように。",
+      "translation": "I pray that I may be able to pass.",
       "register": "standard",
-      "notes": "A standalone ように at the end of a sentence (no main clause) functions as a wish or prayer — the 'action clause' is left unspoken because the speaker is appealing to an outside force, not their own effort."
+      "notes": "This is a **prayer/wish** usage — one of the few cases where ます-form *is* used before ように (specifically in set wishful/prayer expressions ending the sentence), expressing a hope directed at fate or the universe rather than a deliberate plan."
     }
   ],
   "confused_with": {
     "pattern": "～ために",
-    "contrast": "Both express purpose ('in order to / so that'), but they differ in what kind of goal they describe. ために attaches to volitional actions with a clear, direct, controllable purpose — the subject *deliberately does X to achieve Y*. ように is used when the goal involves ability, possibility, or a state that can't be directly willed into existence. Minimal pair: ✓ <ruby>医者<rt>いしゃ</rt></ruby>になるために<ruby>勉強<rt>べんきょう</rt></ruby>している (studying *in order to* become a doctor — direct, intentional goal) vs. ✓ <ruby>漢字<rt>かんじ</rt></ruby>が<ruby>読<rt>よ</rt></ruby>めるように<ruby>勉強<rt>べんきょう</rt></ruby>している (studying *so that* I can read kanji — the ability is the hoped-for outcome). You could not swap these: ✗ <ruby>漢字<rt>かんじ</rt></ruby>が<ruby>読<rt>よ</rt></ruby>めるために sounds unnatural because できる/potential-form goals call for ように."
+    "contrast": "Both express purpose, but ために is used when the subject **intentionally and directly** acts to achieve a goal — the goal is something you can will into being. ように is used when the desired outcome is a **state or ability** not fully under your control, or when you want a softer, more indirect feel. Compare: <ruby>日本語<rt>にほんご</rt></ruby>を<ruby>上手<rt>じょうず</rt></ruby>になるために<ruby>勉強<rt>べんきょう</rt></ruby>しています ('I study in order to become good at Japanese' — strong, direct intent) vs. <ruby>日本語<rt>にほんご</rt></ruby>が<ruby>話<rt>はな</rt></ruby>せるように<ruby>勉強<rt>べんきょう</rt></ruby>しています ('I study so that I'll be able to speak Japanese' — the ability is a target state). A quick test: if you can swap in a *potential* or *stative* verb naturally (できる, わかる, <ruby>聞<rt>き</rt></ruby>こえる), ように is almost certainly the right choice."
   },
-  "bunpro_tip": "Picture ように as aiming an arrow at a target you can't guarantee hitting — you adjust your actions *toward* that outcome, but it's not entirely in your control. If you can swap 'in order to' with 'so that [it comes to be],' ように is your pattern. On BunPro, watch for potential verbs (できる、わかる、<ruby>見<rt>み</rt></ruby>える) as a strong signal that ように is expected over ために.",
+  "bunpro_tip": "Mental model: picture ように as drawing a **dotted arrow toward a target circle** — you're aiming at a state you want to arrive at, not firing a direct shot. When you see it in BunPro drills, ask yourself 'is this a desired *state* or *ability* someone is working toward or requesting gently?' — if yes, ように is your answer.",
   "input": "～ように",
-  "timestamp": "2026-06-14T20:37:01.054Z"
+  "timestamp": "2026-06-15T00:39:01.513Z"
 }

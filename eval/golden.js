@@ -21,6 +21,8 @@ module.exports = [
   // ── Vocab: abstract words / grammatical-construction nouns ──
   { input: '物', mode: 'vocab' },
   { input: '事', mode: 'vocab' },
+  { input: 'よう', mode: 'vocab' },   // abstract noun; also grammatical (見るようだ) — distinct from ～ように
+  { input: '所', mode: 'vocab' },    // noun form as kanji — bare ところ (hiragana) triggers grammar heuristic
 
   // ── Vocab: nuance-heavy everyday words + N4 baseline ──
   { input: '結構', mode: 'vocab' },
@@ -28,6 +30,9 @@ module.exports = [
   { input: '大丈夫', mode: 'vocab' },
 
   // ── Grammar: N3-range patterns ──
+  { input: '～かもしれない', mode: 'grammar' }, // high-frequency N4; conditional nuance often dropped
+  { input: '～てもいい', mode: 'grammar' },     // N4 permission; confusion with ～てはいけない
+  { input: '～たことがある', mode: 'grammar' }, // N4 experience pattern; modal nuance
   { input: '～てしまう', mode: 'grammar' },
   { input: '～ておく', mode: 'grammar' },
   { input: '～ように', mode: 'grammar' },

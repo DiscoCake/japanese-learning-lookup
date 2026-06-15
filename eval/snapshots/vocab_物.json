@@ -4,50 +4,50 @@
   "mode": "vocab",
   "pitch_accent": {
     "number": 2,
-    "label": "頭高",
-    "pattern": "HL"
+    "label": "odaka",
+    "pattern": "LH"
   },
-  "core_meaning": "<ruby>物<rt>もの</rt></ruby> at its core means a 'thing' or 'object' — something physical you can point to or pick up. But it stretches far beyond that: it can refer to abstract things, matters, or circumstances, and as a grammatical word (形式名詞) it adds nuance like 'something that is naturally so' or expresses emotion and expectation.",
+  "core_meaning": "<ruby>物<rt>もの</rt></ruby> refers to a physical thing or object, but it also works as an abstract placeholder meaning 'something' or 'the thing that is...' In grammar, it often softens or explains a statement, adding nuance like 'that's just how things are' or 'it's natural that...'",
   "sentences": [
     {
-      "jp": "<ruby>床<rt>ゆか</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちてる<ruby>物<rt>もの</rt></ruby>、捨てていい？",
-      "translation": "Can I throw away the stuff that's fallen on the floor?",
+      "jp": "この<ruby>物<rt>もの</rt></ruby>、どこで<ruby>買<rt>か</rt></ruby>ったの？すごくかわいい！",
+      "translation": "Where did you buy this thing? It's so cute!",
       "register": "casual",
-      "notes": "Core concrete use — <ruby>物<rt>もの</rt></ruby> meaning a physical thing or stuff."
+      "notes": "Basic use of <ruby>物<rt>もの</rt></ruby> for a physical object, common in casual conversation among friends."
     },
     {
-      "jp": "<ruby>人<rt>ひと</rt></ruby>の<ruby>物<rt>もの</rt></ruby>を<ruby>勝手<rt>かって</rt></ruby>に<ruby>使<rt>つか</rt></ruby>ってはいけない。",
-      "translation": "You must not use other people's things without permission.",
+      "jp": "<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>物<rt>もの</rt></ruby>は、<ruby>丁寧<rt>ていねい</rt></ruby>に<ruby>扱<rt>あつか</rt></ruby>わなければならない。",
+      "translation": "Important things must be handled with care.",
       "register": "standard",
-      "notes": "Everyday rule about possessions; <ruby>物<rt>もの</rt></ruby> here means someone's belongings."
+      "notes": "Here <ruby>物<rt>もの</rt></ruby> means 'things' or 'belongings' in a general, slightly abstract sense."
     },
     {
-      "jp": "<ruby>子供<rt>こども</rt></ruby>はよく<ruby>転<rt>こ</rt></ruby>ぶ<ruby>物<rt>もの</rt></ruby>だ。",
-      "translation": "Children tend to fall down a lot — that's just how it is.",
+      "jp": "<ruby>子<rt>こ</rt></ruby>どもは<ruby>失敗<rt>しっぱい</rt></ruby>しながら<ruby>学<rt>まな</rt></ruby>ぶものだ。",
+      "translation": "Children naturally learn through making mistakes.",
       "register": "standard",
-      "notes": "Grammatical use: 〜<ruby>物<rt>もの</rt></ruby>だ expressing something as a natural truth or general tendency."
+      "notes": "The grammar pattern ～ものだ expresses what is natural or expected — one of the most important grammatical uses of <ruby>物<rt>もの</rt></ruby>."
     },
     {
-      "jp": "あの<ruby>頃<rt>ころ</rt></ruby>はよく<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>遊<rt>あそ</rt></ruby>んだ<ruby>物<rt>もの</rt></ruby>だ。",
-      "translation": "We used to play together a lot back in those days.",
-      "register": "casual",
-      "notes": "Grammatical use: <ruby>物<rt>もの</rt></ruby>だ after a past-tense verb expresses fond or wistful reminiscence."
+      "jp": "もっと<ruby>若<rt>わか</rt></ruby>いころは、よく<ruby>旅<rt>たび</rt></ruby>をしたものだ。",
+      "translation": "When I was younger, I used to travel a lot.",
+      "register": "standard",
+      "notes": "～たものだ expresses nostalgia or reminiscing about past habits — a distinct grammatical use learners should recognize separately."
     },
     {
-      "jp": "<ruby>言葉<rt>ことば</rt></ruby>というのは、<ruby>時代<rt>じだい</rt></ruby>とともに<ruby>変化<rt>へんか</rt></ruby>する<ruby>物<rt>もの</rt></ruby>である。",
-      "translation": "Language is something that changes with the times.",
-      "register": "written",
-      "notes": "Formal/written grammatical use: <ruby>物<rt>もの</rt></ruby>である expressing an inherent nature or definition of something abstract."
+      "jp": "いくら<ruby>高価<rt>こうか</rt></ruby>な<ruby>物<rt>もの</rt></ruby>であっても、<ruby>心<rt>こころ</rt></ruby>のこもっていない<ruby>贈<rt>おく</rt></ruby>り<ruby>物<rt>もの</rt></ruby>は<ruby>意味<rt>いみ</rt></ruby>がないと<ruby>私<rt>わたし</rt></ruby>は<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "No matter how expensive an item may be, I believe a gift given without sincerity has no meaning.",
+      "register": "formal",
+      "notes": "<ruby>贈<rt>おく</rt></ruby>り<ruby>物<rt>もの</rt></ruby> (gift) shows how <ruby>物<rt>もの</rt></ruby> compounds with other words; this sentence also shows a more formal written register."
     }
   ],
-  "dont_use": "<ruby>物<rt>もの</rt></ruby> refers to things in a broad or somewhat abstract sense — when you mean a specific, concrete object right in front of you, <ruby>物<rt>もの</rt></ruby> is fine, but Japanese speakers sometimes prefer more specific words like <ruby>品物<rt>しなもの</rt></ruby> (goods/items) in commercial contexts. Don't confuse the standalone noun use with the grammatical 形式名詞 use — saying <ruby>子供<rt>こども</rt></ruby>は<ruby>元気<rt>げんき</rt></ruby>な<ruby>物<rt>もの</rt></ruby>を<ruby>食<rt>た</rt></ruby>べる when you mean 'children eat energetic things' would sound odd; context matters. Also avoid overusing 〜<ruby>物<rt>もの</rt></ruby>だ for personal opinions — it asserts something as a universal truth, which can sound presumptuous.",
+  "dont_use": "Don't use <ruby>物<rt>もの</rt></ruby> for abstract, uncountable concepts like love, time, or feelings — use <ruby>こと</ruby> instead (e.g. <ruby>好<rt>す</rt></ruby>きなことを<ruby>話<rt>はな</rt></ruby>す, not <ruby>好<rt>す</rt></ruby>きな<ruby>物<rt>もの</rt></ruby>を<ruby>話<rt>はな</rt></ruby>す when talking about an activity). Don't confuse the grammatical ものだ with a literal object — context decides meaning. Also avoid using <ruby>物<rt>もの</rt></ruby> when referring to people; use <ruby>人<rt>ひと</rt></ruby> or <ruby>者<rt>もの</rt></ruby> (written) for persons.",
   "confused_with": {
-    "word": "<ruby>事<rt>こと</rt></ruby>",
+    "word": "こと",
     "reading": "こと",
-    "contrast": "<ruby>物<rt>もの</rt></ruby> refers to tangible things or concrete entities (and by extension, people or situations treated as 'things'), while <ruby>事<rt>こと</rt></ruby> refers to intangible matters, facts, situations, or actions. For example, <ruby>好<rt>す</rt></ruby>きな<ruby>物<rt>もの</rt></ruby> means 'things you like' (objects, food, etc.), but <ruby>好<rt>す</rt></ruby>きな<ruby>事<rt>こと</rt></ruby> means 'things you like doing' (activities, situations). As a rule of thumb: if you can hold it, it's likely <ruby>物<rt>もの</rt></ruby>; if it's an event or action, it's <ruby>事<rt>こと</rt></ruby>."
+    "contrast": "<ruby>物<rt>もの</rt></ruby> refers to tangible objects or noun-like concepts with physical weight, while こと refers to abstract facts, events, or actions treated as concepts (e.g. <ruby>泳<rt>およ</rt></ruby>ぐことが<ruby>好<rt>す</rt></ruby>きです 'I like swimming' vs <ruby>好<rt>す</rt></ruby>きな<ruby>物<rt>もの</rt></ruby>はケーキです 'My favorite thing is cake'). A useful test: if you can point at it or hold it, <ruby>物<rt>もの</rt></ruby> is likely right; if it's an idea or action, use こと. Both can appear in grammar patterns (ものだ vs ことだ), and those patterns have distinct, unrelated meanings."
   },
-  "frequency": "<ruby>物<rt>もの</rt></ruby> is extremely common across all registers — daily speech, written Japanese, and formal texts alike. The grammatical uses (〜<ruby>物<rt>もの</rt></ruby>だ for natural truths, reminiscence) are especially frequent in spoken and written Japanese and are important patterns to recognize at the N3 level.",
-  "anki_hint": "When <ruby>物<rt>もの</rt></ruby> comes after a verb or adjective rather than standing alone, it's almost always acting as a grammatical word — 〜<ruby>物<rt>もの</rt></ruby>だ means 'that's just how things are' or 'we used to...', not a literal object.",
+  "frequency": "<ruby>物<rt>もの</rt></ruby> is extremely common in both daily speech and written Japanese. The physical noun sense appears constantly in conversation, while the grammatical ものだ / たものだ patterns are frequent in both speech and writing. Learners will encounter it at every level.",
+  "anki_hint": "<ruby>物<rt>もの</rt></ruby> = something you can hold OR a grammar tool: ～ものだ means 'that's how things naturally are,' and ～たものだ means 'I used to...'",
   "input": "物",
-  "timestamp": "2026-06-14T20:34:13.491Z"
+  "timestamp": "2026-06-15T00:32:02.773Z"
 }

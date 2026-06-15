@@ -1,0 +1,53 @@
+{
+  "word": "よう",
+  "reading": "よう",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 1,
+    "label": "atamadaka",
+    "pattern": "HL"
+  },
+  "core_meaning": "よう（<ruby>様<rt>よう</rt></ruby>）has two main lives: as a noun meaning 'appearance, manner, state' (how something looks or seems), and as a grammatical suffix/particle meaning 'like, as if, in the way of.' It bridges description and comparison — you use it to say something resembles something else or to describe how a situation appears to be.",
+  "sentences": [
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>何<rt>なに</rt></ruby>か<ruby>悲<rt>かな</rt></ruby>しいことがあったような<ruby>顔<rt>かお</rt></ruby>をしてる。",
+      "translation": "She has a look on her face like something sad happened to her.",
+      "register": "casual",
+      "notes": "〜ような modifies a noun (<ruby>顔<rt>かお</rt></ruby>) to mean 'a face that looks as if ~'; common in everyday observation."
+    },
+    {
+      "jp": "<ruby>空<rt>そら</rt></ruby>が<ruby>暗<rt>くら</rt></ruby>くなってきた。<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうなようだね。",
+      "translation": "The sky's gotten dark. Looks like it might rain, huh.",
+      "register": "casual",
+      "notes": "〜ようだ at the end of a sentence expresses the speaker's inference based on visible evidence — here, the dark sky."
+    },
+    {
+      "jp": "<ruby>先生<rt>せんせい</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>がよく<ruby>聞<rt>き</rt></ruby>こえるように、<ruby>前<rt>まえ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>りました。",
+      "translation": "I sat in a front seat so that I could hear the teacher's explanation clearly.",
+      "register": "standard",
+      "notes": "〜ように before a verb of action expresses purpose or goal — 'so that / in order that'; very common grammatical use."
+    },
+    {
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>はまるで<ruby>子供<rt>こども</rt></ruby>のように<ruby>無邪気<rt>むじゃき</rt></ruby>に<ruby>笑<rt>わら</rt></ruby>った。",
+      "translation": "He laughed with an innocence just like a child's.",
+      "register": "standard",
+      "notes": "まるで〜のように is a classic comparison structure meaning 'just like / exactly as if'; まるで strengthens the simile."
+    },
+    {
+      "jp": "<ruby>以下<rt>いか</rt></ruby>に<ruby>示<rt>しめ</rt></ruby>すように、この<ruby>結果<rt>けっか</rt></ruby>は<ruby>仮説<rt>かせつ</rt></ruby>を<ruby>支持<rt>しじ</rt></ruby>するものである。",
+      "translation": "As shown below, these results support the hypothesis.",
+      "register": "written",
+      "notes": "〜に<ruby>示<rt>しめ</rt></ruby>すように is a set written phrase meaning 'as shown/indicated in ~'; typical of academic and formal documents."
+    }
+  ],
+  "dont_use": "Don't confuse よう（<ruby>様<rt>よう</rt></ruby>）with みたい — while both express resemblance, よう is more neutral and works in formal/written contexts, whereas みたい is casual only. Also avoid using 〜ようだ when you have direct, personal knowledge of something; it implies inference from indirect evidence, so saying something you witnessed directly with 〜ようだ sounds oddly detached. Finally, don't mix up 〜ように（<ruby>目的<rt>もくてき</rt></ruby>）'so that' with 〜ように（<ruby>比較<rt>ひかく</rt></ruby>）'like' — context and the verb type (potential/negative verbs signal purpose) usually make it clear, but learners often conflate them.",
+  "confused_with": {
+    "word": "みたい",
+    "reading": "みたい",
+    "contrast": "Both よう and みたい mean 'like / seems like,' but みたい is casual and spoken only — you'd never write みたい in a formal essay. よう works across all registers. Compare: <ruby>夢<rt>ゆめ</rt></ruby>みたいだね (casual, spoken) vs. <ruby>夢<rt>ゆめ</rt></ruby>のようだ (neutral/formal). For N3 and above, being able to swap between them by register is an important skill."
+  },
+  "frequency": "Extremely common across all registers. 〜ようだ／〜ような／〜ように appear constantly in daily speech, news, novels, and academic writing. This is core grammar-vocabulary that any intermediate learner will encounter daily.",
+  "anki_hint": "Think of よう as a shape-shifter: as a noun it means 'appearance/state,' but in grammar it glues comparison (〜のように 'like ~') and purpose (〜ように 'so that ~') — mastering which role it's playing from context is the key.",
+  "input": "よう",
+  "timestamp": "2026-06-15T00:37:58.610Z"
+}

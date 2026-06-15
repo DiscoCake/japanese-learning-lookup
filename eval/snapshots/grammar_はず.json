@@ -1,42 +1,42 @@
 {
   "pattern": "～はず",
   "mode": "grammar",
-  "real_meaning": "～はず expresses the speaker's confident expectation or logical deduction — 'it should be the case' based on evidence, reasoning, or prior knowledge. It's not a guess; it's 'I have good reason to believe this is true.' The speaker is essentially saying: given what I know, this outcome is the only logical conclusion.",
+  "real_meaning": "～はず expresses the speaker's confident expectation or logical conclusion based on evidence, prior knowledge, or reasoning — not a wild guess, but a belief grounded in something concrete. It carries a sense of 'it should be the case' or 'I have good reason to believe this is true.' Crucially, it reflects the speaker's internal model of reality, so when reality turns out differently, it feels surprising or even wrong to the speaker.",
   "formation": {
-    "rule": "Attaches to the plain form of verbs, い-adjectives, な-adjective + な, and noun + の, followed by はず + だ/です. Examples: <ruby>来<rt>く</rt></ruby>るはずだ (verb plain), <ruby>安<rt>やす</rt></ruby>いはずだ (い-adj), <ruby>静<rt>しず</rt></ruby>かなはずだ (な-adj + な), <ruby>学生<rt>がくせい</rt></ruby>のはずだ (noun + の)",
-    "common_mistake": "Attaching はず directly to a な-adjective without な — wrong: <ruby>静<rt>しず</rt></ruby>かはずだ, correct: <ruby>静<rt>しず</rt></ruby>かなはずだ. Learners also sometimes forget の for nouns — wrong: <ruby>先生<rt>せんせい</rt></ruby>はずだ, correct: <ruby>先生<rt>せんせい</rt></ruby>のはずだ."
+    "rule": "Attach はず to the plain form of verbs, い-adjectives, な-adjectives (+ な), or nouns (+ の): <ruby>来<rt>く</rt></ruby>るはず／<ruby>高<rt>たか</rt></ruby>いはず／<ruby>静<rt>しず</rt></ruby>かなはず／<ruby>学<rt>がく</rt></ruby><ruby>生<rt>せい</rt></ruby>のはず。For negative expectation, use ないはず or はずがない (strong denial).",
+    "common_mistake": "Learners often attach はず directly to な-adjective stems without な, or to nouns without の. Wrong: <ruby>静<rt>しず</rt></ruby>かはず／<ruby>先<rt>せん</rt></ruby><ruby>生<rt>せい</rt></ruby>はず。Correct: <ruby>静<rt>しず</rt></ruby>かなはず／<ruby>先<rt>せん</rt></ruby><ruby>生<rt>せい</rt></ruby>のはず。"
   },
   "sentences": [
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>はもう<ruby>家<rt>いえ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いてるはずだよ。",
-      "translation": "She should have arrived home by now.",
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>、そこに<ruby>置<rt>お</rt></ruby>いたはずなんだけど、どこ<ruby>行<rt>い</rt></ruby>ったんだろう？",
+      "translation": "I'm sure I left the key right there — where on earth did it go?",
       "register": "casual",
-      "notes": "Shows はず used with confident reasoning — the speaker knows her travel time and is deducing she's arrived."
+      "notes": "The はず here shows the speaker's frustrated confidence clashing with reality — a very natural use when something isn't where you logically expected it to be."
     },
     {
-      "jp": "この<ruby>電車<rt>でんしゃ</rt></ruby>は<ruby>五<rt>ご</rt></ruby><ruby>分<rt>ふん</rt></ruby><ruby>後<rt>ご</rt></ruby>に<ruby>来<rt>く</rt></ruby>るはずです。",
-      "translation": "This train should come in five minutes.",
+      "jp": "<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんはもう<ruby>連<rt>れん</rt></ruby><ruby>絡<rt>らく</rt></ruby>を<ruby>受<rt>う</rt></ruby>けているはずですよ。",
+      "translation": "Tanaka-san should already have been notified.",
       "register": "standard",
-      "notes": "The speaker checked the timetable — this is a logical expectation, not just a hope."
+      "notes": "This is the classic はず usage: the speaker has a logical basis (e.g., someone said they'd inform Tanaka) and is confidently relaying that expectation to another person."
     },
     {
-      "jp": "この<ruby>書類<rt>しょるい</rt></ruby>はすでに<ruby>提出<rt>ていしゅつ</rt></ruby>されているはずでございます。",
-      "translation": "These documents should already have been submitted.",
+      "jp": "このデータによれば、<ruby>結<rt>けっ</rt></ruby><ruby>果<rt>か</rt></ruby>は<ruby>誤<rt>ご</rt></ruby><ruby>差<rt>さ</rt></ruby><ruby>範<rt>はん</rt></ruby><ruby>囲<rt>い</rt></ruby><ruby>内<rt>ない</rt></ruby>に<ruby>収<rt>おさ</rt></ruby>まるはずである。",
+      "translation": "According to this data, the results should fall within the margin of error.",
       "register": "formal",
-      "notes": "In formal/business Japanese, はず can politely assert something expected as fact without sounding blunt."
+      "notes": "In formal written Japanese, はずである is used to state a conclusion derived logically from evidence — close in feel to 'is expected to' in academic English."
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>はそんなことを<ruby>言<rt>い</rt></ruby>うはずがない。",
-      "translation": "There's no way he would say something like that.",
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>がそんなことを<ruby>言<rt>い</rt></ruby>うはずがない。<ruby>絶<rt>ぜっ</rt></ruby><ruby>対<rt>たい</rt></ruby>に<ruby>誤<rt>ご</rt></ruby><ruby>解<rt>かい</rt></ruby>だ。",
+      "translation": "There's no way he would say something like that. It's definitely a misunderstanding.",
       "register": "standard",
-      "notes": "はずがない is a powerful negation — 'it cannot logically be the case' — much stronger than just saying he didn't say it; it expresses that the very idea contradicts what the speaker knows about him."
+      "notes": "はずがない is the strong negative form — it doesn't just mean 'probably not' but 'it is logically impossible / inconceivable given what I know,' making it much stronger than ないはず."
     }
   ],
   "confused_with": {
     "pattern": "～にちがいない",
-    "contrast": "Both express confident deduction, but they differ in degree and source of confidence. はず is based on external knowledge, schedules, or logical expectation — 'it should be so because I have reason to expect it.' にちがいない is a strong personal conviction — 'I'm certain this is true' — and feels more emotional or gut-level. Compare: <ruby>彼<rt>かれ</rt></ruby>は<ruby>知<rt>し</rt></ruby>っているはずだ ('He should know — he was there') vs. <ruby>彼<rt>かれ</rt></ruby>は<ruby>知<rt>し</rt></ruby>っているにちがいない ('He definitely knows — I just feel it'). Use はず when you can point to a reason; use にちがいない when you're expressing strong personal certainty."
+    "contrast": "Both express confident belief, but they differ in what drives that confidence. はず is based on prior knowledge, plans, or logical reasoning — 'I have a reason to expect this.' にちがいない is based on the speaker's strong gut conviction or inference from observed evidence — 'I'm convinced this must be true.' Compare: <ruby>彼<rt>かれ</rt></ruby>はもう<ruby>知<rt>し</rt></ruby>っているはずだ (I expect he already knows — e.g., someone told him) vs. <ruby>彼<rt>かれ</rt></ruby>はもう<ruby>知<rt>し</rt></ruby>っているにちがいない (He must already know — I can just tell from his reaction). Use はず when you have a concrete basis; use にちがいない when it's a strong personal conviction."
   },
-  "bunpro_tip": "Think of はず as 'logic says so' — whenever you attach it, imagine you're citing an invisible reason or evidence. A useful mental model: はず = 'according to my expectations / the facts I know, this must be true.' Drilling <ruby>否定<rt>ひてい</rt></ruby> form はずがない separately is worth it — it's extremely common and sounds much more natural than just saying ～ないはずだ.",
+  "bunpro_tip": "Think of はず as your internal GPS saying 'you should arrive at your destination' — it's a confident prediction based on a route you already planned. When reality diverges, the GPS (and you) are surprised. Drilling the noun/な-adjective forms (の／な + はず) is worth extra attention on BunPro since those are where formation errors cluster.",
   "input": "～はず",
-  "timestamp": "2026-06-14T20:38:46.709Z"
+  "timestamp": "2026-06-15T00:40:57.916Z"
 }

@@ -101,14 +101,31 @@ app.post('/api/paste/stream', async (req, res) => {
     }
     send({ type: 'identified', words });
 
-    await Promise.all(words.map(async ({ word, sentence }) => {
-      try {
-        const result = await lookup(word, { context: sentence, jj: !!jj });
-        send({ type: 'result', word, result });
-      } catch (err) {
-        send({ type: 'word_error', word, message: err.message });
+    /* Serial with pacing — parallel calls hit the output-token/min rate limit
+       for pastes with 5+ words. 3s spacing keeps us well under the org limit. */
+    const PASTE_SPACING_MS = 3000;
+    const PASTE_MAX_RETRIES = 3;
+    const PASTE_BACKOFF_MS = 65000;
+    for (let i = 0; i < words.length; i++) {
+      if (i > 0) await new Promise(r => setTimeout(r, PASTE_SPACING_MS));
+      const { word, sentence } = words[i];
+      let attempt = 0;
+      while (true) {
+        try {
+          const result = await lookup(word, { context: sentence, jj: !!jj });
+          send({ type: 'result', word, result });
+          break;
+        } catch (err) {
+          if (/\b429\b/.test(err.message) && attempt < PASTE_MAX_RETRIES) {
+            attempt++;
+            await new Promise(r => setTimeout(r, PASTE_BACKOFF_MS));
+            continue;
+          }
+          send({ type: 'word_error', word, message: err.message });
+          break;
+        }
       }
-    }));
+    }
 
     send({ type: 'done' });
   } catch (err) {

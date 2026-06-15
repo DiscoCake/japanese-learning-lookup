@@ -1,42 +1,42 @@
 {
   "pattern": "～ところ",
   "mode": "grammar",
-  "real_meaning": "～ところ literally means 'place' but grammatically it pins down a precise point in time relative to an action — specifically whether that action is just about to happen, currently happening, or has just finished. The speaker uses it to say 'I'm catching you at exactly this moment in the process.' It's less about location and more about zooming in on a specific temporal snapshot.",
+  "real_meaning": "～ところ literally means 'place' but when attached to verb forms it captures a specific snapshot in time — it tells the listener exactly WHERE in the timeline of an action you are: just about to, right in the middle of, or just finished. Think of it like a camera freeze-frame: you're not describing the action in general, you're pinpointing the precise moment. The form of the verb before ところ is doing all the temporal work.",
   "formation": {
-    "rule": "Attach ところ to different verb forms to express different timing: (1) Dictionary form + ところ（だ） = about to do [e.g., <ruby>食<rt>た</rt></ruby>べるところだ = 'I'm just about to eat']; (2) ～ている + ところ（だ） = in the middle of doing [e.g., <ruby>食<rt>た</rt></ruby>べているところだ = 'I'm in the middle of eating']; (3) た-form + ところ（だ） = just finished doing [e.g., <ruby>食<rt>た</rt></ruby>べたところだ = 'I just ate']",
-    "common_mistake": "Learners often confuse the verb forms and use the wrong tense, changing the meaning entirely. Wrong: <ruby>食<rt>た</rt></ruby>べたところだ when they mean 'about to eat.' Correct for 'about to eat': <ruby>食<rt>た</rt></ruby>べるところだ. The た-form shifts meaning to 'just finished,' so tense accuracy is critical here."
+    "rule": "Attach ところ to three different verb forms to get three different timings: (1) Dictionary form + ところ → just about to do [<ruby>食<rt>た</rt></ruby>べるところ = just about to eat]; (2) ている + ところ → right in the middle of doing [<ruby>食<rt>た</rt></ruby>べているところ = in the middle of eating]; (3) た (past plain) + ところ → just finished doing [<ruby>食<rt>た</rt></ruby>べたところ = just finished eating].",
+    "common_mistake": "Learners often use the dictionary form when they mean 'just finished,' saying ×<ruby>食<rt>た</rt></ruby>べるところだった instead of ○<ruby>食<rt>た</rt></ruby>べたところだった. Remember: た-form = past completion, dictionary form = imminent future."
   },
   "sentences": [
     {
-      "jp": "ちょうど<ruby>家<rt>いえ</rt></ruby>を<ruby>出<rt>で</rt></ruby>るところだったのに、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>り<ruby>始<rt>はじ</rt></ruby>めた。",
-      "translation": "I was just about to leave the house when it started raining.",
+      "jp": "<ruby>今<rt>いま</rt></ruby>から<ruby>出<rt>で</rt></ruby>かけるところだよ。",
+      "translation": "I'm just about to head out.",
       "register": "casual",
-      "notes": "The dictionary form + ところ with だった (past) captures the frustration of being on the very verge of an action when something interrupted — a very natural, expressive casual use."
+      "notes": "Dictionary form + ところ signals the action hasn't started yet — perfect for 'bad timing' moments like answering the door right before leaving."
     },
     {
-      "jp": "すみません、今ちょうど<ruby>報告書<rt>ほうこくしょ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いているところです。",
-      "translation": "Sorry, I'm right in the middle of writing the report.",
+      "jp": "すみません、ただいま<ruby>確認<rt>かくにん</rt></ruby>しているところです。",
+      "translation": "I'm sorry, I'm in the middle of checking on that right now.",
       "register": "standard",
-      "notes": "～ているところ emphasizes 'caught mid-action' — more specific than just ～ています, adding the nuance that this is the very thing you're occupied with right now."
+      "notes": "ている + ところです is common in service or workplace contexts to explain you're actively handling something at this very moment."
     },
     {
-      "jp": "<ruby>只今<rt>ただいま</rt></ruby>、<ruby>担当者<rt>たんとうしゃ</rt></ruby>が<ruby>確認<rt>かくにん</rt></ruby>を<ruby>終<rt>お</rt></ruby>えたところでございます。",
-      "translation": "The person in charge has just finished the verification.",
+      "jp": "<ruby>現在<rt>げんざい</rt></ruby>、<ruby>担当者<rt>たんとうしゃ</rt></ruby>が<ruby>資料<rt>しりょう</rt></ruby>を<ruby>作成<rt>さくせい</rt></ruby>したところでございます。",
+      "translation": "The person in charge has just finished preparing the documents.",
       "register": "formal",
-      "notes": "た-form + ところ in formal/keigo context signals 'this just happened moments ago' — useful in business or customer service to reassure someone that something was handled very recently."
+      "notes": "た + ところ in formal/written contexts emphasizes the freshness of the completion — the documents are hot off the press, so to speak."
     },
     {
-      "jp": "<ruby>悪<rt>わる</rt></ruby>いところを<ruby>見<rt>み</rt></ruby>られた。",
-      "translation": "They caught me at a bad moment. / I was caught in the act.",
+      "jp": "<ruby>今日<rt>きょう</rt></ruby>こそ<ruby>告白<rt>こくはく</rt></ruby>しようとしていたところに、あいつが<ruby>現<rt>あらわ</rt></ruby>れた。",
+      "translation": "Right at the moment when I was finally about to confess, that guy showed up.",
       "register": "casual",
-      "notes": "This is the surprising side of ところ — here it blends the 'place/scene' and 'moment' meanings, meaning someone witnessed you at exactly the wrong moment; this idiomatic use trips up learners who expect ところ to always signal a neat temporal formula."
+      "notes": "ところに (not just ところ alone) signals that an interruption or new development occurred at exactly that moment — this extension is a natural next step beyond basic ところ usage and often carries dramatic or frustrated feeling."
     }
   ],
   "confused_with": {
     "pattern": "～たばかり",
-    "contrast": "Both ～たところ and ～たばかり mean something like 'just did X,' but they differ in freshness and focus. ～たところ is extremely immediate — we're talking seconds or a minute ago at most, right at the edge of completion. ～たばかり is more flexible; it can mean anywhere from moments ago to 'recently' depending on context, and it often carries an emotional nuance of 'and I'm still processing that / it still feels new.' Minimal pair: <ruby>今<rt>いま</rt></ruby><ruby>起<rt>お</rt></ruby>きたところだ (I literally just this second woke up) vs. <ruby>起<rt>お</rt></ruby>きたばかりだ (I just woke up — still groggy, not fully awake yet). Use ところ for objective timing precision; use ばかり when you want to add a feeling of recency or its lingering effect."
+    "contrast": "Both ～たところ and ～たばかり mean something like 'just did X,' but they emphasize different things. ～たところ is about objective temporal closeness — the action literally just happened seconds or moments ago, often with a sense of 'and the result is right here now.' ～たばかり is more subjective and emotional — it stresses that not enough time has passed yet, often with a nuance of 'already?!' or mild protest. Compare: <ruby>着<rt>つ</rt></ruby>いたところです (I've just arrived — stating the fresh fact) vs. <ruby>着<rt>つ</rt></ruby>いたばかりです (I only just arrived — implying 'give me a break, it's too soon to ask anything of me')."
   },
-  "bunpro_tip": "Think of ところ as a camera freeze-frame: dictionary form = camera aimed at something about to happen, ている = frozen mid-action, た = the frame right after the action ends. When you see ところ in BunPro, ask yourself 'which freeze-frame is this?' and match it to the verb form — that alone will prevent most errors.",
+  "bunpro_tip": "Drill the three forms as a trio every time: る→ている→た maps perfectly to before→during→after. When you see a ところ sentence on BunPro, ask yourself first: 'Which freeze-frame is this?' — the verb form before ところ will answer the question for you.",
   "input": "～ところ",
-  "timestamp": "2026-06-14T20:41:37.042Z"
+  "timestamp": "2026-06-15T00:40:16.213Z"
 }

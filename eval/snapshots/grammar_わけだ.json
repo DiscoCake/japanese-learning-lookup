@@ -1,42 +1,42 @@
 {
   "pattern": "～わけだ",
   "mode": "grammar",
-  "real_meaning": "～わけだ expresses a logical conclusion or natural consequence — the speaker is saying 'so that's why / it naturally follows that.' It's the feeling of a puzzle piece clicking into place: given what I now know, THIS is the logical result. It's not a guess or opinion; it's a conclusion the speaker presents as objectively inevitable from the facts at hand.",
+  "real_meaning": "～わけだ expresses that a conclusion or result is a logical, natural consequence of information just presented — like saying 'so that's why' or 'it naturally follows that.' The speaker is connecting the dots out loud, showing they understand *why* something is the case. It carries a feeling of 'of course, it makes sense now' — an 'aha' moment turned into a statement.",
   "formation": {
-    "rule": "Attach わけだ to the plain form of verbs, い-adjectives, な-adjectives (+ な), and nouns (+ な): <ruby>寒<rt>さむ</rt></ruby>い → <ruby>寒<rt>さむ</rt></ruby>いわけだ / <ruby>静<rt>しず</rt></ruby>かな → <ruby>静<rt>しず</rt></ruby>かなわけだ / <ruby>彼<rt>かれ</rt></ruby>は<ruby>先生<rt>せんせい</rt></ruby>だ → <ruby>先生<rt>せんせい</rt></ruby>なわけだ / <ruby>行<rt>い</rt></ruby>く → <ruby>行<rt>い</rt></ruby>くわけだ",
-    "common_mistake": "Learners often drop the な before わけだ with な-adjectives and nouns. Wrong: <ruby>彼<rt>かれ</rt></ruby>は<ruby>天才<rt>てんさい</rt></ruby>わけだ ✗ — Correct: <ruby>彼<rt>かれ</rt></ruby>は<ruby>天才<rt>てんさい</rt></ruby>なわけだ ✓"
+    "rule": "Attach わけだ to the plain form of verbs, い-adjectives, な-adjectives (+ な), or nouns (+ の/という). Examples: <ruby>行<rt>い</rt></ruby>くわけだ (verb plain form) ／ <ruby>難<rt>むずか</rt></ruby>しいわけだ (い-adj) ／ <ruby>静<rt>しず</rt></ruby>かなわけだ (な-adj + な) ／ <ruby>学生<rt>がくせい</rt></ruby>なわけだ (noun + な)",
+    "common_mistake": "Using the stem of a な-adjective or noun without な — learners often write ×<ruby>静<rt>しず</rt></ruby>かわけだ or ×<ruby>学生<rt>がくせい</rt></ruby>わけだ. The correct forms are ○<ruby>静<rt>しず</rt></ruby>かなわけだ and ○<ruby>学生<rt>がくせい</rt></ruby>なわけだ."
   },
   "sentences": [
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>十年<rt>じゅうねん</rt></ruby>もフランスに<ruby>住<rt>す</rt></ruby>んでたんだ。どうりでフランス<ruby>語<rt>ご</rt></ruby>がうまいわけだ。",
-      "translation": "She lived in France for ten whole years. No wonder her French is so good.",
+      "jp": "あ、<ruby>彼<rt>かれ</rt></ruby>はカナダ<ruby>出身<rt>しゅっしん</rt></ruby>なんだ。どうりで<ruby>英語<rt>えいご</rt></ruby>が<ruby>上手<rt>うま</rt></ruby>いわけだ。",
+      "translation": "Oh, he's from Canada. No wonder his English is so good.",
       "register": "casual",
-      "notes": "The classic わけだ use: a new fact is revealed and the speaker connects it to something they already observed, feeling the logic snap into place."
+      "notes": "This is the classic 'aha' use — the speaker just received new info (he's from Canada) and わけだ marks the logical conclusion that naturally follows."
     },
     {
-      "jp": "<ruby>今日<rt>きょう</rt></ruby>は<ruby>祝日<rt>しゅくじつ</rt></ruby>なんですね。だから<ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>空<rt>す</rt></ruby>いているわけです。",
-      "translation": "Oh, today is a public holiday. That's why the trains are empty.",
+      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>していたんですね。それで<ruby>上手<rt>じょうず</rt></ruby>になったわけですね。",
+      "translation": "So you were practicing every day. That's why you got so good.",
       "register": "standard",
-      "notes": "わけです is the polite form, used naturally in conversation when reasoning aloud to someone else."
+      "notes": "わけですね with rising intonation softens the conclusion into a gentle confirmation, as if the speaker is saying 'that explains it' while checking their understanding."
     },
     {
-      "jp": "このデータによると、<ruby>気温<rt>きおん</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>すれば、<ruby>海面<rt>かいめん</rt></ruby>も<ruby>上昇<rt>じょうしょう</rt></ruby>するわけです。",
-      "translation": "According to this data, if temperatures rise, sea levels will naturally rise as well.",
+      "jp": "<ruby>原料<rt>げんりょう</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>したため、<ruby>製品<rt>せいひん</rt></ruby>の<ruby>値段<rt>ねだん</rt></ruby>も<ruby>上<rt>あ</rt></ruby>がるわけです。",
+      "translation": "Because raw material prices have risen, it naturally follows that product prices will also go up.",
       "register": "formal",
-      "notes": "In formal or academic contexts, わけだ presents a logical consequence derived from evidence, giving the statement an objective, reasoned tone."
+      "notes": "In formal or written contexts, わけです presents a logical conclusion almost like an explanation or deduction, common in business or academic writing."
     },
     {
-      "jp": "つまり、<ruby>私<rt>わたし</rt></ruby>が<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>悪<rt>わる</rt></ruby>いというわけですか。",
-      "translation": "So what you're saying is, it's entirely my fault?",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>三<rt>さん</rt></ruby>ヶ<ruby>月<rt>げつ</rt></ruby>で<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>習得<rt>しゅうとく</rt></ruby>したというわけではない。",
+      "translation": "It's not that she mastered Japanese in three months.",
       "register": "standard",
-      "notes": "The tricky use: というわけですか frames a conclusion the speaker has drawn from what was just said — often with a tone of disbelief or challenge, showing わけだ can carry emotional weight."
+      "notes": "わけではない is a crucial related form — it denies that a logical conclusion applies, meaning 'that's not to say' or 'it doesn't mean that.' Learners are often surprised that negating わけだ creates this specific nuance of 'don't jump to that conclusion.'"
     }
   ],
   "confused_with": {
     "pattern": "～はずだ",
-    "contrast": "Both express that something 'should logically be the case,' but the source of that logic differs critically. はずだ is based on the speaker's expectation or prior knowledge — something they believe should be true. わけだ is based on reasoning from facts just learned or established — a conclusion that naturally follows. Compare: <ruby>彼<rt>かれ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>しているから、うまいはずだ ('He practices every day, so he should be good' — my expectation) versus <ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>してたんだね。どうりでうまいわけだ ('He was practicing every day — so THAT's why he's good' — conclusion from a newly revealed fact). Use はずだ when predicting; use わけだ when explaining."
+    "contrast": "Both patterns express that something 'should be' or 'makes sense,' but they differ in source of certainty. はずだ is based on the speaker's *expectation* — something they believe should be true based on prior knowledge or a promise. わけだ is based on *logical deduction from evidence just presented* — it explains or concludes from facts already on the table. Compare: <ruby>彼<rt>かれ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>勉強<rt>べんきょう</rt></ruby>しているから、<ruby>合格<rt>ごうかく</rt></ruby>するはずだ (I expect him to pass — based on what I know about his effort) vs. <ruby>毎日<rt>まいにち</rt></ruby>そんなに<ruby>勉強<rt>べんきょう</rt></ruby>していたのか。それで<ruby>合格<rt>ごうかく</rt></ruby>したわけだ (Ah, he was studying that hard — *that's why* he passed, it all makes sense now). Use はずだ when predicting; use わけだ when explaining or having an 'aha' moment."
   },
-  "bunpro_tip": "Picture わけだ as a 'logic lock clicking open' 🔓 — you just received a key piece of information, and now everything makes sense. Whenever you see it, ask: 'What new fact just appeared, and what does it logically explain?' If you're predicting something rather than explaining a revealed fact, you probably want はずだ instead.",
+  "bunpro_tip": "Picture わけだ as the 'detective's conclusion' pattern — Sherlock Holmes saying 'Elementary! It naturally follows that…' from the clues. When you see context giving you a reason or cause, わけだ is how you voice the logical 'so that means…' out loud. On BunPro, watch for sentences that start with から or ので earlier in the passage — that's your cue that わけだ is wrapping up the logic.",
   "input": "～わけだ",
-  "timestamp": "2026-06-14T20:38:13.038Z"
+  "timestamp": "2026-06-15T00:47:27.985Z"
 }

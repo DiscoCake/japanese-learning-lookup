@@ -1,42 +1,42 @@
 {
   "pattern": "～そうだ",
   "mode": "grammar",
-  "real_meaning": "This pattern actually covers TWO distinct usages that sound identical but mean very different things. The first is <ruby>様子<rt>ようす</rt></ruby>そうだ (appearance/conjecture): 'it looks like / it seems like' — based on direct visual or sensory evidence RIGHT NOW in front of you. The second is <ruby>伝聞<rt>でんぶん</rt></ruby>そうだ (hearsay): 'I heard that / apparently' — reporting something you learned from an outside source like news or gossip. Context and verb form are the only way to tell them apart, which is what makes this pattern genuinely tricky.",
+  "real_meaning": "This pattern actually has TWO completely different meanings depending on formation, and that ambiguity is the main trap. The first usage (appearance/conjecture) means 'it looks like ~' or 'it seems ~' — you are reporting what your senses are telling you RIGHT NOW about something you can directly observe. The second usage (hearsay) means 'I heard that ~' or 'apparently ~' — you are passing along information you received from an outside source, distancing yourself from responsibility for its truth.",
   "formation": {
-    "rule": "APPEARANCE (looks like): attach そうだ to the STEM of い-adjectives (drop い → <ruby>高<rt>たか</rt></ruby>い → <ruby>高<rt>たか</rt></ruby>そうだ), stem of な-adjectives (drop だ → <ruby>元気<rt>げんき</rt></ruby>そうだ), and the masu-stem of verbs (<ruby>降<rt>ふ</rt></ruby>る → <ruby>降<rt>ふ</rt></ruby>りそうだ). HEARSAY (I heard that): attach そうだ to the PLAIN/DICTIONARY form of verbs (<ruby>降<rt>ふ</rt></ruby>る → <ruby>降<rt>ふ</rt></ruby>るそうだ), plain form adjectives (<ruby>高<rt>たか</rt></ruby>いそうだ), and noun+だ (<ruby>学生<rt>がくせい</rt></ruby>だそうだ).",
-    "common_mistake": "Learners mix up the two by using dictionary form for appearance: ✗ <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るそうだ when trying to say 'it looks like it will rain' (this actually means 'I heard it will rain'). The correct appearance form is ✓ <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうだ (masu-stem + そうだ)."
+    "rule": "APPEARANCE (looks like): attach そうだ to the verb STEM (drop ます): <ruby>食<rt>た</rt></ruby>べ＋そうだ → <ruby>食<rt>た</rt></ruby>べそうだ; to い-adjective stem (drop い): <ruby>美<rt>おい</rt></ruby>し＋そうだ → <ruby>美<rt>おい</rt></ruby>しそうだ; to な-adjective stem directly: <ruby>元<rt>げん</rt></ruby><ruby>気<rt>き</rt></ruby>＋そうだ → <ruby>元<rt>げん</rt></ruby><ruby>気<rt>き</rt></ruby>そうだ. HEARSAY (I heard that): attach そうだ to the PLAIN FORM (dictionary/ta/nai form) of verbs or adjectives: <ruby>食<rt>た</rt></ruby>べる＋そうだ → <ruby>食<rt>た</rt></ruby>べるそうだ; <ruby>美<rt>おい</rt></ruby>しい＋そうだ → <ruby>美<rt>おい</rt></ruby>しいそうだ.",
+    "common_mistake": "Learners often use the plain form for appearance-conjecture, which accidentally flips the meaning to hearsay. Wrong (appearance): <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るそうだ (this means 'I heard it will rain', NOT 'it looks like rain'). Correct (appearance): <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうだ."
   },
   "sentences": [
     {
-      "jp": "この<ruby>ケーキ<rt>けーき</rt></ruby>、すごくおいしそう！",
-      "translation": "This cake looks really delicious!",
+      "jp": "この<ruby>ケーキ<rt>けーき</rt></ruby>、すごく<ruby>美<rt>おい</rt></ruby>しそう！",
+      "translation": "This cake looks so delicious!",
       "register": "casual",
-      "notes": "Classic appearance そうだ — the speaker is looking directly at the cake right now and making a sensory judgment; note い is dropped from おいしい before そう."
+      "notes": "Classic appearance usage — the speaker is reacting to what they can see and smell right in front of them; the dropped だ at the end is natural in casual speech."
     },
     {
-      "jp": "<ruby>天気予報<rt>てんきよほう</rt></ruby>によると、<ruby>明日<rt>あした</rt></ruby>は<ruby>雪<rt>ゆき</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るそうです。",
-      "translation": "According to the weather forecast, it will apparently snow tomorrow.",
+      "jp": "<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんは<ruby>来<rt>らい</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>会<rt>かい</rt></ruby><ruby>社<rt>しゃ</rt></ruby>を<ruby>辞<rt>や</rt></ruby>めるそうです。",
+      "translation": "I heard that Tanaka-san is quitting the company next week.",
       "register": "standard",
-      "notes": "Hearsay そうだ — the speaker learned this from a third-party source (the forecast), not from their own senses; dictionary form 降る precedes そうです."
+      "notes": "Hearsay usage — the plain form <ruby>辞<rt>や</rt></ruby>める before そうです is the giveaway; the speaker learned this from someone else and is not claiming direct knowledge."
     },
     {
-      "jp": "<ruby>部長<rt>ぶちょう</rt></ruby>が<ruby>来月<rt>らいげつ</rt></ruby><ruby>退職<rt>たいしょく</rt></ruby>されるそうでございます。",
-      "translation": "I have heard that the department head will be retiring next month.",
+      "jp": "<ruby>新<rt>しん</rt></ruby><ruby>型<rt>がた</rt></ruby>のシステムは<ruby>導<rt>どう</rt></ruby><ruby>入<rt>にゅう</rt></ruby>に<ruby>時<rt>じ</rt></ruby><ruby>間<rt>かん</rt></ruby>がかかるそうでございます。",
+      "translation": "I understand that implementing the new system will take some time.",
       "register": "formal",
-      "notes": "Hearsay そうだ in a very formal register, layered with honorific ～される and ございます, as you might say when relaying information to a superior."
+      "notes": "Hearsay そうだ in a very formal register using でございます; this is how you politely relay secondhand information in a business or official setting."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>泣<rt>な</rt></ruby>きそうな<ruby>顔<rt>かお</rt></ruby>をしていたけど、<ruby>泣<rt>な</rt></ruby>かなかった。",
-      "translation": "She had a face that looked like she was about to cry, but she didn't.",
-      "register": "casual",
-      "notes": "Tricky use: そうな modifies the noun 顔, showing that appearance そうだ can act as an adjective — many learners don't realize そうだ has a prenominal そうな form."
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>は<ruby>元<rt>げん</rt></ruby><ruby>気<rt>き</rt></ruby>そうだったのに、<ruby>実<rt>じつ</rt></ruby>は<ruby>相<rt>とう</rt></ruby><ruby>当<rt>とう</rt></ruby><ruby>辛<rt>つら</rt></ruby>かったそうだ。",
+      "translation": "He looked fine, but apparently he was really struggling the whole time.",
+      "register": "standard",
+      "notes": "Both usages appear in one sentence: <ruby>元<rt>げん</rt></ruby><ruby>気<rt>き</rt></ruby>そうだった (appearance conjecture, past) contrasts with <ruby>辛<rt>つら</rt></ruby>かったそうだ (hearsay) — a powerful example of how the two meanings can play off each other."
     }
   ],
   "confused_with": {
-    "pattern": "～らしい",
-    "contrast": "Both ～そうだ (hearsay) and ～らしい can translate as 'apparently' or 'I heard that,' but they differ in how solid the evidence feels. ～らしい implies the speaker has gathered some indirect evidence or inference and is drawing a reasonable conclusion, while hearsay ～そうだ simply reports something heard from a specific source with no personal judgment added. Compare: <ruby>田中<rt>たなか</rt></ruby>さんは<ruby>結婚<rt>けっこん</rt></ruby>したそうだ ('I heard Tanaka got married' — directly relaying what someone told you) vs. <ruby>田中<rt>たなか</rt></ruby>さんは<ruby>結婚<rt>けっこん</rt></ruby>したらしい ('It seems Tanaka got married' — you've picked up various clues and it all points that way). Choose そうだ when you can cite a clear source; choose らしい when it's more of an impression built from indirect evidence."
+    "pattern": "～ようだ・～らしい",
+    "contrast": "～らしい also means 'apparently' or 'seems like', but it signals that the speaker is making an inference based on indirect evidence or general impression — it's more like a reasoned guess than pure hearsay or direct sensory observation. ～ようだ means 'it appears that' based on evidence you have access to, often more objective-feeling than そうだ. Compare: <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>りそうだ (the sky right now LOOKS like it's about to rain — immediate visual impression) vs. <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るらしい (it seems like it'll rain — based on a forecast, what someone said, or general signs). Use そうだ (appearance) when your senses are firing right now; use らしい when you're reasoning from clues or social information."
   },
-  "bunpro_tip": "Use this mental split to nail BunPro drills: STEM (masu-stem or adjective stem) + そうだ = 'looks like' (your EYES are the source), PLAIN form + そうだ = 'I heard that' (someone ELSE is the source). When you see the full dictionary/plain form right before そうだ, ask yourself 'could I have witnessed this directly?' — if no, it's hearsay and you're on the right track.",
+  "bunpro_tip": "Nail the formation split first: STEM+そうだ = 'looks like' (your eyes are the source), PLAIN FORM+そうだ = 'I heard' (someone else is the source). A quick mnemonic: if the verb is already 'complete' (plain form), the information is already 'complete' — it came from outside. If the verb is cut short (stem), your observation is still in progress — you're watching it happen.",
   "input": "～そうだ",
-  "timestamp": "2026-06-14T20:43:51.383Z"
+  "timestamp": "2026-06-15T00:43:39.209Z"
 }
