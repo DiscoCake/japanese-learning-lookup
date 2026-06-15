@@ -3,19 +3,14 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
-### 2026-06-15 — Phase 7: clipboard paste button, haptic feedback, PWA manifest
+### 2026-06-15 — Phase 7: PWA manifest; clipboard paste + haptic removed
 
-**Clipboard paste button** (`public/index.html`, `public/js/main.js`):
-- `#paste-btn` added to `#search-row` between the text input and the search button
-- Click reads from `navigator.clipboard.readText()`, fills search field, fires `input` event
-  (updates mode pill), and focuses the field; catches API errors gracefully (HTTP contexts
-  on some mobile browsers will fall back to focusing the field for native paste)
-- Archived `2026-06-15_index.html`
+**Clipboard paste button** — added then removed. `navigator.clipboard.readText()` requires
+HTTPS; over HTTP (Tailscale without TLS) on iOS it silently fails. Native long-press paste
+in the search field is sufficient. No net change to `index.html` or `main.js`.
 
-**Haptic feedback on Anki send** (`public/js/anki.js`):
-- `navigator.vibrate?.(20)` on first click (confirm prompt "確定?")
-- `navigator.vibrate?.(50)` on second click success (✓); no-ops on desktop/iOS (no Vibration API)
-- Archived `2026-06-15_anki.js`
+**Haptic feedback** — added then removed. iOS has no Vibration API; Android-only and not
+worth the noise in the codebase for this use case. No net change to `anki.js`.
 
 **PWA manifest + home screen icon** (`public/manifest.json`, `public/icons/icon.svg`):
 - `manifest.json`: display `standalone`, theme `#ff6fa8` (pink), background `#0d0d1a` (indigo)

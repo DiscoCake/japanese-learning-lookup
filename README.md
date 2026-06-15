@@ -72,7 +72,6 @@ node src/cli.js --raw 見える      # raw JSON output
 - History (last 50 lookups, persisted server-side in `data/history.json`) — click any entry to re-render from cache, no API re-call; clicking moves it to the top; history doubles as a lookup cache so repeated searches skip the API entirely; existing localStorage history migrated automatically on first load
 - History search + filter by mode (単語/文法)
 - Copy buttons per result: Anki TSV (HTML stripped) or raw JSON
-- **Clipboard paste button** (`貼付`) in the search bar — one tap fills the field from the clipboard; gracefully falls back to focusing the input on HTTP contexts where the clipboard API is unavailable
 - TTS playback (▶) on every example sentence and on the word header via Web Speech API — pause/resume supported; picks randomly from Enhanced/Premium/local Japanese voices for male/female balance
 - **読む mode** (paste mode) — paste any Japanese text; the app identifies 5–12 N3-range words, explains each in context, and offers a bulk TSV export for the whole passage
 - **Ankiカード panel** (vocab mode) — shows the current sentence on your existing card and which deck it's in, or "no card" state with one-click creation into the Companion deck
@@ -82,8 +81,7 @@ node src/cli.js --raw 見える      # raw JSON output
 - **Kaishi 1.5k-style card layout** — new Companion cards mirror Kaishi: word + sentence (target word highlighted cyan) on front; reading + pitch + meaning + furigana sentence + translation on back; font sizes matched exactly to Kaishi (44/24/25/20px)
 - **Built-in Anki TTS** — updated cards play word then sentence using system TTS at review time; premium macOS voices used when `ANKI_TTS_VOICES` is set
 - **苦手 panel** — pulls cards with ≥2 lapses from AnkiConnect; filter by deck; click any word to look it up instantly
-- **Haptic feedback** on Anki send — light pulse on confirm prompt, stronger pulse on success (Android; iOS/desktop have no Vibration API)
-- **PWA / home screen install** — manifest + standalone display mode; install via "Add to Home Screen" in Chrome/Safari; icon: indigo background with pink 語 kanji
+- **PWA / home screen install** — manifest + standalone display mode; install via "Add to Home Screen" in Safari or Brave on iOS, or Chrome on Android; icon: indigo background with pink 語 kanji
 - **文法苦手 panel** (BunPro) — troubled grammar from BunPro SRS; click any pattern to look it up; button hidden automatically when `BUNPRO_TOKEN` is not set
 - **BunPro SRS status card** — shown after every grammar lookup when token is configured; displays SRS level, next review time, streak, and lapse count
 
@@ -106,8 +104,7 @@ No port forwarding or public exposure needed — Tailscale is a private encrypte
 
 **On mobile:**
 - Touch targets are enlarged (~44px); the header buttons wrap on narrow screens.
-- **`貼付` button** in the search bar — copy a word from any app, switch to Companion, tap 貼付 to fill the field instantly.
-- **Install as an app** — in Chrome (Android) or Safari (iOS), tap "Add to Home Screen" for standalone mode with the app icon.
+- **Install as an app** — in Safari or Brave (iOS) or Chrome (Android), tap Share → "Add to Home Screen" for standalone mode with the app icon; tap once to look up, long-press the search field to paste from clipboard.
 - The `苦手` and `文法苦手` panel buttons are hidden on mobile (AnkiConnect is desktop-only).
   TSV/JSON copy buttons still work via the system clipboard.
 - The WanaKana romaji→kana IME starts **off** on touch devices — use the native Japanese

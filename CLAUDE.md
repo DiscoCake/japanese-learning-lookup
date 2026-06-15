@@ -196,13 +196,12 @@ header. Mobile TTS voice selection fixed (localService fallback for iOS).
 
 **Phase 7 (complete as of 2026-06-15): mobile UX batch**
 
-- ✅ **Clipboard paste button** — `#paste-btn` in `#search-row`; reads clipboard, fills field,
-  fires `input` event to update mode pill; graceful fallback for HTTP contexts (focuses input)
 - ✅ **PWA manifest + home screen icon** — `public/manifest.json` + `public/icons/icon.svg`
   (indigo bg, pink 語 kanji); meta tags in `index.html` for both Android/Chrome and iOS;
-  SVG icon works for Android; iOS fidelity improves with a 180×180 PNG apple-touch-icon
-- ✅ **Haptic feedback on Anki send** — `navigator.vibrate?.(20)` on confirm prompt,
-  `navigator.vibrate?.(50)` on success; no-ops on desktop/iOS (no Vibration API there)
+  "Add to Home Screen" works in Safari and Brave on iOS
+- ~~Clipboard paste button~~ — removed; `navigator.clipboard.readText()` requires HTTPS,
+  fails silently on iOS over HTTP (Tailscale); native long-press paste is sufficient
+- ~~Haptic feedback~~ — removed; iOS has no Vibration API; not worth the complexity
 
 **Remaining Phase 7 / future candidates:**
 
