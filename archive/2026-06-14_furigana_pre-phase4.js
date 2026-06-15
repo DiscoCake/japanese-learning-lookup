@@ -1,11 +1,9 @@
-import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
-
 let furiganaOn = true;
 let imeBound = false;
 
 export function setFurigana(on) {
   furiganaOn = on;
-  setFuriganaCore(on);
+  document.body.classList.toggle('hide-furigana', !on);
   document.getElementById('furigana-btn').classList.toggle('active', on);
 }
 

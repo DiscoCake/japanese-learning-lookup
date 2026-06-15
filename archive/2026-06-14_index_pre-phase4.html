@@ -7,22 +7,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/jp-ui/palette.css" />
-<link rel="stylesheet" href="/jp-ui/furigana.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wanakana/5.3.1/wanakana.min.js"></script>
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
+  --bg: #0d0d1a; --bg2: #13132a; --bg3: #1a1a35;
+  --border: rgba(180,140,255,0.10); --border2: rgba(180,140,255,0.24);
+  --text: #eeeaf8; --text2: #9b94c0; --text3: #534e72;
+  --pink: #ff6fa8; --pink2: #c44c7e;
+  --cyan: #4fd8e8; --cyan2: #279aaa;
+  --yellow: #ffe066; --purple: #b97fff; --purple2: #7a4fbf;
   --green: #6feaa0; --green2: #2a7a50;
+  --s: 1;
 }
 html { font-size: calc(17px * var(--s)); }
 body {
   font-family: "Noto Sans JP", sans-serif;
-  padding: 2rem 1.5rem 5rem;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; padding: 2rem 1.5rem 5rem;
   display: flex; justify-content: center;
 }
 #app { width: 100%; max-width: 780px; }
 
-rt { font-family: "Noto Sans JP", sans-serif; }
+body.hide-furigana rt { display: none !important; }
+ruby { display: inline-ruby; }
+rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5rem; color: var(--pink); }
 
 /* ── HEADER ── */
 #header {

@@ -27,6 +27,13 @@ Defaults to `dev` if no name is given.
    git push -u origin <branch-name>
    ```
 
-4. **Confirm**
+4. **Clean up the archive**
+   Delete all files in `archive/` — they're snapshots from the branch that just merged,
+   and git history makes them redundant from this point on.
+   ```bash
+   rm archive/* 2>/dev/null; echo "archive/ cleared"
+   ```
+
+5. **Confirm**
    Show the current branch and the tip commit so the user can see they're starting
    clean from the merged state.

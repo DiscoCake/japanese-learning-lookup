@@ -18,6 +18,7 @@ if (!process.env.ANTHROPIC_API_KEY) {
 }
 
 app.use(express.json());
+app.use('/jp-ui', express.static(path.join(__dirname, '..', 'packages', 'jp-ui')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 /* POST /api/lookup  { input: "見る", jj: false }  → result JSON */

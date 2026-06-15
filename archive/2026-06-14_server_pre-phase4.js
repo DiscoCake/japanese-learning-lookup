@@ -6,7 +6,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { lookup, lookupStream, toAnkiTSV, identifyWords } = require('./lookup');
-const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, getDeckNames, enrichAndUpdateCard } = require('./anki');
+const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, addNoteForGrammar, getDeckNames, enrichAndUpdateCard } = require('./anki');
+const { getGrammarStatus, getTroubledGrammar } = require('./bunpro');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,14 +20,14 @@ if (!process.env.ANTHROPIC_API_KEY) {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-/* POST /api/lookup  { input: "見る" }  → result JSON */
+/* POST /api/lookup  { input: "見る", jj: false }  → result JSON */
 app.post('/api/lookup', async (req, res) => {
-  const { input } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
   try {
-    const result = await lookup(input.trim());
+    const result = await lookup(input.trim(), { jj: !!jj, forceMode: forceMode || null });
     res.json(result);
   } catch (err) {
     console.error('Lookup error:', err.message);
@@ -47,9 +48,9 @@ app.get('/api/export', async (req, res) => {
   }
 });
 
-/* POST /api/lookup/stream  { input: "見る" }  → SSE text/event-stream */
+/* POST /api/lookup/stream  { input: "見る", jj: false }  → SSE text/event-stream */
 app.post('/api/lookup/stream', async (req, res) => {
-  const { input } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
@@ -58,7 +59,7 @@ app.post('/api/lookup/stream', async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
   try {
-    for await (const event of lookupStream(input.trim())) {
+    for await (const event of lookupStream(input.trim(), { jj: !!jj, forceMode: forceMode || null })) {
       if (event.type === 'chunk') {
         res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
       } else if (event.type === 'done') {
@@ -68,7 +69,7 @@ app.post('/api/lookup/stream', async (req, res) => {
   } catch (err) {
     console.error('Stream error, falling back to lookup():', err.message);
     try {
-      const result = await lookup(input.trim());
+      const result = await lookup(input.trim(), { jj: !!jj });
       res.write(`data: ${JSON.stringify({ done: true, result })}\n\n`);
     } catch (fallbackErr) {
       console.error('Fallback also failed:', fallbackErr.message);
@@ -78,9 +79,9 @@ app.post('/api/lookup/stream', async (req, res) => {
   res.end();
 });
 
-/* POST /api/paste/stream  { text }  → SSE: identified → result* → done */
+/* POST /api/paste/stream  { text, jj: false }  → SSE: identified → result* → done */
 app.post('/api/paste/stream', async (req, res) => {
-  const { text } = req.body;
+  const { text, jj } = req.body;
   if (!text || typeof text !== 'string' || !text.trim()) {
     return res.status(400).json({ error: 'text is required' });
   }
@@ -99,9 +100,9 @@ app.post('/api/paste/stream', async (req, res) => {
     }
     send({ type: 'identified', words });
 
-    await Promise.all(words.map(async ({ word }) => {
+    await Promise.all(words.map(async ({ word, sentence }) => {
       try {
-        const result = await lookup(word);
+        const result = await lookup(word, { context: sentence, jj: !!jj });
         send({ type: 'result', word, result });
       } catch (err) {
         send({ type: 'word_error', word, message: err.message });
@@ -114,6 +115,39 @@ app.post('/api/paste/stream', async (req, res) => {
     send({ type: 'error', message: err.message });
   }
   res.end();
+});
+
+/* GET /api/bunpro/status  → { enabled: bool } */
+app.get('/api/bunpro/status', (req, res) => {
+  res.json({ enabled: !!process.env.BUNPRO_TOKEN });
+});
+
+/* GET /api/bunpro/grammar?pattern=～てしまう  → { found, ...status } | { found:false } */
+app.get('/api/bunpro/grammar', async (req, res) => {
+  if (!process.env.BUNPRO_TOKEN) return res.status(503).json({ error: 'BUNPRO_TOKEN not set' });
+  const { pattern } = req.query;
+  if (!pattern) return res.status(400).json({ error: 'pattern required' });
+  try {
+    const status = await getGrammarStatus(pattern.trim());
+    if (!status) return res.json({ found: false });
+    res.json({ found: true, ...status });
+  } catch (err) {
+    console.error('BunPro grammar error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* GET /api/bunpro/troubled?limit=50  → { items: [...] } */
+app.get('/api/bunpro/troubled', async (req, res) => {
+  if (!process.env.BUNPRO_TOKEN) return res.status(503).json({ error: 'BUNPRO_TOKEN not set' });
+  const limit = Math.min(100, parseInt(req.query.limit) || 50);
+  try {
+    const items = await getTroubledGrammar({ limit });
+    res.json({ items });
+  } catch (err) {
+    console.error('BunPro troubled error:', err.message);
+    res.status(503).json({ error: err.message, hint: 'Is BUNPRO_API_KEY correct?' });
+  }
 });
 
 /* GET /api/anki/struggling?minLapses=2&limit=50  → { cards, total } */
@@ -145,10 +179,10 @@ app.get('/api/anki/card', async (req, res) => {
 
 /* POST /api/anki/card/sentence  — replace sentence on existing note */
 app.post('/api/anki/card/sentence', async (req, res) => {
-  const { noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName } = req.body;
+  const { noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName, word, sentenceHtml } = req.body;
   if (!noteId || !sentenceFieldKey || !sentence) return res.status(400).json({ error: 'missing fields' });
   try {
-    await updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName);
+    await updateCardSentence(noteId, sentenceFieldKey, sentence, sentenceMeaning, sentenceMeaningKey, sentenceAudioKey, modelName, word, sentenceHtml);
     res.json({ ok: true });
   } catch (err) {
     console.error('AnkiConnect update error:', err.message);
@@ -174,10 +208,23 @@ app.post('/api/anki/card/enrich', async (req, res) => {
   const { noteId, modelName, result, sentence } = req.body;
   if (!noteId || !modelName || !result || !sentence) return res.status(400).json({ error: 'missing fields' });
   try {
-    await enrichAndUpdateCard(noteId, modelName, result, sentence.jp, sentence.translation);
+    await enrichAndUpdateCard(noteId, modelName, result, sentence.jp, sentence.translation, sentence.html);
     res.json({ ok: true });
   } catch (err) {
     console.error('AnkiConnect enrich error:', err.message);
+    res.status(503).json({ error: err.message });
+  }
+});
+
+/* POST /api/anki/grammar/create  — create new grammar note { result, sentence } */
+app.post('/api/anki/grammar/create', async (req, res) => {
+  const { result, sentence } = req.body;
+  if (!result || !sentence) return res.status(400).json({ error: 'missing fields' });
+  try {
+    const noteId = await addNoteForGrammar(result, sentence);
+    res.json({ ok: true, noteId });
+  } catch (err) {
+    console.error('AnkiConnect grammar create error:', err.message);
     res.status(503).json({ error: err.message });
   }
 });
