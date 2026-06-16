@@ -67,7 +67,7 @@ node src/cli.js --raw 見える      # raw JSON output
 - Kanji highlighted cyan when furigana is on; reverts to surrounding text color when off
 - Live mode-pill — shows vocab vs grammar as you type before submitting; click the pill to force the opposite mode (dashed border = manual override; cleared when you start typing)
 - **Pitch accent display** — H/L overline contour badge next to reading in vocab results; sourced from the Kanjium dictionary (~124k entries) for known words, AI-generated fallback for words not in the dictionary
-- **日日モード (J-J mode)** — toggle in the header; all explanatory prose in JLPT N4–N5 Japanese; sentence translations stay in English as a safety net; J-J and J-E results cached separately
+- **日本語モード (J-J mode)** — toggle in the header; all explanatory prose in JLPT N4–N5 Japanese; sentence translations stay in English as a safety net; J-J and J-E results cached separately
 - Streaming responses — result cards appear progressively as tokens arrive; automatic fallback to non-streaming if stream is interrupted
 - History (last 50 lookups, persisted server-side in `data/history.json`) — click any entry to re-render from cache, no API re-call; clicking moves it to the top; history doubles as a lookup cache so repeated searches skip the API entirely; existing localStorage history migrated automatically on first load
 - History search + filter by mode (単語/文法)

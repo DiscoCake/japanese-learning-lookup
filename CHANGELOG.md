@@ -3,6 +3,36 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-15 — Phase 8.1: auto-furigana repair post-process (kills the ruby re-roll loop)
+
+Phase 8 noted that ruby is nondeterministic on regen — a handful of single bare common kanji
+per pass were furigana-corrected by hand. Those drops failed `eval:check`, forcing full re-rolls
+(re-paying ~2.5k output tokens to fix one missing tag) — the main cost leak in prompt iteration.
+This automates that correction so regenerated output passes the ruby gate the first time. The
+deterministic ruby check is unchanged — the fix is entirely on the output side.
+
+- **New `src/furigana.js`** — `repairResult(result)`, a pure post-process (no Express/DOM/CLI
+  coupling, same shape as `pitch.js`/`judge.js`). Runs only on the fields the ruby gate enforces
+  (mirrors `prosePairs` in `eval/checks.js`; JJ prose exempt) and only when stray kanji exist —
+  a no-op with zero API calls on already-correct output. Two stages:
+  1. *Free deterministic harvest:* re-wrap a bare multi-kanji run using the same ruby the model
+     already produced elsewhere in the result. Multi-kanji, single-reading runs only — avoids the
+     single-kanji wrong-reading trap (来 = き/らい/く).
+  2. *Targeted LLM repair:* one small call (`FURIGANA_REPAIR_MODEL`, default the generation model
+     `claude-sonnet-4-6`; output ~50–150 tokens) adds ruby to whatever stray kanji remain.
+  - *Guards:* harvest accepts only text-preserving patches; the LLM result is accepted only if it
+    merely inserted ruby (base text — kana/punctuation/English — byte-for-byte identical via
+    `baseText`) **and** leaves no stray kanji. Reading correctness is unverifiable (as in the
+    original generation), but text integrity is provable, so the repair can never corrupt a
+    sentence. Fail-open: any API/parse error leaves the stray kanji for the gate to catch.
+  - `FURIGANA_REPAIR=off` disables it; `FURIGANA_REPAIR_DEBUG` logs failures.
+- **`src/lookup.js`** (archived `archive/2026-06-15_lookup.js`) — `await repairResult(result)`
+  before returning in both `lookup()` and `lookupStream()`; `lookupStream` now also sets
+  `result._jj` so the repair applies the same JJ exemption as the gate.
+- Verified: 14-case no-API unit check of harvest + guards; `eval:check` stays 26/26; a real bare
+  kanji stripped from a snapshot is correctly re-wrapped (base text preserved, gate green); a live
+  `eval run --only はず` passes first time.
+
 ### 2026-06-15 — Phase 8: naturalness LLM-judge eval + prompt push + eval cost controls
 
 The deterministic eval gate only checks structure (ruby, contract, counts, registers); it

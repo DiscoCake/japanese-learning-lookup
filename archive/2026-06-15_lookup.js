@@ -12,7 +12,6 @@ require('dotenv').config();
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
 const API_URL = 'https://api.anthropic.com/v1/messages';
 const { lookupPitch } = require('./pitch');
-const { repairResult } = require('./furigana');
 
 /* ── MODE DETECTION ── */
 function detectMode(input) {
@@ -283,7 +282,6 @@ async function lookup(input, opts = {}) {
     if (dictPitch) result.pitch_accent = dictPitch;
   }
   if (opts.jj) result._jj = true;
-  await repairResult(result); // patch any nondeterministically-dropped ruby in place
   return result;
 }
 
@@ -416,8 +414,6 @@ async function* lookupStream(input, opts = {}) {
     const dictPitch = lookupPitch(result.word, result.reading);
     if (dictPitch) result.pitch_accent = dictPitch;
   }
-  if (opts.jj) result._jj = true;
-  await repairResult(result); // patch any nondeterministically-dropped ruby in place
   yield { type: 'done', result };
 }
 
