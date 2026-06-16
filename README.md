@@ -116,11 +116,14 @@ No port forwarding or public exposure needed — Tailscale is a private encrypte
 
 ```bash
 npm run eval:check    # validate lookup output against saved snapshots (no API — the everyday gate)
-npm run eval:update   # refresh snapshots from live API after intentional prompt changes
+npm run eval:update   # refresh ALL snapshots from live API after intentional prompt changes (costs $)
+npm run eval:judge    # advisory: LLM-judge naturalness scores on snapshots (Opus; not a gate)
 npm run test:smoke    # 10-check Playwright golden-path smoke test (server must be running)
 ```
 
 The eval harness (`eval/`) guards the AI output — the most important thing in the app. After any edit to `src/lookup.js`, run `eval:check`. After deliberate prompt improvements, run `eval:update`, review the snapshot diff, then confirm `eval:check` passes. Never loosen a check to make it pass; fix the output instead.
+
+**Cost note:** a full `eval:update` is ~26 live calls (output tokens dominate the bill). When iterating on a prompt, scope it with `-- --only <substr>` (e.g. `npm run eval:update -- --only grammar`) to regenerate just the cases you're tuning, and do a full regen only before committing. The same `--only` works for `eval:judge`. The advisory naturalness judge (`eval:judge`) uses `JUDGE_MODEL` (default `claude-opus-4-8`); it never affects the deterministic gate.
 
 ## Troubleshooting
 

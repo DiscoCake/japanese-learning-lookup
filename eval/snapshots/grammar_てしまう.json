@@ -1,42 +1,42 @@
 {
   "pattern": "～てしまう",
   "mode": "grammar",
-  "real_meaning": "～てしまう expresses two closely related feelings: (1) that an action was completed fully and irreversibly — it's done and there's no going back — or (2) that something happened that the speaker regrets, didn't intend, or finds unfortunate. The key emotional undercurrent is a sense of finality with an edge of 'uh oh' or 'well, that's that.' Even when there's no regret, the speaker is signaling they see the completion as notable or final.",
+  "real_meaning": "～てしまう expresses that an action has been completed in a way the speaker has feelings about — usually regret, disappointment, or mild surprise that something undesirable happened. It can also mean deliberate completion ('get something done and out of the way'), so the key is context: did the situation bring the outcome, or did the speaker choose to push through? Either way, there's an emotional weight — something is now irrevocably done.",
   "formation": {
-    "rule": "Attach しまう to the て-form of a verb. て-form + しまう. For example: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べてしまう, <ruby>飲<rt>の</rt></ruby>む → <ruby>飲<rt>の</rt></ruby>んでしまう (note: て-form of ぬ/む/ぶ verbs uses で, so it becomes でしまう), <ruby>忘<rt>わす</rt></ruby>れる → <ruby>忘<rt>わす</rt></ruby>れてしまう. In casual speech it contracts to ～ちゃう (from てしまう) or ～じゃう (from でしまう): <ruby>食<rt>た</rt></ruby>べちゃう, <ruby>飲<rt>の</rt></ruby>んじゃう.",
-    "common_mistake": "Attaching しまう to the dictionary form instead of the て-form. Wrong: <ruby>食<rt>た</rt></ruby>べるしまう. Correct: <ruby>食<rt>た</rt></ruby>べてしまう."
+    "rule": "Attach しまう to the て-form of any verb. て-form + しまう → <ruby>食<rt>た</rt></ruby>べてしまう、<ruby>忘<rt>わす</rt></ruby>れてしまう、<ruby>壊<rt>こわ</rt></ruby>してしまう。In casual speech it contracts: てしまう → ちゃう、でしまう → じゃう (e.g., <ruby>食<rt>た</rt></ruby>べちゃう、<ruby>飲<rt>の</rt></ruby>んじゃう).",
+    "common_mistake": "Attaching しまう to the dictionary form instead of the て-form. Wrong: ✗ <ruby>食<rt>た</rt></ruby>べるしまう。Correct: ✓ <ruby>食<rt>た</rt></ruby>べてしまう。"
   },
   "sentences": [
     {
-      "jp": "<ruby>宿題<rt>しゅくだい</rt></ruby>、もうやっちゃった。",
-      "translation": "I already finished my homework.",
+      "jp": "<ruby>宿題<rt>しゅくだい</rt></ruby>、またやり<ruby>忘<rt>わす</rt></ruby>れちゃった…",
+      "translation": "Ugh, I forgot to do my homework again…",
       "register": "casual",
-      "notes": "Uses the contracted ちゃった form; here the nuance is pure completion — the speaker is done and it's final, possibly with a hint of satisfaction or surprise at themselves."
+      "notes": "The contracted ちゃった form carries a tone of self-reproach — the speaker didn't want to forget, and the ellipsis signals lingering regret."
     },
     {
-      "jp": "<ruby>大事<rt>だいじ</rt></ruby>なメールを<ruby>消<rt>け</rt></ruby>してしまいました。",
-      "translation": "I accidentally deleted an important email.",
+      "jp": "<ruby>先<rt>さき</rt></ruby>にレポートを<ruby>終<rt>お</rt></ruby>わらせてしまいましょう。",
+      "translation": "Let's go ahead and get the report finished first.",
       "register": "standard",
-      "notes": "The classic regret use — しまう signals the speaker did something they wish they hadn't; the action is irreversible and they feel bad about it."
+      "notes": "Here しまう expresses deliberate completion with a 'let's knock it out' nuance — no regret at all, just the sense of getting something fully resolved."
     },
     {
-      "jp": "<ruby>報告書<rt>ほうこくしょ</rt></ruby>はすでに<ruby>提出<rt>ていしゅつ</rt></ruby>してしまっておりますので、<ruby>変更<rt>へんこう</rt></ruby>はできかねます。",
-      "translation": "Since the report has already been submitted, changes cannot be made.",
+      "jp": "<ruby>大切<rt>たいせつ</rt></ruby>なデータがすべて<ruby>消<rt>き</rt></ruby>えてしまいました。",
+      "translation": "All of the important data has been lost.",
       "register": "formal",
-      "notes": "In formal/written contexts, してしまう emphasizes irreversible completion rather than personal regret — it's a polite way of saying 'it's already done and that can't be undone.'"
+      "notes": "In formal or written contexts, てしまいました signals an unfortunate, irreversible outcome — the polite form softens the delivery while still conveying the gravity."
     },
     {
-      "jp": "この<ruby>映画<rt>えいが</rt></ruby>、<ruby>泣<rt>な</rt></ruby>けてしまうんだよね。",
-      "translation": "This movie just makes me cry, you know.",
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きになってしまった。",
+      "translation": "I've gone and fallen for him.",
       "register": "casual",
-      "notes": "A surprising use: the speaker isn't really lamenting — they're describing an involuntary emotional reaction. しまう here captures 'it happens despite myself,' which shows the pattern isn't always about regret but about something beyond one's control."
+      "notes": "Surprisingly, てしまう can describe emotional states that developed against one's will or expectations — the speaker didn't choose to fall for him, and there's a sense of helpless resignation."
     }
   ],
   "confused_with": {
     "pattern": "～ておく",
-    "contrast": "Both involve completing an action, but the feeling is almost opposite. ～てしまう says 'it ended up done (often regrettably, or irreversibly),' while ～ておく says 'I'm doing this now intentionally as preparation for later.' Compare: <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった means 'I went and finished my homework (it's done, perhaps with relief or mild regret),' whereas <ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた means 'I did my homework ahead of time (deliberately, so I'm prepared).' Use しまう when the focus is on finality or an unintended outcome; use おく when you're acting with future purpose in mind."
+    "contrast": "Both can involve completing an action intentionally, but they point in opposite directions: てしまう focuses on the fact that something is now irrevocably done (with emotional weight), while ておく means doing something in advance as preparation for the future. Minimal pair: <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった means 'I went ahead and finished the homework (it's done, off my plate)'; <ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた means 'I did the homework in advance (so I'm ready for later).' Choose てしまう when the emphasis is finality or emotion; choose ておく when the emphasis is deliberate preparation for a future need."
   },
-  "bunpro_tip": "Picture a door slamming shut — that's てしまう. The action is complete, the door is closed, and you may or may not be happy about it. When you drill it on BunPro, ask yourself: 'Is this a door slamming with relief, regret, or inevitability?' All three fit; what unites them is that the door is shut for good.",
+  "bunpro_tip": "Picture a mousetrap snapping shut — once it's triggered, it's done and there's no going back. That 'snap' feeling is てしまう. When you see the casual ちゃう／じゃう contractions on BunPro, remember they are the same pattern — just the everyday spoken shortcut that makes <ruby>飲<rt>の</rt></ruby>んでしまう into <ruby>飲<rt>の</rt></ruby>んじゃう.",
   "input": "～てしまう",
-  "timestamp": "2026-06-15T00:39:08.349Z"
+  "timestamp": "2026-06-15T21:55:32.158Z"
 }

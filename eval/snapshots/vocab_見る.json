@@ -7,47 +7,47 @@
     "label": "atamadaka",
     "pattern": "HL"
   },
-  "core_meaning": "To look at, watch, or see something with your eyes — but also used more broadly to mean 'to check,' 'to examine,' or 'to try doing something' (as in 〜てみる). The core idea is directing attention toward something visually or experientially.",
+  "core_meaning": "To look at, watch, or see something — but also carries the sense of deliberately directing your attention toward something. Unlike English 'see' (which can be passive), <ruby>見<rt>み</rt></ruby>る almost always implies some degree of intentional looking. It also appears constantly as a grammar helper (~てみる) meaning 'try doing something.'",
   "sentences": [
     {
-      "jp": "<ruby>映画<rt>えいが</rt></ruby>、いっしょに<ruby>見<rt>み</rt></ruby>ない？",
-      "translation": "Wanna watch a movie together?",
+      "jp": "ねえ、これ<ruby>見<rt>み</rt></ruby>て！すごくない？",
+      "translation": "Hey, look at this! Isn't it amazing?",
       "register": "casual",
-      "notes": "The most everyday use of <ruby>見<rt>み</rt></ruby>る — watching a film, show, or video. Note that Japanese uses <ruby>見<rt>み</rt></ruby>る for both 'watch' and 'see' in most contexts."
+      "notes": "The bare て-form <ruby>見<rt>み</rt></ruby>て as a command is the most natural casual way to get someone to look at something — not <ruby>見<rt>み</rt></ruby>てください, which would sound stiff between friends."
     },
     {
-      "jp": "ちょっとスケジュールを<ruby>見<rt>み</rt></ruby>てもいいですか？",
-      "translation": "Would it be okay if I took a look at the schedule?",
+      "jp": "<ruby>昨日<rt>きのう</rt></ruby>、<ruby>気<rt>き</rt></ruby>になってた<ruby>映画<rt>えいが</rt></ruby>やっと<ruby>見<rt>み</rt></ruby>た。めっちゃよかった。",
+      "translation": "I finally watched that movie I'd been curious about yesterday. It was so good.",
+      "register": "casual",
+      "notes": "<ruby>見<rt>み</rt></ruby>る is the standard verb for watching films, TV, and video — not <ruby>聞<rt>き</rt></ruby>く or <ruby>読<rt>よ</rt></ruby>む."
+    },
+    {
+      "jp": "この<ruby>薬<rt>くすり</rt></ruby>が<ruby>効<rt>き</rt></ruby>くかどうか、まず<ruby>飲<rt>の</rt></ruby>んでみてください。",
+      "translation": "Please try taking this medicine first and see if it works.",
       "register": "standard",
-      "notes": "<ruby>見<rt>み</rt></ruby>る meaning 'to check' or 'to have a look at' — very common when reviewing documents, calendars, or information."
+      "notes": "~てみる means 'try doing X to see what happens' — one of the most important grammatical uses of <ruby>見<rt>み</rt></ruby>る, and it attaches to the て-form of other verbs."
     },
     {
-      "jp": "この<ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んでみてください。<ruby>効<rt>き</rt></ruby>くかもしれません。",
-      "translation": "Please try taking this medicine. It might work.",
-      "register": "standard",
-      "notes": "〜てみる is a key grammatical use: it attaches to the て-form of a verb to mean 'try doing something and see what happens.' This construction is extremely common."
-    },
-    {
-      "jp": "<ruby>子供<rt>こども</rt></ruby>の<ruby>頃<rt>ころ</rt></ruby>、よく<ruby>星<rt>ほし</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら<ruby>夢<rt>ゆめ</rt></ruby>を<ruby>語<rt>かた</rt></ruby>り<ruby>合<rt>あ</rt></ruby>った。",
-      "translation": "When we were kids, we used to gaze at the stars and share our dreams with each other.",
-      "register": "written",
-      "notes": "<ruby>見<rt>み</rt></ruby>る in a reflective, literary register — here 'gazing at' rather than casually glancing. Context and adverbs shape how intentional or extended the looking is."
-    },
-    {
-      "jp": "その<ruby>考<rt>かんが</rt></ruby>え<ruby>方<rt>かた</rt></ruby>は<ruby>別<rt>べつ</rt></ruby>の<ruby>角度<rt>かくど</rt></ruby>から<ruby>見<rt>み</rt></ruby>ると、また<ruby>違<rt>ちが</rt></ruby って<ruby>見<rt>み</rt></ruby>えます。",
-      "translation": "When you look at that way of thinking from a different angle, it appears quite different.",
+      "jp": "<ruby>部長<rt>ぶちょう</rt></ruby>、この<ruby>資料<rt>しりょう</rt></ruby>をご<ruby>覧<rt>らん</rt></ruby>になりましたか？",
+      "translation": "Section chief, have you looked at these documents?",
       "register": "formal",
-      "notes": "<ruby>見<rt>み</rt></ruby>る used abstractly — 'to view' or 'to consider' something from a perspective. This figurative use is common in discussion and analysis."
+      "notes": "In formal/keigo contexts, <ruby>見<rt>み</rt></ruby>る becomes ご<ruby>覧<rt>らん</rt></ruby>になる (respectful) or <ruby>拝見<rt>はいけん</rt></ruby>する (humble) — using plain <ruby>見<rt>み</rt></ruby>る with superiors sounds rude."
+    },
+    {
+      "jp": "<ruby>子供<rt>こども</rt></ruby>を<ruby>見<rt>み</rt></ruby>る、という<ruby>言葉<rt>ことば</rt></ruby>には、ただ<ruby>目<rt>め</rt></ruby>で<ruby>追<rt>お</rt></ruby>うだけでなく、<ruby>世話<rt>せわ</rt></ruby>をするという<ruby>意味<rt>いみ</rt></ruby>も<ruby>含<rt>ふく</rt></ruby>まれている。",
+      "translation": "The phrase 'to see to a child' carries not just the meaning of watching with your eyes, but also taking care of them.",
+      "register": "written",
+      "notes": "<ruby>見<rt>み</rt></ruby>る can mean 'to look after / tend to' someone or something — a broader sense that goes beyond visual perception."
     }
   ],
-  "dont_use": "Don't use <ruby>見<rt>み</rt></ruby>る when you mean to 'meet' or 'visit' someone — that's <ruby>会<rt>あ</rt></ruby>う or <ruby>訪<rt>おとず</rt></ruby>れる. Also, for reading text (books, signs), Japanese strongly prefers <ruby>読<rt>よ</rt></ruby>む; saying <ruby>本<rt>ほん</rt></ruby>を<ruby>見<rt>み</rt></ruby>る sounds like you're just flipping through pages without reading. Finally, don't confuse the plain verb <ruby>見<rt>み</rt></ruby>る with the potential form <ruby>見<rt>み</rt></ruby>える (to be visible) — <ruby>見<rt>み</rt></ruby>る requires active effort, while <ruby>見<rt>み</rt></ruby>える describes something being in your field of vision involuntarily.",
+  "dont_use": "Don't use <ruby>見<rt>み</rt></ruby>る when something entered your field of vision without intention — use <ruby>見<rt>み</rt></ruby>える for 'can be seen' or 'is visible' instead (e.g. <ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える, not <ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>る, for 'the mountain can be seen'). Also avoid plain <ruby>見<rt>み</rt></ruby>る when speaking to or about superiors — swap in ご<ruby>覧<rt>らん</rt></ruby>になる or <ruby>拝見<rt>はいけん</rt></ruby>する. Don't confuse <ruby>見<rt>み</rt></ruby>る with <ruby>見<rt>み</rt></ruby>つける ('to find/spot something'), which implies discovery.",
   "confused_with": {
     "word": "<ruby>見<rt>み</rt></ruby>える",
     "reading": "みえる",
-    "contrast": "<ruby>見<rt>み</rt></ruby>る is an intentional action — you choose to look at something. <ruby>見<rt>み</rt></ruby>える is a potential/spontaneous verb meaning something is visible or appears a certain way without active effort. For example, <ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える means 'the mountain can be seen (it's in view),' while <ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>る means 'I look at the mountain' — a deliberate act."
+    "contrast": "A common learner mistake is saying 「あそこに<ruby>富士山<rt>ふじさん</rt></ruby>を<ruby>見<rt>み</rt></ruby>る」when they mean the mountain is visible in the distance — but this sounds like you're actively staring at it on purpose. The natural form is 「あそこに<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>える」, which means it can be seen / is visible without implying effort. Use <ruby>見<rt>み</rt></ruby>る when you choose to look; use <ruby>見<rt>み</rt></ruby>える when something is simply visible or perceivable."
   },
-  "frequency": "<ruby>見<rt>み</rt></ruby>る is one of the most common verbs in the Japanese language, used constantly in daily speech across all registers. The grammar construction 〜てみる is also extremely frequent and should be learned as a separate pattern alongside the base verb.",
-  "anki_hint": "<ruby>見<rt>み</rt></ruby>る = active looking (you choose to look); remember it has a bonus grammatical life as 〜てみる ('try doing something and see').",
+  "frequency": "<ruby>見<rt>み</rt></ruby>る is one of the most common verbs in Japanese, appearing constantly in daily speech, writing, and media. Its grammatical helper form ~てみる is equally ubiquitous. There are no register restrictions on the plain form itself, though keigo substitutes are required in formal hierarchical situations.",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>る = intentional looking (you choose to look); <ruby>見<rt>み</rt></ruby>える = something is just visible — and remember that ~てみる ('try doing') is <ruby>見<rt>み</rt></ruby>る hiding as grammar.",
   "input": "見る",
-  "timestamp": "2026-06-15T00:42:25.593Z"
+  "timestamp": "2026-06-15T22:10:42.504Z"
 }

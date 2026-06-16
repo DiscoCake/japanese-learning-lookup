@@ -7,47 +7,47 @@
     "label": "heiban",
     "pattern": "LHH"
   },
-  "core_meaning": "<ruby>上<rt>あ</rt></ruby>がる covers a wide family of 'upward' meanings: physical movement upward (going up stairs, rising), increases in numbers or levels (prices, temperature, grades), and entering an enclosed space like a house (stepping inside from the entrance). It also appears in expressions for finishing something (rain stopping, work wrapping up) and for feeling nervous.",
+  "core_meaning": "<ruby>上<rt>あ</rt></ruby>がる covers a wide family of meanings centered on movement or change going 'upward' — physically rising, entering an enclosed space (like a house), prices or levels increasing, or a person finishing/completing something. It also commonly means to become nervous or flustered in performance situations.",
   "sentences": [
     {
-      "jp": "<ruby>靴<rt>くつ</rt></ruby>を<ruby>脱<rt>ぬ</rt></ruby>いで、どうぞ<ruby>上<rt>あ</rt></ruby>がってください。",
-      "translation": "Please take off your shoes and come in.",
-      "register": "standard",
-      "notes": "This shows the 'entering a Japanese home from the genkan' use — one of the most culturally important uses of <ruby>上<rt>あ</rt></ruby>がる."
-    },
-    {
-      "jp": "さいきん、ガソリンの<ruby>値段<rt>ねだん</rt></ruby>がまた<ruby>上<rt>あ</rt></ruby>がったね。",
-      "translation": "Gas prices went up again recently, huh.",
+      "jp": "<ruby>寒<rt>さむ</rt></ruby>いから、はやく<ruby>家<rt>うち</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がって。",
+      "translation": "It's cold, so come on in (the house) quickly.",
       "register": "casual",
-      "notes": "Shows the 'increase in price or level' sense, common in everyday conversation with the sentence-final ね."
+      "notes": "This shows <ruby>上<rt>あ</rt></ruby>がる meaning to enter a home from outside — a very common everyday use distinct from just 'going up'."
     },
     {
-      "jp": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がったら、<ruby>公園<rt>こうえん</rt></ruby>に<ruby>行<rt>い</rt></ruby>こう。",
-      "translation": "Once the rain stops, let's go to the park.",
+      "jp": "<ruby>最近<rt>さいきん</rt></ruby>、<ruby>物価<rt>ぶっか</rt></ruby>がどんどん<ruby>上<rt>あ</rt></ruby>がってるよね。",
+      "translation": "Prices have been going up and up lately, haven't they.",
       "register": "casual",
-      "notes": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がる is a fixed idiom meaning 'the rain clears up' — this 'something finishes/ends' sense is worth memorizing separately."
+      "notes": "Shows <ruby>上<rt>あ</rt></ruby>がる for rising levels or amounts — a very natural collocation with <ruby>物価<rt>ぶっか</rt></ruby>, <ruby>気温<rt>きおん</rt></ruby>, <ruby>成績<rt>せいせき</rt></ruby>, etc."
     },
     {
-      "jp": "<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>はいつも<ruby>緊張<rt>きんちょう</rt></ruby>して、あがってしまう。",
-      "translation": "I always get nervous and flustered before presentations.",
+      "jp": "<ruby>本番<rt>ほんばん</rt></ruby>になると、どうしても<ruby>上<rt>あ</rt></ruby>がっちゃうんだよな。",
+      "translation": "When it's the real thing, I just end up getting nervous no matter what.",
+      "register": "casual",
+      "notes": "<ruby>上<rt>あ</rt></ruby>がる meaning to freeze up or get stage fright — common in spoken Japanese when talking about performances, speeches, or exams."
+    },
+    {
+      "jp": "<ruby>雨<rt>あめ</rt></ruby>がようやく<ruby>上<rt>あ</rt></ruby>がったので、<ruby>公園<rt>こうえん</rt></ruby>に<ruby>行<rt>い</rt></ruby>きましょう。",
+      "translation": "The rain has finally let up, so let's go to the park.",
       "register": "standard",
-      "notes": "あがる (often written in kana) means to get stage fright or become flustered — a distinct idiomatic sense separate from the physical 'rise' meanings."
+      "notes": "<ruby>雨<rt>あめ</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がる is a set phrase meaning the rain stops — this sense (something finishing or ceasing) is worth memorizing as its own chunk."
     },
     {
-      "jp": "<ruby>成績<rt>せいせき</rt></ruby>を<ruby>上<rt>あ</rt></ruby>げるために、<ruby>毎日<rt>まいにち</rt></ruby><ruby>復習<rt>ふくしゅう</rt></ruby>することが<ruby>大切<rt>たいせつ</rt></ruby>だ。",
-      "translation": "In order to improve your grades, it is important to review every day.",
-      "register": "written",
-      "notes": "Note: this sentence uses <ruby>上<rt>あ</rt></ruby>げる (the transitive partner — 'to raise something'), showing the contrast: <ruby>上<rt>あ</rt></ruby>がる is intransitive (something rises on its own), while <ruby>上<rt>あ</rt></ruby>げる is transitive (you raise something)."
+      "jp": "<ruby>新入社員<rt>しんにゅうしゃいん</rt></ruby>の<ruby>研修<rt>けんしゅう</rt></ruby>が<ruby>無事<rt>ぶじ</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がりました。",
+      "translation": "The new-employee training has been successfully completed.",
+      "register": "formal",
+      "notes": "In formal or written contexts, <ruby>上<rt>あ</rt></ruby>がる can express that something has been finished or wrapped up — similar to <ruby>終<rt>お</rt></ruby>わる but with a nuance of successful completion."
     }
   ],
-  "dont_use": "<ruby>上<rt>あ</rt></ruby>がる is intransitive, so don't use it when you need a direct object — say '<ruby>音量<rt>おんりょう</rt></ruby>を<ruby>上<rt>あ</rt></ruby>げる' (raise the volume), not '<ruby>音量<rt>おんりょう</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がる' when you are the one doing the raising. Also avoid confusing it with <ruby>登<rt>のぼ</rt></ruby>る, which is used for climbing mountains or stairs with effort and implies a longer physical journey upward. Finally, don't use <ruby>上<rt>あ</rt></ruby>がる for the sun or abstract concepts rising — <ruby>昇<rt>のぼ</rt></ruby>る is preferred for the sun rising.",
+  "dont_use": "Don't use <ruby>上<rt>あ</rt></ruby>がる when you mean to physically raise or lift something — that requires the transitive <ruby>上<rt>あ</rt></ruby>げる. Also avoid using <ruby>上<rt>あ</rt></ruby>がる for elevators or escalators going up in formal signage contexts, where <ruby>上昇<rt>じょうしょう</rt></ruby> or <ruby>昇<rt>のぼ</rt></ruby>る may appear instead. The 'getting nervous' sense is casual spoken Japanese — don't write it in formal essays.",
   "confused_with": {
-    "word": "<ruby>上<rt>のぼ</rt></ruby>る",
+    "word": "<ruby>登<rt>のぼ</rt></ruby>る",
     "reading": "のぼる",
-    "contrast": "<ruby>上<rt>のぼ</rt></ruby>る emphasizes the process of physically climbing something tall, like a mountain or a long staircase — it implies ongoing upward travel and effort. <ruby>上<rt>あ</rt></ruby>がる focuses on the result of arriving at a higher point, or is used for abstract/numerical rises. For example, '<ruby>山<rt>やま</rt></ruby>に<ruby>登<rt>のぼ</rt></ruby>る' means to climb a mountain (the journey), while '<ruby>気温<rt>きおん</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がる' means the temperature rises (a change in level)."
+    "contrast": "A common mistake is saying <ruby>山<rt>やま</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がった to mean 'I climbed the mountain' — this sounds unnatural. <ruby>登<rt>のぼ</rt></ruby>る implies deliberate physical climbing effort (stairs, mountains, trees), while <ruby>上<rt>あ</rt></ruby>がる focuses on the result of reaching a higher point or a more general rise. Say <ruby>山<rt>やま</rt></ruby>に<ruby>登<rt>のぼ</rt></ruby>った for climbing a mountain, but <ruby>成績<rt>せいせき</rt></ruby>が<ruby>上<rt>あ</rt></ruby>がった for grades going up."
   },
-  "frequency": "Very common in daily speech across all registers. The 'price/level rises,' 'enter a home,' and 'rain stops' uses appear constantly in natural Japanese. The stage-fright sense (あがる) is also widely understood colloquially.",
-  "anki_hint": "<ruby>上<rt>あ</rt></ruby>がる is intransitive ('something goes up on its own') — prices, temperature, and even you yourself stepping up into a house all '<ruby>上<rt>あ</rt></ruby>がる,' but when you actively raise something, switch to <ruby>上<rt>あ</rt></ruby>げる.",
+  "frequency": "<ruby>上<rt>あ</rt></ruby>がる is extremely common in daily speech across all registers. The 'enter a home' and 'prices rise' senses appear constantly in conversation; the 'get nervous' sense is frequent in casual spoken Japanese. It is one of the most versatile verbs in the language.",
+  "anki_hint": "<ruby>上<rt>あ</rt></ruby>がる has four main flavors: go up physically, enter a space (like a <ruby>家<rt>うち</rt></ruby>), a level rises (<ruby>物価<rt>ぶっか</rt></ruby>・<ruby>成績<rt>せいせき</rt></ruby>), or get stage fright — picture an arrow pointing up in each situation.",
   "input": "上がる",
-  "timestamp": "2026-06-15T00:37:21.072Z"
+  "timestamp": "2026-06-15T22:12:35.796Z"
 }

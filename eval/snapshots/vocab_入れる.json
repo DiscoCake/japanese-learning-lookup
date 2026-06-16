@@ -7,47 +7,47 @@
     "label": "heiban",
     "pattern": "LHH"
   },
-  "core_meaning": "<ruby>入<rt>い</rt></ruby>れる means to put something INTO a container, space, or group — the key idea is insertion or inclusion. It's also used figuratively for adding someone to a list, brewing tea/coffee, or 'putting in' effort or a phone call.",
+  "core_meaning": "<ruby>入<rt>い</rt></ruby>れる means to put something INTO a container, space, or group — the key idea is that something crosses a boundary and ends up inside. It also extends to switching things on, brewing drinks, and accepting someone into an organization.",
   "sentences": [
     {
-      "jp": "<ruby>財布<rt>さいふ</rt></ruby>をバッグに<ruby>入<rt>い</rt></ruby>れといて。",
-      "translation": "Put your wallet in the bag.",
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>、バッグに<ruby>入<rt>い</rt></ruby>れといたよ。",
+      "translation": "I put the keys in the bag for you.",
       "register": "casual",
-      "notes": "Everyday use of physical insertion; <ruby>入<rt>い</rt></ruby>れといて is a contracted casual form of <ruby>入<rt>い</rt></ruby>れておいて."
+      "notes": "〜ておく contracted to 〜とく is very natural in casual speech; shows the core meaning of physically placing something inside a container."
     },
     {
-      "jp": "<ruby>砂糖<rt>さとう</rt></ruby>をコーヒーに<ruby>入<rt>い</rt></ruby>れますか？",
-      "translation": "Do you take sugar in your coffee?",
+      "jp": "<ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れたコーヒーが<ruby>好<rt>す</rt></ruby>きじゃないんだ。",
+      "translation": "I don't really like coffee with sugar in it.",
+      "register": "casual",
+      "notes": "Shows <ruby>入<rt>い</rt></ruby>れる used for adding an ingredient; the past-tense relative clause 〜を<ruby>入<rt>い</rt></ruby>れた modifying a noun is a very common pattern."
+    },
+    {
+      "jp": "<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>い</rt></ruby>れてもらえますか。",
+      "translation": "Could you let me into the room?",
       "register": "standard",
-      "notes": "Shows the 'adding an ingredient' sense — very natural in food and drink contexts."
+      "notes": "〜てもらえますか is a polite request; here <ruby>入<rt>い</rt></ruby>れる means to grant access or let someone in, not just placing an object."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>はプロジェクトチームに<ruby>入<rt>い</rt></ruby>れてもらった。",
-      "translation": "She was included in the project team.",
+      "jp": "<ruby>新入生<rt>しんにゅうせい</rt></ruby>をサークルに<ruby>入<rt>い</rt></ruby>れるかどうか、<ruby>来週<rt>らいしゅう</rt></ruby><ruby>決<rt>き</rt></ruby>めます。",
+      "translation": "We'll decide next week whether to accept the new students into the club.",
       "register": "standard",
-      "notes": "<ruby>入<rt>い</rt></ruby>れてもらう shows the figurative 'include/admit someone into a group' sense."
+      "notes": "Illustrates the extended sense of admitting someone into a group or organization."
     },
     {
-      "jp": "<ruby>緊急<rt>きんきゅう</rt></ruby><ruby>会議<rt>かいぎ</rt></ruby>のため、スケジュールに<ruby>予約<rt>よやく</rt></ruby>を<ruby>入<rt>い</rt></ruby>れていただけますか。",
-      "translation": "Could you please add an appointment to the schedule for an emergency meeting?",
+      "jp": "エアコンを<ruby>入<rt>い</rt></ruby>れるのを<ruby>忘<rt>わす</rt></ruby>れてしまい、<ruby>会議室<rt>かいぎしつ</rt></ruby>がとても<ruby>暑<rt>あつ</rt></ruby>くなっておりました。",
+      "translation": "I forgot to turn on the air conditioning, and the meeting room became very hot.",
       "register": "formal",
-      "notes": "The 'put into a schedule/calendar' sense is very common in business Japanese."
-    },
-    {
-      "jp": "<ruby>仕事<rt>しごと</rt></ruby>に<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れているせいか、<ruby>最近<rt>さいきん</rt></ruby>ちょっと<ruby>疲<rt>つか</rt></ruby>れ<ruby>気味<rt>ぎみ</rt></ruby>だ。",
-      "translation": "Maybe because I've been putting a lot of effort into work, I've been feeling a bit tired lately.",
-      "register": "standard",
-      "notes": "<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる is a key set phrase meaning to put energy or focus into something."
+      "notes": "<ruby>入<rt>い</rt></ruby>れる is a common, natural word for switching on appliances like エアコン or <ruby>電気<rt>でんき</rt></ruby>; the humble 〜ておりました marks formal/workplace register."
     }
   ],
-  "dont_use": "<ruby>入<rt>い</rt></ruby>れる requires a destination (the thing being entered INTO), so don't drop the destination particle に without context — it sounds incomplete. Don't confuse it with <ruby>入<rt>はい</rt></ruby>る (intransitive): you say コーヒーに<ruby>砂糖<rt>さとう</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる (I put sugar in), not コーヒーに<ruby>砂糖<rt>さとう</rt></ruby>が<ruby>入<rt>い</rt></ruby>れる. Also avoid using <ruby>入<rt>い</rt></ruby>れる for large-scale 'entering' a place (like entering a building) — use <ruby>入<rt>はい</rt></ruby>る for that.",
+  "dont_use": "Don't use <ruby>入<rt>い</rt></ruby>れる when something moves into a place under its own power — that's <ruby>入<rt>はい</rt></ruby>る. Also, for turning on electronics like TVs or lights, <ruby>つける</rt></ruby> is often more natural than <ruby>入<rt>い</rt></ruby>れる (though <ruby>入<rt>い</rt></ruby>れる works for appliances like エアコン and some regional/older speech). Don't use <ruby>入<rt>い</rt></ruby>れる to mean 'include' in an abstract or written sense — <ruby>含<rt>ふく</rt></ruby>める or <ruby>盛<rt>も</rt></ruby>り<ruby>込<rt>こ</rt></ruby>む are more appropriate there.",
   "confused_with": {
     "word": "<ruby>入<rt>はい</rt></ruby>る",
     "reading": "はいる",
-    "contrast": "<ruby>入<rt>はい</rt></ruby>る is intransitive — the subject goes in by itself (e.g. <ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る, 'enter the room'). <ruby>入<rt>い</rt></ruby>れる is transitive — someone puts something in (e.g. <ruby>部屋<rt>へや</rt></ruby>に<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる, 'put luggage into the room'). The classic pair: <ruby>水<rt>みず</rt></ruby>がコップに<ruby>入<rt>はい</rt></ruby>った (water went into the glass) vs. <ruby>水<rt>みず</rt></ruby>をコップに<ruby>入<rt>い</rt></ruby>れた (I put water into the glass)."
+    "contrast": "A common mistake is using <ruby>入<rt>い</rt></ruby>れる when the subject moves into somewhere themselves — for example, saying ×<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>い</rt></ruby>れた instead of ○<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>った (I entered the room). <ruby>入<rt>い</rt></ruby>れる is transitive — someone puts something in — while <ruby>入<rt>はい</rt></ruby>る is intransitive — something or someone goes in on their own. Think of it as the difference between 'put in' (<ruby>入<rt>い</rt></ruby>れる) and 'go in / get in' (<ruby>入<rt>はい</rt></ruby>る)."
   },
-  "frequency": "Extremely common in daily speech across all registers. Physical, scheduling, and group-inclusion senses all appear frequently in both spoken and written Japanese. Set phrases like <ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる and <ruby>気<rt>き</rt></ruby>を<ruby>入<rt>い</rt></ruby>れる are also very natural.",
-  "anki_hint": "<ruby>入<rt>い</rt></ruby>れる is always transitive — you are always putting something (を) into somewhere (に); if nothing is being moved by someone, use <ruby>入<rt>はい</rt></ruby>る instead.",
+  "frequency": "<ruby>入<rt>い</rt></ruby>れる is very common in everyday spoken and written Japanese. It appears constantly in daily life — cooking, packing, accepting people into groups, switching on appliances. It is not formal or regional; you will hear it in casual conversation as often as in standard contexts.",
+  "anki_hint": "<ruby>入<rt>い</rt></ruby>れる is always transitive — you are the one doing the 'putting in'; if something enters by itself, use <ruby>入<rt>はい</rt></ruby>る instead.",
   "input": "入れる",
-  "timestamp": "2026-06-15T00:31:26.423Z"
+  "timestamp": "2026-06-16T01:43:49.261Z"
 }
