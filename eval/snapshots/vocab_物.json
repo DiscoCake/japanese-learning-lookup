@@ -7,47 +7,67 @@
     "label": "odaka",
     "pattern": "LH"
   },
-  "core_meaning": "<ruby>物<rt>もの</rt></ruby> refers to a tangible thing or object, but it also works as a nominalizer and softener in speech — turning verbs or adjectives into noun-like concepts (「<ruby>食<rt>た</rt></ruby>べるものがない」= 'there's nothing to eat') and expressing general truths, expectations, or emotional nuance (「<ruby>子供<rt>こども</rt></ruby>というものは…」= 'children, as a general thing...'). It sits somewhere between a concrete word and a grammatical tool.",
+  "core_meaning": "<ruby>物<rt>もの</rt></ruby> primarily means a physical 'thing' or 'object,' but it also works as a grammatical nominalizer — turning clauses into abstract noun-like concepts expressing expectations, emotions, or general truths. Think of it as either 'a thing (you can hold)' or 'the kind of thing that...'",
   "sentences": [
     {
-      "jp": "<ruby>冷蔵庫<rt>れいぞうこ</rt></ruby>に<ruby>食<rt>た</rt></ruby>べるものが<ruby>何<rt>なに</rt></ruby>もない。",
-      "translation": "There's nothing to eat in the fridge.",
+      "jp": "<ruby>床<rt>ゆか</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちてる<ruby>物<rt>もの</rt></ruby>、<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>片付<rt>かたづ</rt></ruby>けといて。",
+      "translation": "Pick up all the stuff that's fallen on the floor.",
       "register": "casual",
-      "notes": "<ruby>物<rt>もの</rt></ruby> nominalizes「<ruby>食<rt>た</rt></ruby>べる」to mean 'something to eat' — a very natural everyday use."
+      "notes": "Here <ruby>物<rt>もの</rt></ruby> means physical objects; the casual contraction 〜ておいて→〜といて and dropped subject are natural in everyday speech."
     },
     {
-      "jp": "これ、<ruby>大事<rt>たいじ</rt></ruby>なものだから<ruby>失<rt>なく</rt></ruby>くさないでね。",
-      "translation": "This is something important, so don't lose it, okay?",
+      "jp": "<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>粗末<rt>そまつ</rt></ruby>にしちゃいけないよ。",
+      "translation": "You shouldn't waste food.",
       "register": "casual",
-      "notes": "<ruby>物<rt>もの</rt></ruby> used simply as 'thing' or 'object,' softened with「〜からね」for a gentle reminder."
+      "notes": "<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby> is a compound ('things to eat') — <ruby>物<rt>もの</rt></ruby> forms many such compounds like <ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>, <ruby>着<rt>き</rt></ruby><ruby>物<rt>もの</rt></ruby>, <ruby>建<rt>た</rt></ruby>て<ruby>物<rt>もの</rt></ruby>."
     },
     {
-      "jp": "<ruby>人間<rt>にんげん</rt></ruby>というものは、なかなか<ruby>変<rt>か</rt></ruby>われないものだ。",
-      "translation": "People, as a rule, don't change very easily.",
+      "jp": "<ruby>子供<rt>こども</rt></ruby>というのは、すぐ<ruby>飽<rt>あ</rt></ruby>きるものだ。",
+      "translation": "Children tend to get bored quickly — that's just how they are.",
       "register": "standard",
-      "notes": "「〜というものは〜ものだ」expresses a general truth or observation about the nature of something — one of <ruby>物<rt>もの</rt></ruby>'s most important grammatical roles."
+      "notes": "〜ものだ expresses a general truth or natural tendency; this is one of the most important grammatical uses of <ruby>物<rt>もの</rt></ruby>."
     },
     {
-      "jp": "<ruby>昔<rt>むかし</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby>ここで<ruby>遊<rt>あそ</rt></ruby>んだものです。",
-      "translation": "I used to play here every day when I was young.",
+      "jp": "あの<ruby>頃<rt>ころ</rt></ruby>はよく<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>遊<rt>あそ</rt></ruby>んだものです。",
+      "translation": "We used to play together often back in those days.",
       "register": "standard",
-      "notes": "「〜たものだ」expresses nostalgic recollection — a set grammatical pattern where <ruby>物<rt>もの</rt></ruby> carries an emotional, reflective nuance."
+      "notes": "〜たものだ expresses nostalgic recollection of past habits — a distinct grammatical sense where <ruby>物<rt>もの</rt></ruby> carries emotional nuance rather than referring to any object."
     },
     {
-      "jp": "<ruby>良<rt>よ</rt></ruby>い<ruby>文章<rt>ぶんしょう</rt></ruby>というものは、<ruby>読<rt>よ</rt></ruby>む<ruby>人<rt>ひと</rt></ruby>の<ruby>心<rt>こころ</rt></ruby>に<ruby>残<rt>のこ</rt></ruby>るものでなければならない。",
-      "translation": "Good writing is something that must leave a lasting impression on the reader.",
-      "register": "written",
-      "notes": "「〜というものは〜ものでなければならない」is a formal written pattern stating what something ought to be by its very nature."
+      "jp": "<ruby>長年<rt>ながねん</rt></ruby>の<ruby>努力<rt>どりょく</rt></ruby>が<ruby>報<rt>むく</rt></ruby>われるというのは、<ruby>本当<rt>ほんとう</rt></ruby>にうれしい<ruby>物<rt>もの</rt></ruby>ですね。",
+      "translation": "It truly is a wonderful thing when years of effort are rewarded.",
+      "register": "formal",
+      "notes": "Here <ruby>物<rt>もの</rt></ruby> nominalizes the feeling into 'a thing that is deeply moving,' adding a reflective, slightly literary tone common in written or formal speech."
     }
   ],
-  "dont_use": "Don't use <ruby>物<rt>もの</rt></ruby> for abstract, intangible concepts — use <ruby>事<rt>こと</rt></ruby> instead. For example, 「<ruby>大切<rt>たいせつ</rt></ruby>なもの」can work for a treasured object, but 「<ruby>大切<rt>たいせつ</rt></ruby>なこと」is needed when you mean an important matter or idea. Also avoid using <ruby>物<rt>もの</rt></ruby> for people — 「<ruby>大事<rt>たいじ</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>」not 「<ruby>大事<rt>たいじ</rt></ruby>なもの」when referring to a person.",
+  "dont_use": "<ruby>物<rt>もの</rt></ruby> refers to inanimate objects or abstract concepts; for people, use <ruby>者<rt>もの</rt></ruby>／<ruby>人<rt>ひと</rt></ruby> instead — saying あの<ruby>物<rt>もの</rt></ruby>は<ruby>親切<rt>しんせつ</rt></ruby>だ for a person sounds unnatural or dehumanizing. Also, don't confuse the grammatical 〜ものだ (general truth/nostalgia) with こと, which also nominalizes; they are not interchangeable. Avoid overusing the 〜ものだ pattern for opinions — it implies universal truth, so using it for personal preferences sounds odd.",
   "confused_with": {
-    "word": "<ruby>事<rt>こと</rt></ruby>",
+    "word": "こと",
     "reading": "こと",
-    "contrast": "A common mistake is saying 「<ruby>難<rt>むずか</rt></ruby>しいものを<ruby>説明<rt>せつめい</rt></ruby>してください」when you mean 'please explain something difficult (as a topic)' — here <ruby>事<rt>こと</rt></ruby> is more natural because you're referring to an abstract matter, not a physical thing. Use <ruby>物<rt>もの</rt></ruby> when the referent is concrete or tangible (or a grammatical softener/generalizer); use <ruby>事<rt>こと</rt></ruby> for facts, actions, and abstract ideas. Compare: 「<ruby>食<rt>た</rt></ruby>べるもの」(something to eat — physical) vs. 「<ruby>知<rt>し</rt></ruby>っていること」(something one knows — abstract fact)."
+    "contrast": "A common learner mistake is writing <ruby>泳<rt>およ</rt></ruby>ぐ<ruby>物<rt>もの</rt></ruby>が<ruby>好<rt>す</rt></ruby>きだ when the correct form is <ruby>泳<rt>およ</rt></ruby>ぐことが<ruby>好<rt>す</rt></ruby>きだ. こと nominalizes actions or facts ('the act/fact of doing X') and is used after verbs in constructions like 〜ことができる, 〜ことがある, 〜ことにする. <ruby>物<rt>もの</rt></ruby> nominalizes in a more emotional or nature-of-things sense (〜ものだ, 〜ものがある) — when in doubt with an action verb, こと is usually safer."
   },
-  "frequency": "<ruby>物<rt>もの</rt></ruby> is extremely common across all registers — daily conversation, literature, formal writing. Its grammatical uses (「〜ものだ」「〜たものだ」「〜というものは」) appear frequently in both spoken and written Japanese and are important for N3 and beyond.",
-  "anki_hint": "<ruby>物<rt>もの</rt></ruby> = tangible things + a softener/generalizer: if you can touch it or you're making a general statement about 'the nature of something,' reach for <ruby>物<rt>もの</rt></ruby>; if it's an abstract fact or action, reach for <ruby>事<rt>こと</rt></ruby>.",
+  "confusion_set": [
+    {
+      "word": "<ruby>物<rt>もの</rt></ruby>",
+      "reading": "もの",
+      "use_when": "Talking about a physical object, or expressing general truths/nostalgia/natural tendencies with 〜ものだ",
+      "example": "<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>物<rt>もの</rt></ruby>はちゃんとしまっておいてね。"
+    },
+    {
+      "word": "こと",
+      "reading": "こと",
+      "use_when": "Nominalizing an action or fact, especially in patterns like 〜ことができる, 〜ことがある, 〜ことにする",
+      "example": "もっと<ruby>早<rt>はや</rt></ruby>く<ruby>起<rt>お</rt></ruby>きることにした。"
+    },
+    {
+      "word": "<ruby>者<rt>もの</rt></ruby>",
+      "reading": "もの",
+      "use_when": "Referring to a person (often in formal or written contexts, or fixed phrases like <ruby>若<rt>わか</rt></ruby>い<ruby>者<rt>もの</rt></ruby>)",
+      "example": "<ruby>遅<rt>おく</rt></ruby>れた<ruby>者<rt>もの</rt></ruby>は<ruby>入場<rt>にゅうじょう</rt></ruby>できません。"
+    }
+  ],
+  "frequency": "<ruby>物<rt>もの</rt></ruby> is extremely common in both daily speech and writing. The physical 'thing' sense appears constantly in conversation; the grammatical 〜ものだ patterns are frequent in standard and written Japanese. Learners will encounter it at every level.",
+  "anki_hint": "<ruby>物<rt>もの</rt></ruby> = a 'thing' you can hold OR a 'thing that is naturally so' — when it follows a plain-form verb, it's doing grammar (〜ものだ = that's just how it is), not pointing at an object.",
   "input": "物",
-  "timestamp": "2026-06-16T01:44:26.107Z"
+  "timestamp": "2026-06-16T03:07:22.307Z"
 }

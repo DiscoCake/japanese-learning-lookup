@@ -1,42 +1,59 @@
 {
   "pattern": "～かもしれない",
   "mode": "grammar",
-  "real_meaning": "This pattern expresses genuine uncertainty — the speaker thinks something is possible but has no strong evidence either way. It conveys honest hedging: 'I'm not ruling it out, but I'm not confident either.' Unlike English 'maybe,' it carries a slightly introspective tone, as if the speaker is reasoning through possibilities out loud rather than making a guess for the listener's benefit.",
+  "real_meaning": "This pattern expresses genuine uncertainty — the speaker is not committed to the claim and is openly hedging. Unlike English 'maybe,' which can feel dismissive, ～かもしれない signals that the speaker has actually thought about it and considers the possibility real, but lacks enough evidence to assert it confidently. It conveys intellectual honesty: 'I'm not sure, but this is a live possibility in my mind.'",
   "formation": {
-    "rule": "Attaches to the plain (dictionary/short) form of verbs, i-adjectives, and na-adjectives/nouns. Verb plain form: <ruby>来<rt>く</rt></ruby>るかもしれない. I-adjective: <ruby>寒<rt>さむ</rt></ruby>いかもしれない. Na-adjective/noun: <ruby>病気<rt>びょうき</rt></ruby>かもしれない (no だ before かも). The contracted spoken form ～かもしれん or simply ～かも is extremely common in casual speech.",
-    "common_mistake": "Learners often insert だ before かも with na-adjectives and nouns, mirroring the pattern for plain-form statements. Wrong: <ruby>病気<rt>びょうき</rt></ruby>だかもしれない. Correct: <ruby>病気<rt>びょうき</rt></ruby>かもしれない. The だ is dropped before かも."
+    "rule": "Attaches to the plain (dictionary/short) form of verbs, adjectives, and nouns without modification. Verb plain form: <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれない. い-adjective plain form: <ruby>難<rt>むずか</rt></ruby>しいかもしれない. な-adjective/noun: drop だ and attach directly → <ruby>病気<rt>びょうき</rt></ruby>かもしれない (NOT <ruby>病気<rt>びょうき</rt></ruby>だかもしれない).",
+    "common_mistake": "Learners incorrectly insert だ before かもしれない with nouns and な-adjectives. Wrong: <ruby>暇<rt>ひま</rt></ruby>だかもしれない. Correct: <ruby>暇<rt>ひま</rt></ruby>かもしれない."
   },
   "sentences": [
     {
-      "jp": "あ、<ruby>財布<rt>さいふ</rt></ruby><ruby>忘<rt>わす</rt></ruby>れてきたかも。",
-      "translation": "Oh, I might've forgotten my wallet.",
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>、もう<ruby>寝<rt>ね</rt></ruby>てるかもしれないから、<ruby>電話<rt>でんわ</rt></ruby>やめとこ。",
+      "translation": "He might already be asleep, so let's skip calling him.",
       "register": "casual",
-      "notes": "The full ～かもしれない is clipped to ～かも, which is the most natural form in casual spoken Japanese — hearing the full form here would actually sound slightly stiff."
+      "notes": "The hedging of かもしれない here directly motivates a decision — it's not just musing, it's a real possibility that changes behavior."
     },
     {
-      "jp": "<ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれないので、<ruby>傘<rt>かさ</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていったほうがいいですよ。",
-      "translation": "It might rain tomorrow, so you'd better take an umbrella.",
+      "jp": "<ruby>明日<rt>あした</rt></ruby>は<ruby>会議<rt>かいぎ</rt></ruby>が<ruby>延期<rt>えんき</rt></ruby>になるかもしれません。",
+      "translation": "Tomorrow's meeting might be postponed.",
       "register": "standard",
-      "notes": "Using かもしれない as a premise with ので shows how the pattern naturally chains with advice — the speaker isn't certain but the uncertainty itself is the reason for the suggestion."
+      "notes": "～かもしれません is the polite form; it signals honest uncertainty without undermining the speaker's credibility — appropriate for workplace updates."
     },
     {
-      "jp": "このデータには<ruby>誤<rt>ご</rt></ruby><ruby>差<rt>さ</rt></ruby>が<ruby>含<rt>ふく</rt></ruby>まれているかもしれないため、<ruby>慎重<rt>しんちょう</rt></ruby>に<ruby>解釈<rt>かいしゃく</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>があります。",
-      "translation": "As this data may contain margin of error, careful interpretation is necessary.",
+      "jp": "このデータには<ruby>誤<rt>あやま</rt></ruby>りが<ruby>含<rt>ふく</rt></ruby>まれているかもしれないため、<ruby>再確認<rt>さいかくにん</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いいたします。",
+      "translation": "As there may be errors contained in this data, we kindly ask that you verify it again.",
       "register": "formal",
-      "notes": "In formal written contexts, ～かもしれないため (because it may ~) is a standard hedging construction used in reports and academic writing to signal responsible epistemic caution."
+      "notes": "In written/formal contexts, かもしれない followed by ため is a natural way to give a hedged reason without making a definitive accusation."
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>はもう<ruby>知<rt>し</rt></ruby>ってるかもしれないけど、やっぱり<ruby>自分<rt>じぶん</rt></ruby>から<ruby>言<rt>い</rt></ruby>うべきだと<ruby>思<rt>おも</rt></ruby>う。",
-      "translation": "He might already know, but I still think you should tell him yourself.",
-      "register": "casual",
-      "notes": "Here かもしれない modifies the premise of a moral judgment — the possibility doesn't cancel the obligation. This 'even if possibly true, the conclusion stands' use surprises learners who treat かもしれない as only a soft guess."
+      "jp": "<ruby>私<rt>わたし</rt></ruby>が<ruby>間違<rt>まちが</rt></ruby>っていたかもしれない。",
+      "translation": "I might have been the one who was wrong.",
+      "register": "standard",
+      "notes": "Surprising use: かもしれない can express humble self-doubt about past actions — the speaker isn't fully admitting fault, but is genuinely entertaining the possibility, which feels more honest than a flat apology."
     }
   ],
   "confused_with": {
     "pattern": "～でしょう／～だろう",
-    "contrast": "Both express uncertainty, but they feel very different. ～かもしれない is genuinely open — the speaker has no strong lean, just acknowledging a possibility. ～でしょう／～だろう expresses the speaker's confident inference or expectation, often backed by reasoning or evidence. Minimal pair: <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれない means 'it might rain (I'm not sure either way),' while <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るでしょう means 'it'll probably rain (I expect it will, looking at those clouds).' Use かもしれない when you genuinely lack confidence; use でしょう when you're reasoning toward a likely conclusion."
+    "contrast": "Both express non-certainty, but the degree of speaker confidence is very different. ～でしょう／だろう leans toward probability — the speaker thinks it's likely true and is seeking confirmation or making a confident inference. ～かもしれない sits lower on the confidence scale and makes no claim about likelihood. Minimal pair: <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るでしょう ('It will probably rain' — I expect this) vs. <ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれない ('It might rain' — I'm genuinely not sure either way). Use でしょう when you have real evidence pointing one way; use かもしれない when you're openly on the fence."
   },
-  "bunpro_tip": "Picture yourself shrugging and saying 'I'm not ruling it out' — that's exactly the feeling of かもしれない. When drilling, always mentally check: am I genuinely 50/50 uncertain? If yes, かもしれない. If you're leaning strongly one way based on evidence, reach for だろう instead. Also drill the casual clipped form ～かも so it feels natural, not just the full textbook form.",
+  "confusion_set": [
+    {
+      "pattern": "～かもしれない",
+      "use_when": "You consider something a real but uncertain possibility — you have no strong evidence either way and want to honestly hedge.",
+      "example": "<ruby>鍵<rt>かぎ</rt></ruby>、<ruby>車<rt>くるま</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れたかもしれない。"
+    },
+    {
+      "pattern": "～でしょう／だろう",
+      "use_when": "You're making a confident inference or prediction based on evidence — probability is on your side, or you want soft confirmation.",
+      "example": "<ruby>今<rt>いま</rt></ruby>の<ruby>時間<rt>じかん</rt></ruby>なら、もう<ruby>着<rt>つ</rt></ruby>いているだろう。"
+    },
+    {
+      "pattern": "～はずだ",
+      "use_when": "You expect something to be true based on logic, rules, or prior knowledge — almost like 'it's supposed to be the case.'",
+      "example": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>しているから、<ruby>上手<rt>じょうず</rt></ruby>なはずだ。"
+    }
+  ],
+  "bunpro_tip": "Picture a scale from 0–100% confidence: はずだ sits around 80%, でしょう around 60–70%, and かもしれない is firmly in the 30–50% zone — genuinely open. When BunPro prompts you, ask yourself: 'Am I fairly sure, or am I really on the fence?' If you're on the fence, that's your cue for かもしれない. Also drill the noun/な-adj drop-the-だ rule until it's reflex — it's the single most tested trap.",
   "input": "～かもしれない",
-  "timestamp": "2026-06-15T21:53:55.693Z"
+  "timestamp": "2026-06-16T03:12:21.629Z"
 }

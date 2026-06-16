@@ -96,6 +96,13 @@ function enforcedFields(result) {
       }
       add('bunpro_tip', result.bunpro_tip);
     }
+    // confusion_set members — mirror prosePairs in eval/checks.js.
+    (result.confusion_set || []).forEach((m, i) => {
+      add(`confusion_set[${i}].${result.mode === 'grammar' ? 'pattern' : 'word'}`,
+        m && (result.mode === 'grammar' ? m.pattern : m.word));
+      add(`confusion_set[${i}].use_when`, m && m.use_when);
+      add(`confusion_set[${i}].example`, m && m.example);
+    });
   }
 
   (result.sentences || []).forEach((s, i) => {

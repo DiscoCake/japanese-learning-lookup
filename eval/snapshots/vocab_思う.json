@@ -1,0 +1,73 @@
+{
+  "word": "思う",
+  "reading": "おもう",
+  "mode": "vocab",
+  "pitch_accent": {
+    "number": 2,
+    "label": "nakadaka",
+    "pattern": "LHL"
+  },
+  "core_meaning": "<ruby>思<rt>おも</rt></ruby>う expresses a personal opinion, feeling, or belief — it's the everyday verb for 'think/feel/believe' when you're sharing your own subjective take. It carries an emotional or intuitive weight, as opposed to logical reasoning.",
+  "sentences": [
+    {
+      "jp": "この<ruby>映画<rt>えいが</rt></ruby>、めっちゃ<ruby>面白<rt>おもしろ</rt></ruby>いと<ruby>思<rt>おも</rt></ruby>う。",
+      "translation": "I think this movie is really interesting.",
+      "register": "casual",
+      "notes": "The most natural everyday pattern: plain-form clause ＋ と<ruby>思<rt>おも</rt></ruby>う to give a personal opinion. In casual speech the topic marker は is often dropped."
+    },
+    {
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>はもう<ruby>来<rt>こ</rt></ruby>ないと<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "I don't think he's coming anymore.",
+      "register": "standard",
+      "notes": "Notice the negative meaning is carried inside the clause (ない), not on <ruby>思<rt>おも</rt></ruby>う itself — Japanese almost never says 「と<ruby>思<rt>おも</rt></ruby>いません」 for this meaning."
+    },
+    {
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きだと<ruby>思<rt>おも</rt></ruby>ってたけど、もうわからない。",
+      "translation": "I thought I liked her, but I don't know anymore.",
+      "register": "casual",
+      "notes": "<ruby>思<rt>おも</rt></ruby>ってた is a casual contraction of <ruby>思<rt>おも</rt></ruby>っていた, showing <ruby>思<rt>おも</rt></ruby>う used for feelings and emotional states, not just logical opinions."
+    },
+    {
+      "jp": "<ruby>来年<rt>らいねん</rt></ruby>から<ruby>海外<rt>かいがい</rt></ruby>で<ruby>働<rt>はたら</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>っています。",
+      "translation": "I'm thinking of working abroad from next year.",
+      "register": "standard",
+      "notes": "Volitional form ＋ と<ruby>思<rt>おも</rt></ruby>っている is a key pattern for expressing intentions you're currently holding — softer and more tentative than ～つもりだ."
+    },
+    {
+      "jp": "ご<ruby>意見<rt>いけん</rt></ruby>はもっともだと<ruby>思<rt>おも</rt></ruby>われますが、<ruby>再考<rt>さいこう</rt></ruby>の<ruby>余地<rt>よち</rt></ruby>もあるかと<ruby>存<rt>ぞん</rt></ruby>じます。",
+      "translation": "I believe your opinion is entirely valid; however, I think there may also be room for reconsideration.",
+      "register": "formal",
+      "notes": "<ruby>思<rt>おも</rt></ruby>われる is a passive/honorific form used in formal writing or speech to soften a claim, making it sound less assertive and more deferential."
+    }
+  ],
+  "dont_use": "<ruby>思<rt>おも</rt></ruby>う is for subjective feelings and gut-level opinions — don't use it when you want to express careful logical analysis or deliberate reasoning; <ruby>考<rt>かんが</rt></ruby>える is more natural there. Avoid using <ruby>思<rt>おも</rt></ruby>う to describe what a third party thinks or feels unless you add a qualifier like ～と<ruby>思<rt>おも</rt></ruby>っているようだ, since claiming to know another person's internal state directly sounds presumptuous. Also, don't translate 'I don't think that…' as ～と<ruby>思<rt>おも</rt></ruby>いません — instead, negate inside the clause: ～ないと<ruby>思<rt>おも</rt></ruby>います.",
+  "confused_with": {
+    "word": "<ruby>考<rt>かんが</rt></ruby>える",
+    "reading": "かんがえる",
+    "contrast": "A common mistake is saying 「この<ruby>問題<rt>もんだい</rt></ruby>についてどう<ruby>思<rt>おも</rt></ruby>いますか」when asking someone to analyze or reason through an issue — 「どう<ruby>考<rt>かんが</rt></ruby>えますか」is more natural there because <ruby>考<rt>かんが</rt></ruby>える implies active, deliberate thinking. <ruby>思<rt>おも</rt></ruby>う suits instant impressions and feelings ('I feel like…', 'I believe…'), while <ruby>考<rt>かんが</rt></ruby>える suits working something out logically ('I've thought it through and…'). Use <ruby>思<rt>おも</rt></ruby>う for 'what do you think of this movie?' and <ruby>考<rt>かんが</rt></ruby>える for 'what do you think we should do about this problem?'"
+  },
+  "confusion_set": [
+    {
+      "word": "<ruby>思<rt>おも</rt></ruby>う",
+      "reading": "おもう",
+      "use_when": "Sharing a personal feeling, gut opinion, or belief — subjective and emotional.",
+      "example": "この<ruby>曲<rt>きょく</rt></ruby>、いいと<ruby>思<rt>おも</rt></ruby>う。"
+    },
+    {
+      "word": "<ruby>考<rt>かんが</rt></ruby>える",
+      "reading": "かんがえる",
+      "use_when": "Deliberately reasoning through something or working out a solution — logical and effortful.",
+      "example": "どうすればいいか<ruby>考<rt>かんが</rt></ruby>えてみる。"
+    },
+    {
+      "word": "<ruby>感<rt>かん</rt></ruby>じる",
+      "reading": "かんじる",
+      "use_when": "Describing a physical sensation or emotion you are directly experiencing in the moment.",
+      "example": "<ruby>風<rt>かぜ</rt></ruby>が<ruby>冷<rt>つめ</rt></ruby>たく<ruby>感<rt>かん</rt></ruby>じる。"
+    }
+  ],
+  "frequency": "<ruby>思<rt>おも</rt></ruby>う is one of the most frequent verbs in Japanese — extremely common in everyday speech, writing, and media at all levels. The pattern ～と<ruby>思<rt>おも</rt></ruby>う is a cornerstone of expressing opinions in both casual and polite registers.",
+  "anki_hint": "Remember: negate INSIDE the clause — 「<ruby>彼<rt>かれ</rt></ruby>は<ruby>来<rt>こ</rt></ruby>ないと<ruby>思<rt>おも</rt></ruby>う」, never 「<ruby>来<rt>く</rt></ruby>ると<ruby>思<rt>おも</rt></ruby>わない」— and use <ruby>考<rt>かんが</rt></ruby>える instead when logical reasoning is involved.",
+  "input": "思う",
+  "timestamp": "2026-06-16T03:26:27.387Z"
+}

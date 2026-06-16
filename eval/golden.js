@@ -17,6 +17,7 @@ module.exports = [
   { input: '見せる', mode: 'vocab' },
   { input: '上がる', mode: 'vocab' },
   { input: '入れる', mode: 'vocab' },
+  { input: '思う', mode: 'vocab' },   // think family (思う/考える) — exercises confusion_set; kanji-headed so it routes to vocab
 
   // ── Vocab: abstract words / grammatical-construction nouns ──
   { input: '物', mode: 'vocab' },
@@ -33,6 +34,7 @@ module.exports = [
   { input: '～かもしれない', mode: 'grammar' }, // high-frequency N4; conditional nuance often dropped
   { input: '～てもいい', mode: 'grammar' },     // N4 permission; confusion with ～てはいけない
   { input: '～たことがある', mode: 'grammar' }, // N4 experience pattern; modal nuance
+  { input: '～たら', mode: 'grammar' },          // conditional family (～たら/～ば/～と/～なら) — exercises confusion_set
   { input: '～てしまう', mode: 'grammar' },
   { input: '～ておく', mode: 'grammar' },
   { input: '～ように', mode: 'grammar' },

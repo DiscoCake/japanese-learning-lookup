@@ -29,7 +29,7 @@ Score each dimension from 1 (poor) to 5 (excellent):
 - naturalness: Do the example sentences (sentences[].jp) read like something a native speaker would actually say or write in that register? Penalize stiff, textbook-scripted phrasing; reward natural ellipsis, contractions, and collocations appropriate to the labeled register.
 - register_accuracy: Does each sentence's actual Japanese match its "register" label (casual / standard / formal / written)? Penalize a sentence labeled "casual" that uses polite/formal forms, or vice versa.
 - minimal_pair: GRAMMAR ONLY. Is confused_with.contrast a true minimal pair — two sentences that are nearly identical except for the pattern being contrasted, so the difference is isolated? Penalize contrasts where the two sentences differ in subject, topic, or situation. Return null for vocab output.
-- confusion_relevance: Is confused_with actually the word/pattern this learner is MOST likely to confuse with the target — not just a loosely related one?
+- confusion_relevance: Is confused_with actually the word/pattern this learner is MOST likely to confuse with the target — not just a loosely related one? If a confusion_set is present, also judge whether its 2–3 members form a genuine, tight confusion family (the target plus its real near-confusables) and whether each use_when crisply distinguishes that member — penalize padded or loosely-related members.
 - intuition: Does the main explanation (core_meaning for vocab, real_meaning for grammar) build usage intuition — the feeling/when-to-reach-for-it — rather than restate a dictionary gloss?
 
 OUTPUT: valid JSON only — no markdown fences, no extra text:

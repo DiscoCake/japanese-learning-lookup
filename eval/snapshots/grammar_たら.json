@@ -1,0 +1,59 @@
+{
+  "pattern": "～たら",
+  "mode": "grammar",
+  "real_meaning": "～たら expresses a conditional 'when/if X happens, then Y' — but its core feeling is that the speaker is imagining the moment X is complete or realized, and then projecting what follows. It feels more personal and concrete than other conditionals; it's the go-to conditional for everyday speech, especially when the condition is a one-time event or a specific imagined scenario. It can express both genuine uncertainty ('if') and near-certain future events ('when'), which makes it extremely versatile.",
+  "formation": {
+    "rule": "Take the plain past form (た-form) of the verb, adjective, or noun+だ and add ら. • Verb: <ruby>食<rt>た</rt></ruby>べた → <ruby>食<rt>た</rt></ruby>べたら / <ruby>行<rt>い</rt></ruby>った → <ruby>行<rt>い</rt></ruby>ったら • い-adjective: <ruby>安<rt>やす</rt></ruby>かった → <ruby>安<rt>やす</rt></ruby>かったら • な-adjective/Noun + だった → <ruby>暇<rt>ひま</rt></ruby>だったら / <ruby>学<rt>がく</rt></ruby><ruby>生<rt>せい</rt></ruby>だったら",
+    "common_mistake": "Learners sometimes attach ら directly to the dictionary form instead of the past form. Wrong: ✗ <ruby>食<rt>た</rt></ruby>べるら / Correct: ✓ <ruby>食<rt>た</rt></ruby>べたら"
+  },
+  "sentences": [
+    {
+      "jp": "<ruby>明日<rt>あした</rt></ruby><ruby>雨<rt>あめ</rt></ruby>だったら、どうする？",
+      "translation": "If it rains tomorrow, what are we gonna do?",
+      "register": "casual",
+      "notes": "A natural casual use where ～たら frames a specific imagined scenario — note the dropped subject and the conversational tone typical of everyday planning."
+    },
+    {
+      "jp": "<ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、<ruby>電話<rt>でんわ</rt></ruby>してください。",
+      "translation": "When you arrive at the station, please give me a call.",
+      "register": "standard",
+      "notes": "Here ～たら clearly means 'when' rather than 'if' — the arrival is treated as an expected, completed event that triggers the next action, a very common pattern for giving instructions."
+    },
+    {
+      "jp": "ご<ruby>不明<rt>ふめい</rt></ruby>な<ruby>点<rt>てん</rt></ruby>がございましたら、いつでもお<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせください。",
+      "translation": "Should you have any questions, please feel free to contact us at any time.",
+      "register": "formal",
+      "notes": "ございましたら is the formal/honorific version of あったら, showing that ～たら scales all the way up to formal written or business Japanese."
+    },
+    {
+      "jp": "<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>ったら、すぐそこに<ruby>彼<rt>かれ</rt></ruby>が<ruby>立<rt>た</rt></ruby>っていた。",
+      "translation": "When I turned around, he was standing right there.",
+      "register": "standard",
+      "notes": "This is the surprising 'discovery' use of ～たら — the past tense in the main clause shows the speaker found something unexpected upon completing the action, a usage not shared by ～ば or ～と in quite the same natural way."
+    }
+  ],
+  "confused_with": {
+    "pattern": "～と",
+    "contrast": "～と expresses an automatic, inevitable, or habitual result — like a law of nature or a machine's behavior. ～たら is more flexible: it can express one-time events, personal situations, and discoveries. Compare: <ruby>春<rt>はる</rt></ruby>になると、<ruby>花<rt>はな</rt></ruby>が<ruby>咲<rt>さ</rt></ruby>く (When spring comes, flowers bloom — automatic, always true) vs. <ruby>春<rt>はる</rt></ruby>になったら、<ruby>花見<rt>はなみ</rt></ruby>に<ruby>行<rt>い</rt></ruby>こう (When spring comes, let's go flower-viewing — a one-time personal plan). You'd use ～と for universal truths and natural consequences; use ～たら when the outcome depends on a specific person's intent, or when you're imagining a particular moment."
+  },
+  "confusion_set": [
+    {
+      "pattern": "～たら",
+      "use_when": "Use when imagining a specific completed moment ('once X is done') or for everyday personal conditionals — especially with one-time events, instructions, or unexpected discoveries.",
+      "example": "<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったら、すぐ<ruby>宿題<rt>しゅくだい</rt></ruby>しなさい。(When you get home, do your homework right away.)"
+    },
+    {
+      "pattern": "～ば",
+      "use_when": "Use for more hypothetical or logical 'if' conditions, often when the focus is on the condition itself being sufficient — common in proverbs, advice, and formal writing.",
+      "example": "<ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>めば、<ruby>治<rt>なお</rt></ruby>るよ。(If you take the medicine, you'll get better.)"
+    },
+    {
+      "pattern": "～なら",
+      "use_when": "Use when responding to or building on information already introduced — 'if that's the case / given that…' The condition is something just heard or assumed from context.",
+      "example": "<ruby>明日<rt>あした</rt></ruby>ひまなら、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>かない？(If you're free tomorrow [as you just mentioned], want to go together?)"
+    }
+  ],
+  "bunpro_tip": "Think of ～たら as 'click — now what?' — the た signals a moment clicking into completion, and ら asks what happens next. When BunPro drills this, ask yourself: am I imagining a specific completed moment? If yes, ～たら is almost always safe. Watch out for answer traps that swap in ～と (automatic results) or ～なら (reacting to given info) — those feel subtly different in context.",
+  "input": "～たら",
+  "timestamp": "2026-06-16T03:14:26.429Z"
+}

@@ -7,47 +7,67 @@
     "label": "atamadaka",
     "pattern": "HL"
   },
-  "core_meaning": "よう has two main lives: (1) as a noun／na-adjective meaning 'way, manner, appearance, state' — describing how something looks or how something is done; (2) as a grammatical suffix ～ようだ／～ように meaning 'it seems that…' or 'in such a way that…'. The core idea is always <ruby>様子<rt>ようす</rt></ruby> — the shape or style something takes.",
+  "core_meaning": "よう has two major roles you'll meet constantly: (1) as a noun／na-adjective meaning 'way, manner, appearance, likeness' (e.g. <ruby>彼<rt>かれ</rt></ruby>のような<ruby>人<rt>ひと</rt></ruby> = 'a person like him'); (2) as a grammatical ending ～ように／～ような expressing similarity, manner, or a goal/wish. It is not one fixed word but a highly flexible function word that glues descriptions together.",
   "sentences": [
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>何<rt>なに</rt></ruby>か<ruby>言<rt>い</rt></ruby>いたそうなようだったけど、<ruby>結局<rt>けっきょく</rt></ruby><ruby>黙<rt>だま</rt></ruby>ってた。",
-      "translation": "She looked like she had something to say, but in the end she just stayed quiet.",
-      "register": "casual",
-      "notes": "～ようだ here expresses the speaker's impression from visible evidence — the <ruby>様子<rt>ようす</rt></ruby> they observed."
-    },
-    {
-      "jp": "<ruby>転<rt>ころ</rt></ruby>ばないように<ruby>気<rt>き</rt></ruby>をつけてね。",
-      "translation": "Be careful not to fall, okay?",
-      "register": "casual",
-      "notes": "～ように used as a purpose／negative-goal construction — 'in such a way that you don't fall'; one of the most common everyday patterns for よう."
-    },
-    {
-      "jp": "<ruby>先生<rt>せんせい</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>のしかたは、<ruby>子供<rt>こども</rt></ruby>でもわかるようになっている。",
-      "translation": "The teacher's explanations are set up in a way that even children can understand.",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>水<rt>みず</rt></ruby>を<ruby>飲<rt>の</rt></ruby>むように、すらすらと<ruby>英語<rt>えいご</rt></ruby>を<ruby>話<rt>はな</rt></ruby>す。",
+      "translation": "She speaks English fluently, like she's drinking water.",
       "register": "standard",
-      "notes": "～ようになっている describes a structure or design — 'it has come to be such that / it is arranged so that'."
+      "notes": "ように here draws a vivid simile — 'in the manner of doing X' — one of its core uses."
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>のように<ruby>話<rt>はな</rt></ruby>せるようになりたいです。",
-      "translation": "I want to become able to speak like him.",
+      "jp": "<ruby>早<rt>はや</rt></ruby>く<ruby>治<rt>なお</rt></ruby>るように、<ruby>毎日<rt>まいにち</rt></ruby>ちゃんと<ruby>薬<rt>くすり</rt></ruby><ruby>飲<rt>の</rt></ruby>んでね。",
+      "translation": "Take your medicine properly every day so you get better quickly.",
+      "register": "casual",
+      "notes": "～ように before a request or instruction expresses a goal or desired outcome ('so that / in order that')."
+    },
+    {
+      "jp": "<ruby>先生<rt>せんせい</rt></ruby>に<ruby>言<rt>い</rt></ruby>われたように、レポートを<ruby>書<rt>か</rt></ruby>き<ruby>直<rt>なお</rt></ruby>しました。",
+      "translation": "I rewrote the report as my teacher told me to.",
       "register": "standard",
-      "notes": "Two よう patterns in one sentence: ～のように ('like him') for comparison, and ～ようになる for a change of state — worth noticing the difference."
+      "notes": "<ruby>言<rt>い</rt></ruby>われたように = 'as (someone) said' — ように attached to a plain past verb shows conformity to a model or instruction."
     },
     {
-      "jp": "<ruby>本件<rt>ほんけん</rt></ruby>については、ご<ruby>確認<rt>かくにん</rt></ruby>くださいますよう<ruby>お願<rt>ねが</rt></ruby>い<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げます。",
-      "translation": "We humbly request that you kindly confirm the matter at hand.",
+      "jp": "なんか、<ruby>夢<rt>ゆめ</rt></ruby>みたいな<ruby>話<rt>はなし</rt></ruby>だよね。",
+      "translation": "It sounds like something out of a dream, doesn't it?",
+      "register": "casual",
+      "notes": "みたいな is the casual spoken equivalent of ような; both express 'like / resembling', but ような is slightly more formal."
+    },
+    {
+      "jp": "<ruby>皆様<rt>みなさま</rt></ruby>にご<ruby>理解<rt>りかい</rt></ruby>いただけますように、わかりやすい<ruby>資料<rt>しりょう</rt></ruby>を<ruby>用意<rt>ようい</rt></ruby>いたしました。",
+      "translation": "We have prepared easy-to-understand materials so that everyone may understand.",
       "register": "formal",
-      "notes": "～よう in formal written requests (ご～くださいますよう) is a softened imperative — more polite than ～てください; common in business email."
+      "notes": "In formal/written contexts ～ますように expresses a strong wish or intention directed toward a result."
     }
   ],
-  "dont_use": "Don't confuse ～ようだ (speaker's inference from evidence: 'it seems / it looks like') with ～そうだ (hearsay: 'I heard that…' or visual impression of imminent action). Also, ～のように is for comparison ('like X'), while ～のために is for purpose ('for the sake of X') — mixing these up is a classic mistake. Finally, ～ようにする ('try to do / make a habit of doing') and ～ようになる ('come to be able to do') are distinct: don't swap them.",
+  "dont_use": "Don't swap ような and ように carelessly: ような modifies nouns (<ruby>夢<rt>ゆめ</rt></ruby>のような<ruby>話<rt>はなし</rt></ruby>), while ように modifies verbs or ends a clause (<ruby>忘<rt>わす</rt></ruby>れないように<ruby>書<rt>か</rt></ruby>いた). Also, don't use ように to mean 'it seems' in the sense of the speaker's current judgment — that role belongs to ようだ／ようです as a standalone predicate. Finally, don't confuse the goal-ように (<ruby>上手<rt>じょうず</rt></ruby>になるように<ruby>練習<rt>れんしゅう</rt></ruby>する) with the manner-ように (<ruby>言<rt>い</rt></ruby>われたようにやる); context and verb type determine which reading applies.",
   "confused_with": {
-    "word": "～そうだ",
-    "reading": "そうだ",
-    "contrast": "A common learner mistake: seeing someone about to sneeze and saying くしゃみをするようだ — this sounds like a considered inference, almost analytical. Native speakers would naturally say くしゃみをしそうだ for immediate visual impressions. ～そうだ captures 'it looks like it's about to happen right now' from direct appearance, while ～ようだ reflects a reasoned conclusion from evidence. Use ～そうだ for gut-level visual impressions; use ～ようだ when you're drawing a logical inference."
+    "word": "みたい",
+    "reading": "みたい",
+    "contrast": "Learners often reach for ような when speaking casually, but native speakers almost always say みたいな／みたいに in conversation (e.g. ×<ruby>夢<rt>ゆめ</rt></ruby>のような→ ○<ruby>夢<rt>ゆめ</rt></ruby>みたいな in casual speech). ような sounds bookish or stiff in everyday chat among friends. Use ような in writing, formal speech, or set expressions; use みたいな／みたいに when you're just talking with people."
   },
-  "frequency": "Extremely common across all registers. ～ように and ～ようだ appear constantly in daily speech, writing, and formal documents. This is a true core grammar word — you will encounter it dozens of times a day once you're at N4–N3 level.",
-  "anki_hint": "よう is always about <ruby>様子<rt>ようす</rt></ruby> — the shape, look, or manner of something: ～ようだ = 'it looks like (my inference)', ～ように = 'in such a way that / like', ～ようになる = 'come to be'.",
+  "confusion_set": [
+    {
+      "word": "ような",
+      "reading": "ような",
+      "use_when": "Modifying a noun with a comparison or resemblance in standard/formal register.",
+      "example": "<ruby>氷<rt>こおり</rt></ruby>のような<ruby>手<rt>て</rt></ruby>だね — 'Your hands are like ice.'"
+    },
+    {
+      "word": "ように",
+      "reading": "ように",
+      "use_when": "Modifying a verb/adjective to express manner ('as/like') or a goal ('so that').",
+      "example": "<ruby>聞<rt>き</rt></ruby>こえるように、もっと<ruby>大<rt>おお</rt></ruby>きな<ruby>声<rt>こえ</rt></ruby>で<ruby>話<rt>はな</rt></ruby>してください — 'Please speak louder so I can hear you.'"
+    },
+    {
+      "word": "みたい",
+      "reading": "みたい",
+      "use_when": "Casual spoken equivalent of ような／ようだ — similarity or hearsay in everyday conversation.",
+      "example": "<ruby>彼<rt>かれ</rt></ruby>、<ruby>風邪<rt>かぜ</rt></ruby>みたいだよ — 'Looks like he's got a cold.'"
+    }
+  ],
+  "frequency": "Extremely common across all registers. ように／ような appear constantly in both speech and writing. The formal written ～ますように is especially frequent in business email sign-offs and formal requests. Even beginners will encounter this within their first few months.",
+  "anki_hint": "Think of ように as 'in the way of / so that' (verb modifier) and ような as 'like / resembling' (noun modifier) — the な vs. に ending tells you what it's connecting to, just like other na-adjectives (<ruby>静<rt>しず</rt></ruby>かな vs. <ruby>静<rt>しず</rt></ruby>かに).",
   "input": "よう",
-  "timestamp": "2026-06-15T22:14:59.983Z"
+  "timestamp": "2026-06-16T03:08:47.546Z"
 }

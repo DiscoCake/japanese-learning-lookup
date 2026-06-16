@@ -67,6 +67,14 @@ function prosePairs(result, { includeNotes = false } = {}) {
       }
       add('bunpro_tip', result.bunpro_tip);
     }
+    // confusion_set members (optional, additive): the family comparison the
+    // learner reads — word/pattern + use_when + example all carry ruby.
+    (result.confusion_set || []).forEach((m, i) => {
+      add(`confusion_set[${i}].${result.mode === 'grammar' ? 'pattern' : 'word'}`,
+        m && (result.mode === 'grammar' ? m.pattern : m.word));
+      add(`confusion_set[${i}].use_when`, m && m.use_when);
+      add(`confusion_set[${i}].example`, m && m.example);
+    });
   }
 
   (result.sentences || []).forEach((s, i) => {
@@ -164,6 +172,31 @@ function confusedWithPopulated(result) {
   return { pass: messages.length === 0, messages };
 }
 
+/* ── CHECK: confusion_set, when present, is a well-formed family comparison ──
+   Additive/optional field: a result WITHOUT confusion_set passes (keeps pre-
+   feature snapshots and cached history valid). When present it must be a 2–3
+   member array whose members each carry the headword key (word for vocab,
+   pattern for grammar) and a use_when line. Ruby on members is covered by
+   everyKanjiHasRuby via prosePairs; this check is structure only. */
+function confusionSetWellFormed(result) {
+  const cs = result.confusion_set;
+  if (cs === undefined) return { pass: true, messages: [] };
+  const messages = [];
+  if (!Array.isArray(cs)) {
+    return { pass: false, messages: ['confusion_set is not an array'] };
+  }
+  if (cs.length < 2 || cs.length > 3) {
+    messages.push(`confusion_set should have 2–3 members, got ${cs.length}`);
+  }
+  const memberKey = result.mode === 'grammar' ? 'pattern' : 'word';
+  cs.forEach((m, i) => {
+    if (!m || typeof m !== 'object') { messages.push(`confusion_set[${i}] not an object`); return; }
+    if (!m[memberKey] || !String(m[memberKey]).trim()) messages.push(`confusion_set[${i}] missing ${memberKey}`);
+    if (!m.use_when || !String(m.use_when).trim()) messages.push(`confusion_set[${i}] missing use_when`);
+  });
+  return { pass: messages.length === 0, messages };
+}
+
 /* ── CHECK (JJ only): prose sentences must stay under 80 chars ──
    Fires only when result._jj === true (set by lookup() when opts.jj is true).
    Strips ruby tags before measuring so markup doesn't inflate the count. */
@@ -194,6 +227,7 @@ const CHECKS = [
   { name: 'sentence-count', run: sentenceCount },
   { name: 'registers', run: distinctRegisters },
   { name: 'confused-with', run: confusedWithPopulated },
+  { name: 'confusion-set', run: confusionSetWellFormed },
   { name: 'jj-sentence-length', run: jjSentenceLength },
 ];
 
@@ -212,5 +246,6 @@ module.exports = {
   sentenceCount,
   distinctRegisters,
   confusedWithPopulated,
+  confusionSetWellFormed,
   jjSentenceLength,
 };

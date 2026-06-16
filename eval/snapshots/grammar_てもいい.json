@@ -1,42 +1,59 @@
 {
   "pattern": "～てもいい",
   "mode": "grammar",
-  "real_meaning": "～てもいい expresses permission — either granting it ('you may do X') or requesting it ('may I do X?'). The core feeling is that doing X falls within an acceptable range; nothing bad happens if it occurs. In questions, it carries a polite, slightly tentative tone — the speaker is checking whether crossing into that action is okay with the listener.",
+  "real_meaning": "～てもいい expresses permission — either granting it ('you may do X') or asking for it ('is it okay if I do X?'). The core feeling is 'even if X happens, it's fine/acceptable,' so it's softer and more permissive than a direct command. In conversation, the question form ～てもいいですか is the polite, go-to way to ask if something is allowed without sounding pushy.",
   "formation": {
-    "rule": "Attach もいい to the て-form of a verb. Works the same for all verb types: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べてもいい, <ruby>飲<rt>の</rt></ruby>む → <ruby>飲<rt>の</rt></ruby>んでもいい, する → してもいい, くる → きてもいい. The て-form's voiced ending (で) is kept when required.",
-    "common_mistake": "Using the dictionary form instead of the て-form: ✗ <ruby>食<rt>た</rt></ruby>べるもいい → ✓ <ruby>食<rt>た</rt></ruby>べてもいい"
+    "rule": "Attach もいい to the て-form of a verb. For い-adjectives, drop い and add くてもいい. For な-adjectives and nouns, add でもいい.\n• Verb: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べてもいい\n• い-adj: <ruby>安<rt>やす</rt></ruby>い → <ruby>安<rt>やす</rt></ruby>くてもいい\n• な-adj: <ruby>静<rt>しず</rt></ruby>かだ → <ruby>静<rt>しず</rt></ruby>かでもいい\n• Noun: <ruby>学<rt>がく</rt></ruby><ruby>生<rt>せい</rt></ruby>だ → <ruby>学<rt>がく</rt></ruby><ruby>生<rt>せい</rt></ruby>でもいい",
+    "common_mistake": "Using the dictionary form instead of the て-form. ✗ <ruby>食<rt>た</rt></ruby>べるもいい → ✓ <ruby>食<rt>た</rt></ruby>べてもいい"
   },
   "sentences": [
     {
-      "jp": "ここに<ruby>座<rt>すわ</rt></ruby>ってもいい？",
-      "translation": "Mind if I sit here?",
-      "register": "casual",
-      "notes": "The rising intonation on いい turns this into a casual permission request — dropping ですか makes it feel natural between friends or strangers in informal settings."
-    },
-    {
-      "jp": "レポートは<ruby>明日<rt>あした</rt></ruby><ruby>出<rt>だ</rt></ruby>してもいいですよ。",
-      "translation": "You can hand in the report tomorrow.",
+      "jp": "<ruby>先<rt>せん</rt></ruby><ruby>生<rt>せい</rt></ruby>、トイレ<ruby>行<rt>い</rt></ruby>ってもいいですか？",
+      "translation": "Teacher, may I go to the bathroom?",
       "register": "standard",
-      "notes": "Adding よ at the end softens the grant of permission and makes it sound reassuring rather than just procedural."
+      "notes": "The classic permission-request form — note the て-form contracts naturally to <ruby>行<rt>い</rt></ruby>って in speech, which is standard even in polite registers."
     },
     {
-      "jp": "<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>をコピーしてもよろしいでしょうか。",
-      "translation": "Would it be alright if I made copies of the meeting materials?",
-      "register": "formal",
-      "notes": "In formal contexts, いい is replaced with よろしい and か becomes でしょうか — this is the polished, professional version of the same permission-request structure."
-    },
-    {
-      "jp": "<ruby>別<rt>べつ</rt></ruby>に<ruby>来<rt>こ</rt></ruby>なくてもいいよ。",
-      "translation": "You don't have to come, honestly.",
+      "jp": "もう<ruby>帰<rt>かえ</rt></ruby>ってもいいよ。お<ruby>疲<rt>つか</rt></ruby>れ。",
+      "translation": "You can head home now. Good work.",
       "register": "casual",
-      "notes": "The negative て-form (〜なくて) + もいい means 'it's fine NOT to do X' — this is the tricky flip side that trips learners up; it grants permission to *not* act, not permission to act."
+      "notes": "Here the speaker is granting permission rather than asking for it — よ at the end softens it into a warm, reassuring statement rather than a command."
+    },
+    {
+      "jp": "ご<ruby>不<rt>ふ</rt></ruby><ruby>明<rt>めい</rt></ruby>な<ruby>点<rt>てん</rt></ruby>がございましたら、いつでもお<ruby>問<rt>と</rt></ruby>い<ruby>合<rt>あ</rt></ruby>わせいただいてもよろしいでしょうか。",
+      "translation": "If you have any questions, would it be alright to contact us at any time?",
+      "register": "formal",
+      "notes": "In formal/business Japanese, もいい upgrades to もよろしい, and the whole phrasing becomes more deferential — learners should recognize this as the same structure dressed up for keigo."
+    },
+    {
+      "jp": "べつに<ruby>来<rt>こ</rt></ruby>なくてもいいけど。",
+      "translation": "You don't have to come, but… (it's up to you)",
+      "register": "casual",
+      "notes": "The negative form ～なくてもいい ('you don't have to') expresses that something is not required — a completely different nuance that surprises learners who expect permission only."
     }
   ],
   "confused_with": {
     "pattern": "～てもかまわない",
-    "contrast": "Both express permission, but they differ in tone. ～てもいい is warm and everyday; ～てもかまわない literally means 'I don't mind if you do X' and carries a more neutral, sometimes slightly reluctant or indifferent feel. Compare: <ruby>帰<rt>かえ</rt></ruby>ってもいいよ ('You can go home — go ahead!') vs. <ruby>帰<rt>かえ</rt></ruby>ってもかまわない ('I don't mind if you go home' — neutral, maybe even a little cold). Use ～てもいい when you want to sound warm or encouraging; use ～てもかまわない in formal writing or when you're being deliberately neutral."
+    "contrast": "Both express permission, but ～てもいい is warm and everyday, while ～てもかまわない literally means 'I don't mind if...' — it's more detached or indifferent. Compare: <ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ってもいいですよ ('Yes, please go ahead and take a photo!') vs. <ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ってもかまいませんよ ('I don't object to you taking a photo'). The かまわない version signals mild indifference rather than genuine welcome. Use ～てもいい when you want to sound friendly and permissive; use ～てもかまわない when something is technically fine but you're not especially enthusiastic."
   },
-  "bunpro_tip": "Picture a green traffic light: もいい = the light is green for that action, it's in the OK zone. When drilling on BunPro, always check whether the sentence is *granting* or *requesting* permission — both use the exact same form, so context (statement vs. question) is your only clue.",
+  "confusion_set": [
+    {
+      "pattern": "～てもいい",
+      "use_when": "Granting or asking for permission in a warm, everyday way — 'it's okay to do X / may I do X?'",
+      "example": "<ruby>窓<rt>まど</rt></ruby>、<ruby>開<rt>あ</rt></ruby>けてもいい？"
+    },
+    {
+      "pattern": "～なくてもいい",
+      "use_when": "Saying something is not necessary or not required — 'you don't have to do X'",
+      "example": "<ruby>全<rt>ぜん</rt></ruby><ruby>部<rt>ぶ</rt></ruby><ruby>食<rt>た</rt></ruby>べなくてもいいよ。"
+    },
+    {
+      "pattern": "～てはいけない",
+      "use_when": "Expressing prohibition — 'you must not do X'; the direct opposite of ～てもいい",
+      "example": "ここで<ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ってはいけません。"
+    }
+  ],
+  "bunpro_tip": "Think of も as 'even' — 'even if you do X, it's fine (いい).' This helps you remember both the て-form requirement and the permissive nuance. When BunPro gives you a cue about asking permission, mentally check: am I forming the て-form first, or did I accidentally use the dictionary form?",
   "input": "～てもいい",
-  "timestamp": "2026-06-15T21:54:24.891Z"
+  "timestamp": "2026-06-16T03:12:59.840Z"
 }

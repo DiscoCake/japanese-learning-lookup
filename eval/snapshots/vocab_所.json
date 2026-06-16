@@ -7,47 +7,67 @@
     "label": "heiban",
     "pattern": "LHH"
   },
-  "core_meaning": "<ruby>所<rt>ところ</rt></ruby> means 'place' or 'spot' in concrete use, but more importantly it works as a grammar word indicating a point in time, a situation, or a relevant aspect — as in 'just about to', 'in the middle of', or 'the thing about X is…'",
+  "core_meaning": "<ruby>所<rt>ところ</rt></ruby> literally means 'place' or 'spot', but its most important uses are grammatical: it freezes a verb in time ('just did', 'about to do', 'in the middle of doing') and it nominalizies clauses to mean 'the part where' or 'the fact that'. It is one of the most versatile words in Japanese and goes far beyond a physical location.",
   "sentences": [
     {
-      "jp": "ちょうどいい<ruby>所<rt>ところ</rt></ruby>に<ruby>来<rt>き</rt></ruby>てくれた！",
-      "translation": "You came at just the right time!",
+      "jp": "ちょうど<ruby>家<rt>いえ</rt></ruby>を<ruby>出<rt>で</rt></ruby>るところだったのに、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>ってきた。",
+      "translation": "I was just about to leave the house when it started raining.",
       "register": "casual",
-      "notes": "<ruby>所<rt>ところ</rt></ruby> here refers to a point in time ('just the right moment'), not a physical place — one of its most common everyday uses."
+      "notes": "〜るところだ expresses 'just about to do something' — here the past form ところだった adds a sense of 'bad timing'."
     },
     {
-      "jp": "これから<ruby>出<rt>で</rt></ruby>かけるところだったのに、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>り<ruby>出<rt>だ</rt></ruby>した。",
-      "translation": "I was just about to head out when it started raining.",
-      "register": "standard",
-      "notes": "〜る<ruby>所<rt>ところ</rt></ruby>だった expresses 'was just on the verge of doing' — a key grammatical pattern to learn alongside this word."
-    },
-    {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>のいいところは、いつも<ruby>正直<rt>しょうじき</rt></ruby>なことだと<ruby>思<rt>おも</rt></ruby>う。",
-      "translation": "I think her best quality is that she's always honest.",
-      "register": "standard",
-      "notes": "<ruby>所<rt>ところ</rt></ruby> used as 'aspect' or 'quality' — a very natural collocation when talking about a person's traits."
-    },
-    {
-      "jp": "<ruby>駅<rt>えき</rt></ruby>から<ruby>近<rt>ちか</rt></ruby>い<ruby>所<rt>ところ</rt></ruby>に<ruby>住<rt>す</rt></ruby>みたいんだよね。",
-      "translation": "I want to live somewhere close to the station.",
+      "jp": "あ、ちょうどよかった。<ruby>今<rt>いま</rt></ruby>から<ruby>説明<rt>せつめい</rt></ruby>するところだったんだ。",
+      "translation": "Oh, perfect timing. I was just about to explain it.",
       "register": "casual",
-      "notes": "Straightforward use as a physical or general 'place' — the most literal meaning, common in everyday speech."
+      "notes": "〜するところだった in speech often carries a relieved or convenient nuance — 'you caught me right before I was going to…'."
     },
     {
-      "jp": "<ruby>報告書<rt>ほうこくしょ</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>していたところ、いくつかの<ruby>誤<rt>あやま</rt></ruby>りが<ruby>見<rt>み</rt></ruby>つかりました。",
-      "translation": "While I was reviewing the report, I found several errors.",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>で<ruby>難<rt>むずか</rt></ruby>しいところは、この<ruby>部分<rt>ぶぶん</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>います。",
+      "translation": "The difficult part of her explanation, I think, is this section.",
+      "register": "standard",
+      "notes": "<ruby>難<rt>むずか</rt></ruby>しいところ uses ところ as 'the part that is difficult' — a nominalizer turning an adjective clause into a noun phrase."
+    },
+    {
+      "jp": "<ruby>調査<rt>ちょうさ</rt></ruby>の<ruby>結果<rt>けっか</rt></ruby>を<ruby>分析<rt>ぶんせき</rt></ruby>しているところです。",
+      "translation": "We are currently in the middle of analyzing the survey results.",
       "register": "formal",
-      "notes": "〜ていた<ruby>所<rt>ところ</rt></ruby> in formal/written contexts expresses 'while doing' or 'in the course of doing' — common in business and official writing."
+      "notes": "〜しているところです is the polite way to say 'currently doing' — common in business or official contexts to explain an ongoing process."
+    },
+    {
+      "jp": "レポートをやっと<ruby>書<rt>か</rt></ruby>き<ruby>終<rt>お</rt></ruby>わったところで、もう<ruby>夜中<rt>よなか</rt></ruby>の2<ruby>時<rt>じ</rt></ruby>だった。",
+      "translation": "Right when I finally finished writing the report, it was already 2 in the morning.",
+      "register": "standard",
+      "notes": "〜たところで here means 'just at the point when something was completed' — ところ as a temporal anchor, not a physical place."
     }
   ],
-  "dont_use": "<ruby>所<rt>ところ</rt></ruby> should not be used for all kinds of 'places' interchangeably — for specific facilities or institutions (hospital, school, restaurant), use <ruby>場所<rt>ばしょ</rt></ruby> or just name the place directly. Don't overuse it as a vague 'place' substitute when a more concrete noun fits better. Also, learners often forget the grammatical uses entirely and treat it as only a physical noun — the temporal and aspectual uses (〜るところ、〜たところ) are just as important.",
+  "dont_use": "<ruby>所<rt>ところ</rt></ruby> should not be your default word for 'place' in concrete, physical contexts — <ruby>場所<rt>ばしょ</rt></ruby> is more natural when you mean a physical location you can point to (e.g. 'a nice place to eat' is いい<ruby>場所<rt>ばしょ</rt></ruby>, not いい<ruby>所<rt>ところ</rt></ruby> in most contexts). Also, don't use ところ when you want to say something is 'in progress' in a smooth, ongoing sense without a clear time anchor — in that case 〜ている alone is often more natural. Finally, avoid treating ところ as purely grammatical and forgetting it can also mean a person's home or location informally ('うちのところ' = 'at my place').",
   "confused_with": {
     "word": "<ruby>場所<rt>ばしょ</rt></ruby>",
     "reading": "ばしょ",
-    "contrast": "A common mistake is saying 「いい<ruby>所<rt>ところ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っている？」when asking 'Do you know a good spot?' — this is actually fine, but learners sometimes reach for <ruby>場所<rt>ばしょ</rt></ruby> even in contexts where <ruby>所<rt>ところ</rt></ruby> is more natural, and vice versa. <ruby>場所<rt>ばしょ</rt></ruby> focuses specifically on a physical, locatable space (e.g., 「<ruby>駐車場<rt>ちゅうしゃじょう</rt></ruby>の<ruby>場所<rt>ばしょ</rt></ruby>」— 'the location of the parking lot'), while <ruby>所<rt>ところ</rt></ruby> is broader and also carries the grammatical uses <ruby>場所<rt>ばしょ</rt></ruby> cannot. You cannot replace <ruby>所<rt>ところ</rt></ruby> with <ruby>場所<rt>ばしょ</rt></ruby> in any grammatical construction like 〜るところだ."
+    "contrast": "Learners often say '<ruby>好<rt>す</rt></ruby>きな<ruby>所<rt>ところ</rt></ruby>に<ruby>行<rt>い</rt></ruby>こう' when talking about a specific physical destination, but '<ruby>好<rt>す</rt></ruby>きな<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>行<rt>い</rt></ruby>こう' sounds more natural because <ruby>場所<rt>ばしょ</rt></ruby> is the go-to word for concrete, mappable locations. <ruby>所<rt>ところ</rt></ruby> is better for abstract 'places' in time, in a text, or in a situation, and for its many grammatical roles. When in doubt: if you can drop a pin on a map, use <ruby>場所<rt>ばしょ</rt></ruby>."
   },
-  "frequency": "Extremely common across all registers — both as a concrete noun in everyday speech and as a grammar word in casual, standard, and formal Japanese. The grammatical uses appear constantly in natural speech and writing. One of the most versatile and high-frequency words in the language.",
-  "anki_hint": "<ruby>所<rt>ところ</rt></ruby> isn't just a 'place' — when it follows a verb form (〜る、〜ている、〜た), it marks a point or phase in time, so watch for the verb form before it to know which meaning you're dealing with.",
+  "confusion_set": [
+    {
+      "word": "<ruby>所<rt>ところ</rt></ruby>",
+      "reading": "ところ",
+      "use_when": "Use when nominalizing a clause ('the part where', 'just about to', 'right in the middle of') or referring to an abstract place/point in time or text.",
+      "example": "<ruby>今<rt>いま</rt></ruby>ちょうど<ruby>食<rt>た</rt></ruby>べ<ruby>終<rt>お</rt></ruby>わったところだよ。(I just finished eating right now.)"
+    },
+    {
+      "word": "<ruby>場所<rt>ばしょ</rt></ruby>",
+      "reading": "ばしょ",
+      "use_when": "Use for a concrete, physical location — somewhere you can go to, point at, or describe geographically.",
+      "example": "パーティーの<ruby>場所<rt>ばしょ</rt></ruby>はもう<ruby>決<rt>き</rt></ruby>まった？(Has the venue for the party been decided yet?)"
+    },
+    {
+      "word": "<ruby>場合<rt>ばあい</rt></ruby>",
+      "reading": "ばあい",
+      "use_when": "Use for 'in the case of' or 'when a certain situation applies' — it marks a hypothetical or conditional circumstance, not a place.",
+      "example": "<ruby>遅<rt>おく</rt></ruby>れる<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>連絡<rt>れんらく</rt></ruby>してください。(If you're going to be late, please let us know.)"
+    }
+  ],
+  "frequency": "<ruby>所<rt>ところ</rt></ruby> is extremely common in both spoken and written Japanese. The grammatical uses (〜ているところ、〜たところ、〜るところ) appear constantly in daily speech and are essential for sounding natural at N3 and above.",
+  "anki_hint": "Think of <ruby>所<rt>ところ</rt></ruby> as a 'point' — a point in space, a point in a text, or a point in time — which is why 'just about to', 'just finished', and 'the part where' all use the same word.",
   "input": "所",
-  "timestamp": "2026-06-16T01:45:02.116Z"
+  "timestamp": "2026-06-16T03:29:31.092Z"
 }

@@ -7,47 +7,67 @@
     "label": "nakadaka",
     "pattern": "LHL"
   },
-  "core_meaning": "<ruby>見<rt>み</rt></ruby>える means something is visible or can be seen — it describes the passive, spontaneous experience of vision rather than the active act of looking. It also carries a second meaning of 'to appear' or 'to seem,' used when something gives a certain impression.",
+  "core_meaning": "<ruby>見<rt>み</rt></ruby>える means something is visible or comes into view — it describes what naturally enters your sight, not an active choice to look. It can also mean 'to seem / to appear' when describing how something looks to you subjectively.",
   "sentences": [
     {
-      "jp": "<ruby>窓<rt>まど</rt></ruby>から<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>えるよ！",
-      "translation": "You can see Mt. Fuji from the window!",
+      "jp": "ここから<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>えるよ。",
+      "translation": "You can see Mt. Fuji from here.",
       "register": "casual",
-      "notes": "Core use: something comes into view naturally — the mountain is simply there to be seen, no effort implied."
+      "notes": "Core 'visible from a location' use — the mountain is passively in view, not actively looked at. <ruby>見<rt>み</rt></ruby>える here expresses a natural state."
     },
     {
-      "jp": "<ruby>霧<rt>きり</rt></ruby>が<ruby>濃<rt>こ</rt></ruby>くて、ほとんど<ruby>何<rt>なに</rt></ruby>も<ruby>見<rt>み</rt></ruby>えなかった。",
-      "translation": "The fog was so thick that I could barely see anything.",
+      "jp": "<ruby>霧<rt>きり</rt></ruby>が<ruby>濃<rt>こ</rt></ruby>くて、<ruby>前<rt>まえ</rt></ruby>が<ruby>全然<rt>ぜんぜん</rt></ruby><ruby>見<rt>み</rt></ruby>えなかった。",
+      "translation": "The fog was so thick I couldn't see anything ahead.",
       "register": "standard",
-      "notes": "<ruby>見<rt>み</rt></ruby>える used in the negative past to describe an inability to perceive — a very natural collocation."
+      "notes": "Shows the negative — something is NOT visible due to conditions, a natural and common use of <ruby>見<rt>み</rt></ruby>える."
     },
     {
-      "jp": "あの<ruby>人<rt>ひと</rt></ruby>、<ruby>実際<rt>じっさい</rt></ruby>より<ruby>若<rt>わか</rt></ruby>く<ruby>見<rt>み</rt></ruby>えるね。",
+      "jp": "あの<ruby>人<rt>ひと</rt></ruby>、<ruby>実際<rt>じっさい</rt></ruby>より<ruby>若<rt>わか</rt></ruby>く<ruby>見<rt>み</rt></ruby>えるよね。",
       "translation": "That person looks younger than they actually are, don't they?",
       "register": "casual",
-      "notes": "The 'appear / seem' sense — describing the impression someone or something gives based on appearance."
+      "notes": "'To appear/seem' sense — describing a subjective impression of how something or someone looks to the speaker."
     },
     {
-      "jp": "このグラフを<ruby>見<rt>み</rt></ruby>ると、<ruby>景気<rt>けいき</rt></ruby>の<ruby>回復<rt>かいふく</rt></ruby>が<ruby>見<rt>み</rt></ruby>えてきます。",
-      "translation": "Looking at this graph, the economic recovery is beginning to become visible.",
+      "jp": "<ruby>遠<rt>とお</rt></ruby>くに<ruby>小<rt>ちい</rt></ruby>さな<ruby>島<rt>しま</rt></ruby>が<ruby>見<rt>み</rt></ruby>えてきた。",
+      "translation": "A small island came into view in the distance.",
+      "register": "standard",
+      "notes": "<ruby>見<rt>み</rt></ruby>えてきた captures the moment something gradually enters view — a natural and vivid collocation."
+    },
+    {
+      "jp": "この<ruby>資料<rt>しりょう</rt></ruby>からは、<ruby>問題<rt>もんだい</rt></ruby>の<ruby>本質<rt>ほんしつ</rt></ruby>が<ruby>見<rt>み</rt></ruby>えてくる。",
+      "translation": "From this material, the true nature of the problem becomes apparent.",
       "register": "formal",
-      "notes": "<ruby>見<rt>み</rt></ruby>えてくる is a useful pattern meaning a situation or trend gradually becomes apparent or discernible."
-    },
-    {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>努力<rt>どりょく</rt></ruby>は<ruby>端<rt>はた</rt></ruby>から<ruby>見<rt>み</rt></ruby>ても<ruby>明<rt>あき</rt></ruby>らかに<ruby>見<rt>み</rt></ruby>えていた。",
-      "translation": "Her effort was clearly apparent even to those watching from the outside.",
-      "register": "written",
-      "notes": "Shows <ruby>見<rt>み</rt></ruby>える in a more abstract, figurative sense — something becoming evident or manifest to observers."
+      "notes": "Abstract/figurative use — something conceptual 'becomes visible' or apparent, common in written and analytical contexts."
     }
   ],
-  "dont_use": "<ruby>見<rt>み</rt></ruby>える is for spontaneous or passive perception — don't use it when you mean the deliberate act of looking at something; use <ruby>見<rt>み</rt></ruby>る for that. Also avoid using <ruby>見<rt>み</rt></ruby>える for non-visual impressions like sound or smell — for those, use <ruby>聞<rt>き</rt></ruby>こえる or <ruby>感<rt>かん</rt></ruby>じる. Don't confuse the 'seem' sense with <ruby>思<rt>おも</rt></ruby>う — <ruby>見<rt>み</rt></ruby>える implies the impression is based on outward appearance, not an internal opinion.",
+  "dont_use": "<ruby>見<rt>み</rt></ruby>える is for passive visibility or seeming — don't use it when you mean actively looking at something; that's <ruby>見<rt>み</rt></ruby>る (e.g. テレビを<ruby>見<rt>み</rt></ruby>る, NOT テレビが<ruby>見<rt>み</rt></ruby>える). Also avoid confusing it with <ruby>見<rt>み</rt></ruby>せる, which means 'to show' (an active, transitive action). A common mistake is using <ruby>見<rt>み</rt></ruby>える with を — this word takes が for the thing being seen.",
   "confused_with": {
     "word": "<ruby>見<rt>み</rt></ruby>る",
     "reading": "みる",
-    "contrast": "A common learner mistake is saying 「<ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>えます」when they mean 'I can see the mountain' — this is unnatural because <ruby>見<rt>み</rt></ruby>える is intransitive and takes が, not を. The correct form is 「<ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>えます」. Use <ruby>見<rt>み</rt></ruby>る when you actively direct your gaze (「テレビを<ruby>見<rt>み</rt></ruby>る」), and <ruby>見<rt>み</rt></ruby>える when something is simply visible or gives an impression."
+    "contrast": "Learners often say 「テレビを<ruby>見<rt>み</rt></ruby>える」 when they mean to watch TV — but <ruby>見<rt>み</rt></ruby>える cannot take を and describes involuntary visibility, not intentional watching. Use <ruby>見<rt>み</rt></ruby>る (with を) when you actively choose to look at or watch something: 「テレビを<ruby>見<rt>み</rt></ruby>る」is natural, 「テレビが<ruby>見<rt>み</rt></ruby>える」means 'the TV is visible / I can see the TV (from here).'"
   },
-  "frequency": "<ruby>見<rt>み</rt></ruby>える is very common in everyday speech across all registers — both the 'be visible' sense and the 'appear/seem' sense appear constantly in conversation, writing, and media. The <ruby>見<rt>み</rt></ruby>えてくる pattern is especially frequent in news and analytical writing.",
-  "anki_hint": "<ruby>見<rt>み</rt></ruby>える takes が (not を) because it's spontaneous and intransitive — something naturally enters your field of vision or gives an impression, you don't aim your eyes at it.",
+  "confusion_set": [
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>える",
+      "reading": "みえる",
+      "use_when": "Something is passively visible, or something/someone seems/appears a certain way",
+      "example": "<ruby>窓<rt>まど</rt></ruby>から<ruby>海<rt>うみ</rt></ruby>が<ruby>見<rt>み</rt></ruby>える。"
+    },
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>る",
+      "reading": "みる",
+      "use_when": "You actively look at or watch something (takes を)",
+      "example": "<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>る。"
+    },
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>せる",
+      "reading": "みせる",
+      "use_when": "You show something to someone (transitive, intentional display)",
+      "example": "<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>友達<rt>ともだち</rt></ruby>に<ruby>見<rt>み</rt></ruby>せた。"
+    }
+  ],
+  "frequency": "Very common in everyday speech and writing. The 'visible' sense appears constantly in conversation; the 'seem/appear' sense is equally frequent and natural across all registers.",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>える takes が (not を) — if something is passively in view or 'seems' a certain way, reach for <ruby>見<rt>み</rt></ruby>える; if you're actively watching, use <ruby>見<rt>み</rt></ruby>る.",
   "input": "見える",
-  "timestamp": "2026-06-16T01:43:14.140Z"
+  "timestamp": "2026-06-16T03:03:36.003Z"
 }

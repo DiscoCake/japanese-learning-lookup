@@ -3,6 +3,55 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-15 — Phase 9: confusion-set depth (見る/見える/見せる family comparison)
+
+The learner's most concretely documented gap is *three-way* confusion families (見る/見える/見せる,
+あげる/くれる/もらう, ～たら/～ば/～と/～なら) — a single `confused_with` pair can't disambiguate a
+triad. This adds an **additive, optional** `confusion_set`: a 2–3 member side-by-side "使い分け"
+comparison whose first member is the looked-up word/pattern and the rest its closest confusables,
+each with a one-line `use_when` and a short `example`. Backward-compatible by design — pre-Phase-9
+snapshots and cached history lack the field and stay valid.
+
+- **`src/lookup.js`** — `confusion_set` added to all four system prompts
+  (`VOCAB_SYSTEM`, `GRAMMAR_SYSTEM`, and the two JJ variants). Vocab members carry
+  `word`/`reading`/`use_when`/`example`; grammar members carry `pattern`/`use_when`/`example`.
+  Prompt instructs: first member = the looked-up item, 2–3 members, quick-glance length, ruby on
+  every kanji. JJ variants give the guidance in やさしい日本語. `confused_with` is unchanged.
+- **`eval/checks.js`** — new `confusion-set` deterministic check (`confusionSetWellFormed`):
+  passes when absent (additive); when present requires a 2–3 member array, each member with its
+  key (`word`/`pattern`) + `use_when`. Ruby coverage on members folded into `prosePairs` so
+  `everyKanjiHasRuby` enforces furigana on `confusion_set[i].{word|pattern,use_when,example}`.
+- **`src/furigana.js`** — `enforcedFields` mirrors the new `prosePairs` entries so the auto-ruby
+  repair targets `confusion_set` members too (path helpers already handle `confusion_set[i].x`).
+- **`public/js/render.js`** — `parsePartial` extracts `confusion_set`; new `confusionSetCard(r)`
+  renders the 使い分け card (cyan member head for vocab, purple for grammar, serif example),
+  wired into both `renderVocab` and `renderGrammar` after the `confused_with` card; emits nothing
+  when the field is absent.
+- **`eval/golden.js`** — two new cases exercising the field in both modes: `思う` (vocab, 思う/考える
+  family — kanji-headed so `detectMode` routes it to vocab) and `～たら` (grammar, conditional
+  family). Golden set 26 → 28.
+- **`eval/judge.js`** — `confusion_relevance` rubric extended to also judge whether a present
+  `confusion_set` is a tight family with crisp per-member `use_when` (no new dimension).
+- Docs: CLAUDE.md output contracts document `confusion_set` (both modes) and its additive
+  semantics; case-count references updated 26 → 28.
+- **`src/lookup.js` `max_tokens`** — doc-only correction: CLAUDE.md/README said "capped at 3000",
+  but it was restored to 5000 after multi-sense entries truncated mid-JSON. Docs now match code.
+- Verified — free: unit checks confirm `confusion_set` structure validation, ruby enforcement on
+  members, absent→pass backward-compat, and furigana path helpers on `confusion_set[i].x`. Live
+  (scoped): regenerated the 見 family (見る/見える/見せる + JJ) and the 2 new cases; `eval:check`
+  now **28/28**. Generated sets are the target — 見る/見える/見せる and ～たら/～ば/～と with crisp
+  per-member `use_when`. Smoke test 10/10 (live 見る now renders 7 cards incl. the 使い分け card,
+  zero console errors). `eval:judge --only 見`: `confusion_relevance` held **5/5** (no regression
+  vs. the Phase 8 baseline), naturalness 4.75 / register 5 / intuition 4.5. (One judge flag on
+  見る's `confused_with.contrast` was a false positive — it is a clean 見る→見える minimal pair.)
+- Full `eval:update` regen done: **25/28 snapshots now carry `confusion_set`**; gate **28/28**.
+  Three multi-sense grammar cases (`～そうだ`, `～てしまう` in both JE and JJ) repeatedly emitted
+  invalid JSON on generation — most likely the added `confusion_set` output length stressing those
+  already-long multi-sense entries (truncation / quote-escaping) — so they kept their prior valid
+  **field-less** snapshots (the additive `confusion-set` check passes them as absent). **Follow-up:**
+  backfill those three and look at generation robustness for long entries (max_tokens headroom or a
+  tighter/length-capped `confusion_set`).
+
 ### 2026-06-15 — Phase 8.1: auto-furigana repair post-process (kills the ruby re-roll loop)
 
 Phase 8 noted that ruby is nondeterministic on regen — a handful of single bare common kanji
