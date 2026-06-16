@@ -3,6 +3,47 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-15 — Phase 8: naturalness LLM-judge eval + prompt push + eval cost controls
+
+The deterministic eval gate only checks structure (ruby, contract, counts, registers); it
+can't see whether the Japanese is *natural* or whether a grammar "minimal pair" is actually
+minimal. This phase adds an advisory instrument for that, uses it to tune the lookup prompts,
+and adds cost controls after a full-set regen loop ran up the API bill.
+
+**Prompt quality push** (`src/lookup.js` — archived `archive/2026-06-15_lookup.js`), validated
+against the judge before/after:
+- NATURALNESS directive in all four prompts' sentence rules: write each sentence the way a
+  native says it in that register (casual contractions/ellipsis), keep register labels honest.
+- Grammar `confused_with.contrast` now requires a *true* minimal pair — two sentences identical
+  except the pattern (same subject/object/tense/register). Symmetric edit to the JJ grammar
+  prompt.
+- Vocab `confused_with.contrast` now leads with the typical learner *mistake* + why it sounds
+  off. Symmetric edit to the JJ vocab prompt.
+- Judge deltas (grammar subset, 12 cases): minimal_pair 4.00→4.58, naturalness 4.50→4.83,
+  register 4.50→4.83; no regressions.
+- All 26 snapshots regenerated and green. (Ruby is nondeterministic on regen — a handful of
+  single bare kanji per pass were furigana-corrected in place rather than re-rolled.)
+
+**LLM-judge eval** (`eval/judge.js`, `eval/run.js`, `package.json`):
+- `eval/judge.js`: pure `judge(result)` scores output 1–5 on `naturalness`,
+  `register_accuracy`, `minimal_pair` (grammar only), `confusion_relevance`, `intuition`.
+  Same fetch/parse shape as `lookup.js`; judges with `JUDGE_MODEL` (default `claude-opus-4-8`).
+- `eval/run.js`: new `judge` command (`npm run eval:judge`) judges existing snapshots
+  serially (reusing the existing pacing + 429 backoff), prints per-case scores + per-dimension
+  averages, writes `eval/judge-scores.json`. **Advisory** — does not affect the deterministic
+  `check` gate; optional `--gate` fails below a score floor for opt-in CI.
+- `eval/judge-scores.json` holds a baseline judge pass over the current snapshots.
+
+**Eval cost controls** (the regen loop is the expensive part — output tokens dominate cost):
+- `eval/run.js`: `--only <substr>` narrows `check`/`update`/`run`/`judge` to matching cases
+  (input substring, `vocab`/`grammar`, or `jj`) so prompt iteration regenerates a handful, not
+  all 26. Reuses the existing `--missing` flag for absent-only fills.
+- `src/lookup.js`: `max_tokens` lowered 5000 → 3000 (real lookups generate ~2–2.5k) to bound
+  per-call output cost.
+- `src/cli.js`: `--context "…"` flag exposes `lookup()`'s existing `opts.context` from the CLI.
+- CLAUDE.md gains a COST DISCIPLINE note (use `--only`/`--missing`; full regen only before
+  commit; prompt caching doesn't apply — prompts are below the cacheable minimum).
+
 ### 2026-06-15 — Phase 7: PWA manifest; clipboard paste + haptic removed
 
 **Clipboard paste button** — added then removed. `navigator.clipboard.readText()` requires

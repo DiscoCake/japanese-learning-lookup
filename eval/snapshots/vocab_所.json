@@ -7,47 +7,47 @@
     "label": "heiban",
     "pattern": "LHH"
   },
-  "core_meaning": "<ruby>所<rt>ところ</rt></ruby> literally means 'place' or 'spot,' but it's far more versatile than that — it also functions grammatically to mean 'the point at which,' 'just about to,' 'just finished,' or 'the fact/situation that.' In everyday speech it appears constantly, both as a concrete noun and as a softening or contextualizing grammatical particle.",
+  "core_meaning": "<ruby>所<rt>ところ</rt></ruby> means 'place' or 'spot' in concrete use, but more importantly it works as a grammar word indicating a point in time, a situation, or a relevant aspect — as in 'just about to', 'in the middle of', or 'the thing about X is…'",
   "sentences": [
     {
-      "jp": "ここは<ruby>静<rt>しず</rt></ruby>かないい<ruby>所<rt>ところ</rt></ruby>だね。",
-      "translation": "This is a nice, quiet place, isn't it.",
+      "jp": "ちょうどいい<ruby>所<rt>ところ</rt></ruby>に<ruby>来<rt>き</rt></ruby>てくれた！",
+      "translation": "You came at just the right time!",
       "register": "casual",
-      "notes": "<ruby>所<rt>ところ</rt></ruby> used as a plain concrete noun meaning 'place' or 'spot.'"
+      "notes": "<ruby>所<rt>ところ</rt></ruby> here refers to a point in time ('just the right moment'), not a physical place — one of its most common everyday uses."
     },
     {
-      "jp": "ちょうど<ruby>出<rt>で</rt></ruby>かけようとしていた<ruby>所<rt>ところ</rt></ruby>に、<ruby>電話<rt>でんわ</rt></ruby>が<ruby>鳴<rt>な</rt></ruby>った。",
-      "translation": "Just as I was about to head out, the phone rang.",
+      "jp": "これから<ruby>出<rt>で</rt></ruby>かけるところだったのに、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>り<ruby>出<rt>だ</rt></ruby>した。",
+      "translation": "I was just about to head out when it started raining.",
       "register": "standard",
-      "notes": "The grammar pattern Vようとしていた<ruby>所<rt>ところ</rt></ruby>に shows 'at the very moment/point when,' one of <ruby>所<rt>ところ</rt></ruby>'s most important grammatical uses."
+      "notes": "〜る<ruby>所<rt>ところ</rt></ruby>だった expresses 'was just on the verge of doing' — a key grammatical pattern to learn alongside this word."
     },
     {
-      "jp": "レポートをちょうど<ruby>書<rt>か</rt></ruby>き<ruby>終<rt>お</rt></ruby>わった<ruby>所<rt>ところ</rt></ruby>です。",
-      "translation": "I have just finished writing the report.",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>のいいところは、いつも<ruby>正直<rt>しょうじき</rt></ruby>なことだと<ruby>思<rt>おも</rt></ruby>う。",
+      "translation": "I think her best quality is that she's always honest.",
       "register": "standard",
-      "notes": "V た<ruby>所<rt>ところ</rt></ruby>です signals an action completed just moments ago — similar to 'just did X.'"
+      "notes": "<ruby>所<rt>ところ</rt></ruby> used as 'aspect' or 'quality' — a very natural collocation when talking about a person's traits."
     },
     {
-      "jp": "そこが<ruby>彼女<rt>かのじょ</rt></ruby>のいい<ruby>所<rt>ところ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>うよ。",
-      "translation": "I think that's what's great about her.",
+      "jp": "<ruby>駅<rt>えき</rt></ruby>から<ruby>近<rt>ちか</rt></ruby>い<ruby>所<rt>ところ</rt></ruby>に<ruby>住<rt>す</rt></ruby>みたいんだよね。",
+      "translation": "I want to live somewhere close to the station.",
       "register": "casual",
-      "notes": "<ruby>所<rt>ところ</rt></ruby> used abstractly to mean 'aspect' or 'part' of a person or thing, not a physical place."
+      "notes": "Straightforward use as a physical or general 'place' — the most literal meaning, common in everyday speech."
     },
     {
-      "jp": "<ruby>調査<rt>ちょうさ</rt></ruby>した<ruby>所<rt>ところ</rt></ruby>、<ruby>問題<rt>もんだい</rt></ruby>の<ruby>原因<rt>げんいん</rt></ruby>が<ruby>判明<rt>はんめい</rt></ruby>いたしました。",
-      "translation": "Upon investigation, the cause of the problem was identified.",
+      "jp": "<ruby>報告書<rt>ほうこくしょ</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>していたところ、いくつかの<ruby>誤<rt>あやま</rt></ruby>りが<ruby>見<rt>み</rt></ruby>つかりました。",
+      "translation": "While I was reviewing the report, I found several errors.",
       "register": "formal",
-      "notes": "V た<ruby>所<rt>ところ</rt></ruby> in formal/written contexts means 'upon doing X, it was found that…' — a discovery or result construction common in reports and business writing."
+      "notes": "〜ていた<ruby>所<rt>ところ</rt></ruby> in formal/written contexts expresses 'while doing' or 'in the course of doing' — common in business and official writing."
     }
   ],
-  "dont_use": "<ruby>所<rt>ところ</rt></ruby> should not be used to mean 'place' in fixed compound expressions that call for <ruby>場所<rt>ばしょ</rt></ruby>, such as asking for directions or describing a general location — e.g. say <ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ<ruby>場所<rt>ばしょ</rt></ruby> (meeting spot), not <ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ<ruby>所<rt>ところ</rt></ruby>. Also avoid confusing the grammatical <ruby>所<rt>ところ</rt></ruby> (timing/situation) with the conjunction でも (which implies contrast) — the two are not interchangeable. Finally, don't use <ruby>所<rt>ところ</rt></ruby> to express general purpose or destination ('going to a place') when <ruby>場所<rt>ばしょ</rt></ruby> or a direction word is more natural.",
+  "dont_use": "<ruby>所<rt>ところ</rt></ruby> should not be used for all kinds of 'places' interchangeably — for specific facilities or institutions (hospital, school, restaurant), use <ruby>場所<rt>ばしょ</rt></ruby> or just name the place directly. Don't overuse it as a vague 'place' substitute when a more concrete noun fits better. Also, learners often forget the grammatical uses entirely and treat it as only a physical noun — the temporal and aspectual uses (〜るところ、〜たところ) are just as important.",
   "confused_with": {
     "word": "<ruby>場所<rt>ばしょ</rt></ruby>",
     "reading": "ばしょ",
-    "contrast": "<ruby>場所<rt>ばしょ</rt></ruby> refers specifically and concretely to a physical location or venue — e.g. <ruby>待<rt>ま</rt></ruby>ち<ruby>合<rt>あ</rt></ruby>わせ<ruby>場所<rt>ばしょ</rt></ruby> (meeting place), <ruby>駐車<rt>ちゅうしゃ</rt></ruby><ruby>場所<rt>ばしょ</rt></ruby> (parking spot). <ruby>所<rt>ところ</rt></ruby> can also mean 'place' but is much broader: it covers abstract 'points,' aspects of people or things, and a wide range of grammatical functions that <ruby>場所<rt>ばしょ</rt></ruby> cannot fill. As a rule, if you can substitute 'location/venue' in English, <ruby>場所<rt>ばしょ</rt></ruby> is often the safer choice."
+    "contrast": "A common mistake is saying 「いい<ruby>所<rt>ところ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っている？」when asking 'Do you know a good spot?' — this is actually fine, but learners sometimes reach for <ruby>場所<rt>ばしょ</rt></ruby> even in contexts where <ruby>所<rt>ところ</rt></ruby> is more natural, and vice versa. <ruby>場所<rt>ばしょ</rt></ruby> focuses specifically on a physical, locatable space (e.g., 「<ruby>駐車場<rt>ちゅうしゃじょう</rt></ruby>の<ruby>場所<rt>ばしょ</rt></ruby>」— 'the location of the parking lot'), while <ruby>所<rt>ところ</rt></ruby> is broader and also carries the grammatical uses <ruby>場所<rt>ばしょ</rt></ruby> cannot. You cannot replace <ruby>所<rt>ところ</rt></ruby> with <ruby>場所<rt>ばしょ</rt></ruby> in any grammatical construction like 〜るところだ."
   },
-  "frequency": "Extremely common across all registers — both as a concrete noun and as a grammatical element. The grammatical uses (V てる<ruby>所<rt>ところ</rt></ruby>、V た<ruby>所<rt>ところ</rt></ruby>、V る<ruby>所<rt>ところ</rt></ruby>) appear constantly in daily conversation, fiction, and formal writing alike.",
-  "anki_hint": "<ruby>所<rt>ところ</rt></ruby> isn't just a 'place' — watch for it after verb forms where it signals timing: V ている<ruby>所<rt>ところ</rt></ruby> (in the middle of), V た<ruby>所<rt>ところ</rt></ruby> (just finished / upon doing), V る<ruby>所<rt>ところ</rt></ruby> (just about to).",
+  "frequency": "Extremely common across all registers — both as a concrete noun in everyday speech and as a grammar word in casual, standard, and formal Japanese. The grammatical uses appear constantly in natural speech and writing. One of the most versatile and high-frequency words in the language.",
+  "anki_hint": "<ruby>所<rt>ところ</rt></ruby> isn't just a 'place' — when it follows a verb form (〜る、〜ている、〜た), it marks a point or phase in time, so watch for the verb form before it to know which meaning you're dealing with.",
   "input": "所",
-  "timestamp": "2026-06-15T00:32:15.174Z"
+  "timestamp": "2026-06-16T01:45:02.116Z"
 }

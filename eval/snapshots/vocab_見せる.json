@@ -7,47 +7,47 @@
     "label": "nakadaka",
     "pattern": "LHL"
   },
-  "core_meaning": "<ruby>見<rt>み</rt></ruby>せる means 'to show' — to deliberately cause someone else to see or look at something. Unlike just seeing something by chance, <ruby>見<rt>み</rt></ruby>せる implies an intentional act of presenting or displaying something to an audience.",
+  "core_meaning": "<ruby>見<rt>み</rt></ruby>せる means to show something to someone — you are actively displaying or presenting it for another person to see. Unlike <ruby>見<rt>み</rt></ruby>える (to be visible, to appear), <ruby>見<rt>み</rt></ruby>せる always involves a deliberate agent who chooses to let someone see something.",
   "sentences": [
     {
-      "jp": "<ruby>新<rt>あたら</rt></ruby>しいスマホ、<ruby>見<rt>み</rt></ruby>せてよ！",
-      "translation": "Show me your new phone!",
+      "jp": "ねえ、さっき<ruby>撮<rt>と</rt></ruby>った<ruby>写真<rt>しゃしん</rt></ruby>、<ruby>見<rt>み</rt></ruby>せてよ。",
+      "translation": "Hey, show me the photo you just took.",
       "register": "casual",
-      "notes": "The て-form + よ makes this a casual, direct request between friends — a very natural everyday use of <ruby>見<rt>み</rt></ruby>せる."
+      "notes": "The te-form request <ruby>見<rt>み</rt></ruby>せてよ is the natural casual way to ask someone to show you something — much more natural than <ruby>見<rt>み</rt></ruby>せてください among friends."
     },
     {
-      "jp": "<ruby>先生<rt>せんせい</rt></ruby>に<ruby>宿題<rt>しゅくだい</rt></ruby>を<ruby>見<rt>み</rt></ruby>せた。",
-      "translation": "I showed my homework to the teacher.",
+      "jp": "<ruby>子<rt>こ</rt></ruby>どもたちに<ruby>手品<rt>てじな</rt></ruby>を<ruby>見<rt>み</rt></ruby>せたら、すごく<ruby>喜<rt>よろこ</rt></ruby>んだ。",
+      "translation": "When I showed the kids a magic trick, they were really delighted.",
       "register": "standard",
-      "notes": "The basic [<ruby>人<rt>ひと</rt></ruby>に<ruby>物<rt>もの</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる] pattern: someone is the recipient (に) and something is the object (を)."
+      "notes": "Shows the classic [<ruby>人<rt>ひと</rt></ruby>に<ruby>物<rt>もの</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる] pattern — the person who sees is marked with に, the thing shown with を."
     },
     {
-      "jp": "パスポートをご<ruby>提示<rt>ていじ</rt></ruby>いただく<ruby>前<rt>まえ</rt></ruby>に、こちらをご<ruby>覧<rt>らん</rt></ruby>ください — あ、いや、パスポートを<ruby>見<rt>み</rt></ruby>せていただけますか。",
+      "jp": "パスポートを<ruby>見<rt>み</rt></ruby>せていただけますか。",
       "translation": "Could you please show me your passport?",
       "register": "formal",
-      "notes": "<ruby>見<rt>み</rt></ruby>せていただけますか is a polite request form using the て-form + いただけますか, appropriate for customer service or official situations."
+      "notes": "～ていただけますか is a polite request form commonly used by officials or service staff; <ruby>見<rt>み</rt></ruby>せる is the right verb here, not <ruby>見<rt>み</rt></ruby>える."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>はステージで<ruby>素晴<rt>すばら</rt></ruby>しいパフォーマンスを<ruby>見<rt>み</rt></ruby>せた。",
-      "translation": "She gave a wonderful performance on stage.",
-      "register": "standard",
-      "notes": "<ruby>見<rt>み</rt></ruby>せる can mean 'to put on a display of' or 'to demonstrate' — here it captures the nuance of showing one's skill to an audience."
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>はプレッシャーのかかる<ruby>場面<rt>ばめん</rt></ruby>でも、<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>いた<ruby>態度<rt>たいど</rt></ruby>を<ruby>見<rt>み</rt></ruby>せた。",
+      "translation": "Even in high-pressure situations, she showed a composed attitude.",
+      "register": "written",
+      "notes": "<ruby>見<rt>み</rt></ruby>せる can mean to display or exhibit an attitude or quality — common in written or narrative contexts, similar to English 'showed great courage.'"
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>は<ruby>弱<rt>よわ</rt></ruby>いところを<ruby>見<rt>み</rt></ruby>せたくないので、いつも<ruby>強<rt>つよ</rt></ruby>がっている。",
-      "translation": "He doesn't want to show his weak side, so he always acts tough.",
-      "register": "standard",
-      "notes": "<ruby>見<rt>み</rt></ruby>せる here means 'to reveal' or 'to expose' an aspect of oneself — it extends beyond physical objects to personal qualities or emotions."
+      "jp": "ここで<ruby>諦<rt>あきら</rt></ruby>めるわけにはいかない。<ruby>絶対<rt>ぜったい</rt></ruby>いいところを<ruby>見<rt>み</rt></ruby>せてやる。",
+      "translation": "I can't give up here. I'll definitely show them what I'm made of.",
+      "register": "casual",
+      "notes": "～てやる adds a strong, determined nuance — 'I'll show you (and mean it).' This volitional use of <ruby>見<rt>み</rt></ruby>せる expresses resolve or proving oneself to others."
     }
   ],
-  "dont_use": "<ruby>見<rt>み</rt></ruby>せる requires an intentional agent doing the showing; don't use it when something is simply visible or you happen to see it — use <ruby>見<rt>み</rt></ruby>える (to be visible) instead. Don't confuse the structure: it's [<ruby>人<rt>ひと</rt></ruby>に<ruby>物<rt>もの</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる], so be careful not to swap に and を. Also avoid using <ruby>見<rt>み</rt></ruby>せる for 'watching' a movie or show — that's <ruby>見<rt>み</rt></ruby>る.",
+  "dont_use": "<ruby>見<rt>み</rt></ruby>せる requires an active agent who deliberately shows something — don't use it for things that simply appear or become visible on their own; use <ruby>見<rt>み</rt></ruby>える instead (e.g., <ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える, not ×<ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>せる). Also avoid confusing it with <ruby>見<rt>み</rt></ruby>る (to look/watch) — <ruby>見<rt>み</rt></ruby>せる is always about causing someone else to see, not about seeing yourself. Don't use <ruby>見<rt>み</rt></ruby>せる when talking about going to see a movie or show; that's <ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>く.",
   "confused_with": {
     "word": "<ruby>見<rt>み</rt></ruby>える",
     "reading": "みえる",
-    "contrast": "<ruby>見<rt>み</rt></ruby>える means something is spontaneously visible or appears a certain way — there is no deliberate agent. For example, <ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える means 'the mountain can be seen (from here),' not that anyone is showing it. <ruby>見<rt>み</rt></ruby>せる, by contrast, always involves someone intentionally presenting something to be looked at."
+    "contrast": "A common mistake is saying ×<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>今日<rt>きょう</rt></ruby>よく<ruby>見<rt>み</rt></ruby>せる when you mean the mountain is visible — <ruby>見<rt>み</rt></ruby>せる needs a deliberate agent doing the showing, so this sounds like Mount Fuji is choosing to display itself. Use <ruby>見<rt>み</rt></ruby>える for things that are (or appear to be) visible naturally: <ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>今日<rt>きょう</rt></ruby>よく<ruby>見<rt>み</rt></ruby>える. Reserve <ruby>見<rt>み</rt></ruby>せる for when someone is actively showing something to someone else."
   },
-  "frequency": "Very common in daily speech across all registers. <ruby>見<rt>み</rt></ruby>せて is one of the most frequent casual request forms learners encounter early on. Also appears frequently in written and formal contexts.",
-  "anki_hint": "<ruby>見<rt>み</rt></ruby>せる = intentional showing [<ruby>人<rt>ひと</rt></ruby>に<ruby>物<rt>もの</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる]; if nobody is choosing to show it, use <ruby>見<rt>み</rt></ruby>える instead.",
+  "frequency": "<ruby>見<rt>み</rt></ruby>せる is very common in everyday spoken and written Japanese across all registers. The te-form requests (<ruby>見<rt>み</rt></ruby>せて、<ruby>見<rt>み</rt></ruby>せてください) are especially frequent in daily conversation. The figurative sense of 'displaying a quality or attitude' is more common in written or formal speech.",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>せる = someone actively SHOWS — remember: [<ruby>人<rt>ひと</rt></ruby>に<ruby>物<rt>もの</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる], and if nothing is choosing to show anything, use <ruby>見<rt>み</rt></ruby>える instead.",
   "input": "見せる",
-  "timestamp": "2026-06-15T00:22:30.461Z"
+  "timestamp": "2026-06-15T22:11:57.822Z"
 }

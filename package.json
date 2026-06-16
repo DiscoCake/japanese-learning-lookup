@@ -10,6 +10,7 @@
     "eval": "node eval/run.js run",
     "eval:check": "node eval/run.js check",
     "eval:update": "node eval/run.js update",
+    "eval:judge": "node eval/run.js judge",
     "test:smoke": "node test/smoke.js"
   },
   "engines": { "node": ">=18" },

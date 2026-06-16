@@ -7,6 +7,7 @@
  *   node src/cli.js ～てしまう
  *   node src/cli.js --tsv 見る        (output Anki TSV)
  *   node src/cli.js --raw 見る        (output raw JSON)
+ *   node src/cli.js --context "…" 見る  (bias explanation to a context sentence)
  */
 require('dotenv').config();
 const { lookup, toAnkiTSV } = require('./lookup');
@@ -21,10 +22,19 @@ if (!args.length) {
   process.exit(0);
 }
 
-const flags = args.filter(a => a.startsWith('--'));
-const tsvMode = flags.includes('--tsv');
-const rawMode = flags.includes('--raw');
-const input = args.filter(a => !a.startsWith('--')).join(' ');
+/* Pull out --context <value> (or --context=<value>) before treating the rest as
+   flags + positional input. */
+let context = '';
+const rest = [];
+for (let i = 0; i < args.length; i++) {
+  const a = args[i];
+  if (a === '--context') { context = args[++i] || ''; continue; }
+  if (a.startsWith('--context=')) { context = a.slice('--context='.length); continue; }
+  rest.push(a);
+}
+const tsvMode = rest.includes('--tsv');
+const rawMode = rest.includes('--raw');
+const input = rest.filter(a => !a.startsWith('--')).join(' ');
 
 if (!input) {
   console.error('No input provided.');
@@ -92,8 +102,8 @@ function printGrammar(r) {
 
 (async () => {
   try {
-    console.log(`Looking up: ${input} …`);
-    const result = await lookup(input);
+    console.log(`Looking up: ${input}${context ? ` (context: ${context})` : ''} …`);
+    const result = await lookup(input, context ? { context } : {});
 
     if (rawMode) { console.log(JSON.stringify(result, null, 2)); return; }
     if (tsvMode) { console.log(toAnkiTSV(result)); return; }

@@ -1,42 +1,42 @@
 {
   "pattern": "～わけだ",
   "mode": "grammar",
-  "real_meaning": "～わけだ expresses that a conclusion or result is a logical, natural consequence of information just presented — like saying 'so that's why' or 'it naturally follows that.' The speaker is connecting the dots out loud, showing they understand *why* something is the case. It carries a feeling of 'of course, it makes sense now' — an 'aha' moment turned into a statement.",
+  "real_meaning": "～わけだ expresses that a conclusion or result is logical and expected — the speaker is saying 'so naturally, that's how it is' or 'that makes sense then.' It's used when you've just received information that explains something, or when you're walking someone through reasoning to its inevitable conclusion. The key feeling is <ruby>納得<rt>なっとく</rt></ruby> (clicking into understanding) — not just stating a fact, but affirming 'yes, this follows logically.'",
   "formation": {
-    "rule": "Attach わけだ to the plain form of verbs, い-adjectives, な-adjectives (+ な), or nouns (+ の/という). Examples: <ruby>行<rt>い</rt></ruby>くわけだ (verb plain form) ／ <ruby>難<rt>むずか</rt></ruby>しいわけだ (い-adj) ／ <ruby>静<rt>しず</rt></ruby>かなわけだ (な-adj + な) ／ <ruby>学生<rt>がくせい</rt></ruby>なわけだ (noun + な)",
-    "common_mistake": "Using the stem of a な-adjective or noun without な — learners often write ×<ruby>静<rt>しず</rt></ruby>かわけだ or ×<ruby>学生<rt>がくせい</rt></ruby>わけだ. The correct forms are ○<ruby>静<rt>しず</rt></ruby>かなわけだ and ○<ruby>学生<rt>がくせい</rt></ruby>なわけだ."
+    "rule": "Attach わけだ to the plain form of verbs, い-adjectives, な-adjectives (+ な), or nouns (+ な/の): verb plain form → <ruby>遅<rt>おく</rt></ruby>れるわけだ; い-adj → <ruby>難<rt>むずか</rt></ruby>しいわけだ; な-adj → <ruby>大変<rt>たいへん</rt></ruby>なわけだ; noun → <ruby>初心者<rt>しょしんしゃ</rt></ruby>なわけだ. For past/completed states, use た-form: <ruby>知<rt>し</rt></ruby>らなかったわけだ.",
+    "common_mistake": "Learners often attach わけだ directly to a な-adjective without な, or to a noun without な/の. Wrong: <ruby>大変<rt>たいへん</rt></ruby>わけだ / Correct: <ruby>大変<rt>たいへん</rt></ruby>なわけだ."
   },
   "sentences": [
     {
-      "jp": "あ、<ruby>彼<rt>かれ</rt></ruby>はカナダ<ruby>出身<rt>しゅっしん</rt></ruby>なんだ。どうりで<ruby>英語<rt>えいご</rt></ruby>が<ruby>上手<rt>うま</rt></ruby>いわけだ。",
-      "translation": "Oh, he's from Canada. No wonder his English is so good.",
+      "jp": "あ、<ruby>彼<rt>かれ</rt></ruby>って<ruby>留学<rt>りゅうがく</rt></ruby>してたんだ。じゃあ<ruby>英語<rt>えいご</rt></ruby>がうまいわけだ。",
+      "translation": "Oh, he studied abroad? That explains why his English is so good.",
       "register": "casual",
-      "notes": "This is the classic 'aha' use — the speaker just received new info (he's from Canada) and わけだ marks the logical conclusion that naturally follows."
+      "notes": "This is the classic わけだ moment — new info arrives and the speaker voices their logical <ruby>納得<rt>なっとく</rt></ruby>, 'ah, so THAT'S why.'"
     },
     {
-      "jp": "<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>していたんですね。それで<ruby>上手<rt>じょうず</rt></ruby>になったわけですね。",
-      "translation": "So you were practicing every day. That's why you got so good.",
+      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>三<rt>さん</rt></ruby>ヶ<ruby>月間<rt>かげつかん</rt></ruby>ずっと<ruby>練習<rt>れんしゅう</rt></ruby>してきたんですから、うまくなるわけですね。",
+      "translation": "She's been practicing for three months straight, so of course she's gotten better.",
       "register": "standard",
-      "notes": "わけですね with rising intonation softens the conclusion into a gentle confirmation, as if the speaker is saying 'that explains it' while checking their understanding."
+      "notes": "The speaker uses わけですね to walk the listener through a logical conclusion together, making it feel collaborative rather than just declarative."
     },
     {
-      "jp": "<ruby>原料<rt>げんりょう</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>したため、<ruby>製品<rt>せいひん</rt></ruby>の<ruby>値段<rt>ねだん</rt></ruby>も<ruby>上<rt>あ</rt></ruby>がるわけです。",
-      "translation": "Because raw material prices have risen, it naturally follows that product prices will also go up.",
+      "jp": "<ruby>契約書<rt>けいやくしょ</rt></ruby>に<ruby>明記<rt>めいき</rt></ruby>されている<ruby>以上<rt>いじょう</rt></ruby>、<ruby>先方<rt>せんぽう</rt></ruby>に<ruby>支払<rt>しはら</rt></ruby>い<ruby>義務<rt>ぎむ</rt></ruby>があるわけです。",
+      "translation": "Given that it is clearly stated in the contract, the other party is naturally obligated to pay.",
       "register": "formal",
-      "notes": "In formal or written contexts, わけです presents a logical conclusion almost like an explanation or deduction, common in business or academic writing."
+      "notes": "In formal/written contexts, わけです lends a tone of objective, logical inevitability — useful in legal or business reasoning."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>三<rt>さん</rt></ruby>ヶ<ruby>月<rt>げつ</rt></ruby>で<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>習得<rt>しゅうとく</rt></ruby>したというわけではない。",
-      "translation": "It's not that she mastered Japanese in three months.",
-      "register": "standard",
-      "notes": "わけではない is a crucial related form — it denies that a logical conclusion applies, meaning 'that's not to say' or 'it doesn't mean that.' Learners are often surprised that negating わけだ creates this specific nuance of 'don't jump to that conclusion.'"
+      "jp": "<ruby>君<rt>きみ</rt></ruby>はずっと<ruby>嘘<rt>うそ</rt></ruby>をついてたわけだ。",
+      "translation": "So you've been lying to me this whole time.",
+      "register": "casual",
+      "notes": "This tricky use shows わけだ can carry emotional weight — it's not just intellectual logic, but dawning realization with a hint of accusation or disappointment, very different from a flat statement of fact."
     }
   ],
   "confused_with": {
-    "pattern": "～はずだ",
-    "contrast": "Both patterns express that something 'should be' or 'makes sense,' but they differ in source of certainty. はずだ is based on the speaker's *expectation* — something they believe should be true based on prior knowledge or a promise. わけだ is based on *logical deduction from evidence just presented* — it explains or concludes from facts already on the table. Compare: <ruby>彼<rt>かれ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>勉強<rt>べんきょう</rt></ruby>しているから、<ruby>合格<rt>ごうかく</rt></ruby>するはずだ (I expect him to pass — based on what I know about his effort) vs. <ruby>毎日<rt>まいにち</rt></ruby>そんなに<ruby>勉強<rt>べんきょう</rt></ruby>していたのか。それで<ruby>合格<rt>ごうかく</rt></ruby>したわけだ (Ah, he was studying that hard — *that's why* he passed, it all makes sense now). Use はずだ when predicting; use わけだ when explaining or having an 'aha' moment."
+    "pattern": "～ことになる",
+    "contrast": "Both can express a logical outcome, but the nuance differs sharply. わけだ is the speaker voicing their personal logical <ruby>納得<rt>なっとく</rt></ruby> — 'it naturally follows / that makes sense.' ～ことになる describes an outcome that has come to be the case, often through circumstances or decisions, without the 'clicking' feeling. Minimal pair: <ruby>彼<rt>かれ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>してるわけだ (So it makes sense he's good — logical conclusion the speaker is affirming) vs. <ruby>彼<rt>かれ</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>することになった (It came about that he practices every day — a resulting situation, not the speaker's logical deduction). Use わけだ when YOU are reasoning toward a conclusion; use ことになる when describing what has come to be."
   },
-  "bunpro_tip": "Picture わけだ as the 'detective's conclusion' pattern — Sherlock Holmes saying 'Elementary! It naturally follows that…' from the clues. When you see context giving you a reason or cause, わけだ is how you voice the logical 'so that means…' out loud. On BunPro, watch for sentences that start with から or ので earlier in the passage — that's your cue that わけだ is wrapping up the logic.",
+  "bunpro_tip": "Picture the moment something 'clicks' — like a detective saying 'ah, THAT'S the reason!' Every time you see わけだ, mentally add 'so naturally...' or 'that makes sense, because...' to the front. On BunPro, if the sentence gives you a cause or background first and then uses わけだ, you're being invited to voice the logical payoff — lean into that <ruby>納得<rt>なっとく</rt></ruby> feeling.",
   "input": "～わけだ",
-  "timestamp": "2026-06-15T00:47:27.985Z"
+  "timestamp": "2026-06-15T21:57:57.899Z"
 }

@@ -138,21 +138,43 @@ node src/cli.js --tsv 見る   # output Anki TSV
 node src/cli.js --raw 見る   # output raw JSON
 
 npm run eval:check      # validate lookup output vs saved snapshots (no API — the gate)
-npm run eval:update     # refresh snapshots from the live API (serial; ~18 calls)
+npm run eval:update     # refresh ALL snapshots from the live API (serial; ~26 calls — costs $)
+npm run eval:update -- --only 見る   # COST LEVER: regen only matching cases during iteration
 npm run eval            # live lookups checked against fresh output (no snapshot write)
+npm run eval:judge      # LLM-judge naturalness scores on snapshots (advisory, not a gate; Opus)
 
 npm run test:smoke      # 10-check golden-path Playwright smoke test (requires server running)
 ```
 
 ## Eval harness (`eval/`)
 
-`lookup.js`'s prompt output is the product — `eval/` guards it. `eval/golden.js` holds ~18
-representative cases; `eval/checks.js` runs deterministic validators (ruby on every kanji,
-JSON contract, sentence count, register variety, confused_with). `eval/run.js` drives three
-modes (`check`/`update`/`run`). Live runs are serial with 429 backoff (the org's
+`lookup.js`'s prompt output is the product — `eval/` guards it. `eval/golden.js` holds ~26
+representative cases (incl. JJ); `eval/checks.js` runs deterministic validators (ruby on every
+kanji, JSON contract, sentence count, register variety, confused_with). `eval/run.js` drives
+four modes (`check`/`update`/`run`/`judge`). Live runs are serial with 429 backoff (the org's
 output-token/min limit forbids parallelism). After editing a prompt in `lookup.js`: run
 `eval:update`, review the snapshot diff, then keep `eval:check` green. Use `/lookup-eval` to
 run and interpret it. Never loosen a check to pass — fix the output instead.
+
+**COST DISCIPLINE — read before regenerating.** A full `eval:update` is ~26 live calls at up
+to `max_tokens` output each; output tokens dominate the bill ($15/M on Sonnet vs $3/M input).
+Iterating a prompt by blind-regenerating all 26 every tweak is what runs the API bill up. So:
+during iteration use `eval:update -- --only <substr>` to regen just the cases you're tuning
+(e.g. `--only 見る`, `--only grammar`, `--only jj`), or `-- --missing` to fill only absent
+snapshots; regen the full set once, right before committing. `--only` works on `check`,
+`update`, `run`, and `judge`. Prompt caching does NOT help here — the system prompts are below
+the cacheable token minimum. `max_tokens` is capped at 3000 in `lookup.js` to bound per-call
+output cost.
+
+**Deterministic checks vs. the judge.** `eval:check` is the hard gate: deterministic, free,
+structure-only (it must stay API-free and CI-safe). `eval:judge` (`eval/judge.js`) is the
+*advisory* naturalness instrument — it sends each snapshot to a strong model (`JUDGE_MODEL`,
+default `claude-opus-4-8`) and scores naturalness, register accuracy, minimal-pair quality,
+confusion relevance, and intuition (1–5), writing `eval/judge-scores.json`. It costs Opus
+input per snapshot, so scope it with `--only` rather than judging all 26 every time. It never
+changes the `check` exit code. Workflow for a quality change: baseline `eval:judge --only …`,
+edit the prompt, `eval:update -- --only …`, keep `eval:check` green, then re-judge the same
+subset and confirm the per-dimension averages moved the right way.
 
 ## Server restart policy
 

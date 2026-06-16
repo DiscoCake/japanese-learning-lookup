@@ -59,7 +59,7 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
   "confused_with": {
     "word": "most commonly confused word/expression (ruby on kanji if any)",
     "reading": "reading of confused word",
-    "contrast": "2-3 sentences: show the typical learner MISTAKE (reaching for this word where the confused one is natural), then say why it sounds off and which to use — with a concrete example (include ruby furigana on all kanji)"
+    "contrast": "2-3 sentences clearly explaining the difference with a concrete example (include ruby furigana on all kanji)"
   },
   "frequency": "honest note on register and frequency: common in daily speech / mostly written / formal contexts / regional / etc. (include ruby furigana on all kanji)",
   "anki_hint": "one sentence a learner could add to the back of their Anki card to remember the key usage nuance (include ruby furigana on all kanji)"
@@ -67,7 +67,6 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 SENTENCE RULES:
 - Generate exactly 5 sentences
-- NATURALNESS over textbook polish: write each sentence the way a native actually says it in that register — natural collocations and casual contractions/ellipsis (〜ちゃう、〜とく、〜んだ、dropped particles) in casual registers, not stiff scripted forms. Keep the register label honest about what the Japanese actually is.
 - Vary register meaningfully: at least one casual (friends/family), one standard, one more formal or written
 - Show the word's RANGE — different collocations, different contexts, not just the same idea repeated
 - For words with multiple senses (e.g. 上がる), cover the main senses across the sentences
@@ -103,14 +102,13 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
   ],
   "confused_with": {
     "pattern": "most commonly confused grammar pattern (ruby on kanji if any)",
-    "contrast": "3-4 sentences explaining the difference. MUST include a true minimal pair: two sentences IDENTICAL except for the pattern (same subject, object, tense, register) so only the grammar differs — then say when you'd choose each. (include ruby furigana on all kanji)"
+    "contrast": "3-4 sentences clearly explaining the difference. Include a minimal pair — two sentences that are nearly identical but use each pattern, showing when you'd choose one over the other. (include ruby furigana on all kanji)"
   },
   "bunpro_tip": "1-2 sentences of advice specifically for remembering/drilling this in BunPro — what mental model or mnemonic helps (include ruby furigana on all kanji)"
 }
 
 SENTENCE RULES:
 - Generate exactly 4 sentences
-- NATURALNESS over textbook polish: write each sentence the way a native actually says it in that register — natural collocations and casual contractions/ellipsis (〜ちゃう、〜とく、〜んだ、dropped particles) in casual registers, not stiff scripted forms. Keep the register label honest about what the Japanese actually is.
 - MUST cover: one clearly casual, one standard/polite, one formal or written
 - Fourth sentence: a tricky or nuanced use that surprises learners
 - ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
@@ -160,7 +158,7 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
   "confused_with": {
     "word": "most commonly confused word (ruby on kanji if any)",
     "reading": "reading of confused word",
-    "contrast": "この言葉と混同しやすい表現の違いを2〜3文で。よくある間違い（この言葉を使ってしまう場面）を見せて、なぜ変か、どちらを使うかを説明してください。具体的な例つき（やさしい日本語で、全ての漢字にふりがなをつけてください）"
+    "contrast": "この言葉と混同しやすい表現の違いを2〜3文で。具体的な例を使ってください（やさしい日本語で、全ての漢字にふりがなをつけてください）"
   },
   "frequency": "この言葉がよく使われる場面やレジスターについて（やさしい日本語で、全ての漢字にふりがなをつけてください）",
   "anki_hint": "この言葉の大切なポイントを1文でまとめてください（やさしい日本語で、全ての漢字にふりがなをつけてください）"
@@ -168,7 +166,6 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
 
 SENTENCE RULES:
 - Generate exactly 5 sentences
-- NATURALNESS over textbook polish: write each sentence the way a native actually says it in that register — natural collocations and casual contractions/ellipsis (〜ちゃう、〜とく、〜んだ、dropped particles) in casual registers, not stiff scripted forms. Keep the register label honest about what the Japanese actually is.
 - Vary register meaningfully: at least one casual (friends/family), one standard, one more formal or written
 - Show the word's RANGE — different collocations, different contexts, not just the same idea repeated
 - For words with multiple senses (e.g. 上がる), cover the main senses across the sentences
@@ -215,14 +212,13 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
   ],
   "confused_with": {
     "pattern": "most commonly confused grammar pattern (ruby on kanji if any)",
-    "contrast": "この文法と混同しやすいパターンの違いを3〜4文で。主語・目的語・時制・レジスターが同じで、文法だけが違う2つの文（ミニマルペア）を作って、どちらをいつ使うか見せてください（やさしい日本語、ふりがなつき）"
+    "contrast": "この文法と混同しやすいパターンの違いを3〜4文で。ほぼ同じ状況での2つの文を作って、使い分けを見せてください（やさしい日本語、ふりがなつき）"
   },
   "bunpro_tip": "BunProでこの文法を覚えるコツを1〜2文で（やさしい日本語、ふりがなつき）"
 }
 
 SENTENCE RULES:
 - Generate exactly 4 sentences
-- NATURALNESS over textbook polish: write each sentence the way a native actually says it in that register — natural collocations and casual contractions/ellipsis (〜ちゃう、〜とく、〜んだ、dropped particles) in casual registers, not stiff scripted forms. Keep the register label honest about what the Japanese actually is.
 - MUST cover: one clearly casual, one standard/polite, one formal or written
 - Fourth sentence: a tricky or nuanced use that surprises learners
 - ALL kanji (CJK characters) in Japanese output must have ruby furigana tags; never add ruby to English or Roman text
