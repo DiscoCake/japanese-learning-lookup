@@ -1,12 +1,12 @@
 {
-  "judgedAt": "2026-06-15T21:21:56.648Z",
+  "judgedAt": "2026-06-16T02:56:21.976Z",
   "model": "claude-opus-4-8",
   "averages": {
-    "naturalness": 4.38,
-    "register_accuracy": 4.54,
-    "minimal_pair": 4,
-    "confusion_relevance": 4.85,
-    "intuition": 4.73
+    "naturalness": 4.75,
+    "register_accuracy": 5,
+    "minimal_pair": null,
+    "confusion_relevance": 5,
+    "intuition": 4.5
   },
   "cases": [
     {
@@ -14,14 +14,16 @@
       "mode": "vocab",
       "jj": false,
       "scores": {
-        "naturalness": 4,
-        "register_accuracy": 4,
+        "naturalness": 5,
+        "register_accuracy": 5,
         "minimal_pair": null,
         "confusion_relevance": 5,
-        "intuition": 4
+        "intuition": 5
       },
-      "flags": [],
-      "notes": "Sentences read naturally with appropriate ellipsis and register fit (the casual 見ない？ and written/formal examples are well-matched). 見える is exactly the most likely confusion for an N4→N3 learner, and the core_meaning captures the 'directing attention/experientially' intuition rather than a bare gloss, though it leans somewhat listy.",
+      "flags": [
+        "contrast text contains typo: both sentences show 見える"
+      ],
+      "notes": "Sentences are genuinely natural with appropriate register matching, and the 見る/見える/見せる confusion family is tight and well-distinguished. The core_meaning builds real usage intuition. Only flaw: the confused_with contrast mistakenly writes 「富士山が見える」for both the wrong and correct example, blunting the intended minimal pair.",
       "error": null
     },
     {
@@ -36,7 +38,7 @@
         "intuition": 5
       },
       "flags": [],
-      "notes": "Sentences are natural and idiomatic across registers, with labels matching the actual Japanese well. 見られる is the most apt confusion target and is explained with a near-minimal contrast pair. The core_meaning builds genuine usage intuition (spontaneous/stative vs. active choice) rather than restating a gloss.",
+      "notes": "Sentences are genuinely natural with appropriate register matching (casual よ/よね/んだ, formal ません), and collocations like 〜そうに見える are idiomatic. The confusion set (見る/見せる) is the tight, correct family of confusables, and the core_meaning crisply conveys the spontaneous-visibility intuition rather than a flat gloss.",
       "error": null
     },
     {
@@ -44,23 +46,6 @@
       "mode": "vocab",
       "jj": false,
       "scores": {
-        "naturalness": 4,
-        "register_accuracy": 4,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 4
-      },
-      "flags": [
-        "formal example is convoluted/self-correcting and awkward"
-      ],
-      "notes": "Most sentences are natural and register-appropriate, with strong intuition-building for the intentional 'show' nuance and an excellent 見える contrast. The formal passport sentence is the weak spot — the mid-sentence self-correction (あ、いや...) is contrived and not how a clean service-register example should read.",
-      "error": null
-    },
-    {
-      "input": "上がる",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
         "naturalness": 5,
         "register_accuracy": 5,
         "minimal_pair": null,
@@ -68,314 +53,7 @@
         "intuition": 5
       },
       "flags": [],
-      "notes": "All sentences read naturally and match their register labels (casual ね/こう and the written 〜だ generalization land well). 登る is the most likely confusion and is well isolated, and core_meaning genuinely builds intuition across the word's sense family rather than glossing.",
-      "error": null
-    },
-    {
-      "input": "入れる",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 4
-      },
-      "flags": [],
-      "notes": "Sentences are natural and well-collocated, with appropriate register matching (casual 入れといて, formal いただけますか). 入る is the obvious and correct transitivity-pair confusion. Core meaning conveys good usage intuition though it leans slightly toward enumeration; overall a strong, polished output.",
-      "error": null
-    },
-    {
-      "input": "物",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 3,
-        "register_accuracy": 4,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 4
-      },
-      "flags": [
-        "sentence 1 'この物' is unnatural — natives say これ/このもの rarely as 物"
-      ],
-      "notes": "Strong, relevant こと contrast and good usage intuition, but the first example's standalone この物 is stiff/unidiomatic (a native would say これ), and several sentences read like textbook examples; register labels otherwise match well.",
-      "error": null
-    },
-    {
-      "input": "事",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "All five sentences read naturally and match their register labels (casual だよ/かのじょのことが好き, formal メモしておいてください). 物 is exactly the right confusion partner for こと, and the core_meaning plus dont_use note build genuine usage intuition including the こと/の distinction.",
-      "error": null
-    },
-    {
-      "input": "よう",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 2,
-        "register_accuracy": 4,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 4
-      },
-      "flags": [
-        "ungrammatical 降りそうなようだ in sentence 2",
-        "stiff/overscripted academic sample"
-      ],
-      "notes": "Sentence 2 is broken Japanese — 降りそうなようだ stacks そう and よう incorrectly; a native would say 降りそうだね or 雨が降るようだね. This is a serious naturalness failure for a study tool. The confused_with (みたい) is exactly the most likely confusion and well explained, and the core_meaning builds genuine usage intuition rather than just glossing.",
-      "error": null
-    },
-    {
-      "input": "所",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 5,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Example sentences are natural and well-matched to their register labels, with appropriate ellipsis (だね, だと思うよ) in casual and proper humble 〜いたしました in formal. 場所 is exactly the most likely confusion point for this learner, and the core_meaning builds genuine usage intuition beyond a dictionary gloss.",
-      "error": null
-    },
-    {
-      "input": "結構",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Example sentences read naturally with appropriate ellipsis, particles (よ, ね, って分かった), and register matching their labels. かなり is the most likely confusion for the adverbial sense and the contrast captures the 'more than expected' nuance precisely. Core meaning builds genuine usage intuition around the threshold thread rather than glossing.",
-      "error": null
-    },
-    {
-      "input": "適当",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Excellent vocab breakdown: example sentences are natural and register-accurate (the casual 〜しといた and 決めてよ are genuinely colloquial; the formal keigo sentence fits its label). 適切 is precisely the confusion learners face, and the core_meaning builds real usage intuition around the dual/opposite senses rather than just glossing.",
-      "error": null
-    },
-    {
-      "input": "大丈夫",
-      "mode": "vocab",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 4,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "でございます sentence slightly unidiomatic"
-      ],
-      "notes": "Sentences read naturally with good register-appropriate phrasing (転んだけど、大丈夫だよ; 大丈夫です refusal). 平気 is exactly the right confusion target and the contrast is well-explained. The formal でございます example is a touch awkward but minor.",
-      "error": null
-    },
-    {
-      "input": "～かもしれない",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 5,
-        "minimal_pair": 5,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Sentences are natural and well-matched to their register labels, with good collocations (持っていきなよ, 〜たほうがいい). The でしょう／だろう contrast is a clean minimal pair on the same 明日は雨 base and is the most relevant confusion. The real_meaning builds genuine usage intuition rather than restating a gloss.",
-      "error": null
-    },
-    {
-      "input": "～てもいい",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 5,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Sentences are natural and register-appropriate (casual ellipsis, polite ですか, deferential keigo). The ～ていい contrast is a genuine minimal pair differing only in も, and it's exactly the form learners confuse it with. The explanation builds real usage intuition (permission-checking, releasing from obligation) rather than reciting a gloss.",
-      "error": null
-    },
-    {
-      "input": "～たことがある",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 4,
-        "minimal_pair": 4,
-        "confusion_relevance": 4,
-        "intuition": 5
-      },
-      "flags": [
-        "住んだことがある slightly off — 住んでいた more natural for childhood residence"
-      ],
-      "notes": "Strong, natural examples across registers and an excellent intuition-building explanation. The 住んだことがある sentence is grammatical but a native would more likely say 住んでいました for a childhood period, slightly weakening naturalness; the ～ている contrast is a well-chosen, near-minimal pair with isolated difference.",
-      "error": null
-    },
-    {
-      "input": "～てしまう",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 5,
-        "confusion_relevance": 4,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Sentences are natural and register-accurate (casual ちゃった with topic-marking comma drop, formal しておりますので＋できかねます ring true). The 泣けてしまう example smartly shows the involuntary nuance. The confused_with contrast is a clean minimal pair (やってしまった vs やっておいた, identical object). ～ておく is a reasonable confusion target though ～てある or ～た might be slightly more common confusions; still defensible. Explanation builds genuine usage intuition.",
-      "error": null
-    },
-    {
-      "input": "～ておく",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 5,
-        "confusion_relevance": 4,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Sentences are natural and register-appropriate (とく/ね casual, ございます formal). The 宿題をやっておいた／やってしまった contrast is a clean minimal pair, though てしまう is a reasonable but not the single most likely confusion (てある is arguably closer). Explanation builds genuine usage intuition including the 'leave as is' nuance.",
-      "error": null
-    },
-    {
-      "input": "～ように",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 5,
-        "minimal_pair": 2,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "confused_with contrast is not a true minimal pair (日本語を上手になる vs 日本語が話せる differ in verb/particle and predicate)",
-        "minor: 上手になる should be 上手に なる"
-      ],
-      "notes": "Sentences are natural and registers match their labels well; the ために contrast is the most relevant confusion and the intuition-building explanation is excellent, but the minimal pair varies both verb and particle so the difference isn't cleanly isolated to ように vs ために.",
-      "error": null
-    },
-    {
-      "input": "～ところ",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 4,
-        "minimal_pair": 3,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "minimal pair contrasts different verbs (着いた is shared but examples are bare citation forms, not full parallel sentences)"
-      ],
-      "notes": "Sentences are natural and well-matched to their register labels, with strong usage intuition via the freeze-frame metaphor and a highly relevant ～たばかり contrast. The contrast pair (着いたところです vs 着いたばかりです) is close to minimal but presented as short fragments rather than fully parallel isolating sentences; the 4th example introduces ところに which is a reasonable extension but slightly broadens scope.",
-      "error": null
-    },
-    {
-      "input": "～わけだ",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 3,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "confused_with contrast not a clean minimal pair (differs in subject/situation: 合格する vs 合格した, expectation vs result)"
-      ],
-      "notes": "Natural, register-appropriate sentences with strong 'aha' intuition and an excellent はずだ contrast choice. However, the two contrast sentences differ in tense, framing, and content, so they isolate the difference imperfectly rather than as a true minimal pair.",
-      "error": null
-    },
-    {
-      "input": "～はず",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 5,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [],
-      "notes": "Sentences read naturally with appropriate register-matched forms (casual んだけど/んだろう, formal はずである). The にちがいない contrast is the most relevant confusion point and is presented as a near-perfect minimal pair (彼はもう知っている + はず vs にちがいない). The real_meaning builds genuine usage intuition around the surprise-when-reality-differs feeling.",
-      "error": null
-    },
-    {
-      "input": "～ながら",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 3,
-        "minimal_pair": 3,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "minimal pair differs in subject/verb",
-        "formal example misuses ご覧になりながら (incorrect/unnatural honorific)"
-      ],
-      "notes": "Sentences are mostly natural and the intuition/confusion content is strong; however the formal example ご覧になりながら is grammatically dubious (honorific + ながら is awkward and the same-subject rule is broken, which the note admits as an 'exception' that isn't really valid). The 間に contrast sentences differ in subject and verb, so it isn't a tight minimal pair.",
-      "error": null
-    },
-    {
-      "input": "～そうだ",
-      "mode": "grammar",
-      "jj": false,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 3,
-        "minimal_pair": 4,
-        "confusion_relevance": 5,
-        "intuition": 5
-      },
-      "flags": [
-        "そうでございます is unnatural/incorrect formal form",
-        "furigana errors (おい for 美味, とう for 相)"
-      ],
-      "notes": "Strong intuition-building and a well-isolated minimal pair (降りそうだ vs 降るらしい), and ようだ/らしい is exactly the right confusion. However the 'formal' sentence's そうでございます is not idiomatic Japanese (でございます doesn't attach to そうだ this way), dragging register accuracy down; other sentences read naturally.",
+      "notes": "Sentences are natural and varied across registers, each matching its label well (the casual 見せてよ, the keigo お見せしてもよろしいでしょうか, the literary そぶりも見せずに). The 見る/見せる/見える confusion family is exactly the right tight set, with crisp use_when distinctions, and the core_meaning builds genuine usage intuition around intentional showing vs. spontaneous visibility.",
       "error": null
     },
     {
@@ -387,44 +65,12 @@
         "register_accuracy": 5,
         "minimal_pair": null,
         "confusion_relevance": 5,
-        "intuition": 4
-      },
-      "flags": [],
-      "notes": "Sentences read naturally across registers (誘う form, 〜てみる, ご覧ください all idiomatic and correctly labeled). 見える is the most relevant confusion partner and the volitional-vs-spontaneous contrast builds genuine intuition; core_meaning is slightly gloss-like but the spread of senses compensates.",
-      "error": null
-    },
-    {
-      "input": "大丈夫",
-      "mode": "vocab",
-      "jj": true,
-      "scores": {
-        "naturalness": 4,
-        "register_accuracy": 4,
-        "minimal_pair": null,
-        "confusion_relevance": 5,
-        "intuition": 4
+        "intuition": 3
       },
       "flags": [
-        "formal example feels slightly contrived"
+        "last sentence uses ~てみる, not core 見る meaning"
       ],
-      "notes": "Sentences are natural and well-collocated, with good casual ellipsis and a realistic refusal scenario; 平気 is exactly the most-confused near-synonym. The 'formal' example using 大丈夫 in a procedural instruction is a bit awkward and the label is borderline, but explanations build genuine usage intuition including the refusal nuance.",
-      "error": null
-    },
-    {
-      "input": "～てしまう",
-      "mode": "grammar",
-      "jj": true,
-      "scores": {
-        "naturalness": 5,
-        "register_accuracy": 5,
-        "minimal_pair": 4,
-        "confusion_relevance": 4,
-        "intuition": 5
-      },
-      "flags": [
-        "confused_with contrast uses verbs (やる/やっておく) that match but is two paired sentences rather than one isolated minimal pair"
-      ],
-      "notes": "Examples are natural and well-matched to their register labels, covering both regret and completion/positive nuances. The ～ておく contrast is a reasonable and relevant confusion point and is nearly a true minimal pair (same verb, same object), though ～た／～たり could also be argued as a more common N4 confusion. Explanation builds strong usage intuition with vivid framing.",
+      "notes": "Example sentences are natural and well-matched to their registers, with good use of casual ellipsis (映画見たよ). The 見る/見える/見せる confusion family is tight and well-distinguished. The core_meaning is a somewhat circular dictionary-style restatement (目を使って見る時) that builds little intuition, and the final sentence drifts to the ~てみる grammar rather than illustrating the verb itself.",
       "error": null
     }
   ]

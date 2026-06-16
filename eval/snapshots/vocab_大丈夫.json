@@ -7,47 +7,67 @@
     "label": "nakadaka",
     "pattern": "LHHLL"
   },
-  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> covers a wide range from 'I'm okay / it's fine' to 'no problem / don't worry' to 'will this be alright?' — it expresses that something is safe, acceptable, or not a problem. It can be a reassurance, a check-in question, or even a polite way to decline an offer.",
+  "core_meaning": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> covers a wide range: 'it's okay / I'm fine / no problem / don't worry.' It functions both as a reassurance ('everything is alright') and as a yes/no check ('are you okay?'). Crucially, it can also mean 'no thanks, I'm good' — a polite refusal — which trips up many learners.",
   "sentences": [
     {
-      "jp": "<ruby>転<rt>こ</rt></ruby>んじゃったけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。",
-      "translation": "I fell, but I'm okay.",
+      "jp": "<ruby>転<rt>こ</rt></ruby>んじゃったけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ、ちょっと<ruby>擦<rt>す</rt></ruby>り<ruby>傷<rt>きず</rt></ruby>ついただけ。",
+      "translation": "I fell, but I'm fine — just a little scrape.",
       "register": "casual",
-      "notes": "The most basic use — reassuring someone that you're physically fine. <ruby>転<rt>こ</rt></ruby>んじゃった is a natural casual contraction of <ruby>転<rt>こ</rt></ruby>んでしまった."
+      "notes": "Classic use as self-reassurance after something minor happens; the <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ pattern is very natural in casual speech."
     },
     {
-      "jp": "このまま<ruby>進<rt>すす</rt></ruby>めて<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか？",
-      "translation": "Is it okay if we proceed like this?",
+      "jp": "<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか？",
+      "translation": "Are you okay for tomorrow's meeting?",
       "register": "standard",
-      "notes": "Used as a question to check whether something is acceptable or safe — a very common function of <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in everyday situations."
+      "notes": "Used as a check-in question — 'are you free / is it okay?' — very common in workplace or scheduling contexts."
     },
     {
-      "jp": "「コーヒーはいかがですか？」「あ、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。」",
-      "translation": "'Would you like some coffee?' 'Oh, I'm fine, thanks.'",
+      "jp": "「もう<ruby>一杯<rt>いっぱい</rt></ruby>いかがですか？」「あ、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。」",
+      "translation": "'Would you like another cup?' 'Oh, I'm good, thanks.'",
       "register": "standard",
-      "notes": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です is frequently used as a soft refusal of an offer — a nuance that surprises many learners who expect it to mean only 'I'm okay.'"
+      "notes": "This is the refusal use: <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です here means 'no thank you' — one of the trickiest nuances for learners."
     },
     {
-      "jp": "<ruby>明日<rt>あした</rt></ruby>までに<ruby>終<rt>お</rt></ruby>わる？——うん、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>、もうほとんどできてるから。",
-      "translation": "'Can you finish by tomorrow?' 'Yeah, it's fine — I'm almost done.'",
+      "jp": "<ruby>初<rt>はじ</rt></ruby>めてにしては<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だったんじゃない？",
+      "translation": "Wasn't that pretty decent for a first try?",
       "register": "casual",
-      "notes": "Here <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> means 'no problem / it'll be fine' — a confident reassurance about a future outcome."
+      "notes": "Shows a slightly different shade: 'not bad / passable' — <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> can mean something met an acceptable standard."
     },
     {
-      "jp": "<ruby>患者<rt>かんじゃ</rt></ruby>の<ruby>状態<rt>じょうたい</rt></ruby>は<ruby>現在<rt>げんざい</rt></ruby><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですが、<ruby>経過<rt>けいか</rt></ruby>を<ruby>観察<rt>かんさつ</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>があります。",
-      "translation": "The patient's condition is currently stable, but we need to monitor their progress.",
+      "jp": "この<ruby>書類<rt>しょるい</rt></ruby>は<ruby>本日中<rt>ほんじつちゅう</rt></ruby>に<ruby>提出<rt>ていしゅつ</rt></ruby>しなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>でしょうか。",
+      "translation": "Would it be alright if I didn't submit these documents within today?",
       "register": "formal",
-      "notes": "Even in formal/professional contexts <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> appears naturally, though some speakers prefer <ruby>問題<rt>もんだい</rt></ruby>ありません in very stiff official writing."
+      "notes": "In formal written/spoken contexts, <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>でしょうか is a polite way to ask for permission or check if something is acceptable."
     }
   ],
-  "dont_use": "Avoid using <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in very stiff official documents or bureaucratic writing — <ruby>問題<rt>もんだい</rt></ruby>ございません or <ruby>支障<rt>ししょう</rt></ruby>はありません is more appropriate there. Also be careful: saying <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です in response to an offer can come across as a refusal even if you meant to accept — if you want to say 'yes please,' use いただきます or はい、ぜひ instead. Don't confuse the declining nuance with rudeness; it's perfectly polite, just easy to misread cross-culturally.",
+  "dont_use": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> sounds casual-to-neutral, so in very stiff formal writing (contracts, official documents) it can feel out of place — prefer <ruby>問題<rt>もんだい</rt></ruby>ございません or <ruby>差<rt>さ</rt></ruby>し<ruby>支<rt>つか</rt></ruby>えありません. Also, don't assume <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> always means 'yes' when someone asks if you need help — it often means 'no, I'm fine without it.' Finally, avoid overusing it as filler agreement (for 'I understand' or 'got it,' <ruby>わかりました<rt>わかりました</rt></ruby> is cleaner).",
   "confused_with": {
     "word": "<ruby>問題<rt>もんだい</rt></ruby>ない",
     "reading": "もんだいない",
-    "contrast": "A learner might reach for <ruby>問題<rt>もんだい</rt></ruby>ない in casual conversation — 'それ、<ruby>問題<rt>もんだい</rt></ruby>ない？' — when <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>？ would sound far more natural between friends. <ruby>問題<rt>もんだい</rt></ruby>ない is perfectly correct but feels slightly analytical or businesslike, whereas <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is the everyday go-to for checking on people or situations. Use <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> in daily speech and save <ruby>問題<rt>もんだい</rt></ruby>ない / <ruby>問題<rt>もんだい</rt></ruby>ありません for when you're deliberately framing things in terms of 'no issues exist.'"
+    "contrast": "A learner might say <ruby>問題<rt>もんだい</rt></ruby>ない when checking on a friend who got hurt, but this sounds analytical and cold — it assesses a situation logically ('there is no problem') rather than expressing human concern or comfort. <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> carries warmth and is the natural choice for personal reassurance, while <ruby>問題<rt>もんだい</rt></ruby>ない fits better for technical or task-based contexts, e.g. '<ruby>スケジュール<rt>すけじゅーる</rt></ruby>は<ruby>問題<rt>もんだい</rt></ruby>ない' (the schedule is fine)."
   },
-  "frequency": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is extremely common in everyday spoken Japanese across all age groups — you'll hear it dozens of times a day in casual conversation, service interactions, and workplaces. It is also common in informal writing (texts, social media) but slightly less dominant in formal written Japanese.",
-  "anki_hint": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> has three faces: a reassurance ('I'm fine'), a check ('is this okay?'), and a soft refusal ('no thanks') — the refusal use is the one that catches learners off guard.",
+  "confusion_set": [
+    {
+      "word": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>",
+      "reading": "だいじょうぶ",
+      "use_when": "Reassuring someone, checking on wellbeing, politely declining an offer, or saying something is acceptable.",
+      "example": "<ruby>転<rt>こ</rt></ruby>んだけど<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>！"
+    },
+    {
+      "word": "<ruby>問題<rt>もんだい</rt></ruby>ない",
+      "reading": "もんだいない",
+      "use_when": "Stating there is objectively no issue with a plan, schedule, or task — more logical, less personal.",
+      "example": "この<ruby>設計<rt>せっけい</rt></ruby>は<ruby>技術的<rt>ぎじゅつてき</rt></ruby>に<ruby>問題<rt>もんだい</rt></ruby>ない。"
+    },
+    {
+      "word": "<ruby>平気<rt>へいき</rt></ruby>",
+      "reading": "へいき",
+      "use_when": "Saying you personally don't mind something or are unbothered — more about inner composure than external safety.",
+      "example": "<ruby>辛<rt>から</rt></ruby>いもの、<ruby>平気<rt>へいき</rt></ruby>だよ。"
+    }
+  ],
+  "frequency": "<ruby>大丈夫<rt>だいじょうぶ</rt></ruby> is extremely common in everyday spoken Japanese — one of the most frequently heard words in casual and standard conversation. It appears across all age groups and is safe to use in most situations short of very formal written Japanese.",
+  "anki_hint": "Remember the refusal trap: when a waiter asks if you want more and you say <ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です, you're saying 'no thanks' — <ruby>大丈夫<rt>だいじょうぶ</rt></ruby> can mean 'I'm good (and don't need it),' not just 'yes, everything is fine.'",
   "input": "大丈夫",
-  "timestamp": "2026-06-15T22:17:32.717Z"
+  "timestamp": "2026-06-16T03:11:41.975Z"
 }

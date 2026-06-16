@@ -7,47 +7,67 @@
     "label": "nakadaka",
     "pattern": "LHHL"
   },
-  "core_meaning": "<ruby>結構<rt>けっこう</rt></ruby> is a surprisingly versatile word that does three main jobs: (1) an adverb meaning 'quite / pretty / surprisingly' (more than expected), (2) a な-adjective meaning 'fine / satisfactory / good enough,' and (3) a polite refusal meaning 'no thank you / I'm fine' — the same form covers both acceptance and refusal depending on context, which trips up learners constantly.",
+  "core_meaning": "<ruby>結構<rt>けっこう</rt></ruby> is a chameleon word with two main faces: as a な-adjective or adverb it means 'quite / pretty / fairly' (often with a tinge of surprise that something is more X than expected), and as a standalone response it means 'No thank you' or 'That's fine as-is' — a polite refusal or signal that nothing more is needed.",
   "sentences": [
     {
-      "jp": "この<ruby>映画<rt>えいが</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>面白<rt>おもしろ</rt></ruby>かったじゃん。",
-      "translation": "That movie was actually pretty interesting, wasn't it.",
+      "jp": "このラーメン、<ruby>結構<rt>けっこう</rt></ruby><ruby>辛<rt>から</rt></ruby>いね。",
+      "translation": "This ramen is pretty spicy, huh.",
       "register": "casual",
-      "notes": "<ruby>結構<rt>けっこう</rt></ruby> as an adverb meaning 'quite / surprisingly' — it carries a light nuance of 'more than I expected.'"
+      "notes": "<ruby>結構<rt>けっこう</rt></ruby> as an adverb meaning 'quite/fairly' — the nuance is mild surprise that it's spicier than expected."
     },
     {
-      "jp": "A:「もう<ruby>少<rt>すこ</rt></ruby>しいかがですか？」B:「ありがとうございます、もう<ruby>結構<rt>けっこう</rt></ruby>です。」",
-      "translation": "A: 'Would you like a little more?' B: 'Thank you, I'm quite fine / no thank you.'",
+      "jp": "「もう<ruby>少<rt>すこ</rt></ruby>しいかがですか？」「いいえ、<ruby>結構<rt>けっこう</rt></ruby>です。ありがとうございます。」",
+      "translation": "'Would you like a little more?' 'No, I'm fine, thank you.'",
       "register": "formal",
-      "notes": "This is the famous ambiguous refusal use — context (a full plate, a satisfied tone) makes it clear it's a polite 'no,' not an enthusiastic 'yes.'"
+      "notes": "<ruby>結構<rt>けっこう</rt></ruby>です as a polite refusal — one of its most important uses and one learners often miss."
     },
     {
-      "jp": "<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>料理<rt>りょうり</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>上手<rt>うま</rt></ruby>いんだよね。",
-      "translation": "She's actually a pretty good cook, you know.",
+      "jp": "あの<ruby>映画<rt>えいが</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>面白<rt>おもしろ</rt></ruby>かったよ。",
+      "translation": "That movie was actually pretty interesting.",
       "register": "casual",
-      "notes": "Shows <ruby>結構<rt>けっこう</rt></ruby> modifying an い-adjective in a natural casual sentence with the softening んだよね ending."
+      "notes": "The 'actually more than I expected' undertone of <ruby>結構<rt>けっこう</rt></ruby> comes through here — the speaker is a little surprised."
     },
     {
-      "jp": "この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>結構<rt>けっこう</rt></ruby><ruby>大変<rt>たいへん</rt></ruby>で、<ruby>毎日<rt>まいにち</rt></ruby><ruby>残業<rt>ざんぎょう</rt></ruby>しています。",
-      "translation": "This job is quite tough — I work overtime every day.",
-      "register": "standard",
-      "notes": "<ruby>結構<rt>けっこう</rt></ruby> here adds the nuance of 'more than you might think,' common in matter-of-fact descriptions of one's situation."
+      "jp": "<ruby>駅<rt>えき</rt></ruby>から<ruby>結構<rt>けっこう</rt></ruby><ruby>歩<rt>ある</rt></ruby>くことになったんだけど、まあいい<ruby>運動<rt>うんどう</rt></ruby>になったかな。",
+      "translation": "We ended up walking quite a bit from the station, but I guess it was good exercise.",
+      "register": "casual",
+      "notes": "Shows <ruby>結構<rt>けっこう</rt></ruby> modifying a verb phrase — 'quite a lot' rather than modifying a single adjective."
     },
     {
-      "jp": "A:「<ruby>手伝<rt>てつだ</rt></ruby>いましょうか？」B:「<ruby>結構<rt>けっこう</rt></ruby>です、<ruby>自分<rt>じぶん</rt></ruby>でできます。」",
-      "translation": "A: 'Shall I help you?' B: 'That's fine, I can manage myself.'",
+      "jp": "この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>結構<rt>けっこう</rt></ruby><ruby>大変<rt>たいへん</rt></ruby>ですが、やりがいがあります。",
+      "translation": "This work is quite demanding, but it's rewarding.",
       "register": "standard",
-      "notes": "Another clear refusal use — when followed by a reason (<ruby>自分<rt>じぶん</rt></ruby>でできます), the 'no thank you' reading is unambiguous."
+      "notes": "<ruby>結構<rt>けっこう</rt></ruby> in a standard register, tempering the statement — not 'extremely hard' but 'harder than you might think.'"
     }
   ],
-  "dont_use": "Don't use <ruby>結構<rt>けっこう</rt></ruby>です on its own to mean 'yes please, that's great!' — without clear context it almost always reads as a polite refusal, and using it to accept something can confuse native speakers. Also avoid overusing it as a casual intensifier in very formal written contexts; <ruby>非常<rt>ひじょう</rt></ruby>に or かなり are more appropriate there. Finally, don't use <ruby>結構<rt>けっこう</rt></ruby> to describe something truly excellent or exceptional — it implies 'pretty good / satisfactory,' not 'outstanding,' so using it as high praise can accidentally undersell.",
+  "dont_use": "<ruby>結構<rt>けっこう</rt></ruby>です as a refusal only works in polite contexts — saying it too curtly to a close friend can sound oddly stiff; in casual settings just say いらない or いい. Also, don't confuse the adverb meaning with かなり or とても: <ruby>結構<rt>けっこう</rt></ruby> implies 'more than expected' and is softer than かなり, so swapping them can over- or under-state your meaning. Avoid using <ruby>結構<rt>けっこう</rt></ruby>です as acceptance ('That's great!') — its most natural reading as a full response is refusal, which causes embarrassing misunderstandings.",
   "confused_with": {
     "word": "かなり",
     "reading": "かなり",
-    "contrast": "Learners often swap <ruby>結構<rt>けっこう</rt></ruby> and かなり freely, but they have different flavors. かなり is a straightforward intensifier meaning 'considerably / fairly a lot' with no particular surprise nuance, while <ruby>結構<rt>けっこう</rt></ruby> often implies 'more than I expected' or 'surprisingly so.' Saying 「かなり<ruby>難<rt>むずか</rt></ruby>しかった」 states a fact neutrally, while 「<ruby>結構<rt>けっこう</rt></ruby><ruby>難<rt>むずか</rt></ruby>しかった」 carries a slight 'actually it was harder than I thought' nuance. Use <ruby>結構<rt>けっこう</rt></ruby> when you want to convey that slight surprise; use かなり when you simply want to say 'quite a lot' without that spin."
+    "contrast": "A learner might say かなり<ruby>面白<rt>おもしろ</rt></ruby>かった when they really just mean 'it was pretty good, more than I thought' — but かなり means 'considerably / quite seriously' and implies a stronger degree without the surprise nuance. <ruby>結構<rt>けっこう</rt></ruby><ruby>面白<rt>おもしろ</rt></ruby>かった sounds natural for mild pleasant surprise, while かなり<ruby>面白<rt>おもしろ</rt></ruby>かった suggests it was genuinely very interesting. Use <ruby>結構<rt>けっこう</rt></ruby> when you want to say 'more than I expected but not extreme'; use かなり when the degree itself is the point."
   },
-  "frequency": "<ruby>結構<rt>けっこう</rt></ruby> is extremely common in everyday spoken Japanese across all age groups and registers. The adverb use (quite / pretty) appears constantly in casual conversation. The polite refusal use is essential for daily social situations. It's also natural in standard written Japanese, though formal documents would prefer <ruby>非常<rt>ひじょう</rt></ruby>に or かなり for the intensifier sense.",
-  "anki_hint": "<ruby>結構<rt>けっこう</rt></ruby> wears three hats: 'pretty/quite' (adverb), 'fine/satisfactory' (な-adj), and 'no thank you' (polite refusal) — and the last two use the exact same phrase 「<ruby>結構<rt>けっこう</rt></ruby>です」, so always read the context!",
+  "confusion_set": [
+    {
+      "word": "<ruby>結構<rt>けっこう</rt></ruby>",
+      "reading": "けっこう",
+      "use_when": "The degree is higher than expected but not extreme, OR you want to politely decline something.",
+      "example": "<ruby>値段<rt>ねだん</rt></ruby>、<ruby>結構<rt>けっこう</rt></ruby><ruby>高<rt>たか</rt></ruby>かったよ。（More expensive than I thought.）"
+    },
+    {
+      "word": "かなり",
+      "reading": "かなり",
+      "use_when": "The degree is objectively considerable — no surprise element needed, just emphasis on extent.",
+      "example": "かなり<ruby>疲<rt>つか</rt></ruby>れたから、もう<ruby>寝<rt>ね</rt></ruby>る。（I'm considerably tired, so I'm going to sleep.）"
+    },
+    {
+      "word": "わりと",
+      "reading": "わりと",
+      "use_when": "Something is relatively/comparatively X — lighter and more colloquial than <ruby>結構<rt>けっこう</rt></ruby>, often meaning 'for what it is.'",
+      "example": "この<ruby>店<rt>みせ</rt></ruby>、わりと<ruby>安<rt>やす</rt></ruby>いね。（This place is relatively cheap, isn't it.）"
+    }
+  ],
+  "frequency": "<ruby>結構<rt>けっこう</rt></ruby> is very common in everyday spoken Japanese across all age groups. The adverb meaning appears constantly in casual and standard speech. The refusal meaning (<ruby>結構<rt>けっこう</rt></ruby>です) is standard in polite/service interactions. Both senses are essential for natural conversation.",
+  "anki_hint": "Remember <ruby>結構<rt>けっこう</rt></ruby> has two jobs: as an adverb it means 'quite/pretty (more than expected),' and as a response <ruby>結構<rt>けっこう</rt></ruby>です is a polite 'No thank you' — don't mix them up when someone offers you something!",
   "input": "結構",
-  "timestamp": "2026-06-16T01:45:40.717Z"
+  "timestamp": "2026-06-16T03:10:13.861Z"
 }

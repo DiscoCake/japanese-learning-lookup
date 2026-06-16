@@ -1,42 +1,59 @@
 {
   "pattern": "～ながら",
   "mode": "grammar",
-  "real_meaning": "～ながら expresses that two actions happen simultaneously, with the main action (the final verb) being the 'primary' one and the ながら verb being the background activity. The speaker is framing one action as the setting or backdrop for another — like 'while doing A, (mainly) B.' There's an important secondary use where it expresses a concession ('even though / despite'), carrying a slight sense of tension or irony between the two clauses.",
+  "real_meaning": "～ながら expresses that two actions happen simultaneously, with the nuance that the ～ながら action is the secondary or background activity while the main verb is the primary focus. The speaker is highlighting that something else is going on 'at the same time' — it's not just listing two actions, it's framing one as the backdrop for the other. There's also a completely separate usage meaning 'even though / despite,' which carries a sense of contradiction or irony.",
   "formation": {
-    "rule": "Attach ながら to the <ruby>連用形<rt>れんようけい</rt></ruby> (masu-stem) of a verb. For the simultaneous meaning: <ruby>歩<rt>ある</rt></ruby>きながら (while walking), <ruby>飲<rt>の</rt></ruby>みながら (while drinking). For the concessive meaning it can attach to adjectives or nouns too: <ruby>残念<rt>ざんねん</rt></ruby>ながら (regrettably / despite regret), <ruby>知<rt>し</rt></ruby>りながら (even knowing that).",
-    "common_mistake": "Learners often attach ながら to the dictionary form instead of the masu-stem. Wrong: <ruby>食<rt>た</rt></ruby>べるながら ✗. Correct: <ruby>食<rt>た</rt></ruby>べながら ✓."
+    "rule": "Attach ながら to the verb STEM (ます-stem) of the background action. The main action comes at the end of the sentence. Example: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べ + ながら, <ruby>歩<rt>ある</rt></ruby>く → <ruby>歩<rt>ある</rt></ruby>き + ながら, する → し + ながら. For the 'despite' meaning, it can attach to い-adjective stems, な-adjective stems, or nouns: <ruby>知<rt>し</rt></ruby>りながら ('while knowing/even though knowing').",
+    "common_mistake": "Learners often mistakenly attach ながら to the dictionary form or て-form instead of the verb stem. Wrong: <ruby>食<rt>た</rt></ruby>べてながら / <ruby>食<rt>た</rt></ruby>べるながら. Correct: <ruby>食<rt>た</rt></ruby>べながら."
   },
   "sentences": [
     {
-      "jp": "<ruby>音楽<rt>おんがく</rt></ruby><ruby>聴<rt>き</rt></ruby>きながら<ruby>宿題<rt>しゅくだい</rt></ruby>してる。",
-      "translation": "I'm doing homework while listening to music.",
+      "jp": "<ruby>音楽<rt>おんがく</rt></ruby><ruby>聴<rt>き</rt></ruby>きながら<ruby>宿題<rt>しゅくだい</rt></ruby>やってるんだけど、<ruby>全然<rt>ぜんぜん</rt></ruby>はかどらない。",
+      "translation": "I'm doing my homework while listening to music, but I'm making zero progress.",
       "register": "casual",
-      "notes": "The dropped particles and ～てる contraction make this sound natural in everyday speech; <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>きながら frames listening as the background activity to the main task of homework."
+      "notes": "Classic simultaneous-action usage — the <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>く part is the background activity, and doing <ruby>宿題<rt>しゅくだい</rt></ruby> is the main task."
     },
     {
-      "jp": "<ruby>コーヒー<rt>こーひー</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みながら、<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>をゆっくり<ruby>聞<rt>き</rt></ruby>きました。",
-      "translation": "I listened slowly to what she had to say while drinking coffee.",
+      "jp": "<ruby>毎朝<rt>まいあさ</rt></ruby>、コーヒーを<ruby>飲<rt>の</rt></ruby>みながらニュースをチェックしています。",
+      "translation": "Every morning I check the news while drinking coffee.",
       "register": "standard",
-      "notes": "ながら here sets a relaxed, unhurried scene — the coffee-drinking is background atmosphere, and <ruby>聞<rt>き</rt></ruby>くことが<ruby>主<rt>しゅ</rt></ruby>な<ruby>行動<rt>こうどう</rt></ruby> (listening is the main action)."
+      "notes": "A natural daily-routine sentence showing that the coffee-drinking frames the news-checking, not the other way around."
     },
     {
-      "jp": "<ruby>誠<rt>まこと</rt></ruby>に<ruby>残念<rt>ざんねん</rt></ruby>ながら、ご<ruby>要望<rt>ようぼう</rt></ruby>にはお<ruby>応<rt>こた</rt></ruby>えできかねます。",
-      "translation": "Regrettably, we are unable to meet your request.",
+      "jp": "<ruby>弊社<rt>へいしゃ</rt></ruby>は<ruby>伝統<rt>でんとう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>りながら、<ruby>新<rt>あたら</rt></ruby>しい<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>れてまいります。",
+      "translation": "Our company will continue to adopt new technologies while preserving our traditions.",
       "register": "formal",
-      "notes": "This is the concessive / formulaic use of ながら — it does NOT mean 'while'; it expresses 'despite this feeling of regret' and is a fixed polite expression used in business refusals."
+      "notes": "This is a very common formal/business phrasing where ながら conveys 'balancing two things simultaneously,' often used in company statements and speeches."
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>いと<ruby>知<rt>し</rt></ruby>りながら、それを<ruby>続<rt>つづ</rt></ruby>けていた。",
-      "translation": "He kept doing it, even knowing it was wrong.",
+      "jp": "<ruby>彼<rt>かれ</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>いと<ruby>知<rt>し</rt></ruby>りながら、それをやり<ruby>続<rt>つづ</rt></ruby>けた。",
+      "translation": "He kept doing it even though he knew it was wrong.",
       "register": "standard",
-      "notes": "This concessive ながら attaches to a verb (<ruby>知<rt>し</rt></ruby>り) rather than a noun, conveying irony or moral tension — 'despite knowing better, he still did it' — which surprises learners who only know the simultaneous meaning."
+      "notes": "This is the 'despite/even though' meaning of ながら — completely different from simultaneous actions; it highlights a contradiction between knowing something and acting against it, carrying a tone of reproach or irony."
     }
   ],
   "confused_with": {
-    "pattern": "～<ruby>間<rt>あいだ</rt></ruby>（に）",
-    "contrast": "Both can translate as 'while,' but they work differently. ながら requires the SAME subject performing both actions at once, and the actions genuinely overlap in real time. ～<ruby>間<rt>あいだ</rt></ruby>（に）describes a time window during which something happens, and the two actions can have different subjects. Minimal pair: <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>きながら<ruby>勉強<rt>べんきょう</rt></ruby>した (I studied while listening to music — same person, simultaneous) vs. <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>いている<ruby>間<rt>あいだ</rt></ruby>に、<ruby>弟<rt>おとうと</rt></ruby>が<ruby>入<rt>はい</rt></ruby>ってきた (While I was listening to music, my brother came in — different subject, event happening inside a time window). Use ながら when YOU are doing both; use ～<ruby>間<rt>あいだ</rt></ruby>（に）when you want to talk about what happened during a period, possibly involving someone else."
+    "pattern": "～つつ",
+    "contrast": "Both ～ながら and ～つつ can express simultaneous actions, but ～つつ is distinctly literary and formal — you'll see it in written Japanese, speeches, or set phrases, not in everyday conversation. Compare: <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>きながら<ruby>勉強<rt>べんきょう</rt></ruby>する (natural casual/standard) vs. <ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聴<rt>き</rt></ruby>きつつ<ruby>勉強<rt>べんきょう</rt></ruby>する (stiff, literary). ～つつ also has its own strong 'despite' usage (～つつも) that parallels ながら's contradiction meaning, but again at a higher register. Reach for ながら in speech; use ～つつ when writing formally."
   },
-  "bunpro_tip": "Picture ながら as a movie scene where one action is always in the background shot — the camera (main verb at the end) is focused on the real action, but ながら is the ambient detail. When BunPro gives you a concessive sentence, watch for emotion or knowledge words like <ruby>残念<rt>ざんねん</rt></ruby> or <ruby>知<rt>し</rt></ruby>る as a signal that it's the 'even though' flavor, not the 'simultaneously' one.",
+  "confusion_set": [
+    {
+      "pattern": "～ながら",
+      "use_when": "Two actions happen at the same time (one as background), OR to express 'despite/even though' in a slightly ironic or contradictory context — works in all registers from casual speech to formal writing.",
+      "example": "<ruby>歩<rt>ある</rt></ruby>きながらスマホを<ruby>見<rt>み</rt></ruby>るのは<ruby>危<rt>あぶ</rt></ruby>ない。"
+    },
+    {
+      "pattern": "～つつ",
+      "use_when": "Same simultaneous or 'despite' meaning as ながら, but ONLY in formal writing or set expressions — never in casual conversation.",
+      "example": "<ruby>環境<rt>かんきょう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>りつつ、<ruby>経済<rt>けいざい</rt></ruby><ruby>発展<rt>はってん</rt></ruby>を<ruby>目指<rt>めざ</rt></ruby>す。"
+    },
+    {
+      "pattern": "～ているあいだに",
+      "use_when": "Emphasizes a specific window of time ('during the time that A is happening, B occurs') — focuses on duration and timing rather than one action being a backdrop for another.",
+      "example": "<ruby>彼女<rt>かのじょ</rt></ruby>が<ruby>寝<rt>ね</rt></ruby>ているあいだに、プレゼントを<ruby>準備<rt>じゅんび</rt></ruby>した。"
+    }
+  ],
+  "bunpro_tip": "When you see ながら, ask yourself: 'Is this simultaneous background action, or is this a contradiction?' — BunPro will test both meanings. A quick mnemonic: picture someone walking (background action) and talking (main action) — that's ながら. If the sentence has a moral tension ('he knew better, but...'), that's also ながら, just in its ironic mode.",
   "input": "～ながら",
-  "timestamp": "2026-06-16T01:47:30.794Z"
+  "timestamp": "2026-06-16T03:27:34.657Z"
 }

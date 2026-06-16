@@ -59,6 +59,7 @@ export function parsePartial(text) {
   }
   r.sentences = extractArr(text, 'sentences');
   r.confused_with = extractObj(text, 'confused_with');
+  r.confusion_set = extractArr(text, 'confusion_set');
   r.formation = extractObj(text, 'formation');
   r.pitch_accent = extractObj(text, 'pitch_accent');
   return r;
@@ -166,6 +167,8 @@ export function renderVocab(r, opts = {}) {
       <div class="card-body">${r.confused_with.contrast}</div>
     </div>` : ''}
 
+    ${confusionSetCard(r)}
+
     ${r.frequency ? `
     <div class="card">
       <div class="card-label">使用頻度・レジスター</div>
@@ -234,6 +237,8 @@ export function renderGrammar(r, opts = {}) {
       <div class="card-body">${r.confused_with.contrast}</div>
     </div>` : ''}
 
+    ${confusionSetCard(r)}
+
     ${r.bunpro_tip ? `
     <div class="card">
       <div class="card-label">BunProのヒント</div>
@@ -241,6 +246,34 @@ export function renderGrammar(r, opts = {}) {
     </div>` : ''}
 
     ${!opts.compact ? exportBar() : ''}`;
+}
+
+/* ── CONFUSION SET (使い分け) ──
+   2–3 member side-by-side comparison of the words/patterns most easily mixed up.
+   Additive field — renders nothing when absent (old cached results stay valid).
+   First member is the looked-up word/pattern itself. */
+export function confusionSetCard(r) {
+  const set = r.confusion_set;
+  if (!Array.isArray(set) || !set.length) return '';
+  const headColor = r.mode === 'grammar' ? 'var(--purple)' : 'var(--cyan)';
+  const members = set.map(m => {
+    const head = m.word || m.pattern || '';
+    if (!head) return '';
+    return `
+      <div class="cs-member" style="padding:0.5rem 0;border-top:1px solid var(--border, rgba(255,255,255,0.08))">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap">
+          <span style="font-family:'Noto Serif JP',serif;font-size:1.05rem;color:${headColor}">${head}</span>
+          ${m.reading ? `<span style="font-size:0.78rem;color:var(--text3)">【${m.reading}】</span>` : ''}
+        </div>
+        ${m.use_when ? `<div style="font-size:0.84rem;color:var(--text2);margin-top:0.15rem">${m.use_when}</div>` : ''}
+        ${m.example ? `<div style="font-family:'Noto Serif JP',serif;font-size:0.92rem;color:var(--text);margin-top:0.2rem;line-height:1.7">${m.example}</div>` : ''}
+      </div>`;
+  }).join('');
+  return `
+    <div class="card">
+      <div class="card-label">使い分け</div>
+      <div class="confusion-set">${members}</div>
+    </div>`;
 }
 
 export function exportBar() {

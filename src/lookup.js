@@ -62,6 +62,14 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
     "reading": "reading of confused word",
     "contrast": "2-3 sentences: show the typical learner MISTAKE (reaching for this word where the confused one is natural), then say why it sounds off and which to use — with a concrete example (include ruby furigana on all kanji)"
   },
+  "confusion_set": [
+    {
+      "word": "a member of the confusion family. Build a 2–3 member set: the FIRST member MUST be the looked-up word itself, then its 1–2 closest confusables that learners genuinely mix up (e.g. 見る/見える/見せる, あげる/くれる/もらう, 思う/考える) — ruby on all kanji",
+      "reading": "hiragana reading of this member",
+      "use_when": "ONE short line: exactly when you reach for THIS member over the others in the set (ruby on all kanji)",
+      "example": "ONE short, natural example sentence using this member — keep it a quick-glance contrast, ruby on ALL kanji"
+    }
+  ],
   "frequency": "honest note on register and frequency: common in daily speech / mostly written / formal contexts / regional / etc. (include ruby furigana on all kanji)",
   "anki_hint": "one sentence a learner could add to the back of their Anki card to remember the key usage nuance (include ruby furigana on all kanji)"
 }
@@ -106,6 +114,13 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
     "pattern": "most commonly confused grammar pattern (ruby on kanji if any)",
     "contrast": "3-4 sentences explaining the difference. MUST include a true minimal pair: two sentences IDENTICAL except for the pattern (same subject, object, tense, register) so only the grammar differs — then say when you'd choose each. (include ruby furigana on all kanji)"
   },
+  "confusion_set": [
+    {
+      "pattern": "a member of the confusion family. Build a 2–3 member set: the FIRST member MUST be the looked-up pattern itself, then its 1–2 closest confusables that learners genuinely mix up (e.g. ～ば/～たら/～と/～なら, ～ている/～てある, ～ようだ/～そうだ/～らしい) — ruby on any kanji",
+      "use_when": "ONE short line: exactly when you reach for THIS pattern over the others in the set (ruby on all kanji)",
+      "example": "ONE short, natural example sentence using this pattern — keep it a quick-glance contrast, ruby on ALL kanji"
+    }
+  ],
   "bunpro_tip": "1-2 sentences of advice specifically for remembering/drilling this in BunPro — what mental model or mnemonic helps (include ruby furigana on all kanji)"
 }
 
@@ -163,6 +178,14 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
     "reading": "reading of confused word",
     "contrast": "この言葉と混同しやすい表現の違いを2〜3文で。よくある間違い（この言葉を使ってしまう場面）を見せて、なぜ変か、どちらを使うかを説明してください。具体的な例つき（やさしい日本語で、全ての漢字にふりがなをつけてください）"
   },
+  "confusion_set": [
+    {
+      "word": "まちがえやすい言葉のグループ。2〜3個のメンバーを作ってください。最初のメンバーは必ず調べている言葉そのもの、そのあとに、よくまちがえる近い言葉を1〜2個（例：見る/見える/見せる、あげる/くれる/もらう）。全ての漢字にふりがなをつけてください",
+      "reading": "このメンバーのひらがなの読み方",
+      "use_when": "どんな時にこのメンバーを使うか、短く1文で（やさしい日本語、全ての漢字にふりがなをつけてください）",
+      "example": "このメンバーを使った短くて自然な例文を1つ（ぱっと見て比べられるように短く、全ての漢字にふりがなをつけてください）"
+    }
+  ],
   "frequency": "この言葉がよく使われる場面やレジスターについて（やさしい日本語で、全ての漢字にふりがなをつけてください）",
   "anki_hint": "この言葉の大切なポイントを1文でまとめてください（やさしい日本語で、全ての漢字にふりがなをつけてください）"
 }
@@ -218,6 +241,13 @@ OUTPUT: valid JSON only — no markdown fences, no extra text.
     "pattern": "most commonly confused grammar pattern (ruby on kanji if any)",
     "contrast": "この文法と混同しやすいパターンの違いを3〜4文で。主語・目的語・時制・レジスターが同じで、文法だけが違う2つの文（ミニマルペア）を作って、どちらをいつ使うか見せてください（やさしい日本語、ふりがなつき）"
   },
+  "confusion_set": [
+    {
+      "pattern": "まちがえやすい文法のグループ。2〜3個のメンバーを作ってください。最初のメンバーは必ず調べている文法そのもの、そのあとに、よくまちがえる近いパターンを1〜2個（例：～ば/～たら/～と/～なら、～ている/～てある）。漢字にはふりがなをつけてください",
+      "use_when": "どんな時にこのパターンを使うか、短く1文で（やさしい日本語、全ての漢字にふりがなをつけてください）",
+      "example": "このパターンを使った短くて自然な例文を1つ（ぱっと見て比べられるように短く、全ての漢字にふりがなをつけてください）"
+    }
+  ],
   "bunpro_tip": "BunProでこの文法を覚えるコツを1〜2文で（やさしい日本語、ふりがなつき）"
 }
 

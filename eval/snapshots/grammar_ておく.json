@@ -1,42 +1,59 @@
 {
   "pattern": "～ておく",
   "mode": "grammar",
-  "real_meaning": "～ておく expresses doing something **in advance** or **in preparation for** something else — the key feeling is intentional foresight: you're doing X now so that things are ready or taken care of later. It also carries a nuance of 'leaving things in that state' once done, implying the result will be maintained until it's needed. Native speakers often feel a slight sense of responsibility or deliberateness — you're not just doing it, you're *setting things up*.",
+  "real_meaning": "～ておく expresses doing something <ruby>前<rt>まえ</rt></ruby>もって — in advance, or as preparation for something that's coming. The core feeling is deliberate forethought: you're doing something NOW so that things will be in a better, ready state LATER. It can also mean leaving something in a certain state on purpose (sometimes translated as 'leaving it as is'), where the 'preparation' is simply maintaining the status quo for a reason.",
   "formation": {
-    "rule": "Attach ておく to the て-form of a verb. In casual speech, ておく contracts to とく (and ておきます stays polite). Examples: <ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べておく／<ruby>食<rt>た</rt></ruby>べとく ／ <ruby>予約<rt>よやく</rt></ruby>する → <ruby>予約<rt>よやく</rt></ruby>しておく／<ruby>予約<rt>よやく</rt></ruby>しとく ／ <ruby>読<rt>よ</rt></ruby>む → <ruby>読<rt>よ</rt></ruby>んでおく／<ruby>読<rt>よ</rt></ruby>んどく",
-    "common_mistake": "Attaching おく directly to the dictionary form instead of the て-form. Wrong: <ruby>食<rt>た</rt></ruby>べるおく ✗ — Correct: <ruby>食<rt>た</rt></ruby>べておく ✓"
+    "rule": "Attach ておく to the て-form of a verb. In casual speech, ておく contracts to とく (and ておいて → といて). Examples: <ruby>準備<rt>じゅんび</rt></ruby>する → <ruby>準備<rt>じゅんび</rt></ruby>しておく | <ruby>買<rt>か</rt></ruby>う → <ruby>買<rt>か</rt></ruby>っておく | <ruby>開<rt>あ</rt></ruby>ける → <ruby>開<rt>あ</rt></ruby>けておく (casual: <ruby>買<rt>か</rt></ruby>っとく、<ruby>開<rt>あ</rt></ruby>けとく)",
+    "common_mistake": "Learners sometimes attach おく directly to the dictionary form instead of the て-form. Wrong: <ruby>買<rt>か</rt></ruby>うおく ✗ — Correct: <ruby>買<rt>か</rt></ruby>っておく ✓"
   },
   "sentences": [
     {
-      "jp": "<ruby>明日<rt>あした</rt></ruby>のパーティーのために<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>、<ruby>買<rt>か</rt></ruby>っといたよ。",
-      "translation": "I already bought drinks for tomorrow's party.",
+      "jp": "<ruby>明日<rt>あした</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、<ruby>資料<rt>しりょう</rt></ruby>を<ruby>読<rt>よ</rt></ruby>んどいたほうがいいよ。",
+      "translation": "You should read through the materials before tomorrow's meeting.",
       "register": "casual",
-      "notes": "Uses the contracted casual form 〜といた (ておいた), showing the preparation-in-advance nuance in everyday speech between friends."
+      "notes": "Uses the casual contraction んどいた (= んでおいた), naturally emphasizing reading in advance as smart preparation."
     },
     {
-      "jp": "<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>資料<rt>しりょう</rt></ruby>を<ruby>読<rt>よ</rt></ruby>んでおきます。",
-      "translation": "I will read through the materials before the meeting.",
+      "jp": "<ruby>旅行<rt>りょこう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、ホテルを<ruby>予約<rt>よやく</rt></ruby>しておきました。",
+      "translation": "I made a hotel reservation in advance of the trip.",
       "register": "standard",
-      "notes": "A polite but everyday use — the speaker is signaling deliberate preparation, not just a future action."
+      "notes": "The most classic use of ておく — completing an action ahead of time so a future situation is taken care of."
     },
     {
-      "jp": "ご<ruby>来店<rt>らいてん</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、ご<ruby>予約<rt>よやく</rt></ruby>をしておいていただけますでしょうか。",
-      "translation": "Could we ask that you make a reservation in advance before visiting our store?",
+      "jp": "ご<ruby>来場<rt>らいじょう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、<ruby>座席<rt>ざせき</rt></ruby>のご<ruby>予約<rt>よやく</rt></ruby>をしておいてください。",
+      "translation": "Please make a seat reservation in advance before attending.",
       "register": "formal",
-      "notes": "ておいて here stresses that the action should be completed and in place *before* arriving, adding the anticipatory nuance typical of ておく in formal requests."
+      "notes": "ておく appears in formal written/spoken instructions to convey that the preparation step is expected of the listener."
     },
     {
-      "jp": "もうどうせ<ruby>壊<rt>こわ</rt></ruby>れるんだから、<ruby>使<rt>つか</rt></ruby>い<ruby>切<rt>き</rt></ruby>っておこう。",
-      "translation": "It's going to break anyway, so let's just use it up (while we can).",
+      "jp": "その<ruby>件<rt>けん</rt></ruby>はもう<ruby>彼女<rt>かのじょ</rt></ruby>に<ruby>言<rt>い</rt></ruby>っておいたから、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ。",
+      "translation": "I've already told her about that, so it's fine.",
       "register": "casual",
-      "notes": "Surprising use: ておく doesn't always mean careful preparation — here it means 'might as well do it now before the situation changes,' showing the 'do it while conditions allow' nuance."
+      "notes": "Here ておく implies 'I took care of it proactively so you don't have to worry' — it carries a reassuring, I-handled-it nuance beyond simple past tense."
     }
   ],
   "confused_with": {
-    "pattern": "～てしまう",
-    "contrast": "Both can describe completing an action, but the feeling is opposite in direction: ておく looks **forward** (I'm doing this now for later), while てしまう looks **backward** (the action is now fully done, often with a sense of finality, regret, or unexpectedness). Minimal pair: <ruby>宿題<rt>しゅくだい</rt></ruby>をやっておいた (I did my homework in advance — deliberate preparation for later) vs. <ruby>宿題<rt>しゅくだい</rt></ruby>をやってしまった (I finished my homework — implying relief at being done, or possibly 'I went and did it already'). Choose ておく when the **purpose** is readiness for something upcoming; choose てしまう when you want to emphasize the action is **fully completed** or carry an emotional color of finality or mild regret."
+    "pattern": "～てある",
+    "contrast": "Both describe a state resulting from a deliberate action, but the focus differs. ～ておく focuses on the ACT of preparation — the speaker's intentional doing. ～てある focuses on the resulting STATE — something has been done and is now set up that way. Minimal pair: <ruby>窓<rt>まど</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けておいた (I opened the window [as preparation / on purpose]) vs. <ruby>窓<rt>まど</rt></ruby>が<ruby>開<rt>あ</rt></ruby>けてある (The window is open [left open intentionally by someone]). Notice that ておく takes the object particle を and keeps the agent in focus, while てある shifts to が and foregrounds the resulting state. Use ておく when you want to emphasize the deliberate advance action; use てある when you want to describe the ready state itself."
   },
-  "bunpro_tip": "Picture ておく as 'putting something in place like a chess piece before the game matters' — the お in おく (to place/put) is your cue: you're *placing* the action down now so it's ready later. When drilling on BunPro, always ask yourself: 'Is this done *for the sake of* something coming up?' — if yes, ておく is your pattern.",
+  "confusion_set": [
+    {
+      "pattern": "～ておく",
+      "use_when": "<ruby>前<rt>まえ</rt></ruby>もって<ruby>何<rt>なに</rt></ruby>かをする — reach for this when the emphasis is on deliberately doing something NOW in preparation for later.",
+      "example": "<ruby>パーティーの<rt></rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>を<ruby>買<rt>か</rt></ruby>っておいた。"
+    },
+    {
+      "pattern": "～てある",
+      "use_when": "The action is already done and the resulting state is what matters — emphasizes the SET-UP state, not the actor.",
+      "example": "<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>はもう<ruby>冷蔵庫<rt>れいぞうこ</rt></ruby>に<ruby>入<rt>い</rt></ruby>れてある。"
+    },
+    {
+      "pattern": "～てしまう",
+      "use_when": "The action is completed fully — often with a nuance of finality, regret, or getting something out of the way (not advance preparation).",
+      "example": "<ruby>宿題<rt>しゅくだい</rt></ruby>を<ruby>全部<rt>ぜんぶ</rt></ruby>やってしまった。"
+    }
+  ],
+  "bunpro_tip": "Mental model: picture yourself as a <ruby>準備<rt>じゅんび</rt></ruby>の<ruby>達人<rt>たつじん</rt></ruby> — a prep master — placing something neatly in position before it's needed. Every time you see ておく, ask: 'What future situation is this action preparing for?' Also drill the casual contraction とく aggressively, since native input is full of it and BunPro sentences may use either form.",
   "input": "～ておく",
-  "timestamp": "2026-06-15T21:56:07.606Z"
+  "timestamp": "2026-06-16T03:15:46.443Z"
 }

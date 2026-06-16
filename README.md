@@ -50,6 +50,7 @@ node src/cli.js --raw 見える      # raw JSON output
 - Core meaning honest description — not just a dictionary gloss
 - When NOT to use this word (the negative space SRS cards miss)
 - Contrast with the most confused similar word
+- **使い分け comparison** — a 2–3 member confusion family (e.g. 見る / 見える / 見せる), each member with a one-line "when to reach for this" and a short example
 - Frequency / register note
 - One Anki card hint capturing the key nuance
 
@@ -58,32 +59,45 @@ node src/cli.js --raw 見える      # raw JSON output
 - Formation rules + the most common learner mistake
 - 4 example sentences: casual, standard, formal, and one tricky edge case
 - Contrast with the most confused grammar pattern (minimal pair included)
+- **使い分け comparison** — a 2–3 member pattern family (e.g. ～たら / ～ば / ～と), each with a one-line "when to reach for this" and a short example
 - BunPro-specific tip for drilling
 
 ## Features
 
-- Romaji→kana auto-conversion (WanaKana) — toggle off for OS IME
-- Furigana on all kanji with global show/hide toggle
-- Kanji highlighted cyan when furigana is on; reverts to surrounding text color when off
-- Live mode-pill — shows vocab vs grammar as you type before submitting; click the pill to force the opposite mode (dashed border = manual override; cleared when you start typing)
-- **Pitch accent display** — H/L overline contour badge next to reading in vocab results; sourced from the Kanjium dictionary (~124k entries) for known words, AI-generated fallback for words not in the dictionary
-- **日本語モード (J-J mode)** — toggle in the header; all explanatory prose in JLPT N4–N5 Japanese; sentence translations stay in English as a safety net; J-J and J-E results cached separately
-- Streaming responses — result cards appear progressively as tokens arrive; automatic fallback to non-streaming if stream is interrupted
-- History (last 50 lookups, persisted server-side in `data/history.json`) — click any entry to re-render from cache, no API re-call; clicking moves it to the top; history doubles as a lookup cache so repeated searches skip the API entirely; existing localStorage history migrated automatically on first load
-- History search + filter by mode (単語/文法)
-- Copy buttons per result: Anki TSV (HTML stripped) or raw JSON
-- TTS playback (▶) on every example sentence and on the word header via Web Speech API — pause/resume supported; picks randomly from Enhanced/Premium/local Japanese voices for male/female balance
-- **読む mode** (paste mode) — paste any Japanese text; the app identifies 5–12 N3-range words, explains each in context, and offers a bulk TSV export for the whole passage
-- **Ankiカード panel** (vocab mode) — shows the current sentence on your existing card and which deck it's in, or "no card" state with one-click creation into the Companion deck
-- **→ Anki buttons** on every example sentence (vocab and grammar) — two-click confirm (確定?, 3s auto-cancel) to replace the card's sentence or create a new card; auto-detects the sentence field across any note type
-- **Grammar → Anki** — grammar lookups get their own Companion Grammar note type (auto-created on first use); fields: Pattern, Meaning, Formation, Common Mistake, Sentence + Furigana + Meaning, BunPro tip
+### Input & reading
+- **Romaji→kana IME** (WanaKana) — type romaji, get kana; toggle off for the OS IME (off by default on touch devices)
+- **Furigana on every kanji** with a global show/hide toggle; kanji highlighted cyan when furigana is on, reverting to the surrounding text color when off
+- **Live mode-pill** — shows vocab vs grammar as you type, before submitting; click it to force the opposite mode (dashed border = manual override, cleared when you start typing)
+- **Pitch accent display** — H/L overline contour badge next to the reading in vocab results; from the Kanjium dictionary (~124k entries) for known words, AI-generated fallback otherwise
+- **Streaming responses** — cards appear progressively as tokens arrive; automatic fallback to non-streaming if the stream is interrupted
+
+### Explanation modes
+- **日本語モード (J-J mode)** — header toggle; all explanatory prose in JLPT N4–N5 Japanese, with English sentence translations kept as a safety net; J-J and J-E results cached separately
+- **読む mode (paste mode)** — paste any Japanese text; the app identifies 5–12 N3-range words, explains each in context, and offers a bulk TSV export for the whole passage
+
+### History & export
+- **History** (last 50 lookups, persisted server-side in `data/history.json`) — click an entry to re-render from cache with no API re-call; doubles as a lookup cache so repeated searches skip the API; clicking moves an entry to the top
+- **Search + filter** history by mode (単語/文法)
+- **Copy buttons** per result: Anki TSV (HTML stripped) or raw JSON
+
+### Audio
+- **TTS playback (▶)** on every example sentence and on the word header (Web Speech API) — pause/resume; picks randomly from Enhanced/Premium/local Japanese voices for male/female balance
+
+### Anki integration (AnkiConnect — desktop)
+- **Ankiカード panel** (vocab mode) — shows the current sentence on your existing card and its deck, or a "no card" state with one-click creation into the Companion deck
+- **→ Anki buttons** on every sentence (vocab + grammar) — two-click confirm (確定?, 3s auto-cancel) to replace the card's sentence or create a new card; auto-detects the sentence field across any note type
+- **Grammar → Anki** — grammar lookups get a dedicated Companion Grammar note type (auto-created): Pattern, Meaning, Formation, Common Mistake, Sentence + Furigana + Meaning, BunPro tip
 - **Card enrichment** — non-standard note types (any deck, not just Kaishi) get Companion fields added in-place (Reading, Meaning, Sentence, Sentence Meaning, Frequency, Notes) without touching review history
-- **Kaishi 1.5k-style card layout** — new Companion cards mirror Kaishi: word + sentence (target word highlighted cyan) on front; reading + pitch + meaning + furigana sentence + translation on back; font sizes matched exactly to Kaishi (44/24/25/20px)
-- **Built-in Anki TTS** — updated cards play word then sentence using system TTS at review time; premium macOS voices used when `ANKI_TTS_VOICES` is set
-- **苦手 panel** — pulls cards with ≥2 lapses from AnkiConnect; filter by deck; click any word to look it up instantly
-- **PWA / home screen install** — manifest + standalone display mode; install via "Add to Home Screen" in Safari or Brave on iOS, or Chrome on Android; icon: indigo background with pink 語 kanji
-- **文法苦手 panel** (BunPro) — troubled grammar from BunPro SRS; click any pattern to look it up; button hidden automatically when `BUNPRO_TOKEN` is not set
-- **BunPro SRS status card** — shown after every grammar lookup when token is configured; displays SRS level, next review time, streak, and lapse count
+- **Kaishi 1.5k-style layout** — new Companion cards mirror Kaishi: word + highlighted sentence on the front; reading + pitch + meaning + furigana sentence + translation on the back, font sizes matched exactly (44/24/25/20px)
+- **Built-in Anki TTS** — updated cards play word then sentence at review time; premium macOS voices used when `ANKI_TTS_VOICES` is set
+- **苦手 panel** — cards with ≥2 lapses, filterable by deck; click any word to look it up instantly
+
+### BunPro integration
+- **文法苦手 panel** — troubled grammar from BunPro SRS; click a pattern to look it up; hidden automatically when `BUNPRO_TOKEN` is not set
+- **BunPro SRS status card** — shown after each grammar lookup when the token is configured: SRS level, next review, streak, lapse count
+
+### Mobile
+- **PWA / home screen install** — manifest + standalone display; "Add to Home Screen" in Safari/Brave (iOS) or Chrome (Android); icon is an indigo square with a pink 語 kanji. See [Mobile / remote access](#mobile--remote-access-tailscale) for Tailscale setup.
 
 See `CLAUDE.md` for architecture and design decisions.
 
@@ -123,7 +137,7 @@ npm run test:smoke    # 10-check Playwright golden-path smoke test (server must 
 
 The eval harness (`eval/`) guards the AI output — the most important thing in the app. After any edit to `src/lookup.js`, run `eval:check`. After deliberate prompt improvements, run `eval:update`, review the snapshot diff, then confirm `eval:check` passes. Never loosen a check to make it pass; fix the output instead.
 
-**Cost note:** a full `eval:update` is ~26 live calls (output tokens dominate the bill). When iterating on a prompt, scope it with `-- --only <substr>` (e.g. `npm run eval:update -- --only grammar`) to regenerate just the cases you're tuning, and do a full regen only before committing. The same `--only` works for `eval:judge`. The advisory naturalness judge (`eval:judge`) uses `JUDGE_MODEL` (default `claude-opus-4-8`); it never affects the deterministic gate.
+**Cost note:** a full `eval:update` is ~28 live calls (output tokens dominate the bill). When iterating on a prompt, scope it with `-- --only <substr>` (e.g. `npm run eval:update -- --only grammar`) to regenerate just the cases you're tuning, and do a full regen only before committing. The same `--only` works for `eval:judge`. The advisory naturalness judge (`eval:judge`) uses `JUDGE_MODEL` (default `claude-opus-4-8`); it never affects the deterministic gate.
 
 ## Troubleshooting
 

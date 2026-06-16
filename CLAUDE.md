@@ -96,10 +96,17 @@ import it directly — they don't touch the other files.
   ],
   "dont_use": "...",
   "confused_with": { "word": "...", "reading": "...", "contrast": "..." },
+  "confusion_set": [
+    { "word": "ruby-annotated", "reading": "...", "use_when": "...", "example": "ruby-annotated" }
+  ],
   "frequency": "...",
   "anki_hint": "..."
 }
 ```
+`confusion_set` is the 2–3 member family comparison (first member = the looked-up word; the rest
+its closest confusables). **Additive/optional** — absent on pre-Phase-9 snapshots and cached
+history, which stay valid; the `confusion-set` check only validates it when present, and the
+render (`confusionSetCard`) emits nothing when it's missing.
 
 ### Grammar mode
 ```json
@@ -112,9 +119,14 @@ import it directly — they don't touch the other files.
     { "jp": "ruby-annotated", "translation": "...", "register": "casual|standard|formal", "notes": "..." }
   ],
   "confused_with": { "pattern": "...", "contrast": "..." },
+  "confusion_set": [
+    { "pattern": "ruby-annotated", "use_when": "...", "example": "ruby-annotated" }
+  ],
   "bunpro_tip": "..."
 }
 ```
+`confusion_set` (grammar): same additive 2–3 member family comparison as vocab, keyed on
+`pattern` instead of `word`/`reading` (e.g. ～たら/～ば/～と/～なら).
 
 ## User context
 
@@ -138,7 +150,7 @@ node src/cli.js --tsv 見る   # output Anki TSV
 node src/cli.js --raw 見る   # output raw JSON
 
 npm run eval:check      # validate lookup output vs saved snapshots (no API — the gate)
-npm run eval:update     # refresh ALL snapshots from the live API (serial; ~26 calls — costs $)
+npm run eval:update     # refresh ALL snapshots from the live API (serial; ~28 calls — costs $)
 npm run eval:update -- --only 見る   # COST LEVER: regen only matching cases during iteration
 npm run eval            # live lookups checked against fresh output (no snapshot write)
 npm run eval:judge      # LLM-judge naturalness scores on snapshots (advisory, not a gate; Opus)
@@ -148,30 +160,31 @@ npm run test:smoke      # 10-check golden-path Playwright smoke test (requires s
 
 ## Eval harness (`eval/`)
 
-`lookup.js`'s prompt output is the product — `eval/` guards it. `eval/golden.js` holds ~26
+`lookup.js`'s prompt output is the product — `eval/` guards it. `eval/golden.js` holds ~28
 representative cases (incl. JJ); `eval/checks.js` runs deterministic validators (ruby on every
-kanji, JSON contract, sentence count, register variety, confused_with). `eval/run.js` drives
+kanji, JSON contract, sentence count, register variety, confused_with, confusion_set). `eval/run.js` drives
 four modes (`check`/`update`/`run`/`judge`). Live runs are serial with 429 backoff (the org's
 output-token/min limit forbids parallelism). After editing a prompt in `lookup.js`: run
 `eval:update`, review the snapshot diff, then keep `eval:check` green. Use `/lookup-eval` to
 run and interpret it. Never loosen a check to pass — fix the output instead.
 
-**COST DISCIPLINE — read before regenerating.** A full `eval:update` is ~26 live calls at up
+**COST DISCIPLINE — read before regenerating.** A full `eval:update` is ~28 live calls at up
 to `max_tokens` output each; output tokens dominate the bill ($15/M on Sonnet vs $3/M input).
-Iterating a prompt by blind-regenerating all 26 every tweak is what runs the API bill up. So:
+Iterating a prompt by blind-regenerating all 28 every tweak is what runs the API bill up. So:
 during iteration use `eval:update -- --only <substr>` to regen just the cases you're tuning
 (e.g. `--only 見る`, `--only grammar`, `--only jj`), or `-- --missing` to fill only absent
 snapshots; regen the full set once, right before committing. `--only` works on `check`,
 `update`, `run`, and `judge`. Prompt caching does NOT help here — the system prompts are below
-the cacheable token minimum. `max_tokens` is capped at 3000 in `lookup.js` to bound per-call
-output cost.
+the cacheable token minimum. `max_tokens` is set to 5000 in `lookup.js`: it was briefly lowered
+to 3000 but multi-sense entries truncated mid-JSON (hard `JSON.parse` crash), so it was restored
+to 5000. Real lookups generate ~2–2.5k; the ceiling only guards against truncation.
 
 **Deterministic checks vs. the judge.** `eval:check` is the hard gate: deterministic, free,
 structure-only (it must stay API-free and CI-safe). `eval:judge` (`eval/judge.js`) is the
 *advisory* naturalness instrument — it sends each snapshot to a strong model (`JUDGE_MODEL`,
 default `claude-opus-4-8`) and scores naturalness, register accuracy, minimal-pair quality,
 confusion relevance, and intuition (1–5), writing `eval/judge-scores.json`. It costs Opus
-input per snapshot, so scope it with `--only` rather than judging all 26 every time. It never
+input per snapshot, so scope it with `--only` rather than judging all 28 every time. It never
 changes the `check` exit code. Workflow for a quality change: baseline `eval:judge --only …`,
 edit the prompt, `eval:update -- --only …`, keep `eval:check` green, then re-judge the same
 subset and confirm the per-dimension averages moved the right way.
@@ -227,6 +240,16 @@ header. Mobile TTS voice selection fixed (localService fallback for iOS).
 
 **Remaining Phase 7 / future candidates:**
 
+- **読む (paste mode) refresh — NEXT SESSION (post Phase 9 merge).** On a longer paragraph the
+  paste flow runs a full deep-dive `lookup()` on every identified word/grammar point, so it's slow
+  and the page is a cluttered wall once everything loads. Goal: load a *minimal* card per item
+  first (word + reading + one-line gloss), then expand inline or click through to the full
+  breakdown on demand — i.e. lazy/progressive detail instead of eager full lookups for the whole
+  passage. Likely a lighter paste-specific prompt (or reuse `identifyWords` output) + a compact
+  render path + on-click `lookup()`.
+- **Backfill `confusion_set` on the 3 multi-sense holdouts** (`～そうだ`, `～てしまう` JE+JJ) and look
+  at generation robustness for long entries (max_tokens headroom or a length-capped confusion_set).
+  See the Phase 9 CHANGELOG entry.
 - **iOS Shortcut for share-sheet lookup** — Shortcut that POSTs to the server and opens
   the result; zero server code, configured once in the Shortcuts app
 - **Swipe down to clear / return to search** — touch gesture on result panel; more native

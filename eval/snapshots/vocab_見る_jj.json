@@ -7,48 +7,68 @@
     "label": "atamadaka",
     "pattern": "HL"
   },
-  "core_meaning": "<ruby>目<rt>め</rt></ruby>を使って<ruby>何<rt>なに</rt></ruby>かを<ruby>見<rt>み</rt></ruby>る、という<ruby>意味<rt>いみ</rt></ruby>です。テレビを<ruby>見<rt>み</rt></ruby>る、<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>るなど、いろんな<ruby>場面<rt>ばめん</rt></ruby>で<ruby>使<rt>つか</rt></ruby>います。",
+  "core_meaning": "<ruby>目<rt>め</rt></ruby>を使って<ruby>何<rt>なに</rt></ruby>かを<ruby>見<rt>み</rt></ruby>る、という<ruby>意味<rt>いみ</rt></ruby>だよ。テレビや<ruby>景色<rt>けしき</rt></ruby>など、いろんなものに<ruby>使<rt>つか</rt></ruby>えるよ。",
   "sentences": [
     {
-      "jp": "ねえ、このドラマ<ruby>見<rt>み</rt></ruby>た？めっちゃおもしろかったよ！",
-      "translation": "Hey, did you watch this drama? It was so good!",
+      "jp": "ねえ、この<ruby>写真<rt>しゃしん</rt></ruby><ruby>見<rt>み</rt></ruby>て！かわいくない？",
+      "translation": "Hey, look at this photo! Isn't it cute?",
       "register": "casual",
-      "notes": "テレビや動画を<ruby>見<rt>み</rt></ruby>るときのカジュアルな<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>です。"
+      "notes": "<ruby>友達<rt>ともだち</rt></ruby>に<ruby>何<rt>なに</rt></ruby>かを<ruby>見<rt>み</rt></ruby>せたい<ruby>時<rt>とき</rt></ruby>のよく<ruby>使<rt>つか</rt></ruby>う<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>を<ruby>見<rt>み</rt></ruby>せているよ。"
     },
     {
-      "jp": "ちょっと、その<ruby>地図<rt>ちず</rt></ruby><ruby>見<rt>み</rt></ruby>せて。<ruby>道<rt>みち</rt></ruby>わかんない。",
-      "translation": "Hey, let me see that map. I don't know the way.",
+      "jp": "きのうの<ruby>夜<rt>よる</rt></ruby>、<ruby>映画<rt>えいが</rt></ruby>を３<ruby>本<rt>ほん</rt></ruby>も<ruby>見<rt>み</rt></ruby>ちゃった。",
+      "translation": "I ended up watching three movies last night.",
       "register": "casual",
-      "notes": "<ruby>見<rt>み</rt></ruby>せてとセットで「<ruby>確認<rt>かくにん</rt></ruby>する」ような<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>を<ruby>見<rt>み</rt></ruby>せています。"
+      "notes": "〜ちゃった（してしまった）と<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>使<rt>つか</rt></ruby>って、<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>る<ruby>場面<rt>ばめん</rt></ruby>を<ruby>自然<rt>しぜん</rt></ruby>に<ruby>表<rt>あらわ</rt></ruby>しているよ。"
     },
     {
-      "jp": "<ruby>先生<rt>せんせい</rt></ruby>、この<ruby>作文<rt>さくぶん</rt></ruby>を<ruby>見<rt>み</rt></ruby>ていただけますか。",
-      "translation": "Teacher, could you please look over this essay?",
-      "register": "formal",
-      "notes": "「<ruby>見<rt>み</rt></ruby>ていただけますか」は<ruby>丁寧<rt>ていねい</rt></ruby>に<ruby>確認<rt>かくにん</rt></ruby>をお<ruby>願<rt>ねが</rt></ruby>いするときの<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby>です。"
-    },
-    {
-      "jp": "<ruby>子<rt>こ</rt></ruby>どもが<ruby>熱<rt>ねつ</rt></ruby>っぽいから、ちょっと<ruby>見<rt>み</rt></ruby>てあげる。",
-      "translation": "The kid seems feverish, so I'll take a look at them.",
+      "jp": "<ruby>夕焼<rt>ゆうや</rt></ruby>けがきれいだから、ちょっと<ruby>外<rt>そと</rt></ruby>に<ruby>出<rt>で</rt></ruby>て<ruby>見<rt>み</rt></ruby>てみない？",
+      "translation": "The sunset is beautiful — want to step outside and take a look?",
       "register": "standard",
-      "notes": "「<ruby>見<rt>み</rt></ruby>てあげる」で「<ruby>世話<rt>せわ</rt></ruby>をする・<ruby>確認<rt>かくにん</rt></ruby>する」という<ruby>意味<rt>いみ</rt></ruby>になります。"
+      "notes": "〜てみる（try doing）の<ruby>形<rt>かたち</rt></ruby>で、<ruby>試<rt>ため</rt></ruby>しに<ruby>見<rt>み</rt></ruby>るという<ruby>気持<rt>きも</rt></ruby>ちを<ruby>表<rt>あらわ</rt></ruby>しているよ。"
     },
     {
-      "jp": "<ruby>空<rt>そら</rt></ruby>を<ruby>見<rt>み</rt></ruby>ると、きれいな<ruby>星<rt>ほし</rt></ruby>がたくさん<ruby>出<rt>で</rt></ruby>ていた。",
-      "translation": "When I looked up at the sky, there were many beautiful stars out.",
-      "register": "written",
-      "notes": "<ruby>書<rt>か</rt></ruby>き<ruby>言葉<rt>ことば</rt></ruby>で、<ruby>視線<rt>しせん</rt></ruby>を<ruby>向<rt>む</rt></ruby>けて<ruby>何<rt>なに</rt></ruby>かに<ruby>気<rt>き</rt></ruby>づく<ruby>場面<rt>ばめん</rt></ruby>の<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>です。"
+      "jp": "<ruby>先生<rt>せんせい</rt></ruby>は<ruby>生徒<rt>せいと</rt></ruby>のレポートをよく<ruby>見<rt>み</rt></ruby>てから、コメントを<ruby>書<rt>か</rt></ruby>きます。",
+      "translation": "The teacher carefully reviews the students' reports before writing comments.",
+      "register": "standard",
+      "notes": "「よく<ruby>見<rt>み</rt></ruby>る」で、<ruby>丁寧<rt>ていねい</rt></ruby>にチェックするという<ruby>意味<rt>いみ</rt></ruby>を<ruby>表<rt>あらわ</rt></ruby>しているよ。"
+    },
+    {
+      "jp": "<ruby>患者<rt>かんじゃ</rt></ruby>の<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>見<rt>み</rt></ruby>て、<ruby>医師<rt>いし</rt></ruby>は<ruby>適切<rt>てきせつ</rt></ruby>な<ruby>治療<rt>ちりょう</rt></ruby>を<ruby>判断<rt>はんだん</rt></ruby>します。",
+      "translation": "The doctor assesses the patient's condition and determines appropriate treatment.",
+      "register": "formal",
+      "notes": "「<ruby>見<rt>み</rt></ruby>る」が「チェックする・<ruby>確認<rt>かくにん</rt></ruby>する」という<ruby>意味<rt>いみ</rt></ruby>で<ruby>使<rt>つか</rt></ruby>われているよ。"
     }
   ],
-  "dont_use": "<ruby>見<rt>み</rt></ruby>るは<ruby>目<rt>め</rt></ruby>で<ruby>見<rt>み</rt></ruby>ることなので、においや<ruby>音<rt>おと</rt></ruby>には<ruby>使<rt>つか</rt></ruby>いません。また「<ruby>本<rt>ほん</rt></ruby>を<ruby>見<rt>み</rt></ruby>る」より「<ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>む」のほうが<ruby>自然<rt>しぜん</rt></ruby>です。<ruby>本<rt>ほん</rt></ruby>や<ruby>文章<rt>ぶんしょう</rt></ruby>を<ruby>読<rt>よ</rt></ruby>むときは「<ruby>読<rt>よ</rt></ruby>む」を<ruby>使<rt>つか</rt></ruby>いましょう。",
+  "dont_use": "<ruby>見<rt>み</rt></ruby>るは<ruby>自分<rt>じぶん</rt></ruby>から<ruby>意識<rt>いしき</rt></ruby>して<ruby>目<rt>め</rt></ruby>を<ruby>向<rt>む</rt></ruby>ける<ruby>時<rt>とき</rt></ruby>に<ruby>使<rt>つか</rt></ruby>うよ。たまたま<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>った<ruby>時<rt>とき</rt></ruby>は「<ruby>見<rt>み</rt></ruby>える」を<ruby>使<rt>つか</rt></ruby>ってね。また、「テレビを<ruby>見<rt>み</rt></ruby>る」はOKだけど、「<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>見<rt>み</rt></ruby>る」とは<ruby>言<rt>い</rt></ruby>わないよ。",
   "confused_with": {
     "word": "<ruby>見<rt>み</rt></ruby>える",
     "reading": "みえる",
-    "contrast": "「<ruby>見<rt>み</rt></ruby>る」は<ruby>自分<rt>じぶん</rt></ruby>から<ruby>意識<rt>いしき</rt></ruby>して<ruby>目<rt>め</rt></ruby>を<ruby>向<rt>む</rt></ruby>けることです。「<ruby>見<rt>み</rt></ruby>える」は<ruby>自然<rt>しぜん</rt></ruby>に<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってくる<ruby>感<rt>かん</rt></ruby>じです。たとえば「あの<ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>る」は<ruby>自分<rt>じぶん</rt></ruby>から<ruby>見<rt>み</rt></ruby>ようとしていて、「あの<ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える」は<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってくる<ruby>感<rt>かん</rt></ruby>じです。"
+    "contrast": "「<ruby>見<rt>み</rt></ruby>える」は<ruby>自然<rt>しぜん</rt></ruby>に<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>時<rt>とき</rt></ruby>に<ruby>使<rt>つか</rt></ruby>うよ。たとえば「<ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>える」はOK。「<ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>る」は<ruby>自分<rt>じぶん</rt></ruby>から<ruby>山<rt>やま</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>く<ruby>感<rt>かん</rt></ruby>じだよ。"
   },
-  "frequency": "<ruby>日常<rt>にちじょう</rt></ruby><ruby>会話<rt>かいわ</rt></ruby>でとてもよく<ruby>使<rt>つか</rt></ruby>います。テレビ・<ruby>映画<rt>えいが</rt></ruby>・ネットなど、いろんな<ruby>場面<rt>ばめん</rt></ruby>で<ruby>使<rt>つか</rt></ruby>える<ruby>基本的<rt>きほんてき</rt></ruby>な<ruby>言葉<rt>ことば</rt></ruby>です。",
-  "anki_hint": "「<ruby>見<rt>み</rt></ruby>る」は<ruby>自分<rt>じぶん</rt></ruby>から<ruby>目<rt>め</rt></ruby>を<ruby>向<rt>む</rt></ruby>ける<ruby>動作<rt>どうさ</rt></ruby>、「<ruby>見<rt>み</rt></ruby>える」は<ruby>自然<rt>しぜん</rt></ruby>に<ruby>見<rt>み</rt></ruby>えてくる<ruby>状態<rt>じょうたい</rt></ruby>、とおぼえましょう！",
+  "confusion_set": [
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>る",
+      "reading": "みる",
+      "use_when": "<ruby>自分<rt>じぶん</rt></ruby>から<ruby>意識<rt>いしき</rt></ruby>して<ruby>何<rt>なに</rt></ruby>かに<ruby>目<rt>め</rt></ruby>を<ruby>向<rt>む</rt></ruby>ける<ruby>時<rt>とき</rt></ruby>に<ruby>使<rt>つか</rt></ruby>うよ。",
+      "example": "テレビを<ruby>見<rt>み</rt></ruby>る。"
+    },
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>える",
+      "reading": "みえる",
+      "use_when": "たまたま<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る、または<ruby>見<rt>み</rt></ruby>ることができる<ruby>時<rt>とき</rt></ruby>に<ruby>使<rt>つか</rt></ruby>うよ。",
+      "example": "あそこに<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>える！"
+    },
+    {
+      "word": "<ruby>見<rt>み</rt></ruby>せる",
+      "reading": "みせる",
+      "use_when": "<ruby>自分<rt>じぶん</rt></ruby>が<ruby>他<rt>ほか</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>何<rt>なに</rt></ruby>かを<ruby>見<rt>み</rt></ruby>てもらう<ruby>時<rt>とき</rt></ruby>に<ruby>使<rt>つか</rt></ruby>うよ。",
+      "example": "<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>見<rt>み</rt></ruby>せてくれた。"
+    }
+  ],
+  "frequency": "とてもよく<ruby>使<rt>つか</rt></ruby>う<ruby>言葉<rt>ことば</rt></ruby>で、<ruby>日常会話<rt>にちじょうかいわ</rt></ruby>から<ruby>書<rt>か</rt></ruby>き<ruby>言葉<rt>ことば</rt></ruby>まで<ruby>全部<rt>ぜんぶ</rt></ruby>の<ruby>場面<rt>ばめん</rt></ruby>で<ruby>使<rt>つか</rt></ruby>えるよ。〜てみる（<ruby>試<rt>ため</rt></ruby>す）や<ruby>見<rt>み</rt></ruby>てあげる（チェックしてあげる）など、いろんな<ruby>表現<rt>ひょうげん</rt></ruby>にも<ruby>使<rt>つか</rt></ruby>われるよ。",
+  "anki_hint": "<ruby>見<rt>み</rt></ruby>るは「<ruby>自分<rt>じぶん</rt></ruby>から<ruby>意識<rt>いしき</rt></ruby>して<ruby>見<rt>み</rt></ruby>る」、<ruby>見<rt>み</rt></ruby>えるは「<ruby>自然<rt>しぜん</rt></ruby>に<ruby>目<rt>め</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る」と<ruby>覚<rt>おぼ</rt></ruby>えてね！",
   "input": "見る",
-  "timestamp": "2026-06-15T22:18:11.403Z",
+  "timestamp": "2026-06-16T03:20:57.954Z",
   "_jj": true
 }

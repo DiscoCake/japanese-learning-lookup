@@ -1,42 +1,59 @@
 {
   "pattern": "～たことがある",
   "mode": "grammar",
-  "real_meaning": "This pattern expresses that you have had a certain experience at least once in your life up to now — it's about the existence of a past experience in your personal history, not about something you regularly do. The feeling is like saying 'that experience exists in my life story.' It often carries a mild sense of 'believe it or not' or sharing something noteworthy about yourself.",
+  "real_meaning": "This pattern expresses that you have had the experience of doing something at least once in your life — it's about existence of past experience, not about recency or habit. The speaker is essentially saying 'this event exists in my personal history.' It carries a slight sense of 'it happened at some undefined point before now,' which is why it often comes up in conversations about life experiences, bucket lists, or getting-to-know-you topics.",
   "formation": {
-    "rule": "Attach ことがある to the plain past (た-form) of a verb. Works with all verb types: <ruby>食<rt>た</rt></ruby>べた＋ことがある→<ruby>食<rt>た</rt></ruby>べたことがある (ru-verb), <ruby>行<rt>い</rt></ruby>った＋ことがある→<ruby>行<rt>い</rt></ruby>ったことがある (u-verb), した＋ことがある (する-verb), きたことがある (くる-verb).",
-    "common_mistake": "Using the dictionary form instead of the た-form: ✗ <ruby>食<rt>た</rt></ruby>べることがある (this means 'there are times when I eat' — a completely different grammar point!). ✓ <ruby>食<rt>た</rt></ruby>べたことがある."
+    "rule": "Attach ことがある to the verb's plain past (た-form). Works the same for all verb types: <ruby>食<rt>た</rt></ruby>べた＋ことがある → <ruby>食<rt>た</rt></ruby>べたことがある；<ruby>行<rt>い</rt></ruby>った＋ことがある → <ruby>行<rt>い</rt></ruby>ったことがある；した＋ことがある → したことがある。Negate with ことがない or ことはない. Past tense of ある (ことがあった) shifts meaning to 'there was a time when...'",
+    "common_mistake": "Using the dictionary (present) form instead of the た-form: ✗ <ruby>食<rt>た</rt></ruby>べることがある (this actually means 'there are times when I eat...' — a completely different grammar point!). ✓ <ruby>食<rt>た</rt></ruby>べたことがある ('I have eaten...' / 'I have had the experience of eating...')"
   },
   "sentences": [
     {
-      "jp": "<ruby>富士山<rt>ふじさん</rt></ruby>に<ruby>登<rt>のぼ</rt></ruby>ったことあるよ。めっちゃきつかった。",
-      "translation": "I've climbed Mt. Fuji before, you know. It was super tough.",
+      "jp": "<ruby>富士山<rt>ふじさん</rt></ruby>に<ruby>登<rt>のぼ</rt></ruby>ったことある？",
+      "translation": "Have you ever climbed Mt. Fuji?",
       "register": "casual",
-      "notes": "In casual speech, the が is often dropped, giving ことある instead of ことがある — this is totally natural and common among friends."
+      "notes": "ことが gets contracted to ことin casual speech — totally natural and very common among friends; the particle が is typically dropped."
     },
     {
-      "jp": "<ruby>子<rt>こ</rt></ruby>どものころ、<ruby>外国<rt>がいこく</rt></ruby>に<ruby>住<rt>す</rt></ruby>んだことがあります。",
-      "translation": "When I was a child, I lived abroad for a time.",
+      "jp": "<ruby>子<rt>こ</rt></ruby>どものころ、<ruby>海外<rt>かいがい</rt></ruby>に<ruby>住<rt>す</rt></ruby>んだことがあります。",
+      "translation": "I lived abroad when I was a child.",
       "register": "standard",
-      "notes": "The phrase <ruby>子<rt>こ</rt></ruby>どものころ sets the life-experience frame naturally — たことがある is often paired with a time reference to anchor the experience in your personal history."
+      "notes": "The vague timing (<ruby>子<rt>こ</rt></ruby>どものころ) is typical — the pattern focuses on the fact that the experience exists, not exactly when it happened."
     },
     {
-      "jp": "この<ruby>技術<rt>ぎじゅつ</rt></ruby>は、<ruby>以前<rt>いぜん</rt></ruby>にも<ruby>検討<rt>けんとう</rt></ruby>されたことがあります。",
+      "jp": "この<ruby>技術<rt>ぎじゅつ</rt></ruby>は<ruby>以前<rt>いぜん</rt></ruby>にも<ruby>検討<rt>けんとう</rt></ruby>されたことがあります。",
       "translation": "This technology has been considered before as well.",
       "register": "formal",
-      "notes": "たことがある can attach to passive forms too — <ruby>検討<rt>けんとう</rt></ruby>されたことがある — making it useful in formal or written contexts when discussing precedents."
+      "notes": "In formal or written contexts, たことがある is used with passive forms to note historical precedent — shows the pattern isn't limited to personal experience."
     },
     {
-      "jp": "<ruby>彼<rt>かれ</rt></ruby>のことを<ruby>好<rt>す</rt></ruby>きだったことがある。",
-      "translation": "There was a time when I liked him.",
-      "register": "standard",
-      "notes": "Surprises learners because it attaches to the past-tense form of a na-adjective predicate (だった), not a verb — it works to describe a past state that existed in your history, not just a past action."
+      "jp": "<ruby>死<rt>し</rt></ruby>にそうになったことがある。",
+      "translation": "There was a time I almost died.",
+      "register": "casual",
+      "notes": "Attaching ことがある to a compound form like 〜そうになった surprises learners — as long as the verb phrase ends in た-form, ことがある can follow and the meaning holds naturally."
     }
   ],
   "confused_with": {
     "pattern": "～ることがある",
-    "contrast": "These two patterns look almost identical but mean completely different things. ～たことがある is about a past experience that exists in your life history (at least once, ever), while ～ることがある means 'there are times when ~' — describing something that happens occasionally on a recurring basis. Minimal pair: <ruby>遅刻<rt>ちこく</rt></ruby>したことがある means 'I have been late before (at some point in my life),' while <ruby>遅刻<rt>ちこく</rt></ruby>することがある means 'I am sometimes late (it happens occasionally).' Choose ～たことがある when you're vouching for the existence of a past experience; choose ～ることがある when you're describing a habitual or occasional pattern."
+    "contrast": "These two patterns look almost identical but express totally different things. ～たことがある (past + こと) is about life experience — 'I have done X at least once.' ～ることがある (dictionary form + こと) means 'there are sometimes occasions when X happens' — it's about recurring possibility or occasional occurrence, not past experience. Minimal pair: <ruby>彼<rt>かれ</rt></ruby>に<ruby>会<rt>あ</rt></ruby>ったことがある (I have met him before — once in my life) vs. <ruby>彼<rt>かれ</rt></ruby>に<ruby>会<rt>あ</rt></ruby>うことがある (I sometimes run into him / there are occasions I meet him). Choose たことがある when you're vouching for an experience existing in your history; choose ることがある when you're describing an intermittent pattern or possibility."
   },
-  "bunpro_tip": "Lock in the mnemonic: た (past) + こと (thing/fact) + がある (exists) = 'the fact of having done it EXISTS in my past.' If you see ことがある without た before it, it's a different grammar point entirely — the た is the whole game here.",
+  "confusion_set": [
+    {
+      "pattern": "～たことがある",
+      "use_when": "<ruby>人生<rt>じんせい</rt></ruby>で<ruby>少<rt>すく</rt></ruby>なくとも<ruby>一度<rt>いちど</rt></ruby>その<ruby>経験<rt>けいけん</rt></ruby>があると<ruby>言<rt>い</rt></ruby>いたいとき",
+      "example": "<ruby>馬<rt>うま</rt></ruby>に<ruby>乗<rt>の</rt></ruby>ったことがある。"
+    },
+    {
+      "pattern": "～ることがある",
+      "use_when": "ある<ruby>行動<rt>こうどう</rt></ruby>が<ruby>時々<rt>ときどき</rt></ruby>・まれに<ruby>起<rt>お</rt></ruby>きると<ruby>言<rt>い</rt></ruby>いたいとき",
+      "example": "<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>授業<rt>じゅぎょう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>むことがある。"
+    },
+    {
+      "pattern": "～たものだ",
+      "use_when": "<ruby>昔<rt>むかし</rt></ruby>よくやっていた<ruby>懐<rt>なつ</rt></ruby>かしい<ruby>習慣<rt>しゅうかん</rt></ruby>を<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>るとき（<ruby>郷愁<rt>きょうしゅう</rt></ruby>の<ruby>気持<rt>きも</rt></ruby>ち）",
+      "example": "<ruby>子<rt>こ</rt></ruby>どものころ、よくここで<ruby>遊<rt>あそ</rt></ruby>んだものだ。"
+    }
+  ],
+  "bunpro_tip": "Lock in the た-form requirement by memorizing this contrast as a pair on BunPro: たことがある = 'experience EXISTS in history' (past tense → finished event → stored memory), ることがある = 'occurrence EXISTS sometimes' (present tense → ongoing pattern). When you see a prompt about life experiences, bucket lists, or firsts, that's your cue to reach for た.",
   "input": "～たことがある",
-  "timestamp": "2026-06-16T01:46:51.996Z"
+  "timestamp": "2026-06-16T03:13:44.012Z"
 }
