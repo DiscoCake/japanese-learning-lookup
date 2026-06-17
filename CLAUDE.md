@@ -12,18 +12,23 @@ https://github.com/DiscoCake/japanese-learning-lookup
 ## Architecture
 
 ```
-src/lookup.js     ← ALL prompt logic. No framework code. Returns a plain JS object.
-src/server.js     ← Express proxy. POST /api/lookup → lookup() → JSON response.
+src/lookup.js     ← ALL prompt logic. No framework code. Returns plain JS objects.
+                     lookup()/lookupStream() = deep dive; identifyWords()/identifyWordsStream()
+                     = 読む paste-mode word ID; toAnkiTSV() = export helper.
+src/server.js     ← Express proxy. Routes: /api/lookup(/stream), /api/paste/stream,
+                     /api/history, Anki/BunPro. In-memory rate limiter on Claude-calling routes.
 src/anki.js       ← AnkiConnect client. Sentence management, card enrichment, struggling-card queries.
                      Zero dependencies on lookup.js or the frontend.
 src/bunpro.js     ← BunPro API client. Grammar SRS status lookup and troubled-grammar queries.
                      Zero dependencies on lookup.js or the frontend.
 src/cli.js        ← CLI. `node src/cli.js 見る` or `node src/cli.js ～てしまう`
-public/index.html ← Frontend. Vanilla JS, no build step.
+public/index.html ← Frontend shell + all CSS. No build step; loads ES modules from public/js/.
+public/js/        ← ES modules: main.js (wiring/init), lookup-client.js (調べる lookup + 読む paste
+                     flow + tab state), render.js, history.js, anki.js, bunpro.js, tts.js, furigana.js.
 ```
 
 The core design rule: `lookup.js` has zero dependencies on Express, the DOM, or the CLI.
-It's a pure async function. New surfaces (VS Code extension, hotkey script, Discord bot)
+It's a pure async module. New surfaces (VS Code extension, hotkey script, Discord bot)
 import it directly — they don't touch the other files.
 
 ## Design decisions — don't change without asking
@@ -240,13 +245,17 @@ header. Mobile TTS voice selection fixed (localService fallback for iOS).
 
 **Remaining Phase 7 / future candidates:**
 
-- **読む (paste mode) refresh — NEXT SESSION (post Phase 9 merge).** On a longer paragraph the
-  paste flow runs a full deep-dive `lookup()` on every identified word/grammar point, so it's slow
-  and the page is a cluttered wall once everything loads. Goal: load a *minimal* card per item
-  first (word + reading + one-line gloss), then expand inline or click through to the full
-  breakdown on demand — i.e. lazy/progressive detail instead of eager full lookups for the whole
-  passage. Likely a lighter paste-specific prompt (or reuse `identifyWords` output) + a compact
-  render path + on-click `lookup()`.
+- ✅ **読む (paste mode) refresh — DONE (2026-06-16).** Paste mode is lazy, streamed, and unified
+  with 調べる. `POST /api/paste/stream` runs only the lightweight identify pass
+  (`identifyWordsStream`, one-line `gloss` whose language follows the JJ toggle) and SSE-emits each
+  `{word, reading, gloss, sentence}` as its JSON object closes, so *minimal* tappable pills append
+  progressively. **Tapping a pill opens the full breakdown in the 調べる tab**, routed through the
+  shared `doLookup({ input, context })` — so it hits/populates the history cache (keyed `input`+`jj`)
+  automatically and appears in the history panel; 調べる streams it (same path as a typed lookup),
+  the source sentence passed as `context`. 読む stays an abbreviated pill list (no inline render).
+  Switching tabs is **lossless** — `setAppMode` only toggles visibility, never wipes the pill list
+  or the result. A `#back-to-paste` ("← 読むに戻る") link returns to the paste session. TSV export
+  pulls the passage words you've looked up from the history cache.
 - **Backfill `confusion_set` on the 3 multi-sense holdouts** (`～そうだ`, `～てしまう` JE+JJ) and look
   at generation robustness for long entries (max_tokens headroom or a length-capped confusion_set).
   See the Phase 9 CHANGELOG entry.

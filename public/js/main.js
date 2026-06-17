@@ -9,7 +9,7 @@ import { openBunproPanel } from './bunpro.js';
 import {
   getJJMode, setJJModeState, getCurrentResult,
   renderResult, doLookup, setAppMode, doPaste, initPasteResultHandlers,
-  getModeOverride, setModeOverride, clearModeOverride,
+  getModeOverride, setModeOverride, clearModeOverride, clearPasteReturn,
 } from './lookup-client.js';
 
 /* ── FURIGANA ── */
@@ -79,6 +79,8 @@ initHistory(); // loads from server, updates badge when ready
 
 function onHistorySelect(r) {
   addToHistory(r);
+  setAppMode('lookup');   // ensure the 調べる view is showing (may have been on 読む)
+  clearPasteReturn();     // a history pick isn't a paste round-trip
   renderResult(r, { fromCache: true });
   document.getElementById('history-panel').style.display = 'none';
   searchInput.value = r.input || '';
@@ -121,6 +123,7 @@ window.addEventListener('wheel', e => {
 /* ── ANKI STRUGGLING CARDS ── */
 function onAnkiWordClick(word) {
   clearModeOverride();
+  setAppMode('lookup');
   searchInput.value = word;
   doLookup();
 }
@@ -153,3 +156,4 @@ document.getElementById('bunpro-refresh-btn').onclick = () => openBunproPanel(on
 document.getElementById('tab-lookup').onclick = () => setAppMode('lookup');
 document.getElementById('tab-paste').onclick  = () => setAppMode('paste');
 document.getElementById('paste-submit-btn').onclick = doPaste;
+document.getElementById('back-to-paste').onclick = () => setAppMode('paste');

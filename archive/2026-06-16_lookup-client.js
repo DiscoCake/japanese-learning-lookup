@@ -1,3 +1,4 @@
+import { speak } from './tts.js';
 import { parsePartial, partialFieldCount, renderVocab, renderGrammar, renderError } from './render.js';
 import { checkAnkiCard } from './anki.js';
 import { checkBunproStatus } from './bunpro.js';
@@ -6,16 +7,8 @@ import { addToHistory, findInHistory } from './history.js';
 let jjMode = localStorage.getItem('companion_jj_v1') === '1';
 let currentResult = null;
 let lookupAbortController = null;
-let pasteWords = []; // [{word, reading, gloss, sentence}] from the last identify pass
-let cameFromPaste = false; // true while a 調べる result was opened by tapping a 読む pill
+let currentPasteResults = {};
 let modeOverride = null; // 'vocab' | 'grammar' | null
-
-function setBackVisible(on) {
-  const b = document.getElementById('back-to-paste');
-  if (b) b.style.display = on ? '' : 'none';
-}
-// Called by main on history select / other manual entries to drop the 読む return link.
-export function clearPasteReturn() { cameFromPaste = false; setBackVisible(false); }
 
 export function getJJMode() { return jjMode; }
 export function setJJModeState(on) {
@@ -38,19 +31,15 @@ export function renderResult(r, opts = {}) {
   if (r.mode === 'grammar') checkBunproStatus(r);
 }
 
-export async function doLookup({ force = false, input, context = null } = {}) {
+export async function doLookup({ force = false } = {}) {
   const searchInput = document.getElementById('search-input');
-  const fromPill = input !== undefined;
-  const term = (fromPill ? input : searchInput.value).trim();
-  if (!term) return;
-  if (fromPill) searchInput.value = term;
-  // A manual lookup (typed/searched) severs the 読む return link; a pill tap keeps it.
-  if (!fromPill) clearPasteReturn();
+  const input = searchInput.value.trim();
+  if (!input) return;
 
   if (lookupAbortController) lookupAbortController.abort();
   const jjSnapshot = jjMode;
 
-  const cached = !force && findInHistory(term, jjSnapshot);
+  const cached = !force && findInHistory(input, jjSnapshot);
   if (cached) { renderResult(cached, { fromCache: true }); return; }
 
   const controller = new AbortController();
@@ -58,13 +47,13 @@ export async function doLookup({ force = false, input, context = null } = {}) {
 
   document.getElementById('result').style.display = 'none';
   document.getElementById('loading').style.display = 'flex';
-  document.getElementById('loading-text').innerHTML = `「${term}」を<ruby>調<rt>しら</rt></ruby>べています…`;
+  document.getElementById('loading-text').innerHTML = `「${input}」を<ruby>調<rt>しら</rt></ruby>べています…`;
 
   try {
     const streamRes = await fetch('/api/lookup/stream', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ input: term, jj: jjSnapshot, forceMode: modeOverride || undefined, context: context || undefined }),
+      body: JSON.stringify({ input, jj: jjSnapshot, forceMode: modeOverride || undefined }),
       signal: controller.signal
     });
     if (!streamRes.ok) {
@@ -100,7 +89,7 @@ export async function doLookup({ force = false, input, context = null } = {}) {
             resultEl.innerHTML = partial.mode === 'grammar' ? renderGrammar(partial) : renderVocab(partial);
           }
         } else if (evt.done && evt.result) {
-          evt.result.input = term;
+          evt.result.input = input;
           evt.result.jj = jjSnapshot;
           addToHistory(evt.result);
           renderResult(evt.result);
@@ -126,37 +115,12 @@ export function setAppMode(mode) {
   document.getElementById('search-row').style.display = isPaste ? 'none' : '';
   document.getElementById('search-hint').style.display = isPaste ? 'none' : '';
   document.getElementById('loading').style.display = 'none';
+  document.getElementById('result').style.display = 'none';
   document.getElementById('paste-panel').style.display = isPaste ? 'block' : 'none';
-  // Preserve both views: only toggle visibility, never wipe. The lookup result and the
-  // paste pill list both stay in the DOM so switching tabs is lossless.
-  const resultEl = document.getElementById('result');
-  resultEl.style.display = isPaste ? 'none' : (resultEl.innerHTML ? 'block' : 'none');
-  if (isPaste) setBackVisible(false);
-}
-
-// Tapping a 読む pill opens the full breakdown in the 調べる tab (cached via history),
-// keeping the paste session intact behind a "← 読む" return link.
-function openPasteWordInLookup(i) {
-  const item = pasteWords[i];
-  if (!item) return;
-  cameFromPaste = true;
-  setAppMode('lookup');
-  setBackVisible(true);
-  doLookup({ input: item.word, context: item.sentence });
-}
-
-// Minimal, tappable card for one identified item — word + reading + gloss.
-// Tapping it opens the full breakdown in the 調べる tab (see openPasteWordInLookup).
-function minCardHTML(item, i) {
-  const { word, reading, gloss } = item;
-  return `<div class="paste-min-card" data-idx="${i}" role="button" tabindex="0">
-      <div class="paste-min-main">
-        <span class="paste-min-word">${word}</span>
-        ${reading ? `<span class="paste-min-reading">【${reading}】</span>` : ''}
-      </div>
-      ${gloss ? `<div class="paste-min-gloss">${gloss}</div>` : ''}
-      <div class="paste-min-hint"><ruby>調<rt>しら</rt></ruby>べる →</div>
-    </div>`;
+  if (!isPaste) {
+    document.getElementById('paste-results').innerHTML = '';
+    currentPasteResults = {};
+  }
 }
 
 export async function doPaste() {
@@ -167,15 +131,10 @@ export async function doPaste() {
   const resultsEl = document.getElementById('paste-results');
   btn.disabled = true;
   btn.textContent = '解析中…';
-  resultsEl.innerHTML = '<div id="paste-loading" style="padding:1.5rem;display:flex;justify-content:center"><span class="dots"><span></span><span></span><span></span></span></div>';
-  pasteWords = [];
+  resultsEl.innerHTML = '';
+  currentPasteResults = {};
 
-  const appendPill = item => {
-    const i = pasteWords.length;
-    pasteWords.push(item);
-    resultsEl.insertAdjacentHTML('beforeend',
-      `<div class="paste-word-section" id="paste-slot-${i}">${minCardHTML(item, i)}</div>`);
-  };
+  const wordIdx = {};
 
   try {
     const res = await fetch('/api/paste/stream', {
@@ -183,16 +142,11 @@ export async function doPaste() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, jj: jjMode })
     });
-    if (!res.ok) {
-      const t = await res.text();
-      let msg; try { msg = JSON.parse(t).error; } catch {}
-      throw new Error(msg || `HTTP ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const reader = res.body.getReader();
     const dec = new TextDecoder();
     let buf = '';
-    let errMsg = null;
 
     while (true) {
       const { done, value } = await reader.read();
@@ -200,27 +154,53 @@ export async function doPaste() {
       buf += dec.decode(value, { stream: true });
       const lines = buf.split('\n');
       buf = lines.pop() || '';
+
       for (const line of lines) {
         if (!line.startsWith('data: ')) continue;
-        let evt; try { evt = JSON.parse(line.slice(6)); } catch { continue; }
-        if (evt.type === 'item') {
-          document.getElementById('paste-loading')?.remove();
-          appendPill(evt.item);
-        } else if (evt.type === 'error') {
-          errMsg = evt.message;
+        let evt;
+        try { evt = JSON.parse(line.slice(6)); } catch { continue; }
+
+        if (evt.type === 'identified') {
+          resultsEl.innerHTML = evt.words.map(({ word, reading, reason }, i) => {
+            wordIdx[word] = i;
+            return `<div class="paste-word-section" id="paste-slot-${i}">
+              <div class="paste-placeholder">
+                <div>
+                  <div class="paste-placeholder-word">${word}</div>
+                  ${reading ? `<div class="paste-placeholder-reading">【${reading}】</div>` : ''}
+                  ${reason ? `<div style="font-size:0.7rem;color:var(--text3);margin-top:3px">${reason}</div>` : ''}
+                </div>
+                <div class="dots" style="margin-left:auto"><span></span><span></span><span></span></div>
+              </div>
+            </div>`;
+          }).join('');
+
+        } else if (evt.type === 'result') {
+          currentPasteResults[evt.word] = evt.result;
+          const i = wordIdx[evt.word];
+          const slot = document.getElementById(`paste-slot-${i}`);
+          if (slot) {
+            const r = evt.result;
+            const label = r.mode === 'grammar' ? (r.pattern || evt.word) : (r.word || evt.word);
+            const reading = r.reading || '';
+            slot.innerHTML = `
+              <div class="paste-word-divider">${label}${reading ? ` 【${reading}】` : ''}</div>
+              <div>${r.mode === 'grammar' ? renderGrammar(r, {compact:true}) : renderVocab(r, {compact:true})}</div>`;
+          }
+
+        } else if (evt.type === 'done') {
+          if (Object.keys(currentPasteResults).length) {
+            const bar = document.createElement('div');
+            bar.id = 'paste-export-bar';
+            bar.style.cssText = 'margin-top:1rem';
+            bar.innerHTML = `<button class="ctrl-btn" id="paste-tsv-btn">全単語をAnkiにエクスポート (TSV)</button>`;
+            resultsEl.appendChild(bar);
+          }
+
+        } else if (evt.type === 'error' && !evt.word) {
+          resultsEl.innerHTML += `<div class="card"><div class="card-body" style="color:var(--pink)">エラー: ${evt.message}</div></div>`;
         }
       }
-    }
-
-    document.getElementById('paste-loading')?.remove();
-    if (errMsg && !pasteWords.length) {
-      resultsEl.innerHTML = `<div class="card"><div class="card-body" style="color:var(--pink)">${errMsg}</div></div>`;
-    } else if (pasteWords.length) {
-      const bar = document.createElement('div');
-      bar.id = 'paste-export-bar';
-      bar.style.cssText = 'margin-top:1rem';
-      bar.innerHTML = `<button class="ctrl-btn" id="paste-tsv-btn">調べた単語をAnkiにエクスポート (TSV)</button>`;
-      resultsEl.appendChild(bar);
     }
   } catch (err) {
     resultsEl.innerHTML = `<div class="card"><div class="card-body" style="color:var(--pink)">エラー: ${err.message}</div></div>`;
@@ -230,42 +210,32 @@ export async function doPaste() {
   btn.textContent = '解析する';
 }
 
-// Sets up the delegated click/keydown handler for the paste pill list.
-// Called once from main during init.
+// Sets up the delegated click handler for paste results (speak + bulk TSV).
+// Called once from main during init; needs access to module-private currentPasteResults.
 export function initPasteResultHandlers() {
-  const resultsEl = document.getElementById('paste-results');
-
-  // Keyboard: Enter/Space on a focused pill opens it in 調べる.
-  resultsEl.addEventListener('keydown', e => {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    const card = e.target.closest('.paste-min-card');
-    if (!card) return;
-    e.preventDefault();
-    openPasteWordInLookup(Number(card.dataset.idx));
-  });
-
-  resultsEl.addEventListener('click', e => {
-    const minCard = e.target.closest('.paste-min-card');
-    if (minCard) { openPasteWordInLookup(Number(minCard.dataset.idx)); return; }
+  document.getElementById('paste-results').addEventListener('click', e => {
+    const speakBtn = e.target.closest('.speak-btn');
+    if (speakBtn) {
+      const jpEl = speakBtn.closest('.sentence-item')?.querySelector('.sentence-jp');
+      if (jpEl) {
+        const clone = jpEl.cloneNode(true);
+        clone.querySelectorAll('rt').forEach(rt => rt.remove());
+        speak(clone.textContent, speakBtn);
+      }
+      return;
+    }
 
     if (e.target.id === 'paste-tsv-btn') {
-      const label = '調べた単語をAnkiにエクスポート (TSV)';
       const strip = s => s.replace(/<[^>]+>/g, '');
-      // Export the passage words you've actually looked up — pulled from the history cache.
-      const rows = pasteWords
-        .map(w => findInHistory(w.word, jjMode))
-        .filter(Boolean)
-        .flatMap(r => r.mode === 'vocab'
-          ? (r.sentences || []).map(s => [r.word, r.reading, strip(s.jp), s.translation].join('\t'))
-          : (r.sentences || []).map(s => [r.pattern, '', strip(s.jp), s.translation].join('\t')));
-      if (!rows.length) {
-        e.target.textContent = '単語を調べてください';
-        setTimeout(() => { e.target.textContent = label; }, 2000);
-        return;
-      }
+      const rows = Object.values(currentPasteResults).flatMap(r => {
+        if (r.mode === 'vocab') {
+          return (r.sentences || []).map(s => [r.word, r.reading, strip(s.jp), s.translation].join('\t'));
+        }
+        return (r.sentences || []).map(s => [r.pattern, '', strip(s.jp), s.translation].join('\t'));
+      });
       navigator.clipboard.writeText(rows.join('\n')).then(() => {
         e.target.textContent = 'コピーしました！';
-        setTimeout(() => { e.target.textContent = label; }, 2000);
+        setTimeout(() => { e.target.textContent = '全単語をAnkiにエクスポート (TSV)'; }, 2000);
       });
     }
   });

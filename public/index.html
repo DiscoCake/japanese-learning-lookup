@@ -164,19 +164,29 @@ rt { font-family: "Noto Sans JP", sans-serif; }
 #paste-submit-btn:hover { background: var(--pink); }
 #paste-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 #paste-results { margin-top: 1.8rem; }
-.paste-word-section { margin-bottom: 2.5rem; }
-.paste-word-divider {
-  font-family: "Noto Serif JP", serif; font-size: 1.1rem; color: var(--text3);
-  border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem;
-  letter-spacing: 0.04em;
+.paste-word-section { margin-bottom: 0.75rem; }
+/* "← 読むに戻る" return link shown in 調べる after tapping a pill. */
+#back-to-paste {
+  background: none; border: none; color: var(--text3); cursor: pointer;
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.8rem;
+  padding: 0.2rem 0; margin-bottom: 0.8rem;
 }
-.paste-placeholder {
+#back-to-paste:hover { color: var(--pink); }
+/* Minimal, tappable card — word + reading + gloss; opens 調べる on tap. */
+.paste-min-card {
   background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.1rem 1.5rem;
-  display: flex; align-items: center; gap: 1rem;
+  border-radius: 12px; padding: 1rem 1.3rem;
+  display: flex; align-items: center; gap: 0.4rem 1rem; flex-wrap: wrap;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
 }
-.paste-placeholder-word { font-family: "Noto Serif JP", serif; font-size: 1.1rem; color: var(--cyan); }
-.paste-placeholder-reading { font-size: 0.72rem; color: var(--text3); margin-top: 2px; }
+.paste-min-card:hover, .paste-min-card:focus-visible {
+  border-color: var(--pink); background: var(--bg3, var(--bg2)); outline: none;
+}
+.paste-min-main { display: flex; align-items: baseline; gap: 0.4rem; }
+.paste-min-word { font-family: "Noto Serif JP", serif; font-size: 1.15rem; color: var(--cyan); }
+.paste-min-reading { font-size: 0.72rem; color: var(--text3); }
+.paste-min-gloss { font-size: 0.8rem; color: var(--text2); flex: 1 1 auto; }
+.paste-min-hint { font-size: 0.7rem; color: var(--text3); margin-left: auto; flex-shrink: 0; }
 
 /* ── LOADING ── */
 #loading { display: none; align-items: center; gap: 0.6rem; font-size: 0.75rem; color: var(--text3); padding: 2rem 0; }
@@ -398,6 +408,8 @@ body.hide-furigana #result ruby, body.hide-furigana #paste-results ruby { color:
     <span>ローマ字入力対応</span>
     <span id="mode-indicator" class="mode-pill" style="display:none"></span>
   </div>
+
+  <button id="back-to-paste" style="display:none">← <ruby>読<rt>よ</rt></ruby>むに<ruby>戻<rt>もど</rt></ruby>る</button>
 
   <div id="paste-panel">
     <textarea id="paste-input" rows="7" placeholder="ゲームのセリフや記事をペーストしてください（DQ11・ヤクザなど）…"></textarea>

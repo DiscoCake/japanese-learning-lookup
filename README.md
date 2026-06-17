@@ -73,7 +73,7 @@ node src/cli.js --raw 見える      # raw JSON output
 
 ### Explanation modes
 - **日本語モード (J-J mode)** — header toggle; all explanatory prose in JLPT N4–N5 Japanese, with English sentence translations kept as a safety net; J-J and J-E results cached separately
-- **読む mode (paste mode)** — paste any Japanese text; the app identifies 5–12 N3-range words, explains each in context, and offers a bulk TSV export for the whole passage
+- **読む mode (paste mode)** — paste any Japanese text; the app streams in 5–12 N3-range words/grammar points as minimal pills (word + reading + one-line gloss, gloss language following the J-J toggle). Tap a pill to open its full breakdown in the 調べる tab — routed through the normal lookup path, so it's cached in history automatically; a "← 読むに戻る" link returns to the passage with pills intact (switching tabs never loses state). TSV export covers the passage words you've looked up
 
 ### History & export
 - **History** (last 50 lookups, persisted server-side in `data/history.json`) — click an entry to re-render from cache with no API re-call; doubles as a lookup cache so repeated searches skip the API; clicking moves an entry to the top
@@ -154,6 +154,6 @@ The eval harness (`eval/`) guards the AI output — the most important thing in 
 
 ---
 
-Sibling project: [東京奇譚](../tokyo-kitan/) — same visual palette and stack.
+Sibling project: [東京奇譚](https://github.com/DiscoCake/tokyo-kitan) — same visual palette and stack.
 
 **Repo:** https://github.com/DiscoCake/japanese-learning-lookup

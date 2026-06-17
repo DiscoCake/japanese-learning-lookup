@@ -6,7 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { lookup, lookupStream, toAnkiTSV, identifyWords, identifyWordsStream } = require('./lookup');
+const { lookup, lookupStream, toAnkiTSV, identifyWords } = require('./lookup');
 const { getStrugglingCards, findNoteForWord, updateCardSentence, addNoteForWord, addNoteForGrammar, getDeckNames, enrichAndUpdateCard } = require('./anki');
 const { getGrammarStatus, getTroubledGrammar } = require('./bunpro');
 const { getHistory, addEntry, deleteEntry, clearEntries, mergeEntries } = require('./history');
@@ -41,14 +41,14 @@ app.use(express.json());
 app.use('/jp-ui', express.static(path.join(__dirname, '..', 'packages', 'jp-ui')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-/* POST /api/lookup  { input: "見る", jj: false, context?: "source sentence" }  → result JSON */
+/* POST /api/lookup  { input: "見る", jj: false }  → result JSON */
 app.post('/api/lookup', rateLimit, async (req, res) => {
-  const { input, jj, forceMode, context } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
   try {
-    const result = await lookup(input.trim(), { jj: !!jj, forceMode: forceMode || null, context: context || null });
+    const result = await lookup(input.trim(), { jj: !!jj, forceMode: forceMode || null });
     res.json(result);
   } catch (err) {
     console.error('Lookup error:', err.message);
@@ -69,9 +69,9 @@ app.get('/api/export', rateLimit, async (req, res) => {
   }
 });
 
-/* POST /api/lookup/stream  { input: "見る", jj: false, context?: "source sentence" }  → SSE text/event-stream */
+/* POST /api/lookup/stream  { input: "見る", jj: false }  → SSE text/event-stream */
 app.post('/api/lookup/stream', rateLimit, async (req, res) => {
-  const { input, jj, forceMode, context } = req.body;
+  const { input, jj, forceMode } = req.body;
   if (!input || typeof input !== 'string' || !input.trim()) {
     return res.status(400).json({ error: 'input is required' });
   }
@@ -80,7 +80,7 @@ app.post('/api/lookup/stream', rateLimit, async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
   try {
-    for await (const event of lookupStream(input.trim(), { jj: !!jj, forceMode: forceMode || null, context: context || null })) {
+    for await (const event of lookupStream(input.trim(), { jj: !!jj, forceMode: forceMode || null })) {
       if (event.type === 'chunk') {
         res.write(`data: ${JSON.stringify({ text: event.text })}\n\n`);
       } else if (event.type === 'done') {
@@ -90,7 +90,7 @@ app.post('/api/lookup/stream', rateLimit, async (req, res) => {
   } catch (err) {
     console.error('Stream error, falling back to lookup():', err.message);
     try {
-      const result = await lookup(input.trim(), { jj: !!jj, context: context || null });
+      const result = await lookup(input.trim(), { jj: !!jj });
       res.write(`data: ${JSON.stringify({ done: true, result })}\n\n`);
     } catch (fallbackErr) {
       console.error('Fallback also failed:', fallbackErr.message);
@@ -100,10 +100,7 @@ app.post('/api/lookup/stream', rateLimit, async (req, res) => {
   res.end();
 });
 
-/* POST /api/paste/stream  { text, jj: false }  → SSE: item* → done
-   Streams the lightweight identify pass — each {word, reading, gloss, sentence} is sent
-   as its JSON object closes, so pills appear progressively. Full deep-dives still happen
-   lazily, one /api/lookup/stream per card, when the user taps a minimal card. */
+/* POST /api/paste/stream  { text, jj: false }  → SSE: identified → result* → done */
 app.post('/api/paste/stream', rateLimit, async (req, res) => {
   const { text, jj } = req.body;
   if (!text || typeof text !== 'string' || !text.trim()) {
@@ -117,12 +114,40 @@ app.post('/api/paste/stream', rateLimit, async (req, res) => {
   const send = obj => res.write(`data: ${JSON.stringify(obj)}\n\n`);
 
   try {
-    let count = 0;
-    for await (const evt of identifyWordsStream(text.trim(), { jj: !!jj })) {
-      if (evt.type === 'item') { count++; send({ type: 'item', item: evt.item }); }
-      else if (evt.type === 'done') send({ type: 'done' });
+    const words = await identifyWords(text.trim());
+    if (!words.length) {
+      send({ type: 'error', message: '解析できる単語が見つかりませんでした' });
+      return res.end();
     }
-    if (!count) send({ type: 'error', message: '解析できる単語が見つかりませんでした' });
+    send({ type: 'identified', words });
+
+    /* Serial with pacing — parallel calls hit the output-token/min rate limit
+       for pastes with 5+ words. 3s spacing keeps us well under the org limit. */
+    const PASTE_SPACING_MS = 3000;
+    const PASTE_MAX_RETRIES = 3;
+    const PASTE_BACKOFF_MS = 65000;
+    for (let i = 0; i < words.length; i++) {
+      if (i > 0) await new Promise(r => setTimeout(r, PASTE_SPACING_MS));
+      const { word, sentence } = words[i];
+      let attempt = 0;
+      while (true) {
+        try {
+          const result = await lookup(word, { context: sentence, jj: !!jj });
+          send({ type: 'result', word, result });
+          break;
+        } catch (err) {
+          if (/\b429\b/.test(err.message) && attempt < PASTE_MAX_RETRIES) {
+            attempt++;
+            await new Promise(r => setTimeout(r, PASTE_BACKOFF_MS));
+            continue;
+          }
+          send({ type: 'word_error', word, message: err.message });
+          break;
+        }
+      }
+    }
+
+    send({ type: 'done' });
   } catch (err) {
     console.error('Paste stream error:', err.message);
     send({ type: 'error', message: err.message });
