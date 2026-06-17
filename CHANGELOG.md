@@ -3,6 +3,37 @@
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 
+### 2026-06-16 — 読む (paste mode) refresh: streamed pills, 調べる delegation, caching
+
+Paste mode used to run a full deep-dive `lookup()` on every identified word up front — 5–12
+sequential Claude calls per paragraph, slow and a cluttered wall of cards, with none of it cached.
+Now: identify streams in *minimal pills*, and tapping one opens the full breakdown in the 調べる
+tab through the normal lookup path — so it hits/populates the history cache and ties both features
+together. Switching tabs is lossless.
+
+- **`src/lookup.js`** — `identifyWords(text, { jj })` emits a one-line `gloss` per item (Japanese
+  when JJ is on, English otherwise) and drops the unused `reason`; new item shape
+  `{word, reading, gloss, sentence}`. New `identifyWordsStream()` generator (shared
+  `buildIdentifySystem` prompt) streams each item as its JSON object closes, via a string-aware
+  `extractCompleteItems` brace scanner. Both stay the only bulk call (max_tokens 800, `effort:'low'`).
+- **`src/server.js`** — `POST /api/paste/stream` is an SSE route backed by `identifyWordsStream`
+  (`item`* → `done`); the old eager per-word deep-dive loop and its pacing/retry constants are
+  gone. `POST /api/lookup` and `POST /api/lookup/stream` (and its non-stream fallback) forward an
+  optional `context` so a pill-originated lookup is biased by its source sentence.
+- **`public/js/lookup-client.js`** — `doPaste()` streams pills in progressively. Tapping a pill
+  (`openPasteWordInLookup`) switches to 調べる and runs the shared `doLookup({ input, context })`,
+  which checks history first (instant cache hit) or streams + `addToHistory`. `doLookup` generalised
+  to take `{ force, input, context }`. `setAppMode` no longer wipes the paste pill list or the
+  lookup result — both DOM trees persist, so switching tabs keeps everything. `clearPasteReturn`
+  exported. The inline drill-down (`drillSlot`/`drilledHTML`/`collapseSlot`) and
+  `currentPasteResults` removed; TSV export now pulls looked-up words from the history cache.
+- **`public/index.html`** — `#back-to-paste` ("← 読むに戻る") return link shown in 調べる after a
+  pill tap; `.paste-min-card` pills (hint now "調べる →"); removed `.paste-word-divider` /
+  `.paste-collapse-btn` / `.paste-placeholder*`.
+- **`public/js/main.js`** — wires `#back-to-paste` → 読む; `onHistorySelect` now switches to 調べる
+  and clears the return link.
+- Archived: `archive/2026-06-16_lookup.js`, `_server.js`, `_lookup-client.js`.
+
 ### 2026-06-15 — Phase 9: confusion-set depth (見る/見える/見せる family comparison)
 
 The learner's most concretely documented gap is *three-way* confusion families (見る/見える/見せる,

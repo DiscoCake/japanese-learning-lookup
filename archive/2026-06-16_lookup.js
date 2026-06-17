@@ -318,48 +318,7 @@ async function lookup(input, opts = {}) {
 }
 
 /* ── PASTE MODE: WORD IDENTIFICATION ── */
-function buildIdentifySystem(opts = {}) {
-  const glossInstruction = opts.jj
-    ? 'a "gloss" field: ONE short meaning line in simple Japanese (kana/easy kanji, no ruby, N4-level vocabulary)'
-    : 'a "gloss" field: ONE short English meaning line';
-  return `You are a Japanese language assistant for an N4→N3 learner.
-Given Japanese text, identify 5–12 words or short expressions worth explaining.
-Prioritise: N3-range vocabulary, words with multiple senses or nuance, verbs in unusual forms, grammar constructions acting as nouns.
-Exclude: particles (は、が、を、に、で、と、も、か、な、の), ultra-common N5/N4 words (です、ます、ある、する、いる、言う、行く、来る、見る、聞く、食べる、人、時、日、年), names of people/places.
-For grammar patterns output the dictionary pattern form starting with ～ (e.g. ～てしまう, ～ている).
-For each item include ${glossInstruction} — a quick scannable meaning, not a full definition.
-Also include the complete sentence (from the input text) where the word or pattern appears, as a "sentence" field.
-Return ONLY a JSON array — no markdown, no explanation:
-[{"word":"単語","reading":"たんご","gloss":"the quick meaning line","sentence":"the complete source sentence containing this word"}]`;
-}
-
-// Pull every COMPLETE top-level object out of a (possibly truncated) JSON array string.
-// String-aware so Japanese punctuation inside values can't trip the brace counter.
-function extractCompleteItems(raw) {
-  const text = raw.replace(/```json|```/g, '');
-  const items = [];
-  let depth = 0, start = -1, inStr = false, esc = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (inStr) {
-      if (esc) esc = false;
-      else if (c === '\\') esc = true;
-      else if (c === '"') inStr = false;
-      continue;
-    }
-    if (c === '"') { inStr = true; continue; }
-    if (c === '{') { if (depth === 0) start = i; depth++; }
-    else if (c === '}') {
-      if (--depth === 0 && start !== -1) {
-        try { items.push(JSON.parse(text.slice(start, i + 1))); } catch {}
-        start = -1;
-      }
-    }
-  }
-  return items;
-}
-
-async function identifyWords(text, opts = {}) {
+async function identifyWords(text) {
   if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY not set');
 
   const res = await fetch(API_URL, {
@@ -373,7 +332,14 @@ async function identifyWords(text, opts = {}) {
       model: MODEL,
       max_tokens: 800,
       output_config: { effort: 'low' },
-      system: buildIdentifySystem(opts),
+      system: `You are a Japanese language assistant for an N4→N3 learner.
+Given Japanese text, identify 5–12 words or short expressions worth explaining.
+Prioritise: N3-range vocabulary, words with multiple senses or nuance, verbs in unusual forms, grammar constructions acting as nouns.
+Exclude: particles (は、が、を、に、で、と、も、か、な、の), ultra-common N5/N4 words (です、ます、ある、する、いる、言う、行く、来る、見る、聞く、食べる、人、時、日、年), names of people/places.
+For grammar patterns output the dictionary pattern form starting with ～ (e.g. ～てしまう, ～ている).
+Also include the complete sentence (from the input text) where the word or pattern appears, as a "sentence" field.
+Return ONLY a JSON array — no markdown, no explanation:
+[{"word":"単語","reading":"たんご","reason":"one brief English phrase explaining why this is worth knowing","sentence":"the complete source sentence containing this word"}]`,
       messages: [{ role: 'user', content: text }]
     })
   });
@@ -385,72 +351,6 @@ async function identifyWords(text, opts = {}) {
   const data = await res.json();
   const raw = (data.content?.[0]?.text || '').replace(/```json|```/g, '').trim();
   try { return JSON.parse(raw); } catch { return []; }
-}
-
-// Streaming identify — yields { type:'item', item } as each object closes, then { type:'done' }.
-async function* identifyWordsStream(text, opts = {}) {
-  if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY not set');
-
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01'
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 800,
-      output_config: { effort: 'low' },
-      stream: true,
-      system: buildIdentifySystem(opts),
-      messages: [{ role: 'user', content: text }]
-    })
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(`API error ${res.status}: ${err.error?.message || 'unknown'}`);
-  }
-
-  const reader = res.body.getReader();
-  const decoder = new TextDecoder();
-  let buffer = '';
-  let accumulated = '';
-  let emitted = 0;
-
-  const flush = function* () {
-    const items = extractCompleteItems(accumulated);
-    while (emitted < items.length) yield { type: 'item', item: items[emitted++] };
-  };
-
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const raw = line.slice(6).trim();
-        if (raw === '[DONE]') continue;
-        let event;
-        try { event = JSON.parse(raw); } catch { continue; }
-        if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
-          accumulated += event.delta.text;
-          yield* flush();
-        } else if (event.type === 'error') {
-          throw new Error(`API stream error: ${event.error?.message || 'unknown'}`);
-        }
-      }
-    }
-  } finally {
-    reader.releaseLock();
-  }
-
-  yield* flush();
-  yield { type: 'done', count: emitted };
 }
 
 /* ── TSV EXPORT HELPER ── */
@@ -551,4 +451,4 @@ async function* lookupStream(input, opts = {}) {
   yield { type: 'done', result };
 }
 
-module.exports = { lookup, lookupStream, toAnkiTSV, identifyWords, identifyWordsStream };
+module.exports = { lookup, lookupStream, toAnkiTSV, identifyWords };
